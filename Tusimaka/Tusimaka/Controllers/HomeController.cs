@@ -13,5 +13,28 @@ namespace Tusimaka.Controllers
         {
             return View();
         }
+  
+        public ActionResult Bestill()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Bestilling(Models.Bestilling innBestilling)
+        {
+            //Connection til DB
+            using (var db = new Models.DB())
+            {
+                try
+                {
+                    db.Bestillinger.Add(innBestilling);
+                    db.SaveChanges();
+                }
+                catch (Exception feil)
+                {
+                    //hva skjer om feil -- 
+                }
+            }
+            return RedirectToAction("Index");
+        }
     }
 }
