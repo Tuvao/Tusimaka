@@ -1,0 +1,88 @@
+﻿body {
+    background-color: #D6EBF2;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container .Rad {
+    background-color: #F4F4F4;
+    color: #022E3C;
+}
+
+.container {
+    width: 85%;
+}
+
+span {
+    display: block;
+}
+
+.Option {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.tekstFelt {
+    width: 200%;
+    height: 3em;
+    padding: 1em;
+    font-size: 1.2em;
+    border-bottom: 0.125em solid #D6EBF2;
+    border-right: 0.125em solid #D6EBF2;
+}
+
+    .tekstFelt:hover {
+        border: 2px solid grey
+    }
+
+    .tekstFelt:focus {
+        border: 2px solid grey;
+        border-radius: 5px;
+    }
+
+td {
+    padding: 0.5em;
+}
+
+.plussminus {
+    border: 1px solid grey;
+    border-right: none;
+    width: 30px;
+    height: 30px;
+    font-size: 1.2em;
+    text-align: center;
+    display: inline-block;
+}
+
+#barn, #voksne {
+    border-right: none;
+    border-left: none;
+    float: left;
+}
+
+#minusBarn, #minusVoksen {
+    border-right: none;
+    float: left;
+    background-color: #D6EBF2;
+}
+
+#plussBarn, #plussVoksen {
+    border-left: none;
+    border-right: 1px solid grey;
+    background-color: #D6EBF2;
+}
+
+#bestill {
+    border: none;
+    color: white;
+    letter-spacing: 1px;
+    background-color: #022E3C;
+    width: 200%;
+    height: 3em;
+    font-size: 1.2em;
+    text-align: center;
+    margin-top: 2em;
+}
+
+    #bestill:hover {
+        opacity: 0.8;
+    }

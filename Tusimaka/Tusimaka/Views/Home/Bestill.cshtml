@@ -1,15 +1,164 @@
 ﻿@model Tusimaka.Models.Bestilling
 
 @{
-    ViewBag.Title = "Bestill";
+    ViewBag.Title = "Bestill flybillett";
 }
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="@Url.Content("~/Content/StyleSheet.css")" rel="stylesheet" type="text/css" />
+    <script src="jquery-3.2.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
 
-<h2>Bestill</h2>
+            //function endre() {
+            //    $('#hei').attr("disabled", "disabled");
+            //}
+            //$("#checkboxid").change(function () {
+            //        if (this.checked) {
+            //            $('.Rad').css("background-color", "yellow");
+            //        }
+            //        else {
+            //            $('#hei').fadeIn('slow');
+            //        }
+            //    }
+            //if ($("#checkboxid").prop('checked', true)) {
+            //    $('.Rad').css("background-color", "yellow");
+            //}
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
+            $("#radiobutt input[type=radio]").each(function (i) {
+                $(this).click(function () {
+                    if (i == 1) {
+                        $("#hjemreiseDato").attr("disabled", "disabled");
+                        $('#hjemreiseTekst').css("color", "grey");
+                    }
+                    else {
+                        $("#hjemreiseDato").removeAttr("disabled");
+                        $('#hjemreiseTekst').css("color", "black"); //endre til riktig farge
+                    }
+                });
+
+            });
+
+            //øk/mink-knapper
+            //function increase() {
+            //    $('.Rad').css("background-color", "yellow");
+            //    $('voksne').val();
+            //}
+
+            //øk/mink for voksne
+
+            $('#minusVoksen').click(function () {
+                var count = $('#voksne').val();
+                count--
+                $('#voksne').val(count);
+                if (count <= 0) {
+                    $("#minusVoksen").attr("disabled", "disabled");
+                }
+            })
+
+            $('#plussVoksen').click(function () {
+                var count = $('#voksne').val();
+                count++
+                $('#voksne').val(count);
+                if (count > 0) {
+                    $('#minusVoksen').removeAttr("disabled");
+                }
+            })
+
+            //øk/mink for barn
+
+            $('#minusBarn').click(function () {
+                var count = $('#barn').val();
+                count--
+                $('#barn').val(count);
+                if (count <= 0) {
+                    $("#minusBarn").attr("disabled", "disabled");
+                }
+            })
+
+            $('#plussBarn').click(function () {
+                var count = $('#barn').val();
+                count++
+                $('#barn').val(count);
+                if (count > 0) {
+                    $('#minusBarn').removeAttr("disabled");
+                }
+            })
+        });
+    </script>
+</head>
+<body>
+
+    <!--(at)using (Html.BeginForm())
+    {
+        (at)Html.AntiForgeryToken()-->
+
+    <div class="container">
+        <h2>Bestill flybilletter her!</h2>
+        <form action="" method="post">
+            <div class="row Rad">
+                <div class="col-lg-6 col-md-6 Option">
+                    <h4>Hvor reiser du fra?</h4>
+                    <input type="text" class="tekstFelt" name="fraSted" value="Oslo(OSL)" />
+                </div>
+                <div class="col-lg-6 col-md-6 Option">
+                    <h4>Hvor vil du reise?</h4>
+                    <input type="text" class="tekstFelt" name="tilSted" value="Praha(PRH)" />
+                </div>
+            </div>
+            <div class="row Rad">
+                <div class="col-lg-6 col-md-6 Option">
+                    <h4>Avreisedato</h4>
+                    <input type="date" class="tekstFelt" name="avreiseDato" />
+                </div>
+                <div class="col-lg-6 col-md-6 Option">
+                    <h4 id="hjemreiseTekst">Hjemreisedato</h4>
+                    <input type="date" class="tekstFelt" name="hjemreiseDato" id="hjemreiseDato" />
+                    @*<div class="checkbox">
+                            <label><input type="checkbox" name="Retur" onchange="endre()"
+                                          id="checkboxid" value="Retur">Tur/retur</label>
+                        </div>*@
+                    <span id="radiobutt">
+                        <input type="radio" name="rad1" value="Tur" checked="checked" /> Tur/Retur
+                        <input type="radio" name="rad1" value="TurRetur" /> Kun tur @*småtterier men: endre til "én vei" eller "enkel"? *@
+                    </span>
+                </div>
+
+            </div>
+            <div class="row Rad">
+                <div class="col-lg-6 col-md-6 Option">
+                    <h4>Hvor mange reiser?</h4>
+                    <table>
+                        <tr>
+                            <td>Voksne:</td>
+                            <td>
+                                <button type="button" class="plussminus" name="minus" id="minusVoksen" disabled="disabled">-</button>
+                                <input type="text" class="plussminus" id="voksne" class="antall" value="0" />
+                                <button type="button" class="plussminus" name="+" id="plussVoksen">+</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Barn (Under 12 år):</td> @*kanskje et spørsmålstegn her som man kan trykke på/hover over og da står det barn under 12 år? *@
+                            <td>
+                                <button type="button" class="plussminus" name="minus" id="minusBarn" disabled="disabled">-</button>
+                                <input type="text" class="plussminus" id="barn" class="antall" value="0" />
+                                <button type="button" class="plussminus" name="+" id="plussBarn">+</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="submit" name="bestill" value="Bestill reise" id="bestill" /></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+<!------>
+
+@*
     <div class="form-horizontal">
         <h4>Bestilling</h4>
         <hr />
@@ -73,3 +222,5 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+    *@
+
