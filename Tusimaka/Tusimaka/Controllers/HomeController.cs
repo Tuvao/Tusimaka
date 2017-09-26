@@ -3,38 +3,76 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
+using Tusimaka.Models;
+using static Tusimaka.Models.DBContext;
 
 namespace Tusimaka.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Home
-        public ActionResult Index()
-        {
-            return View();
-        }
-  
         public ActionResult Bestill()
         {
             return View();
         }
-        [HttpPost]
-        public ActionResult Bestill(Models.Bestilling innBestilling)
+
+        public string hentAlleFraFlyplasser()
         {
-            //Connection til DB
-            using (var db = new Models.DB())
+            using (var db = new DBContext())
             {
-                try
+                List<strekning> alleFly = db.Strekning.ToList();
+
+                var alleFraFly = new List<string>();
+
+                foreach (strekning f in alleFly)
                 {
-                    db.Bestillinger.Add(innBestilling);
-                    db.SaveChanges();
+                    string funnetStrekning = alleFraFly.FirstOrDefault(fl => fl.Contains(f.fraFlyplass));
+                    if (funnetStrekning == null)
+                    {
+                        // ikke funnet strekning i listen, legg den inn i listen
+                        alleFraFly.Add(f.fraFlyplass);
+                    }
                 }
-                catch (Exception feil)
-                {
-                    //hva skjer om feil -- 
-                }
+                var jsonSerializer = new JavaScriptSerializer();
+                return jsonSerializer.Serialize(alleFraFly);
             }
-            return RedirectToAction("Index");
+        }
+
+        public string hentTilFlyplasser(string fraFlyPlass)
+        {
+            using (var db = new DBContext())
+            {
+                List<strekning> alleFly = db.Strekning.ToList();
+
+                var alleTilFly = new List<string>();
+
+                foreach (strekning f in alleFly)
+                {
+                    if (f.fraFlyplass == fraFlyPlass)
+                    {
+                        string funnetStrekning = alleTilFly.FirstOrDefault(fl => fl.Contains(f.tilFlyplass));
+                        if (funnetStrekning == null)
+                        {
+                            // ikke funnet strekning i listen, legg den inn i listen
+                            alleTilFly.Add(f.tilFlyplass);
+                        }
+                    }
+                }
+                var jsonSerializer = new JavaScriptSerializer();
+                return jsonSerializer.Serialize(alleTilFly);
+            }
+        }
+
+        public string hentStrekning(string fraFlyplass, string tilFlyPlass)
+        {
+            using (var db = new DBContext())
+            {
+                List<strekning> alleFly = db.Strekning.Where(
+                    f => f.tilFlyplass == tilFlyPlass && f.fraFlyplass == fraFlyplass).ToList();
+
+                var jsonSerializer = new JavaScriptSerializer();
+                return jsonSerializer.Serialize(alleFly);
+            }
         }
     }
 }
