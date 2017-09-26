@@ -19,7 +19,7 @@ namespace Tusimaka.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Bestilling(Models.Bestilling innBestilling)
+        public ActionResult Bestill(Models.Bestilling innBestilling)
         {
             //Connection til DB
             using (var db = new Models.DB())
