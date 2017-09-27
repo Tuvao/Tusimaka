@@ -141,7 +141,6 @@
             $("#drop2").click(function () {
                 var valgtTilFlyplass = $(this).val();
                 var valgtFraFlyplass = $("#drop1").val();
-                $("#returKnapp").removeAttr("disabled");
                 $.ajax({
                     url: '/Home/hentTilFlyplasser',
                     type: 'GET',
@@ -154,6 +153,7 @@
                         alert(x + '\n' + y + '\n' + z);
                     }
                 });
+
             });
 
             function VisStrekninger(strekninger) {
@@ -165,12 +165,6 @@
                 utStreng += "</table>"
                 $("#strekninger").empty().append(utStreng);
             }
-
-            $("#returKnapp").click(function () {
-                var valgtTilFlyplass = $("#drop2").val();
-
-                $("#returBy").html(valgtTilFlyplass);
-            });
         });
     </script>
 </head>
@@ -189,13 +183,6 @@
     </div>
     Her er valgte mulige fly: <br />
     <div id="strekninger">
-    </div>
-
-     <button class="button active" type="button" id="returKnapp" disabled="disabled">Legg til retur</button>
-     <div id="returBy"></div>
-    <div id="dropDown3" class="col" hidden="hidden">
-        Velg til by:<br />
-        <select id="drop3" class="btn btn-primary dropdown-toggle"></select>
     </div>
 </body>
 </html>
