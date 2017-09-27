@@ -1,91 +1,12 @@
 ﻿@{
     ViewBag.Title = "Bestill flybillett";
 }
-    @*<script>
-        $(document).ready(function () {
-
-            //function endre() {
-            //    $('#hei').attr("disabled", "disabled");
-            //}
-            //$("#checkboxid").change(function () {
-            //        if (this.checked) {
-            //            $('.Rad').css("background-color", "yellow");
-            //        }
-            //        else {
-            //            $('#hei').fadeIn('slow');
-            //        }
-            //    }
-            //if ($("#checkboxid").prop('checked', true)) {
-            //    $('.Rad').css("background-color", "yellow");
-            //}
-
-            $("#radiobutt input[type=radio]").each(function (i) {
-                $(this).click(function () {
-                    if (i == 1) {
-                        $("#hjemreiseDato").attr("disabled", "disabled");
-                        $('#hjemreiseTekst').css("color", "grey");
-                    }
-                    else {
-                        $("#hjemreiseDato").removeAttr("disabled");
-                        $('#hjemreiseTekst').css("color", "black"); //endre til riktig farge
-                    }
-                });
-
-            });
-
-            //øk/mink-knapper
-            //function increase() {
-            //    $('.Rad').css("background-color", "yellow");
-            //    $('voksne').val();
-            //}
-
-            //øk/mink for voksne
-
-            $('#minusVoksen').click(function () {
-                var count = $('#voksne').val();
-                count--
-                $('#voksne').val(count);
-                if (count <= 0) {
-                    $("#minusVoksen").attr("disabled", "disabled");
-                }
-            })
-
-            $('#plussVoksen').click(function () {
-                var count = $('#voksne').val();
-                count++
-                $('#voksne').val(count);
-                if (count > 0) {
-                    $('#minusVoksen').removeAttr("disabled");
-                }
-            })
-
-            //øk/mink for barn
-
-            $('#minusBarn').click(function () {
-                var count = $('#barn').val();
-                count--
-                $('#barn').val(count);
-                if (count <= 0) {
-                    $("#minusBarn").attr("disabled", "disabled");
-                }
-            })
-
-            $('#plussBarn').click(function () {
-                var count = $('#barn').val();
-                count++
-                $('#barn').val(count);
-                if (count > 0) {
-                    $('#minusBarn').removeAttr("disabled");
-                }
-            })
-        });
-    </script>*@
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Bestill flybilletter</title>
+    <title>Index</title>
     <script type="text/javascript">
         $(function () {
 
@@ -142,18 +63,20 @@
                 var valgtTilFlyplass = $(this).val();
                 var valgtFraFlyplass = $("#drop1").val();
                 $.ajax({
-                    url: '/Home/hentTilFlyplasser',
+                    url: '/Home/hentStrekning',
                     type: 'GET',
-                    data: { fraFlyPlass: valgtFlyplass },
+                    data: {
+                        fraFlyPlass: valgtFraFlyplass,
+                        tilFlyPlass: valgtTilFlyplass
+                    },
                     dataType: 'json',
-                    success: function (tilListe) {
-                        VisDropDown2(tilListe);
+                    success: function (strekninger) {
+                        VisStrekninger(strekninger);
                     },
                     error: function (x, y, z) {
                         alert(x + '\n' + y + '\n' + z);
                     }
                 });
-
             });
 
             function VisStrekninger(strekninger) {
