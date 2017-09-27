@@ -142,15 +142,12 @@
                 var valgtTilFlyplass = $(this).val();
                 var valgtFraFlyplass = $("#drop1").val();
                 $.ajax({
-                    url: '/Home/hentStrekning',
+                    url: '/Home/hentTilFlyplasser',
                     type: 'GET',
-                    data: {
-                        fraFlyPlass: valgtFraFlyplass,
-                        tilFlyPlass: valgtTilFlyplass
-                    },
+                    data: { fraFlyPlass: valgtFlyplass },
                     dataType: 'json',
-                    success: function (strekninger) {
-                        VisStrekninger(strekninger);
+                    success: function (tilListe) {
+                        VisDropDown2(tilListe);
                     },
                     error: function (x, y, z) {
                         alert(x + '\n' + y + '\n' + z);
@@ -167,6 +164,24 @@
                 utStreng += "</table>"
                 $("#strekninger").empty().append(utStreng);
             }
+
+            $("#returKnapp").click(function () {
+                var valgtTilFlyplass = $("#drop2").val();
+                $.ajax({
+                    url: '/Home/hentStrekning',
+                    type: 'GET',
+                    data: {
+                        fraFlyPlass: valgtFraFlyplass,
+                        tilFlyPlass: valgtTilFlyplass
+                    },
+                    dataType: 'json',
+                    success: function (strekninger) {
+                        VisStrekninger(strekninger);
+                    },
+                    error: function (x, y, z) {
+                        alert(x + '\n' + y + '\n' + z);
+                    }
+                });
         });
     </script>
 </head>
@@ -186,5 +201,7 @@
     Her er valgte mulige fly: <br />
     <div id="strekninger">
     </div>
+
+     <button class="button active" type="button" id="returKnapp">Legg til retur</button>
 </body>
 </html>
