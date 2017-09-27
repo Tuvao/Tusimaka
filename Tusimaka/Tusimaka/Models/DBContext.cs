@@ -29,11 +29,13 @@ namespace Tusimaka.Models
                 Database.SetInitializer(new DBInit());
             }
             public DbSet<strekning> Strekning { get; set; }
+            
+            public DbSet<Kunde> Kunder { get; set; }
 
             protected override void OnModelCreating(DbModelBuilder modelBuilder)
             {
                 modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             }
-        }
+    }
     
 }
