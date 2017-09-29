@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
     <script type="text/javascript">
-        $(function () {
+        $(document).ready(function () {
 
             // hent alle fraFlyplass, bygg opp dropdown1 når siden lastes
 
@@ -48,6 +48,10 @@
                         alert(x + '\n' + y + '\n' + z);
                     }
                 });
+
+                $("#drop2").removeAttr("disabled"); 
+                $("#dropDown2").show();
+
             });
 
             function VisDropDown2(tilListe) {
@@ -79,6 +83,8 @@
                         alert(x + '\n' + y + '\n' + z);
                     }
                 });
+
+                $("#returKnapp").removeAttr("disabled");
             });
 
             //funker ikke
@@ -106,9 +112,9 @@
                 Velg fra by:<br />
                 <select id="drop1" class="btn btn-primary dropdown-toggle"></select>
             </div>
-            <div id="dropDown2" class="col">
+            <div id="dropDown2" class="col" hidden="hidden">
                 Velg til by:<br />
-                <select id="drop2" class="btn btn-primary dropdown-toggle"></select>
+                <select id="drop2" class="btn btn-primary dropdown-toggle" disabled></select>
             </div>
         </div>
     </div>
@@ -117,6 +123,6 @@
     </div>
 
     <button type="button" id="returKnapp" class="btn success" disabled="disabled">Bestill returbiletter</button>
-    <button type="button" class="btn active">Bekreft</button>
+    <button type="button" class="btn btn-success">Bekreft</button>
 </body>
 </html>
