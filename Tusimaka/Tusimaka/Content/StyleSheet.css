@@ -90,3 +90,35 @@ td {
     .tilFraSelect{
         color: red;
     }
+
+#infotekst {
+    color: purple;
+    -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+-webkit-animation-duration: 10s; /* Safari 4.0 - 8.0 */
+animation-name: example; 
+animation-duration: 10s;
+font-size: 10em;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes example {
+    from {
+        color: red;
+    }
+
+    to {
+        color: purple;
+    }
+}
+
+/* Standard syntax */
+@keyframes example {
+    from {
+        color: red;
+    }
+
+    to {
+        color: purple;
+    }
+}
+    
