@@ -70,7 +70,6 @@
                 $("#turDato").show();
                 
             });
-            $('.datepicker').datepicker();
             $("#tilDato").change(function () {
                 var valgtFraFlyplass = $("#drop1").val();
                 var valgtTilFlyplass = $("#drop2").val();
@@ -122,7 +121,7 @@
             </div>
             <div id="turDato" class="col col-lg-2 col-mg-2 col-sm-4" hidden="hidden">
                 Velg dato:<br/>
-                <input id="tilDato" type="text" class="datepicker" disabled>
+                <input id="tilDato" type="date" disabled>
             </div>
             <div id="personValg" class="col col-lg-2 col-mg-2 col-sm-4" hidden="hidden">
                 Velg antall personer<br />
@@ -138,6 +137,8 @@
                 </select>
                 <input id="antallPersoner" type="text" disabled>
             </div>
+
+
         </div>
     Her er valgte mulige fly: <br />
     <div id="strekninger">
