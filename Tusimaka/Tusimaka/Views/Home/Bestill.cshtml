@@ -88,7 +88,10 @@
                 $("#turDato").show();
                 
             });
-
+            function visPersonvalg() {
+                $("#personvalg").show();
+                $("#personvalg").removeAttr("disabled");
+            }
 
             function VisStrekninger(strekninger) {
                 var utStreng = "<table class='table'><tr><th>Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th><th>Ledige seter</th><th>Velg</th></tr>";
