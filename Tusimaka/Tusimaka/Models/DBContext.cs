@@ -14,7 +14,7 @@ namespace Tusimaka.Models
             {
                 Database.CreateIfNotExists();
 
-                //Database.SetInitializer(new DBInit());
+                Database.SetInitializer(new DBInit());
             }
             public DbSet<strekning> Strekning { get; set; }
             

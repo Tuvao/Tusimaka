@@ -13,5 +13,6 @@ namespace Tusimaka.Models
         public string dato { get; set; }
         public string tid { get; set; }
         public string pris { get; set; }
+        public int antallLedigeSeter { get; set; }
     }
 }
