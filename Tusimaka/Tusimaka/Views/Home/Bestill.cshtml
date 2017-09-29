@@ -35,12 +35,11 @@
 
             // opprett en hendelse på dropdown-listen fraFlyplass når siden lastes
 
-            $("#drop1").click(function () {
-                var valgtFlyplass = $(this).val();
+            function valgtFraFlyplass(fraFlyplassVerdi) {
                 $.ajax({
                     url: '/Home/hentTilFlyplasser',
                     type: 'GET',
-                    data: { fraFlyPlass: valgtFlyplass },
+                    data: { fraFlyPlass: fraFlyplassVerdi },
                     dataType: 'json',
                     success: function (tilListe) {
                         VisDropDown2(tilListe);
@@ -112,7 +111,7 @@
         <div class="row">
             <div id="dropDown1" class="col col-sm-2">
                 Velg fra by:<br />
-                <select id="drop1" class="btn btn-primary dropdown-toggle">
+                <select id="drop1" class="btn btn-primary dropdown-toggle" onchange="valgtFraFlyplass(this.value);">
                 </select>
             </div>
             <div id="dropDown2" class="col" hidden="hidden">
