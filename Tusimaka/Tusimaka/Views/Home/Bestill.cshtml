@@ -104,6 +104,9 @@
                 });
 
                 $("#returKnapp").removeAttr("disabled");
+                $("#tilDato").removeAttr("disabled");
+                $("#turDato").show();
+                
             });
 
             //funker ikke
@@ -135,6 +138,10 @@
             <div id="dropDown2" class="col col-lg-2 col-mg-2 col-sm-4" hidden="hidden">
                 Velg til by:<br />
                 <select id="drop2" class="btn btn-primary dropdown-toggle tilFraSelect" disabled></select>
+            </div>
+            <div id="turDato" class="col col-lg-2 col-mg-2 col-sm-4" hidden="hidden">
+                Velg dato:<br/>
+                <input id="tilDato" type="date" disabled>
             </div>
         </div>
     Her er valgte mulige fly: <br />
