@@ -122,6 +122,7 @@
     <Compile Include="Models\DBContext.cs" />
     <Compile Include="Models\DBInit.cs" />
     <Compile Include="Models\Kunde.cs" />
+    <Compile Include="Models\strekning.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

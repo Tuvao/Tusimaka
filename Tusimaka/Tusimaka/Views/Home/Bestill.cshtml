@@ -33,26 +33,6 @@
                 $("#drop1").empty().append(utStreng);
             }
 
-            // opprett en hendelse på dropdown-listen fraFlyplass når siden lastes
-
-            //function valgtFraFlyplass(fraFlyplassVerdi) {
-            //    $.ajax({
-            //        url: '/Home/hentTilFlyplasser',
-            //        type: 'GET',
-            //        data: { fraFlyPlass: fraFlyplassVerdi },
-            //        dataType: 'json',
-            //        success: function (tilListe) {
-            //            VisDropDown2(tilListe);
-            //        },
-            //        error: function (x, y, z) {
-            //            alert(x + '\n' + y + '\n' + z);
-            //        }
-            //    });
-
-            //    $("#drop2").removeAttr("disabled"); 
-            //    $("#dropDown2").show();
-
-            //};
             $("#drop1").change(function () {
                 var fraFlyplassVerdi = $(this).val();
                 $.ajax({
@@ -109,10 +89,6 @@
                 
             });
 
-            //funker ikke
-            //$(".velgKnapp").click(function () {
-            //    $("#returKnapp").removeAttr("disabled");
-            //});
 
             function VisStrekninger(strekninger) {
                 var utStreng = "<table class='table'><tr><th>Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th><th>Ledige seter</th><th>Velg</th></tr>";
