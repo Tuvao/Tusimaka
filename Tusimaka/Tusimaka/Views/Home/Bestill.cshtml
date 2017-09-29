@@ -11,7 +11,7 @@
         $(document).ready(function () {
 
             // hent alle fraFlyplass, bygg opp dropdown1 når siden lastes
-
+            
             $.ajax({
                 url: '/Home/hentAlleFraFlyplasser',
                 type: 'GET',
@@ -63,10 +63,18 @@
 
             // opprett en hendelse på dropdown-listen valgtFlyplass når siden lastes
             $("#drop2").change(function () {
-                var valgtTilFlyplass = $(this).val();
+                
+                
+                $("#returKnapp").removeAttr("disabled");
+                $("#tilDato").removeAttr("disabled");
+                $("#turDato").show();
+                
+            });
+            $('.datepicker').datepicker();
+            $("#tilDato").change(function () {
                 var valgtFraFlyplass = $("#drop1").val();
-
-
+                var valgtTilFlyplass = $("#drop2").val();
+                
                 $.ajax({
                     url: '/Home/hentStrekning',
                     type: 'GET',
@@ -83,19 +91,16 @@
                     }
                 });
 
-                $("#returKnapp").removeAttr("disabled");
-                $("#tilDato").removeAttr("disabled");
-                $("#turDato").show();
-                
+                $("#personValg").show();
+                $("#antallPersoner").removeAttr("disabled");
             });
-
-
+            
             function VisStrekninger(strekninger) {
                 var utStreng = "<table class='table'><tr><th>Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th><th>Ledige seter</th><th>Velg</th></tr>";
                 for (var i in strekninger) {
                     utStreng += "<tr><td>" + strekninger[i].fraFlyplass + "</td><td>" + strekninger[i].tilFlyplass +
                         "</td><td>" + strekninger[i].dato + "</td><td>" + strekninger[i].tid + "</td><td>" + strekninger[i].pris +
-                        "</td><td>antall</td><td><button type='button' class='btn btn-success' id='velgKnapp'>Velg</button></td><tr/>";
+                        "</td><td>" + strekninger[i].antallLedigeSeter + "</td><td><button type='button' class='btn btn-success' id='velgKnapp'>Velg</button></td><tr/>";
                 }
                 utStreng += "</table>"
                 $("#strekninger").empty().append(utStreng);
@@ -117,7 +122,11 @@
             </div>
             <div id="turDato" class="col col-lg-2 col-mg-2 col-sm-4" hidden="hidden">
                 Velg dato:<br/>
-                <input id="tilDato" type="date" disabled>
+                <input id="tilDato" type="text" class="datepicker" disabled>
+            </div>
+            <div id="personValg" class="col col-lg-2 col-mg-2 col-sm-4" hidden="hidden">
+                Velg antall personer<br />
+                <input id="antallPersoner" type="text" disabled>
             </div>
         </div>
     Her er valgte mulige fly: <br />
