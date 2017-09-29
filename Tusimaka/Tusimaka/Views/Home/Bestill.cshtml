@@ -26,6 +26,7 @@
 
             function VisDropDown1(fraListe) {
                 var utStreng = "";
+                utStreng += "<option value='' selected disabled>Velg</option>"; 
                 for (var i in fraListe) {
                     utStreng += "<option value='" + fraListe[i] + "'>" + fraListe[i] + "</option>";
                 }
@@ -56,6 +57,7 @@
 
             function VisDropDown2(tilListe) {
                 var utStreng = "";
+                utStreng += "<option value='' selected disabled>Velg</option>";  
                 for (var i in tilListe) {
                     utStreng += "<option value='" + tilListe[i] + "'>" + tilListe[i] + "</option>";
                 }
@@ -111,7 +113,6 @@
             <div id="dropDown1" class="col col-sm-2">
                 Velg fra by:<br />
                 <select id="drop1" class="btn btn-primary dropdown-toggle">
-                    <option value="" selected disabled>Please select</option>
                 </select>
             </div>
             <div id="dropDown2" class="col" hidden="hidden">
