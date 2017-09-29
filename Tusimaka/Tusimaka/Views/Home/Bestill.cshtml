@@ -62,6 +62,8 @@
             $("#drop2").click(function () {
                 var valgtTilFlyplass = $(this).val();
                 var valgtFraFlyplass = $("#drop1").val();
+
+
                 $.ajax({
                     url: '/Home/hentStrekning',
                     type: 'GET',
@@ -79,11 +81,17 @@
                 });
             });
 
+            //funker ikke
+            //$(".velgKnapp").click(function () {
+            //    $("#returKnapp").removeAttr("disabled");
+            //});
+
             function VisStrekninger(strekninger) {
-                var utStreng = "<table class='table'><tr><th>Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th></tr>";
+                var utStreng = "<table class='table'><tr><th>Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th><th>Ledige seter</th><th>Velg</th></tr>";
                 for (var i in strekninger) {
                     utStreng += "<tr><td>" + strekninger[i].fraFlyplass + "</td><td>" + strekninger[i].tilFlyplass +
-                        "</td><td>" + strekninger[i].dato + "</td><td>" + strekninger[i].tid + "</td><td>" + strekninger[i].pris + "<tr/>";
+                        "</td><td>" + strekninger[i].dato + "</td><td>" + strekninger[i].tid + "</td><td>" + strekninger[i].pris +
+                        "</td><td>antall</td><td><button type='button' class='btn btn-success' id='velgKnapp'>Velg</button></td><tr/>";
                 }
                 utStreng += "</table>"
                 $("#strekninger").empty().append(utStreng);
@@ -107,5 +115,8 @@
     Her er valgte mulige fly: <br />
     <div id="strekninger">
     </div>
+
+    <button type="button" id="returKnapp" class="btn success" disabled="disabled">Bestill returbiletter</button>
+    <button type="button" class="btn active">Bekreft</button>
 </body>
 </html>
