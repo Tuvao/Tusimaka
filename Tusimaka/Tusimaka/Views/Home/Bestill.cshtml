@@ -35,7 +35,26 @@
 
             // opprett en hendelse på dropdown-listen fraFlyplass når siden lastes
 
-            function valgtFraFlyplass(fraFlyplassVerdi) {
+            //function valgtFraFlyplass(fraFlyplassVerdi) {
+            //    $.ajax({
+            //        url: '/Home/hentTilFlyplasser',
+            //        type: 'GET',
+            //        data: { fraFlyPlass: fraFlyplassVerdi },
+            //        dataType: 'json',
+            //        success: function (tilListe) {
+            //            VisDropDown2(tilListe);
+            //        },
+            //        error: function (x, y, z) {
+            //            alert(x + '\n' + y + '\n' + z);
+            //        }
+            //    });
+
+            //    $("#drop2").removeAttr("disabled"); 
+            //    $("#dropDown2").show();
+
+            //};
+            $("#drop1").change(function () {
+                var fraFlyplassVerdi = $(this).val();
                 $.ajax({
                     url: '/Home/hentTilFlyplasser',
                     type: 'GET',
@@ -51,7 +70,6 @@
 
                 $("#drop2").removeAttr("disabled"); 
                 $("#dropDown2").show();
-
             });
 
             function VisDropDown2(tilListe) {
@@ -64,7 +82,7 @@
             }
 
             // opprett en hendelse på dropdown-listen valgtFlyplass når siden lastes
-            $("#drop2").click(function () {
+            $("#drop2").change(function () {
                 var valgtTilFlyplass = $(this).val();
                 var valgtFraFlyplass = $("#drop1").val();
 
@@ -109,22 +127,24 @@
 <body>
     <div class="container">
         <div class="row">
-            <div id="dropDown1" class="col col-sm-2">
+            <div id="dropDown1" class="col col-lg-2 col-mg-2 col-sm-4">
                 Velg fra by:<br />
-                <select id="drop1" class="btn btn-primary dropdown-toggle" onchange="valgtFraFlyplass(this.value);">
+                <select id="drop1" class="btn btn-primary dropdown-toggle tilFraSelect">
                 </select>
             </div>
-            <div id="dropDown2" class="col" hidden="hidden">
+            <div id="dropDown2" class="col col-lg-2 col-mg-2 col-sm-4" hidden="hidden">
                 Velg til by:<br />
-                <select id="drop2" class="btn btn-primary dropdown-toggle" disabled></select>
+                <select id="drop2" class="btn btn-primary dropdown-toggle tilFraSelect" disabled></select>
             </div>
         </div>
-    </div>
     Her er valgte mulige fly: <br />
     <div id="strekninger">
     </div>
 
     <button type="button" id="returKnapp" class="btn success" disabled="disabled">Bestill returbiletter</button>
     <button type="button" class="btn btn-success">Bekreft</button>
+
+    <div id="returBy"></div>
+    </div>
 </body>
 </html>

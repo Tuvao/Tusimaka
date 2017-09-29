@@ -86,3 +86,7 @@ td {
     #bestill:hover {
         opacity: 0.8;
     }
+
+    .tilFraSelect{
+        color: red;
+    }
