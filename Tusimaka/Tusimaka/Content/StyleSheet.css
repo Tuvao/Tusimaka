@@ -88,37 +88,46 @@ td {
     }
 
     .tilFraSelect{
-        color: red;
+        color: white;
     }
 
-#infotekst {
-    color: purple;
+#drop1 {
+    width: 10em;
+}
+
+#drop2 {
+    width: 10em;
+}
+
+
+#indextekst {
+    color: deepskyblue;
     -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
--webkit-animation-duration: 10s; /* Safari 4.0 - 8.0 */
-animation-name: example; 
-animation-duration: 10s;
-font-size: 10em;
+    -webkit-animation-duration: 10s; /* Safari 4.0 - 8.0 */
+    animation-name: example;
+    animation-duration: 10s;
+    font-size: 10em;
 }
 
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes example {
     from {
-        color: red;
+        color: deepskyblue;
     }
 
     to {
-        color: purple;
+        color: cornflowerblue;
     }
 }
 
 /* Standard syntax */
 @keyframes example {
     from {
-        color: red;
+        color: deepskyblue;
     }
 
     to {
-        color: purple;
+        color: cornflowerblue;
     }
 }
     
