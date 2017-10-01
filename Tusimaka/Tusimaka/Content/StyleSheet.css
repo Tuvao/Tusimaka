@@ -99,13 +99,16 @@ td {
     width: 10em;
 }
 
+#antallPersoner {
+   
+}
 
 #indextekst {
     color: deepskyblue;
     -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
-    -webkit-animation-duration: 10s; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
     animation-name: example;
-    animation-duration: 10s;
+    animation-duration: 4s;
     font-size: 10em;
 }
 
