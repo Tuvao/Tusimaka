@@ -90,30 +90,50 @@ td {
         opacity: 0.8;
     }
 
-.dropdown {
-    padding: 0.1em 2em;
-    background-color: grey;
-    color: white;
-    font-size: 1.3em;
-    min-height: 3em;
-    min-width: 10em;
-    border: none;
+    .tilFraSelect{
+        color: white;
+    }
+
+#drop1 {
+    width: 10em;
 }
 
-/*tar bort default pil*/
-select::-ms-expand{
-    display: none;
-}
-select option {
-    padding: 1em;
-}
-/*størrelse på divene til Til og Fra select*/
-.selectTilFra {
-    min-width: 60em;
+#drop2 {
+    width: 10em;
 }
 
-.selectTilFra p{
-    font-size: 1.2em;
-    font-weight: bold;
+#antallPersoner {
+   
+}
+
+#indextekst {
+    color: deepskyblue;
+    -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+    animation-name: example;
+    animation-duration: 4s;
+    font-size: 10em;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes example {
+    from {
+        color: deepskyblue;
+    }
+
+    to {
+        color: cornflowerblue;
+    }
+}
+
+/* Standard syntax */
+@keyframes example {
+    from {
+        color: deepskyblue;
+    }
+
+    to {
+        color: cornflowerblue;
+    }
 }
     
