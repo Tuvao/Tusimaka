@@ -93,6 +93,7 @@
 
                 $("#personValg").show();
                 $("#antallPersoner").removeAttr("disabled");
+                $("#bekreftetTilFraSted").show(); //må inn etter valgt antall personer. 
             });
             
             function VisStrekninger(strekninger) {
@@ -111,43 +112,44 @@
     </script>
 </head>
 <body>
+    <!--col-lg-2 col-mg-2-->
     <div class="container">
-        <div class="row">
-            <div id="dropDown1" class="col col-lg-2 col-mg-2 col-sm-4">
-                Velg fra by:<br />
-                <select id="drop1" class="btn btn-primary dropdown-toggle tilFraSelect">
+        <div class="row no-gutters">
+            <h1 class="header">Velg din flyreise</h1>
+            <div class="selectTil col col-sm-2" id="dropDown1">
+                <p>FRA</p>
+                <select id="drop1" class="dropdownUtseende knappUtseende"></select>
+            </div>
+            <div class="selectTil col col-sm-2" id="dropDown2" hidden="hidden">
+                <p>TIL</p>
+                <select id="drop2" class="dropdownUtseende knappUtseende" disabled></select>
+            </div>
+            <div id="turDato" class="col col-sm-2" hidden="hidden">
+                <p>DATO</p>
+                <input id="tilDato" type="date" class="knappUtseende dropdownUtseende" disabled min="2017-10-01"> <!--Må sette inn errormessage-->
+            </div>
+            <div id="personValg" class="col col-sm-2" hidden="hidden">
+                <p>ANTALL VOKSNE</p>
+                <select id="antallPersoner" class="knappUtseende dropdownUtseende" disabled>
+                    <option name="en">1</option>
+                    <option name="to">2</option>
+                    <option name="tre">3</option>
+                    <option name="fire">4</option>
+                    <option name="fem">5</option>
+                    <option name="seks">6</option>
+                    <option name="syv">7</option>
+                    <option name="atte">8</option>
                 </select>
             </div>
-            <div id="dropDown2" class="col col-lg-2 col-mg-2 col-sm-4" hidden="hidden">
-                Velg til by:<br />
-                <select id="drop2" class="btn btn-primary dropdown-toggle tilFraSelect" disabled></select>
-            </div>
-            <div id="turDato" class="col col-lg-2 col-mg-2 col-sm-4" hidden="hidden">
-                Velg dato:<br/>
-                <input id="tilDato" type="date" disabled min="2017-10-01" > <!--Må sette inn errormessage-->
-            </div>
-            <div id="personValg" class="col col-lg-2 col-mg-2 col-sm-4" hidden="hidden">
-                Velg antall personer<br />
-                    <select id="antallPersoner" class="btn btn-primary dropdown-toggle" disabled>
-                        <option name="en">1</option>
-                        <option name="to">2</option>
-                        <option name="tre">3</option>
-                        <option name="fire">4</option>
-                        <option name="fem">5</option>
-                        <option name="seks">6</option>
-                        <option name="syv">7</option>
-                        <option name="atte">8</option>
-                    </select>
-            </div>
         </div>
-    Her er valgte mulige fly: <br />
-    <div id="strekninger">
-    </div>
+        <div hidden="hidden" id="bekreftetTilFraSted">
+            <p>Når ønsker du å reise?</p>
+            <div id="strekninger"></div>
+                <button type="button" id="returKnapp" class="btn success" disabled="disabled">Bestill returbiletter</button>
+                <button type="button" class="btn btn-success">Bekreft</button>
 
-    <button type="button" id="returKnapp" class="btn success" disabled="disabled">Bestill returbiletter</button>
-    <button type="button" class="btn btn-success">Bekreft</button>
-
-    <div id="returBy"></div>
+                <div id="returBy"></div>
+        </div>
     </div>
 </body>
 </html>

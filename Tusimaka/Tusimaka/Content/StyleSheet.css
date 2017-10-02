@@ -90,16 +90,35 @@ td {
         opacity: 0.8;
     }
 
-    .tilFraSelect{
-        color: white;
-    }
-
-#drop1 {
-    width: 10em;
+/*Knapper og dropdown stil/farge*/
+.knappUtseende {
+    background-color: grey;
+    color: white;
+}
+.dropdownUtseende {
+    padding: 0.1em 2em;
+    font-size: 1.3em;
+    min-height: 3em;
+    min-width: 9em;
+    border: 0.5px solid black;
 }
 
-#drop2 {
-    width: 10em;
+/*tar bort default pil*/
+select::-ms-expand {
+    display: none;
+}
+
+select option {
+    padding: 1em;
+}
+/*størrelse på divene til Til og Fra select*/
+.selectTilFra {
+    min-width: 60em;
+}
+
+.selectTilFra p {
+    font-size: 1.2em;
+    font-weight: bold;
 }
 
 #antallPersoner {
