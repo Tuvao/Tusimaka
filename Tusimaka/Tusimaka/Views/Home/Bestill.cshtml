@@ -131,9 +131,7 @@
 
                 $("#bekreftetTilFraSted").show(); //må inn etter valgt antall personer.
                 $("#bekreft").removeAttr("disabled");
-                $("#retur").removeAttr("disabled");
                 $("#bekreft").show();
-                $("#retur").show();
             })
             
             function VisStrekninger(strekninger) {
@@ -147,12 +145,12 @@
                 $("#strekninger").empty().append(utStreng);
             }
 
-            function VisRetur(strekninger) {
+            function VisRetur(retur) {
                 var utStreng = "<table class='table'><tr><th>Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th><th>Ledige seter</th><th>Velg</th></tr>";
-                for (var i in strekninger) {
-                    utStreng += "<tr><td>" + strekninger[i].tilFlyplass + "</td><td>" + strekninger[i].fraFlyplass +
-                        "</td><td>" + strekninger[i].dato + "</td><td>" + strekninger[i].tid + "</td><td>" + strekninger[i].pris +
-                        "</td><td>" + strekninger[i].antallLedigeSeter + "</td><td><button type='button' class='' id='velgKnapp'>Velg</button></td><tr/>";
+                for (var i in retur) {
+                    utStreng += "<tr><td>" + retur[i].tilFlyplass + "</td><td>" + retur[i].fraFlyplass +
+                        "</td><td>" + retur[i].dato + "</td><td>" + retur[i].tid + "</td><td>" + retur[i].pris +
+                        "</td><td>" + retur[i].antallLedigeSeter + "</td><td><button type='button' class='' id='velgKnapp'>Velg</button></td><tr/>";
                 }
                 utStreng += "</table>"
                 $("#returBy").empty().append(utStreng);
@@ -200,12 +198,10 @@
                 <input id="fraDato" type="date" class="knappUtseende dropdownUtseende" disabled min="2017-10-01"> <!--Må sette inn errormessage-->
             </div>
 
+            <div id="returBy"></div>
+
             <button type="button" id="retur" class="knapp" disabled="disabled">Bestill returbiletter</button>
             <button type="button" class="knapp" id="bekreft" disabled="disabled">Bekreft</button>
-
-            
-
-            <div id="returBy"></div>
         </div>
     </div>
 </body>
