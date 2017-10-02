@@ -6,6 +6,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link href="@Url.Content("~/Content/StyleSheet.css")" rel="stylesheet" type="text/css" />
     <title>Index</title>
     <script type="text/javascript">
         $(document).ready(function () {
@@ -70,6 +71,7 @@
 
                 $("#drop2").removeAttr("disabled"); 
                 $("#dropDown2").show();
+                
             });
 
             function VisDropDown2(tilListe) {
@@ -79,6 +81,7 @@
                     utStreng += "<option value='" + tilListe[i] + "'>" + tilListe[i] + "</option>";
                 }
                 $("#drop2").empty().append(utStreng);
+                
             }
 
             // opprett en hendelse på dropdown-listen valgtFlyplass når siden lastes
@@ -104,6 +107,7 @@
                 });
 
                 $("#returKnapp").removeAttr("disabled");
+                $("#bekreftetTilFraSted").show();
             });
 
             //funker ikke
@@ -122,28 +126,31 @@
                 $("#strekninger").empty().append(utStreng);
             }
         });
+        
     </script>
 </head>
 <body>
+    <!--col col-lg-2 col-mg-2 col-sm-4-->
     <div class="container">
         <div class="row">
-            <div id="dropDown1" class="col col-lg-2 col-mg-2 col-sm-4">
-                Velg fra by:<br />
-                <select id="drop1" class="btn btn-primary dropdown-toggle tilFraSelect">
-                </select>
-            </div>
-            <div id="dropDown2" class="col col-lg-2 col-mg-2 col-sm-4" hidden="hidden">
-                Velg til by:<br />
-                <select id="drop2" class="btn btn-primary dropdown-toggle tilFraSelect" disabled></select>
+            <h1 class="header">Velg din flyreise</h1>
+            <div class="selectTilFra">
+                <span id="dropDown1">
+                    <p>FRA</p>
+                    <select id="drop1" class="dropdown"></select>
+                </span>
+                <span id="dropDown2" class="selectTilFraDrop" hidden="hidden">
+                    <p>TIL</p>
+                    <select id="drop2" class="dropdown" disabled></select>
+                </span>
             </div>
         </div>
-    Her er valgte mulige fly: <br />
-    <div id="strekninger">
-    </div>
-
-    <button type="button" id="returKnapp" class="btn success" disabled="disabled">Bestill returbiletter</button>
-    <button type="button" class="btn btn-success">Bekreft</button>
-
+        <div hidden="hidden" id="bekreftetTilFraSted">
+            <p>Når ønsker du å reise?</p>
+            <div id="strekninger"></div>
+            <button type="button" id="returKnapp" class="btn success" disabled="disabled">Bestill returbiletter</button>
+            <button type="button" class="btn btn-success">Bekreft</button>
+        </div>
     <div id="returBy"></div>
     </div>
 </body>
