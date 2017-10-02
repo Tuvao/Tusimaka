@@ -138,7 +138,7 @@
                 var utStreng = "<table class='table'><tr><th>Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th><th>Ledige seter</th><th>Velg</th></tr>";
                 for (var i in strekninger) {
                     utStreng += "<tr><td>" + strekninger[i].fraFlyplass + "</td><td>" + strekninger[i].tilFlyplass +
-                        "</td><td>" + strekninger[i].dato + "</td><td>" + strekninger[i].tid + "</td><td>" + strekninger[i].pris +
+                        "</td><td>" + $("#tilDato").val() + "</td><td>" + strekninger[i].tid + "</td><td>" + strekninger[i].pris +
                         "</td><td>" + strekninger[i].antallLedigeSeter + "</td><td><button type='button' class='' id='velgKnapp'>Velg</button></td><tr/>";
                 }
                 utStreng += "</table>"
@@ -149,7 +149,7 @@
                 var utStreng = "<table class='table'><tr><th>Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th><th>Ledige seter</th><th>Velg</th></tr>";
                 for (var i in retur) {
                     utStreng += "<tr><td>" + retur[i].tilFlyplass + "</td><td>" + retur[i].fraFlyplass +
-                        "</td><td>" + retur[i].dato + "</td><td>" + retur[i].tid + "</td><td>" + retur[i].pris +
+                        "</td><td>" + $("#fraDato").val() + "</td><td>" + retur[i].tid + "</td><td>" + retur[i].pris +
                         "</td><td>" + retur[i].antallLedigeSeter + "</td><td><button type='button' class='' id='velgKnapp'>Velg</button></td><tr/>";
                 }
                 utStreng += "</table>"
@@ -195,7 +195,7 @@
 
             <div id="returDato" class="col col-sm-2" hidden="hidden">
                 <p>RETUR-DATO</p>
-                <input id="fraDato" type="date" class="knappUtseende dropdownUtseende" disabled min="2017-10-01"> <!--Må sette inn errormessage-->
+                <input id="fraDato" type="date" class="knappUtseende dropdownUtseende" disabled min=""> <!--Må sette inn errormessage-->
             </div>
 
             <div id="returBy"></div>
