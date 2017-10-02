@@ -101,7 +101,7 @@
                 for (var i in strekninger) {
                     utStreng += "<tr><td>" + strekninger[i].fraFlyplass + "</td><td>" + strekninger[i].tilFlyplass +
                         "</td><td>" + strekninger[i].dato + "</td><td>" + strekninger[i].tid + "</td><td>" + strekninger[i].pris +
-                        "</td><td>" + strekninger[i].antallLedigeSeter + "</td><td><button type='button' class='btn btn-success' id='velgKnapp'>Velg</button></td><tr/>";
+                        "</td><td>" + strekninger[i].antallLedigeSeter + "</td><td><button type='button' class='' id='velgKnapp'>Velg</button></td><tr/>";
                 }
                 utStreng += "</table>"
                 $("#strekninger").empty().append(utStreng);
@@ -145,8 +145,8 @@
         <div hidden="hidden" id="bekreftetTilFraSted">
             <p>Når ønsker du å reise?</p>
             <div id="strekninger"></div>
-                <button type="button" id="returKnapp" class="btn success" disabled="disabled">Bestill returbiletter</button>
-                <button type="button" class="btn btn-success">Bekreft</button>
+                <button type="button" id="retur" class="knapp" disabled="disabled">Bestill returbiletter</button>
+                <button type="button" class="knapp" id="bekreft">Bekreft</button>
 
                 <div id="returBy"></div>
         </div>

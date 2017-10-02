@@ -1,17 +1,16 @@
 ﻿body {
-    background-color: #eee;
+    background-color: #F4F5F5;
     font-family: "Arial", Helvetica, sans-serif;
 }
 
 .container .Rad {
-    background-color: #eee;
-    color: #022E3C;
+    background-color: #F4F5F5;
 }
 
 .container {
     width: 85%;
 }
-h1, p{
+h1, p {
     margin: 1em 0;
 }
 span {
@@ -92,15 +91,15 @@ td {
 
 /*Knapper og dropdown stil/farge*/
 .knappUtseende {
-    background-color: grey;
-    color: white;
+    background-color: white;
+    color: black;
 }
 .dropdownUtseende {
     padding: 0.1em 2em;
     font-size: 1.3em;
     min-height: 3em;
     min-width: 9em;
-    border: 0.5px solid black;
+    border: 2px solid #365A66;
 }
 
 /*tar bort default pil*/
@@ -123,6 +122,37 @@ select option {
 
 #antallPersoner {
    
+}
+
+#velgKnapp {
+    padding: 0.3em 1em;
+    font-size: 1em;
+    min-height: 1em;
+    min-width: 4em;
+    border: none;
+    background-color: #224652;
+    color: white;
+}
+.knapp {
+    padding: 0.1em 2em;
+    font-size: 1.3em;
+    min-height: 3em;
+    min-width: 9em;
+    border: none;
+}
+
+#retur {
+    background-color: lightgrey;
+    color: black;
+}
+
+#bekreft {
+    background-color: #224652;
+    color: white;
+}
+
+button:hover {
+    opacity:0.7;
 }
 
 #indextekst {
