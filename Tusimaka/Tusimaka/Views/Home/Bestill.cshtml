@@ -105,6 +105,7 @@
 
                 $("#returDato").show();
                 $("#fraDato").removeAttr("disabled");
+                $("#bekreft").hide();
                 $("#retur").hide();
             });
 
@@ -131,6 +132,8 @@
                 $("#bekreftetTilFraSted").show(); //må inn etter valgt antall personer.
                 $("#bekreft").removeAttr("disabled");
                 $("#retur").removeAttr("disabled");
+                $("#bekreft").show();
+                $("#retur").show();
             })
             
             function VisStrekninger(strekninger) {
@@ -144,7 +147,7 @@
                 $("#strekninger").empty().append(utStreng);
             }
 
-            function VisRetur(retur) {
+            function VisRetur(strekninger) {
                 var utStreng = "<table class='table'><tr><th>Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th><th>Ledige seter</th><th>Velg</th></tr>";
                 for (var i in strekninger) {
                     utStreng += "<tr><td>" + strekninger[i].tilFlyplass + "</td><td>" + strekninger[i].fraFlyplass +
