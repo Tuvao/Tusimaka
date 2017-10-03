@@ -7,6 +7,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <link href="@Url.Content("~/Content/StyleSheet.css")" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
         $(document).ready(function () {
 
@@ -26,9 +27,9 @@
 
             function VisDropDown1(fraListe) {
                 var utStreng = "";
-                utStreng += "<option value='' selected disabled>Velg</option>"; 
+                utStreng += "<option class='dropdown' value='' selected disabled>Velg</option>"; 
                 for (var i in fraListe) {
-                    utStreng += "<option value='" + fraListe[i] + "'>" + fraListe[i] + "</option>";
+                    utStreng += "<option class='dropdown' value='" + fraListe[i] + "'>" + fraListe[i] + "</option>";
                 }
                 $("#drop1").empty().append(utStreng);
             }
@@ -54,25 +55,31 @@
 
             function VisDropDown2(tilListe) {
                 var utStreng = "";
-                utStreng += "<option value='' selected disabled>Velg</option>";  
+                utStreng += "<option class='dropdown' value='' selected disabled>Velg</option>";  
                 for (var i in tilListe) {
-                    utStreng += "<option value='" + tilListe[i] + "'>" + tilListe[i] + "</option>";
+                    utStreng += "<option class='dropdown' value='" + tilListe[i] + "'>" + tilListe[i] + "</option>";
                 }
                 $("#drop2").empty().append(utStreng);
             }
 
             // opprett en hendelse på dropdown-listen valgtFlyplass når siden lastes
             $("#drop2").change(function () {
-                 
+                              
                 $("#returKnapp").removeAttr("disabled");
                 $("#tilDato").removeAttr("disabled");
                 $("#turDato").show();
-                
             });
+
             $("#tilDato").change(function () {
+                
+                $("#personValg").show();
+                $("#antallPersoner").removeAttr("disabled");
+            });
+
+            $("#personValg").change(function () {
                 var valgtFraFlyplass = $("#drop1").val();
                 var valgtTilFlyplass = $("#drop2").val();
-                
+
                 $.ajax({
                     url: '/Home/hentStrekning',
                     type: 'GET',
@@ -89,53 +96,116 @@
                     }
                 });
 
-                $("#personValg").show();
-                $("#antallPersoner").removeAttr("disabled");
+                $("#bekreftetTilFraSted").show(); //må inn etter valgt antall personer.
+                $("#bekreft").removeAttr("disabled");
+                $("#retur").removeAttr("disabled");
+            })
+
+            $("#retur").click(function () {
+
+                $("#returDato").show();
+                $("#fraDato").removeAttr("disabled");
+                $("#bekreft").hide();
+                $("#retur").hide();
             });
+
+            $("#fraDato").change(function () {
+                var valgtFraFlyplass = $("#drop1").val();
+                var valgtTilFlyplass = $("#drop2").val();
+
+                $.ajax({
+                    url: '/Home/hentStrekning',
+                    type: 'GET',
+                    data: {
+                        fraFlyPlass: valgtFraFlyplass,
+                        tilFlyPlass: valgtTilFlyplass
+                    },
+                    dataType: 'json',
+                    success: function (retur) {
+                        VisRetur(retur);
+                    },
+                    error: function (x, y, z) {
+                        alert(x + '\n' + y + '\n' + z);
+                    }
+                });
+
+                $("#bekreftetTilFraSted").show(); //må inn etter valgt antall personer.
+                $("#bekreft").removeAttr("disabled");
+                $("#bekreft").show();
+            })
             
             function VisStrekninger(strekninger) {
-                var utStreng = "<table class='table'><tr><th>Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th><th>Ledige seter</th><th>Velg</th></tr>";
+                var utStreng = "<form><table class='table'><tr><th>Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th><th>Ledige seter</th><th>Velg</th></tr>";
                 for (var i in strekninger) {
                     utStreng += "<tr><td>" + strekninger[i].fraFlyplass + "</td><td>" + strekninger[i].tilFlyplass +
-                        "</td><td>" + strekninger[i].dato + "</td><td>" + strekninger[i].tid + "</td><td>" + strekninger[i].pris +
-                        "</td><td>" + strekninger[i].antallLedigeSeter + "</td><td><button type='button' class='btn btn-success' id='velgKnapp'>Velg</button></td><tr/>";
-                }
-                utStreng += "</table>"
+                        "</td><td>" + $("#tilDato").val() + "</td><td>" + strekninger[i].tid + "</td><td>" + strekninger[i].pris +
+                        "</td><td>" + strekninger[i].antallLedigeSeter + "</td><td><input type='radio' name='velgKnapp' class='' id='velgKnapp'></td><tr/>";
+                }//<button type='button' class='' id='velgKnapp'>Velg</button>
+                utStreng += "</table></form>"
                 $("#strekninger").empty().append(utStreng);
+            }
+
+            function VisRetur(retur) {
+                var utStreng = "<form><table class='table'><tr><th>Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th><th>Ledige seter</th><th>Velg</th></tr>";
+                for (var i in retur) {
+                    utStreng += "<tr><td>" + retur[i].tilFlyplass + "</td><td>" + retur[i].fraFlyplass +
+                        "</td><td>" + $("#fraDato").val() + "</td><td>" + retur[i].tid + "</td><td>" + retur[i].pris +
+                        "</td><td>" + retur[i].antallLedigeSeter + "</td><td><input type='radio' name='velgKnapp' class='' id='velgKnapp'></td><tr/>";
+                }
+                utStreng += "</table></form>"
+                
+                $("#returBy").empty().append(utStreng);
+                $("#bekreftetRetur").show();
+
             }
         });
     </script>
 </head>
 <body>
+    <!--col-lg-2 col-mg-2-->
     <div class="container">
-        <div class="row">
-            <div id="dropDown1" class="col col-lg-2 col-mg-2 col-sm-4">
-                Velg fra by:<br />
-                <select id="drop1" class="btn btn-primary dropdown-toggle tilFraSelect">
+        <div class="row no-gutters">
+            <h1 class="header">Velg din flyreise</h1>
+            <div class="selectTil col col-sm-2" id="dropDown1">
+                <p>FRA</p>
+                <select id="drop1" class="selectUtseende knappUtseende"></select>
+            </div>
+            <div class="selectTil col col-sm-2" id="dropDown2" hidden="hidden">
+                <p>TIL</p>
+                <select id="drop2" class="selectUtseende knappUtseende" disabled></select>
+            </div>
+            <div id="turDato" class="col col-sm-2" hidden="hidden">
+                <p>DATO</p>
+                <input id="tilDato" type="date" class="knappUtseende selectUtseende" disabled min="2017-10-01"> <!--Må sette inn errormessage-->
+            </div>
+            <div id="personValg" class="col col-sm-2" hidden="hidden">
+                <p>ANTALL VOKSNE</p>
+                <select id="antallPersoner" class="knappUtseende selectUtseende" disabled>
+                    <option name="en">1</option>
+                    <option name="to">2</option>
+                    <option name="tre">3</option>
+                    <option name="fire">4</option>
+                    <option name="fem">5</option>
+                    <option name="seks">6</option>
+                    <option name="syv">7</option>
+                    <option name="atte">8</option>
                 </select>
             </div>
-            <div id="dropDown2" class="col col-lg-2 col-mg-2 col-sm-4" hidden="hidden">
-                Velg til by:<br />
-                <select id="drop2" class="btn btn-primary dropdown-toggle tilFraSelect" disabled></select>
-            </div>
-            <div id="turDato" class="col col-lg-2 col-mg-2 col-sm-4" hidden="hidden">
-                Velg dato:<br/>
-            </div>
-            <div id="personValg" class="col col-lg-2 col-mg-2 col-sm-4" hidden="hidden">
-                Velg antall personer<br />
-                <input id="antallPersoner" type="text" disabled>
-            </div>
-
-
         </div>
-    Her er valgte mulige fly: <br />
-    <div id="strekninger">
-    </div>
+        <div hidden="hidden" id="bekreftetTilFraSted">
+            <p>Når ønsker du å reise?</p>
+            <div id="strekninger"></div>
 
-    <button type="button" id="returKnapp" class="btn success" disabled="disabled">Bestill returbiletter</button>
-    <button type="button" class="btn btn-success">Bekreft</button>
-
-    <div id="returBy"></div>
-    </div>
+            <div id="returDato" class="col col-sm-12" hidden="hidden">
+                <p>RETUR-DATO</p>
+                <input id="fraDato" type="date" class="knappUtseende selectUtseende" disabled min=""> <!--Må sette inn errormessage-->
+                <div hidden="hidden" id="bekreftetRetur">
+                    <p>Når ønsker du å reise tilbake?</p>
+                    <div id="returBy"></div>
+                </div>
+            </div>
+                <button type="button" id="retur" class="knapp" disabled="disabled">Bestill returbiletter</button>
+                <button type="button" class="knapp" id="bekreft" disabled="disabled">Bekreft</button>
+         </div>
 </body>
 </html>

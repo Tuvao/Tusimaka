@@ -1,17 +1,18 @@
 ﻿body {
-    background-color: #eee;
-    font-family: Arial, Helvetica, sans-serif;
+    background-color: #F4F5F5;
+    font-family: "Arial", Helvetica, sans-serif;
 }
 
 .container .Rad {
-    background-color: #eee;
-    color: #022E3C;
+    background-color: #F4F5F5;
 }
 
 .container {
     width: 85%;
 }
-
+h1, p {
+    margin: 1em 0;
+}
 span {
     display: block;
 }
@@ -71,6 +72,7 @@ td {
     background-color: #D6EBF2;
 }
 
+
 #bestill {
     border: none;
     color: white;
@@ -87,38 +89,105 @@ td {
         opacity: 0.8;
     }
 
-    .tilFraSelect{
-        color: red;
-    }
+/*Knapper og dropdown stil/farge*/
+.knappUtseende {
+    background-color: white;
+    color: black;
+}
+.selectUtseende {
+    padding: 0.1em 2em;
+    font-size: 1.2em;
+    min-height: 3em;
+    min-width: 9em;
+    border: 2px solid #224652;
+    position: relative;
+}
 
-#infotekst {
-    color: purple;
+/*tar bort default pil*/
+select::-ms-expand {
+    display: none;
+}
+
+select option {
+    padding: 1em;
+}
+/*størrelse på divene til Til og Fra select*/
+.selectTilFra {
+    min-width: 60em;
+}
+
+.selectTilFra p {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+#antallPersoner {
+   
+}
+
+/*#velgKnapp {
+    padding: 0.3em 1em;
+    font-size: 1em;
+    min-height: 1em;
+    min-width: 4em;
+    border: none;
+    background-color: #224652;
+    color: white;
+}*/
+.knapp {
+    padding: 0.1em 2em;
+    font-size: 1.3em;
+    min-height: 3em;
+    min-width: 9em;
+    border: none;
+}
+
+#retur {
+    background-color: lightgrey;
+    color: black;
+}
+
+#bekreft {
+    background-color: #224652;
+    color: white;
+}
+
+button:hover {
+    opacity:0.7;
+}
+
+#indextekst {
+    color: deepskyblue;
     -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
--webkit-animation-duration: 10s; /* Safari 4.0 - 8.0 */
-animation-name: example; 
-animation-duration: 10s;
-font-size: 10em;
+    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+    animation-name: example;
+    animation-duration: 4s;
+    font-size: 10em;
+}
+
+#bekreftetTilFraSted {
+    position: relative;
 }
 
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes example {
     from {
-        color: red;
+        color: deepskyblue;
     }
 
     to {
-        color: purple;
+        color: cornflowerblue;
     }
 }
 
 /* Standard syntax */
 @keyframes example {
     from {
-        color: red;
+        color: deepskyblue;
     }
 
     to {
-        color: purple;
+        color: cornflowerblue;
     }
 }
     
