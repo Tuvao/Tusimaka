@@ -3,13 +3,15 @@
     font-family: "Arial", Helvetica, sans-serif;
 }
 
-.container .Rad {
+.container, .row {
+    width: 100%;
     background-color: #F4F5F5;
 }
 
-.container {
-    width: 85%;
+.row {
+    
 }
+
 h1, p {
     margin: 1em 0;
 }
@@ -44,35 +46,6 @@ td {
     padding: 0.5em;
 }
 
-.plussminus {
-    border: 1px solid grey;
-    border-right: none;
-    width: 30px;
-    height: 30px;
-    font-size: 1.2em;
-    text-align: center;
-    display: inline-block;
-}
-
-#barn, #voksne {
-    border-right: none;
-    border-left: none;
-    float: left;
-}
-
-#minusBarn, #minusVoksen {
-    border-right: none;
-    float: left;
-    background-color: #D6EBF2;
-}
-
-#plussBarn, #plussVoksen {
-    border-left: none;
-    border-right: 1px solid grey;
-    background-color: #D6EBF2;
-}
-
-
 #bestill {
     border: none;
     color: white;
@@ -95,10 +68,10 @@ td {
     color: black;
 }
 .selectUtseende {
-    padding: 0.1em 2em;
+    padding: 0.3em;
     font-size: 1.2em;
-    min-height: 3em;
-    min-width: 9em;
+    height: 3em;
+    width: 100%;
     border: 2px solid #224652;
     position: relative;
 }
@@ -108,29 +81,10 @@ select::-ms-expand {
     display: none;
 }
 
-select option {
-    padding: 1em;
-}
 /*størrelse på divene til Til og Fra select*/
-.selectTilFra {
-    min-width: 60em;
-}
-
-.selectTilFra p {
-    font-size: 1.2em;
-    font-weight: bold;
-}
 
 
-/*#velgKnapp {
-    padding: 0.3em 1em;
-    font-size: 1em;
-    min-height: 1em;
-    min-width: 4em;
-    border: none;
-    background-color: #224652;
-    color: white;
-}*/
+
 .knapp {
     padding: 0.1em 2em;
     font-size: 1.3em;
