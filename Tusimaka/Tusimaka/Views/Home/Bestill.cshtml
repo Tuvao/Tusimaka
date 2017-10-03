@@ -158,6 +158,21 @@
                 $("#bekreftetRetur").show();
 
             }
+
+            var input = document.getElementById("tilDato");
+            var today = new Date();
+
+            var dag = new String(today.getDate());
+            var maned = new String(today.getMonth() + 1); 
+            var aar = today.getFullYear();
+
+            if (dag.length < 2) { dag = "0" + dag; }
+            if (maned.length < 2) { maned = "0" + maned; }
+
+            var dato = new String(aar + '-' + maned + '-' + dag);
+
+            input.disabled = false;
+            input.setAttribute('min', dato);
         });
     </script>
 </head>
@@ -178,7 +193,7 @@
                 </div>
                 <div id="turDato" class="col col-sm-2" hidden="hidden">
                     <p>DATO</p>
-                    <input id="tilDato" type="date" onkeydown="return false" class="knappUtseende selectUtseende" disabled min="2017-10-03"> <!--Må sette inn errormessage-->
+                    <input id="tilDato" type="date" onkeydown="return false" class="knappUtseende selectUtseende" disabled>
                 </div>
                 <div id="personValg" class="col col-sm-2" hidden="hidden">
                     <p>ANTALL PERSONER</p>
@@ -200,7 +215,7 @@
 
                 <div id="returDato" class="col col-sm-12" hidden="hidden">
                     <p>RETUR-DATO</p>
-                    <input id="fraDato" type="date" class="knappUtseende selectUtseende" disabled min="@DateTime.Now.Year.@DateTime.Now.Month.@DateTime.Now.Day ">
+                    <input id="fraDato" type="date" onkeydown="return false" class="knappUtseende selectUtseende" disabled">
                     <div hidden="hidden" id="bekreftetRetur">
                         <p>Når ønsker du å reise tilbake?</p>
                         <div id="returBy"></div>
