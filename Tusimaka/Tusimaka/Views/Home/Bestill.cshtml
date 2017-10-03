@@ -51,6 +51,10 @@
 
                 $("#drop2").removeAttr("disabled");
                 $("#dropDown2").show();
+                $("#bekreftetTilFraSted").hide();
+                $("#bekreftKnapper").hide();
+                $("#bekreft").attr("disabled");
+                $("#retur").attr("disabled");
             });
 
             function VisDropDown2(tilListe) {
@@ -68,18 +72,30 @@
                 $("#returKnapp").removeAttr("disabled");
                 $("#tilDato").removeAttr("disabled");
                 $("#turDato").show();
+                $("#bekreftetTilFraSted").hide();
+                $("#bekreftKnapper").hide();
+                $("#bekreft").attr("disabled");
+                $("#retur").attr("disabled");
             });
 
             $("#tilDato").change(function () {
 
                 $("#personValg").show();
                 $("#antallPersoner").removeAttr("disabled");
+                $("#bekreftetTilFraSted").hide();
+                $("#bekreftKnapper").hide();
+                $("#bekreft").attr("disabled");
+                $("#retur").attr("disabled");
             });
 
             $("#personValg").change(function () {
 
                 $("#sokReise").show();
                 $("#sok").removeAttr("disabled");
+                $("#bekreftetTilFraSted").hide();
+                $("#bekreftKnapper").hide();
+                $("#bekreft").attr("disabled");
+                $("#retur").attr("disabled");
             })
 
             $("#sokReise").click(function () {
