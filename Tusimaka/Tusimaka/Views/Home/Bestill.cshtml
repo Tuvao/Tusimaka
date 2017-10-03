@@ -110,6 +110,12 @@
                     }
                 });
 
+                //Endrer retur-dato til å ikke vise tidligere datoer
+                var fraDato = document.getElementById("fraDato");
+
+                fraDato.disabled = false;
+                fraDato.setAttribute('min', valgtDato);
+
                 $("#bekreftetTilFraSted").show();
                 $("#bekreftKnapper").show();
                 $("#retur").show();
