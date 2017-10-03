@@ -4,14 +4,14 @@
     ViewBag.Title = "KundeRegistrering";
 }
 
-<h2>KundeRegistrering</h2>
+<h2>Kunde registrering</h2>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Kunde</h4>
+        <h4>Vennligst oppgi informasjon om reisende</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
