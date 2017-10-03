@@ -19,8 +19,7 @@ namespace Tusimaka.Controllers
         {
             return View();
         }
-        
-        //legg til metode [httpPost]
+        //httppost antall reisende
 
         public ActionResult KundeRegistrering()
         {
@@ -74,12 +73,12 @@ namespace Tusimaka.Controllers
             }
         }
 
-        public string hentStrekning(string fraFlyplass, string tilFlyPlass, string dato)
+        public string hentStrekning(string fraFlyplass, string tilFlyPlass, string dato, int antallLedigeSeter)
         {
             using (var db = new DBContext())
             {
                 List<strekning> alleFly = db.Strekning.Where(
-                    f => f.tilFlyplass == tilFlyPlass && f.fraFlyplass == fraFlyplass && f.dato == dato) .ToList();
+                    f => f.tilFlyplass == tilFlyPlass && f.fraFlyplass == fraFlyplass && f.dato == dato && f.antallLedigeSeter == antallLedigeSeter) .ToList();
 
                 var jsonSerializer = new JavaScriptSerializer();
                 return jsonSerializer.Serialize(alleFly);

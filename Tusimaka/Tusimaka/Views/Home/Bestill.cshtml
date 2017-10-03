@@ -110,6 +110,7 @@
                 var valgtFraFlyplass = $("#drop1").val();
                 var valgtTilFlyplass = $("#drop2").val();
                 var valgtDato = $("#tilDato").val();
+                var valgteSeter = $("#antallPersoner").val();
 
                 $.ajax({
                     url: '/Home/hentStrekning',
@@ -117,7 +118,8 @@
                     data: {
                         fraFlyPlass: valgtFraFlyplass,
                         tilFlyPlass: valgtTilFlyplass,
-                        dato: valgtDato
+                        dato: valgtDato,
+                        antallLedigeSeter: valgteSeter
                     },
                     dataType: 'json',
                     success: function (strekninger) {
@@ -131,6 +133,7 @@
                 $("#bekreftetTilFraSted").show();
                 $("#bekreftKnapper").show();
                 $("#retur").show();
+                $("#bekreft").show();
                 $("#bekreft").removeAttr("disabled");
                 $("#retur").removeAttr("disabled");
                 $("#sok").html("Endre søk");
@@ -181,7 +184,7 @@
             }
 
             function VisRetur(retur) {
-                var utStreng = "<form><table class='table'><tr><th>Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th><th>Ledige seter</th><th>Velg</th></tr>";
+                var utStreng = "<form><table class='table'><tr><th>"+$("antallPersoner").val()+"Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th><th>Ledige seter</th><th>Velg</th></tr>";
                 for (var i in retur) {
                     utStreng += "<tr><td>" + retur[i].tilFlyplass + "</td><td>" + retur[i].fraFlyplass +
                         "</td><td>" + $("#fraDato").val() + "</td><td>" + retur[i].tid + "</td><td>" + retur[i].pris +
@@ -264,7 +267,8 @@
                     <p>RETUR-DATO</p>
                     <input id="fraDato" type="date" onkeydown="return false" class="knappUtseende selectUtseende" disabled">
                 </div>
-
+            </div>
+            <div class="row">
                 <div hidden="hidden" id="bekreftetRetur">
                     <p>Når ønsker du å reise tilbake?</p>
                     <div id="returBy"></div>
