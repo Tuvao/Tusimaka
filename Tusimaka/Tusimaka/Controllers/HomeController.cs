@@ -21,6 +21,11 @@ namespace Tusimaka.Controllers
         }
         //legg til metode [httpPost]
 
+        public ActionResult KundeRegistrering()
+        {
+            return View();
+        }
+
         public string hentAlleFraFlyplasser()
         {
             using (var db = new DBContext())
