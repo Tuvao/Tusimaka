@@ -163,50 +163,53 @@
 </head>
 <body>
     <!--col-lg-2 col-mg-2-->
-    <div class="container">
-        <div class="row no-gutters">
-            <h1 class="header">Velg din flyreise</h1>
-            <div class="selectTil col col-sm-2" id="dropDown1">
-                <p>FRA</p>
-                <select id="drop1" class="selectUtseende knappUtseende"></select>
-            </div>
-            <div class="selectTil col col-sm-2" id="dropDown2" hidden="hidden">
-                <p>TIL</p>
-                <select id="drop2" class="selectUtseende knappUtseende" disabled></select>
-            </div>
-            <div id="turDato" class="col col-sm-2" hidden="hidden">
-                <p>DATO</p>
-                <input id="tilDato" type="date" class="knappUtseende selectUtseende" disabled min="2017-10-01"> <!--Må sette inn errormessage-->
-            </div>
-            <div id="personValg" class="col col-sm-2" hidden="hidden">
-                <p>ANTALL PERSONER</p>
-                <select id="antallPersoner" class="knappUtseende selectUtseende" disabled>
-                    <option name="en" value="1">1</option>
-                    <option name="to" value="2">2</option>
-                    <option name="tre" value="3">3</option>
-                    <option name="fire" value="4">4</option>
-                    <option name="fem" value="5">5</option>
-                    <option name="seks" value="6">6</option>
-                    <option name="syv" value="7">7</option>
-                    <option name="atte" value="8">8</option>
-                </select>
-            </div>
-        </div>
-        <div hidden="hidden" id="bekreftetTilFraSted">
-            <p>Når ønsker du å reise?</p>
-            <div id="strekninger"></div>
+    <form action="/Home/Bestill" method="post">
 
-            <div id="returDato" class="col col-sm-12" hidden="hidden">
-                <p>RETUR-DATO</p>
-                <input id="fraDato" type="date" class="knappUtseende selectUtseende" disabled min=""> <!--Må sette inn errormessage-->
-                <div hidden="hidden" id="bekreftetRetur">
-                    <p>Når ønsker du å reise tilbake?</p>
-                    <div id="returBy"></div>
+        <div class="container">
+            <div class="row no-gutters">
+                <h1 class="header">Velg din flyreise</h1>
+                <div class="selectTil col col-sm-2" id="dropDown1">
+                    <p>FRA</p>
+                    <select id="drop1" class="selectUtseende knappUtseende"></select>
+                </div>
+                <div class="selectTil col col-sm-2" id="dropDown2" hidden="hidden">
+                    <p>TIL</p>
+                    <select id="drop2" class="selectUtseende knappUtseende" disabled></select>
+                </div>
+                <div id="turDato" class="col col-sm-2" hidden="hidden">
+                    <p>DATO</p>
+                    <input id="tilDato" type="date" class="knappUtseende selectUtseende" disabled min="2017-10-01"> <!--Må sette inn errormessage-->
+                </div>
+                <div id="personValg" class="col col-sm-2" hidden="hidden">
+                    <p>ANTALL PERSONER</p>
+                    <select id="antallPersoner" class="knappUtseende selectUtseende" disabled>
+                        <option name="en">1</option>
+                        <option name="to">2</option>
+                        <option name="tre">3</option>
+                        <option name="fire">4</option>
+                        <option name="fem">5</option>
+                        <option name="seks">6</option>
+                        <option name="syv">7</option>
+                        <option name="atte">8</option>
+                    </select>
                 </div>
             </div>
+            <div hidden="hidden" id="bekreftetTilFraSted">
+                <p>Når ønsker du å reise?</p>
+                <div id="strekninger"></div>
+
+                <div id="returDato" class="col col-sm-12" hidden="hidden">
+                    <p>RETUR-DATO</p>
+                    <input id="fraDato" type="date" class="knappUtseende selectUtseende" disabled min=""> <!--Må sette inn errormessage-->
+                    <div hidden="hidden" id="bekreftetRetur">
+                        <p>Når ønsker du å reise tilbake?</p>
+                        <div id="returBy"></div>
+                    </div>
+                </div>
                 <button type="button" id="retur" class="knapp" disabled="disabled">Bestill returbiletter</button>
                 <button type="button" class="knapp" id="bekreft" disabled="disabled">Bekreft</button>
-         </div>
-      </div>
+            </div>
+        </div>
+    </form>
 </body>
 </html>
