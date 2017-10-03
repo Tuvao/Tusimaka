@@ -53,6 +53,8 @@
                 $("#dropDown2").show();
                 $("#bekreftetTilFraSted").hide();
                 $("#bekreftKnapper").hide();
+                $("#returDato").hide();
+                $("#bekreftetRetur").hide();
                 $("#bekreft").attr("disabled");
                 $("#retur").attr("disabled");
             });
@@ -74,6 +76,8 @@
                 $("#turDato").show();
                 $("#bekreftetTilFraSted").hide();
                 $("#bekreftKnapper").hide();
+                $("#returDato").hide();
+                $("#bekreftetRetur").hide();
                 $("#bekreft").attr("disabled");
                 $("#retur").attr("disabled");
             });
@@ -84,6 +88,8 @@
                 $("#antallPersoner").removeAttr("disabled");
                 $("#bekreftetTilFraSted").hide();
                 $("#bekreftKnapper").hide();
+                $("#returDato").hide();
+                $("#bekreftetRetur").hide();
                 $("#bekreft").attr("disabled");
                 $("#retur").attr("disabled");
             });
@@ -94,6 +100,8 @@
                 $("#sok").removeAttr("disabled");
                 $("#bekreftetTilFraSted").hide();
                 $("#bekreftKnapper").hide();
+                $("#returDato").hide();
+                $("#bekreftetRetur").hide();
                 $("#bekreft").attr("disabled");
                 $("#retur").attr("disabled");
             })
@@ -124,6 +132,8 @@
 
                 $("#bekreftetTilFraSted").show();
                 $("#bekreftKnapper").show();
+                $("#retur").show();
+                $("#bekreft").show();
                 $("#bekreft").removeAttr("disabled");
                 $("#retur").removeAttr("disabled");
                 $("#sok").html("Endre søk");
@@ -257,7 +267,8 @@
                     <p>RETUR-DATO</p>
                     <input id="fraDato" type="date" onkeydown="return false" class="knappUtseende selectUtseende" disabled">
                 </div>
-
+            </div>
+            <div class="row">
                 <div hidden="hidden" id="bekreftetRetur">
                     <p>Når ønsker du å reise tilbake?</p>
                     <div id="returBy"></div>
