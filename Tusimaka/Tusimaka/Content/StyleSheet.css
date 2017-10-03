@@ -118,6 +118,9 @@ select::-ms-expand {
     width: 100%;
     border: none;
 }
+#sokReise p{
+    color: white;
+}
 
 #tilbake {
     text-decoration: none;

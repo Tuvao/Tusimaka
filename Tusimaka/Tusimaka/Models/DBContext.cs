@@ -24,6 +24,8 @@ namespace Tusimaka.Models
             {
                 modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             }
+        
+
     }
-    
+
 }
