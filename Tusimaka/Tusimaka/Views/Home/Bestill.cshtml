@@ -116,11 +116,11 @@
                 fraDato.setAttribute('min', valgtDato);
 
                 $("#bekreftetTilFraSted").show();
-                $("#bekreftKnapper").show();
+                //$("#bekreftKnapper").show();
                 $("#retur").removeAttr("disabled");
                 $("#sok").html("Endre søk");
             })
-            
+
             $("#retur").click(function () {
 
                 $("#returDato").show();
@@ -196,14 +196,11 @@
                     for (var i in strekninger) {
                         utStreng += "<tr><td>" + strekninger[i].fraFlyplass + "</td><td>" + strekninger[i].tilFlyplass +
                             "</td><td>" + strekninger[i].dato + "</td><td>" + strekninger[i].tid + "</td><td>" + strekninger[i].pris +
-                            "</td><td>" + strekninger[i].antallLedigeSeter + "</td><td><input type='radio' name='velgKnapp' class='' id='velgKnapp'></td><tr/>";
+                            "</td><td>" + strekninger[i].antallLedigeSeter + "</td><td><input type='radio' name='velgTur' onChange='VisReturKnapp()' value='" + strekninger[i].id + "' class=''/></td><tr/>";
 
                     }
-
-                    $("#retur").show();
-                    $("#bekreft").show();
-                    $("#bekreft").removeAttr("disabled");
                 }
+                
                 utStreng += "</table></form>"
                 $("#strekninger").empty().append(utStreng);
             }
@@ -219,8 +216,9 @@
                     for (var i in retur) {
                         utStreng += "<tr><td>" + retur[i].tilFlyplass + "</td><td>" + retur[i].fraFlyplass +
                             "</td><td>" + retur[i].dato + "</td><td>" + retur[i].tid + "</td><td>" + retur[i].pris +
-                            "</td><td>" + retur[i].antallLedigeSeter + "</td><td><input type='radio' name='velgKnapp' class='' id='velgKnapp'></td><tr/>";
+                            "</td><td>" + retur[i].antallLedigeSeter + "</td><td><input type='radio' name='velgRetur' value='" + retur[i].id + "' class=''/></td><tr/>";
                     }
+                    if(name=velgKnapp)
                     $("#bekreft").show();
                     $("#bekreft").removeAttr("disabled");
                 }
@@ -250,11 +248,17 @@
 
         });
     </script>
+    <script type="text/javascript">
+        function VisReturKnapp() {
+            $("#bekreftKnapper").show();
+            $("#retur").show();
+            $("#bekreft").removeAttr("disabled");
+        }
+    </script>
 </head>
 <body>
     <!--col-lg-2 col-mg-2-->
     <form action="/Home/KundeRegistrering" method="post">
-
         <div class="container">
             <div class="row no-gutters">
                 <h1 class="header">Velg din flyreise</h1>
