@@ -20,17 +20,7 @@ namespace Tusimaka.Controllers
             return View();
         }
         //httppost antall reisende
-        [HttpPost]
-        public string hentAntallReisende(int)
-        {
-            using (var db = new DBContext())
-            {
-                
-                var jsonSerializer = new JavaScriptSerializer();
-                return jsonSerializer.Serialize(alleFly);
-            }
-        }
-
+   
         public ActionResult KundeRegistrering()
         {
             return View();
