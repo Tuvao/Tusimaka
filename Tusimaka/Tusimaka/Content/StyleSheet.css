@@ -19,29 +19,6 @@ span {
     display: block;
 }
 
-.Option {
-    margin-top: 1em;
-    margin-bottom: 1em;
-}
-
-.tekstFelt {
-    width: 200%;
-    height: 3em;
-    padding: 1em;
-    font-size: 1.2em;
-    border-bottom: 0.125em solid #D6EBF2;
-    border-right: 0.125em solid #D6EBF2;
-}
-
-    .tekstFelt:hover {
-        border: 2px solid grey
-    }
-
-    .tekstFelt:focus {
-        border: 2px solid grey;
-        border-radius: 5px;
-    }
-
 th {
     font-size: 1.1em;
 }
@@ -50,23 +27,14 @@ td {
     padding: 0.5em;
 }
 
-#bestill {
-    border: none;
-    color: white;
-    letter-spacing: 1px;
-    background-color: #022E3C;
-    width: 200%;
-    height: 3em;
-    font-size: 1.2em;
-    text-align: center;
-    margin-top: 2em;
-}
-
-    #bestill:hover {
-        opacity: 0.8;
-    }
-
 /*Knapper og dropdown stil/farge*/
+.knapp {
+    padding: 0.1em 2em;
+    font-size: 1.3em;
+    min-height: 3em;
+    min-width: 9em;
+    border: none;
+}
 .knappUtseende {
     background-color: white;
     color: black;
@@ -80,34 +48,28 @@ td {
     position: relative;
 }
 
-/*tar bort default pil*/
+button:hover {
+    opacity: 0.7;
+}
+
+/*tar bort default pil i IE, mozilla og chrome*/
 select::-ms-expand {
     display: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
 }
-
-/*størrelse på divene til Til og Fra select*/
-
-
-
-.knapp {
-    padding: 0.1em 2em;
-    font-size: 1.3em;
-    min-height: 3em;
-    min-width: 9em;
-    border: none;
-}
-
-#retur, #tilbake {
+/*Stil på ulike knapper*/
+#retur {
     background-color: lightgrey;
     color: black;
 }
 
-#bekreft, #registrer, #sok{
+#bekreft {
     background-color: #224652;
     color: white;
 }
 
-#sok, #lukk {
+#sok {
     background-color: #224652;
     color: white;
     padding: 0.3em;
@@ -116,16 +78,11 @@ select::-ms-expand {
     width: 100%;
     border: none;
 }
+/*trikset til at tekst over søk knapp ikke synes*/
 #sokReise p{
     color: white;
 }
 
-#tilbake {
-    text-decoration: none;
-}
-.knapp:hover {
-    opacity:0.7;
-}
 
 #indextekst {
     color: deepskyblue;
@@ -142,8 +99,8 @@ select::-ms-expand {
 }
 
 input[type=radio] {
-    width: 30px;
-    height: 30px;
+    width:30px;
+    height:30px;
 }
 
 input[type=date]::-webkit-inner-spin-button {
