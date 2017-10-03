@@ -3,7 +3,6 @@
 @{
     ViewBag.Title = "KundeRegistrering";
 }
-
 <!DOCTYPE html>
 
 <html>
@@ -15,7 +14,7 @@
     </script>
 </head>
 <body>
-    <h2>Kunde registrering</h2>
+    <h2>Kunderegistrering</h2>
 
 
     @using (Html.BeginForm())
@@ -45,7 +44,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
+                    <p>TYPE</p>
                     <ul>
                         <li><input type="radio" name="person" value="voksen" id="voksen"> <label for="voksen">Voksen</label></li>
                         <li><input type="radio" name="person" value="barn"> <label for="barn">Barn</label></li>
