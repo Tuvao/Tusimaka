@@ -77,6 +77,12 @@
             });
 
             $("#personValg").change(function () {
+
+                $("#sokReise").show();
+                $("#sok").removeAttr("disabled");
+            })
+
+            $("#sokReise").click(function () {
                 var valgtFraFlyplass = $("#drop1").val();
                 var valgtTilFlyplass = $("#drop2").val();
                 var valgtDato = $("#tilDato").val();
@@ -98,9 +104,11 @@
                     }
                 });
 
-                $("#bekreftetTilFraSted").show(); //må inn etter valgt antall personer.
+                $("#bekreftetTilFraSted").show();
+                $("#bekreftKnapper").show();
                 $("#bekreft").removeAttr("disabled");
                 $("#retur").removeAttr("disabled");
+                $("#sok").html("Endre søk");
             })
 
             $("#retur").click(function () {
