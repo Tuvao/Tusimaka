@@ -112,13 +112,11 @@
 
                 //Endrer retur-dato til å ikke vise tidligere datoer
                 var fraDato = document.getElementById("fraDato");
-
                 fraDato.disabled = false;
                 fraDato.setAttribute('min', valgtDato);
 
                 $("#bekreftetTilFraSted").show();
                 $("#bekreftKnapper").show();
-                $("#retur").show();
                 $("#bekreft").show();
                 $("#bekreft").removeAttr("disabled");
                 $("#retur").removeAttr("disabled");
@@ -173,22 +171,40 @@
             }
 
             function VisStrekninger(strekninger) {
-                var utStreng = "<form><table class='table'><tr><th>Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th><th>Ledige seter</th><th>Velg</th></tr>";
-                for (var i in strekninger) {
-                    utStreng += "<tr><td>" + strekninger[i].fraFlyplass + "</td><td>" + strekninger[i].tilFlyplass +
-                        "</td><td>" + strekninger[i].dato + "</td><td>" + strekninger[i].tid + "</td><td>" + strekninger[i].pris +
-                        "</td><td>" + strekninger[i].antallLedigeSeter + "</td><td><input type='radio' name='velgKnapp' class='' id='velgKnapp'></td><tr/>";
-                }//<button type='button' class='' id='velgKnapp'>Velg</button>
+                var utStreng = "";
+                if (strekninger.length == 0) {
+                    var utStreng = "<h4>Det finnes ingen strekninger! Prøv andre verdier i søket ditt.</h4>";
+                    $("#retur").hide();
+                }
+                else {
+                    utStreng = "<form><table class='table'><tr><th>Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th><th>Ledige seter</th><th>Velg</th></tr>";
+                    var resultat = true;
+                    for (var i in strekninger) {
+                        utStreng += "<tr><td>" + strekninger[i].fraFlyplass + "</td><td>" + strekninger[i].tilFlyplass +
+                            "</td><td>" + strekninger[i].dato + "</td><td>" + strekninger[i].tid + "</td><td>" + strekninger[i].pris +
+                            "</td><td>" + strekninger[i].antallLedigeSeter + "</td><td><input type='radio' name='velgKnapp' class='' id='velgKnapp'></td><tr/>";
+
+                    }
+
+                    $("#retur").show();
+                }
                 utStreng += "</table></form>"
                 $("#strekninger").empty().append(utStreng);
             }
 
             function VisRetur(retur) {
                 var utStreng = "<form><table class='table'><tr><th>Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th><th>Ledige seter</th><th>Velg</th></tr>";
-                for (var i in retur) {
-                    utStreng += "<tr><td>" + retur[i].tilFlyplass + "</td><td>" + retur[i].fraFlyplass +
-                        "</td><td>" + retur[i].dato + "</td><td>" + retur[i].tid + "</td><td>" + retur[i].pris +
-                        "</td><td>" + retur[i].antallLedigeSeter + "</td><td><input type='radio' name='velgKnapp' class='' id='velgKnapp'></td><tr/>";
+                if (retur.length == 0) {
+                    utStreng = "<h4>Det finnes ingen strekninger! Prøv andre verdier i søket ditt.</h4>";
+                    $("#bekreft").attr("disabled");
+                }
+                else {
+                    for (var i in retur) {
+                        utStreng += "<tr><td>" + retur[i].tilFlyplass + "</td><td>" + retur[i].fraFlyplass +
+                            "</td><td>" + retur[i].dato + "</td><td>" + retur[i].tid + "</td><td>" + retur[i].pris +
+                            "</td><td>" + retur[i].antallLedigeSeter + "</td><td><input type='radio' name='velgKnapp' class='' id='velgKnapp'></td><tr/>";
+                    }
+                    $("#bekreft").removeAttr("disabled");
                 }
                 utStreng += "</table></form>"
 
