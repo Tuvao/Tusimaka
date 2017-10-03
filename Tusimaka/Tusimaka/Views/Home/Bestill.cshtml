@@ -117,8 +117,6 @@
 
                 $("#bekreftetTilFraSted").show();
                 $("#bekreftKnapper").show();
-                $("#bekreft").show();
-                $("#bekreft").removeAttr("disabled");
                 $("#retur").removeAttr("disabled");
                 $("#sok").html("Endre søk");
             })
@@ -157,8 +155,8 @@
                 });
 
                 $("#bekreftetTilFraSted").show();
-                $("#bekreft").removeAttr("disabled");
-                $("#bekreft").show();
+                //$("#bekreft").removeAttr("disabled");
+                //$("#bekreft").show();
             })
 
             function skjulEndre() {
@@ -173,8 +171,11 @@
             function VisStrekninger(strekninger) {
                 var utStreng = "";
                 if (strekninger.length == 0) {
-                    var utStreng = "<h4>Det finnes ingen strekninger! Prøv andre verdier i søket ditt.</h4>";
+                    var utStreng = "<h4>Det finnes ingen strekninger! Prøv å endre søket ditt.</h4>";
                     $("#retur").hide();
+                    $("#bekreft").attr("disabled");
+                    $("#bekreft").hide();
+                    $("#bekreft").attr("disabled");
                 }
                 else {
                     utStreng = "<form><table class='table'><tr><th>Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th><th>Ledige seter</th><th>Velg</th></tr>";
@@ -187,6 +188,8 @@
                     }
 
                     $("#retur").show();
+                    $("#bekreft").show();
+                    $("#bekreft").removeAttr("disabled");
                 }
                 utStreng += "</table></form>"
                 $("#strekninger").empty().append(utStreng);
@@ -195,8 +198,9 @@
             function VisRetur(retur) {
                 var utStreng = "<form><table class='table'><tr><th>Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th><th>Ledige seter</th><th>Velg</th></tr>";
                 if (retur.length == 0) {
-                    utStreng = "<h4>Det finnes ingen strekninger! Prøv andre verdier i søket ditt.</h4>";
+                    utStreng = "<h4>Det finnes ingen strekninger! Prøv å endre søket ditt.</h4>";
                     $("#bekreft").attr("disabled");
+                    $("#bekreft").hide();
                 }
                 else {
                     for (var i in retur) {
@@ -204,6 +208,7 @@
                             "</td><td>" + retur[i].dato + "</td><td>" + retur[i].tid + "</td><td>" + retur[i].pris +
                             "</td><td>" + retur[i].antallLedigeSeter + "</td><td><input type='radio' name='velgKnapp' class='' id='velgKnapp'></td><tr/>";
                     }
+                    $("#bekreft").show();
                     $("#bekreft").removeAttr("disabled");
                 }
                 utStreng += "</table></form>"
@@ -297,7 +302,6 @@
                 </div>
             </div>
         </div>
-
     </form>
 </body>
 </html>
