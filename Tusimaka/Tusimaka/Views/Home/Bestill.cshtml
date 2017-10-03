@@ -130,8 +130,9 @@
             $("#fraDato").change(function () {
                 var valgtFraFlyplass = $("#drop1").val();
                 var valgtTilFlyplass = $("#drop2").val();
-                var valgtFraDato = $("#tilDato").val();
+                var valgtFraDato = $("#fraDato").val();
                 var valgteSeter = $("#antallPersoner").val();
+                console.log(valgteSeter);
 
                 $.ajax({
                     url: '/Home/hentStrekning',
@@ -139,7 +140,7 @@
                     data: {
                         fraFlyPlass: valgtFraFlyplass,
                         tilFlyPlass: valgtTilFlyplass,
-                        dato: valgtFraFlyplass,
+                        dato: valgtFraDato,
                         antallLedigeSeter: valgteSeter
                     },
                     dataType: 'json',
@@ -177,10 +178,10 @@
             }
 
             function VisRetur(retur) {
-                var utStreng = "<form><table class='table'><tr><th>"+$("antallPersoner").val()+"Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th><th>Ledige seter</th><th>Velg</th></tr>";
+                var utStreng = "<form><table class='table'><tr><th>Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th><th>Ledige seter</th><th>Velg</th></tr>";
                 for (var i in retur) {
                     utStreng += "<tr><td>" + retur[i].tilFlyplass + "</td><td>" + retur[i].fraFlyplass +
-                        "</td><td>" + $("#fraDato").val() + "</td><td>" + retur[i].tid + "</td><td>" + retur[i].pris +
+                        "</td><td>" + retur[i].dato + "</td><td>" + retur[i].tid + "</td><td>" + retur[i].pris +
                         "</td><td>" + retur[i].antallLedigeSeter + "</td><td><input type='radio' name='velgKnapp' class='' id='velgKnapp'></td><tr/>";
                 }
                 utStreng += "</table></form>"
