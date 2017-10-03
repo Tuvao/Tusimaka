@@ -127,6 +127,19 @@
                 $("#fraDato").removeAttr("disabled");
                 $("#bekreft").hide();
                 $("#retur").hide();
+                $("#lukk").removeAttr("disabled");
+                $("#lukk").show();
+                $("#avbrytRetur").show();
+
+            });
+
+            $("#lukk").click(function () {
+                $("#returDato").hide();
+                $("#retur").show();
+                $("#lukk").hide();
+                $("#avbrytRetur").hide();
+                $("#bekreftetRetur").hide();
+                $("#bekreft").show();
             });
 
             $("#fraDato").change(function () {
@@ -245,19 +258,19 @@
         <div class="container">
             <div class="row no-gutters">
                 <h1 class="header">Velg din flyreise</h1>
-                <div class="col col-lg-2 col-md-2 col-sm-3 col-xs-6" id="dropDown1">
+                <div class="col col-lg-2 col-md-3 col-sm-6 col-xs-12" id="dropDown1">
                     <p>FRA</p>
                     <select id="drop1" class="selectUtseende knappUtseende"></select>
                 </div>
-                <div class="col col-lg-2 col-md-2 col-sm-3 col-xs-6" id="dropDown2" hidden="hidden">
+                <div class="col col-lg-2 col-md-3 col-sm-6 col-xs-12" id="dropDown2" hidden="hidden">
                     <p>TIL</p>
                     <select id="drop2" class="selectUtseende knappUtseende" disabled></select>
                 </div>
-                <div id="turDato" class="col col-lg-2 col-md-2 col-sm-3 col-xs-6" hidden="hidden">
+                <div id="turDato" class="col col-lg-2 col-md-3 col-sm-6 col-xs-12" hidden="hidden">
                     <p>DATO</p>
                     <input id="tilDato" type="date" onkeydown="return false" class="knappUtseende selectUtseende" disabled>
                 </div>
-                <div id="personValg" class="col col-lg-2 col-md-2 col-sm-3 col-xs-6" hidden="hidden">
+                <div id="personValg" class="col col-lg-2 col-md-3 col-sm-6 col-xs-12" hidden="hidden">
                     <p>ANTALL PERSONER</p>
                     <select id="antallPersoner" class="knappUtseende selectUtseende" disabled>
                         <option name="velg" disabled selected>Velg</option>
@@ -287,6 +300,10 @@
                 <div id="returDato" class="col col-lg-2 col-md-2 col-sm-3 col-xs-6" hidden="hidden">
                     <p>RETUR-DATO</p>
                     <input id="fraDato" type="date" onkeydown="return false" class="knappUtseende selectUtseende" disabled">
+                </div>
+                <div id="avbrytRetur" hidden class="col col-lg-2 col-md-2 col-sm-3 col-xs-6">
+                    <p>.</p>
+                    <button type="button" id="lukk" disabled>Lukk retur</button>
                 </div>
             </div>
             <div class="row">
