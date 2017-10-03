@@ -19,7 +19,7 @@ namespace Tusimaka.Controllers
         {
             return View();
         }
-        //legg til metode [httpPost]
+        //httppost antall reisende
 
         public ActionResult KundeRegistrering()
         {
