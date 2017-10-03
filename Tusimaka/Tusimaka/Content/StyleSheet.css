@@ -94,13 +94,13 @@ td {
     background-color: white;
     color: black;
 }
-.dropdownUtseende {
+.selectUtseende {
     padding: 0.1em 2em;
-    font-size: 1.3em;
+    font-size: 1.2em;
     min-height: 3em;
     min-width: 9em;
     border: 2px solid #224652;
-    position:relative;
+    position: relative;
 }
 
 /*tar bort default pil*/
@@ -125,7 +125,7 @@ select option {
    
 }
 
-#velgKnapp {
+/*#velgKnapp {
     padding: 0.3em 1em;
     font-size: 1em;
     min-height: 1em;
@@ -133,7 +133,7 @@ select option {
     border: none;
     background-color: #224652;
     color: white;
-}
+}*/
 .knapp {
     padding: 0.1em 2em;
     font-size: 1.3em;

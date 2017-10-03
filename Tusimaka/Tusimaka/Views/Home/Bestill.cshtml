@@ -27,9 +27,9 @@
 
             function VisDropDown1(fraListe) {
                 var utStreng = "";
-                utStreng += "<option value='' selected disabled>Velg</option>"; 
+                utStreng += "<option class='dropdown' value='' selected disabled>Velg</option>"; 
                 for (var i in fraListe) {
-                    utStreng += "<option value='" + fraListe[i] + "'>" + fraListe[i] + "</option>";
+                    utStreng += "<option class='dropdown' value='" + fraListe[i] + "'>" + fraListe[i] + "</option>";
                 }
                 $("#drop1").empty().append(utStreng);
             }
@@ -55,9 +55,9 @@
 
             function VisDropDown2(tilListe) {
                 var utStreng = "";
-                utStreng += "<option value='' selected disabled>Velg</option>";  
+                utStreng += "<option class='dropdown' value='' selected disabled>Velg</option>";  
                 for (var i in tilListe) {
-                    utStreng += "<option value='" + tilListe[i] + "'>" + tilListe[i] + "</option>";
+                    utStreng += "<option class='dropdown' value='" + tilListe[i] + "'>" + tilListe[i] + "</option>";
                 }
                 $("#drop2").empty().append(utStreng);
             }
@@ -135,25 +135,28 @@
             })
             
             function VisStrekninger(strekninger) {
-                var utStreng = "<table class='table'><tr><th>Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th><th>Ledige seter</th><th>Velg</th></tr>";
+                var utStreng = "<form><table class='table'><tr><th>Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th><th>Ledige seter</th><th>Velg</th></tr>";
                 for (var i in strekninger) {
                     utStreng += "<tr><td>" + strekninger[i].fraFlyplass + "</td><td>" + strekninger[i].tilFlyplass +
                         "</td><td>" + $("#tilDato").val() + "</td><td>" + strekninger[i].tid + "</td><td>" + strekninger[i].pris +
-                        "</td><td>" + strekninger[i].antallLedigeSeter + "</td><td><button type='button' class='' id='velgKnapp'>Velg</button></td><tr/>";
-                }
-                utStreng += "</table>"
+                        "</td><td>" + strekninger[i].antallLedigeSeter + "</td><td><input type='radio' name='velgKnapp' class='' id='velgKnapp'></td><tr/>";
+                }//<button type='button' class='' id='velgKnapp'>Velg</button>
+                utStreng += "</table></form>"
                 $("#strekninger").empty().append(utStreng);
             }
 
             function VisRetur(retur) {
-                var utStreng = "<table class='table'><tr><th>Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th><th>Ledige seter</th><th>Velg</th></tr>";
+                var utStreng = "<form><table class='table'><tr><th>Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th><th>Ledige seter</th><th>Velg</th></tr>";
                 for (var i in retur) {
                     utStreng += "<tr><td>" + retur[i].tilFlyplass + "</td><td>" + retur[i].fraFlyplass +
                         "</td><td>" + $("#fraDato").val() + "</td><td>" + retur[i].tid + "</td><td>" + retur[i].pris +
-                        "</td><td>" + retur[i].antallLedigeSeter + "</td><td><button type='button' class='' id='velgKnapp'>Velg</button></td><tr/>";
+                        "</td><td>" + retur[i].antallLedigeSeter + "</td><td><input type='radio' name='velgKnapp' class='' id='velgKnapp'></td><tr/>";
                 }
-                utStreng += "</table>"
+                utStreng += "</table></form>"
+                
                 $("#returBy").empty().append(utStreng);
+                $("#bekreftetRetur").show();
+
             }
         });
     </script>
@@ -165,19 +168,19 @@
             <h1 class="header">Velg din flyreise</h1>
             <div class="selectTil col col-sm-2" id="dropDown1">
                 <p>FRA</p>
-                <select id="drop1" class="dropdownUtseende knappUtseende"></select>
+                <select id="drop1" class="selectUtseende knappUtseende"></select>
             </div>
             <div class="selectTil col col-sm-2" id="dropDown2" hidden="hidden">
                 <p>TIL</p>
-                <select id="drop2" class="dropdownUtseende knappUtseende" disabled></select>
+                <select id="drop2" class="selectUtseende knappUtseende" disabled></select>
             </div>
             <div id="turDato" class="col col-sm-2" hidden="hidden">
                 <p>DATO</p>
-                <input id="tilDato" type="date" class="knappUtseende dropdownUtseende" disabled min="2017-10-01"> <!--Må sette inn errormessage-->
+                <input id="tilDato" type="date" class="knappUtseende selectUtseende" disabled min="2017-10-01"> <!--Må sette inn errormessage-->
             </div>
             <div id="personValg" class="col col-sm-2" hidden="hidden">
                 <p>ANTALL VOKSNE</p>
-                <select id="antallPersoner" class="knappUtseende dropdownUtseende" disabled>
+                <select id="antallPersoner" class="knappUtseende selectUtseende" disabled>
                     <option name="en">1</option>
                     <option name="to">2</option>
                     <option name="tre">3</option>
@@ -193,16 +196,16 @@
             <p>Når ønsker du å reise?</p>
             <div id="strekninger"></div>
 
-            <div id="returDato" class="col col-sm-2" hidden="hidden">
+            <div id="returDato" class="col col-sm-12" hidden="hidden">
                 <p>RETUR-DATO</p>
-                <input id="fraDato" type="date" class="knappUtseende dropdownUtseende" disabled min=""> <!--Må sette inn errormessage-->
+                <input id="fraDato" type="date" class="knappUtseende selectUtseende" disabled min=""> <!--Må sette inn errormessage-->
+                <div hidden="hidden" id="bekreftetRetur">
+                    <p>Når ønsker du å reise tilbake?</p>
+                    <div id="returBy"></div>
+                </div>
             </div>
-
-            <div id="returBy"></div>
-
-            <button type="button" id="retur" class="knapp" disabled="disabled">Bestill returbiletter</button>
-            <button type="button" class="knapp" id="bekreft" disabled="disabled">Bekreft</button>
-        </div>
-    </div>
+                <button type="button" id="retur" class="knapp" disabled="disabled">Bestill returbiletter</button>
+                <button type="button" class="knapp" id="bekreft" disabled="disabled">Bekreft</button>
+         </div>
 </body>
 </html>
