@@ -19,6 +19,7 @@ namespace Tusimaka.Controllers
         {
             return View();
         }
+        
         //legg til metode [httpPost]
 
         public ActionResult KundeRegistrering()
