@@ -200,7 +200,7 @@
 
                 <div id="returDato" class="col col-sm-12" hidden="hidden">
                     <p>RETUR-DATO</p>
-                    <input id="fraDato" type="date" class="knappUtseende selectUtseende" disabled min=""> <!--Må sette inn errormessage-->
+                    <input id="fraDato" type="date" class="knappUtseende selectUtseende" disabled min="@DateTime.Now.Year.@DateTime.Now.Month.@DateTime.Now.Day ">
                     <div hidden="hidden" id="bekreftetRetur">
                         <p>Når ønsker du å reise tilbake?</p>
                         <div id="returBy"></div>
