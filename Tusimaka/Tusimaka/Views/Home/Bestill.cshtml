@@ -146,7 +146,7 @@
                 var utStreng = "<form><table class='table'><tr><th>Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th><th>Ledige seter</th><th>Velg</th></tr>";
                 for (var i in strekninger) {
                     utStreng += "<tr><td>" + strekninger[i].fraFlyplass + "</td><td>" + strekninger[i].tilFlyplass +
-                        "</td><td>" + $("#tilDato").val() + "</td><td>" + strekninger[i].tid + "</td><td>" + strekninger[i].pris +
+                        "</td><td>" + strekninger[i].dato + "</td><td>" + strekninger[i].tid + "</td><td>" + strekninger[i].pris +
                         "</td><td>" + strekninger[i].antallLedigeSeter + "</td><td><input type='radio' name='velgKnapp' class='' id='velgKnapp'></td><tr/>";
                 }//<button type='button' class='' id='velgKnapp'>Velg</button>
                 utStreng += "</table></form>"
