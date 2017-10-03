@@ -116,6 +116,7 @@ button:hover {
     font-size: 10em;
 }
 
+
 #bekreftetTilFraSted {
     position: relative;
 }
@@ -145,5 +146,9 @@ input[type=date]::-webkit-inner-spin-button {
     to {
         color: cornflowerblue;
     }
+}
+
+ul {
+    list-style-type: none;
 }
     
