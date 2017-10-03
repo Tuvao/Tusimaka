@@ -129,7 +129,7 @@
                     }
                 });
 
-                $("#bekreftetTilFraSted").show(); //må inn etter valgt antall personer.
+                $("#bekreftetTilFraSted").show(); 
                 $("#bekreft").removeAttr("disabled");
                 $("#bekreft").show();
             })
@@ -201,6 +201,7 @@
                 <div id="personValg" class="col col-lg-2 col-md-2 col-sm-3 col-xs-6" hidden="hidden">
                     <p>ANTALL VOKSNE</p>
                     <select id="antallPersoner" class="knappUtseende selectUtseende" disabled>
+                        <option name="velg" disabled selected>Velg</option>
                         <option name="en" value="1">1</option>
                         <option name="to" value="2">2</option>
                         <option name="tre" value="3">3</option>
@@ -212,18 +213,23 @@
                     </select>
                 </div>
             </div>
+        <div class="row">
             <div hidden="hidden" id="bekreftetTilFraSted">
                 <p>Når ønsker du å reise?</p>
                 <div id="strekninger"></div>
-
-                <div id="returDato" class="col col-lg-12 col-md-12 col-sm-12 col-xs-12" hidden="hidden">
+            </div>
+        </div>
+        <div class="row">
+                <div id="returDato" class="col col-lg-2 col-md-2 col-sm-3 col-xs-6" hidden="hidden">
                     <p>RETUR-DATO</p>
                     <input id="fraDato" type="date" onkeydown="return false" class="knappUtseende selectUtseende" disabled">
-                    <div hidden="hidden" id="bekreftetRetur">
-                        <p>Når ønsker du å reise tilbake?</p>
-                        <div id="returBy"></div>
-                    </div>
                 </div>
+                <div hidden="hidden" id="bekreftetRetur">
+                    <p>Når ønsker du å reise tilbake?</p>
+                    <div id="returBy"></div>
+                </div>
+                </div>
+            <div hidden="hidden" id="bekreftetTilFraSted">
                 <button type="button" id="retur" class="knapp" disabled="disabled">Bestill returbiletter</button>
                 <button type="button" class="knapp" id="bekreft" disabled="disabled">Bekreft</button>
             </div>
