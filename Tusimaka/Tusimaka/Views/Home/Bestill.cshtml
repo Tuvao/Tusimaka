@@ -70,6 +70,12 @@ c
             });
 
             $("#personValg").change(function () {
+
+                $("#sokReise").show();
+                $("#sok").removeAttr("disabled");
+            })
+
+            $("#sokReise").click(function () {
                 var valgtFraFlyplass = $("#drop1").val();
                 var valgtTilFlyplass = $("#drop2").val();
 
@@ -89,9 +95,11 @@ c
                     }
                 });
 
-                $("#bekreftetTilFraSted").show(); //må inn etter valgt antall personer.
+                $("#bekreftetTilFraSted").show();
+                $("#bekreftKnapper").show();
                 $("#bekreft").removeAttr("disabled");
                 $("#retur").removeAttr("disabled");
+                $("#sok").html("Endre søk");
             })
 
             $("#retur").click(function () {
@@ -132,7 +140,7 @@ c
                 for (var i in strekninger) {
                     utStreng += "<tr><td>" + strekninger[i].fraFlyplass + "</td><td>" + strekninger[i].tilFlyplass +
                         "</td><td>" + $("#tilDato").val() + "</td><td>" + strekninger[i].tid + "</td><td>" + strekninger[i].pris +
-                        "</td><td>" + strekninger[i].antallLedigeSeter + "</td><td><input type='radio' name='velgKnapp' class='' id='velgKnapp'></td><tr/>";
+                        "</td><td>" + strekninger[i].antallLedigeSeter + "</td><td><input type='radio' name='velgStrekning' value='" + strekninger[i].id + "' class='' id='velgKnapp'></td><tr/>";
                 }//<button type='button' class='' id='velgKnapp'>Velg</button>
                 utStreng += "</table></form>"
                 $("#strekninger").empty().append(utStreng);
@@ -143,7 +151,7 @@ c
                 for (var i in retur) {
                     utStreng += "<tr><td>" + retur[i].tilFlyplass + "</td><td>" + retur[i].fraFlyplass +
                         "</td><td>" + $("#fraDato").val() + "</td><td>" + retur[i].tid + "</td><td>" + retur[i].pris +
-                        "</td><td>" + retur[i].antallLedigeSeter + "</td><td><input type='radio' name='velgKnapp' class='' id='velgKnapp'></td><tr/>";
+                        "</td><td>" + retur[i].antallLedigeSeter + "</td><td><input type='radio' name='velgRetur' value='" + strekninger[i].id + "' class='' id='velgKnapp'></td><tr/>";
                 }
                 utStreng += "</table></form>"
                 
@@ -205,28 +213,36 @@ c
                         <option name="atte" value="8">8</option>
                     </select>
                 </div>
+
+                <div id="sokReise" class="col col-lg-2 col-md-2 col-sm-3 col-xs-6" hidden="hidden">
+                    <button type="button" id="sok" class="knapp" disabled="disabled">Søk</button>
+                </div>
             </div>
-        <div class="row">
-            <div hidden="hidden" id="bekreftetTilFraSted">
-                <p>Når ønsker du å reise?</p>
-                <div id="strekninger"></div>
+            <div class="row">
+                <div hidden="hidden" id="bekreftetTilFraSted">
+                    <p>Når ønsker du å reise?</p>
+                    <div id="strekninger"></div>
+                </div>
             </div>
-        </div>
-        <div class="row">
+            <div class="row">
                 <div id="returDato" class="col col-lg-2 col-md-2 col-sm-3 col-xs-6" hidden="hidden">
                     <p>RETUR-DATO</p>
                     <input id="fraDato" type="date" onkeydown="return false" class="knappUtseende selectUtseende" disabled">
                 </div>
+                
                 <div hidden="hidden" id="bekreftetRetur">
                     <p>Når ønsker du å reise tilbake?</p>
                     <div id="returBy"></div>
                 </div>
-                </div>
-            <div hidden="hidden" id="bekreftetTilFraSted">
-                <button type="button" id="retur" class="knapp" disabled="disabled">Bestill returbiletter</button>
-                <button type="button" class="knapp" id="bekreft" disabled="disabled">Bekreft</button>
             </div>
+            <div class="row">
+                <div hidden="hidden" id="bekreftKnapper">
+                    <button type="button" id="retur" class="knapp" disabled="disabled">Bestill returbiletter</button>
+                    <button type="button" class="knapp" id="bekreft" disabled="disabled">Bekreft</button>
+                </div>
+            </div>    
         </div>
+        
     </form>
 </body>
 </html>
