@@ -25,38 +25,41 @@
             <h4>Vennligst oppgi informasjon om reisende</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <p>FORNAVN</p>
-            <div class="form-group">
-                <div class="col-md-10">
-                    <input id="fornavn" type="text" class="knappUtseende selectUtseende" />
+            <div class="skjema">
+                <div class="form-group">
+                    <div class="col-md-10" id="fornavn">
+                        <p>FORNAVN</p>
+                        <input id="fornavn" type="text" class="knappUtseende selectUtseende" />
+                    </div>
                 </div>
-            </div>
-            <p>ETTERNAVN</p>
-            <div class="form-group">
-                <div class="col-md-10">
-                    <input id="etternavn" type="text" class="knappUtseende selectUtseende" />
+                <div class="form-group">
+                    <div class="col-md-10" id="etternavn">
+                        <p>ETTERNAVN</p>
+                        <input id="etternavn" type="text" class="knappUtseende selectUtseende" />
+                    </div>
                 </div>
-            </div>
-            <p>TYPE</p>
-            <div class="form-group">
-                <div class="col-md-10">
-                    <ul>
-                        <li><input type="radio" name="person" value="voksen" id="voksen"> <label for="voksen">Voksen</label></li>
-                        <li><input type="radio" name="person" value="barn"> <label for="barn">Barn</label></li>
-                    </ul>
+                <div class="form-group">
+                    <div class="col-md-10" id="kjonn">
+                        <p>KJØNN</p>
+                        <select id="velgKjonn" class="knappUtseende selectUtseende" >
+                            <option name="velg" disabled selected>Velg</option>
+                            <option name="mann">Mann</option>
+                            <option name="kvinne">Kvinne</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <button type="button" class="knapp" id="registrer">Registrer</button> <!--Må få knappen til å funke og samme design-->
+                        <input type="submit" value="Registerer" class="btn btn-default" />
+                    </div>
                 </div>
             </div>
         </div>
     }
 
     <div>
-        @Html.ActionLink("Back to List", "Bestill")
+        @Html.ActionLink("Tilbake til bestilling", "Bestill")
     </div>
     </body>
 </html>

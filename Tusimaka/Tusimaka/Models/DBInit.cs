@@ -10,7 +10,7 @@ namespace Tusimaka.Models
     {
         protected override void Seed(DBContext context)
         {
-            var Strekning1 = new strekning { fraFlyplass = "Bergen", tilFlyplass = "Oslo", dato = "2017-10-20", tid = "12:30", pris = "2350", antallLedigeSeter= 50};
+            var Strekning1 = new strekning { fraFlyplass = "Bergen", tilFlyplass = "Oslo", dato = "2017-10-20", tid = "12:30", pris = "2350", antallLedigeSeter= 5};
             var Strekning2 = new strekning { fraFlyplass = "Oslo", tilFlyplass = "Trondheim", dato = "2017-10-20", tid = "12:00", pris = "2250", antallLedigeSeter = 60 };
             var Strekning3 = new strekning { fraFlyplass = "Oslo", tilFlyplass = "Bergen", dato = "2017-10-20", tid = "13:00", pris = "2150", antallLedigeSeter = 34 };
             var Strekning4 = new strekning { fraFlyplass = "Bergen", tilFlyplass = "Trondheim", dato = "2017-10-20", tid = "14:00", pris = "1450", antallLedigeSeter = 90 };

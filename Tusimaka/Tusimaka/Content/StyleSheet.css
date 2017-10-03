@@ -9,7 +9,7 @@
 }
 
 .row {
-    
+    margin-bottom:1em;
 }
 
 h1, p {
@@ -41,6 +41,10 @@ span {
         border: 2px solid grey;
         border-radius: 5px;
     }
+
+th {
+    font-size: 1.1em;
+}
 
 td {
     padding: 0.5em;
@@ -131,6 +135,11 @@ button:hover {
     position: relative;
 }
 
+input[type=radio] {
+    width:30px;
+    height:30px;
+}
+
 input[type=date]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     display: none;
@@ -161,4 +170,4 @@ input[type=date]::-webkit-inner-spin-button {
 ul {
     list-style-type: none;
 }
-    
+
