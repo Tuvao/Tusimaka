@@ -79,13 +79,15 @@
             $("#personValg").change(function () {
                 var valgtFraFlyplass = $("#drop1").val();
                 var valgtTilFlyplass = $("#drop2").val();
+                var valgtDato = $("#tilDato").val();
 
                 $.ajax({
                     url: '/Home/hentStrekning',
                     type: 'GET',
                     data: {
                         fraFlyPlass: valgtFraFlyplass,
-                        tilFlyPlass: valgtTilFlyplass
+                        tilFlyPlass: valgtTilFlyplass,
+                        dato: '2017-10-19'
                     },
                     dataType: 'json',
                     success: function (strekninger) {
