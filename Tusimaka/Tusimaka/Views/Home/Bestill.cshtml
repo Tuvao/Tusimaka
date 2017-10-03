@@ -110,6 +110,12 @@
                     }
                 });
 
+                //Endrer retur-dato til å ikke vise tidligere datoer
+                var fraDato = document.getElementById("fraDato");
+
+                fraDato.disabled = false;
+                fraDato.setAttribute('min', valgtDato);
+
                 $("#bekreftetTilFraSted").show();
                 $("#bekreftKnapper").show();
                 $("#retur").show();
@@ -130,13 +136,18 @@
             $("#fraDato").change(function () {
                 var valgtFraFlyplass = $("#drop1").val();
                 var valgtTilFlyplass = $("#drop2").val();
+                var valgtFraDato = $("#fraDato").val();
+                var valgteSeter = $("#antallPersoner").val();
+                console.log(valgteSeter);
 
                 $.ajax({
                     url: '/Home/hentStrekning',
                     type: 'GET',
                     data: {
                         fraFlyPlass: valgtFraFlyplass,
-                        tilFlyPlass: valgtTilFlyplass
+                        tilFlyPlass: valgtTilFlyplass,
+                        dato: valgtFraDato,
+                        antallLedigeSeter: valgteSeter
                     },
                     dataType: 'json',
                     success: function (retur) {
@@ -173,10 +184,10 @@
             }
 
             function VisRetur(retur) {
-                var utStreng = "<form><table class='table'><tr><th>"+$("antallPersoner").val()+"Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th><th>Ledige seter</th><th>Velg</th></tr>";
+                var utStreng = "<form><table class='table'><tr><th>Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th><th>Ledige seter</th><th>Velg</th></tr>";
                 for (var i in retur) {
                     utStreng += "<tr><td>" + retur[i].tilFlyplass + "</td><td>" + retur[i].fraFlyplass +
-                        "</td><td>" + $("#fraDato").val() + "</td><td>" + retur[i].tid + "</td><td>" + retur[i].pris +
+                        "</td><td>" + retur[i].dato + "</td><td>" + retur[i].tid + "</td><td>" + retur[i].pris +
                         "</td><td>" + retur[i].antallLedigeSeter + "</td><td><input type='radio' name='velgKnapp' class='' id='velgKnapp'></td><tr/>";
                 }
                 utStreng += "</table></form>"
