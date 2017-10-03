@@ -97,12 +97,12 @@ select::-ms-expand {
     border: none;
 }
 
-#retur {
+#retur, #tilbake {
     background-color: lightgrey;
     color: black;
 }
 
-#bekreft {
+#bekreft, #registrer, #sok{
     background-color: #224652;
     color: white;
 }
@@ -120,7 +120,10 @@ select::-ms-expand {
     color: white;
 }
 
-button:hover {
+#tilbake {
+    text-decoration: none;
+}
+.knapp:hover {
     opacity:0.7;
 }
 
@@ -139,8 +142,8 @@ button:hover {
 }
 
 input[type=radio] {
-    width:30px;
-    height:30px;
+    width: 30px;
+    height: 30px;
 }
 
 input[type=date]::-webkit-inner-spin-button {
