@@ -150,13 +150,17 @@
             $("#fraDato").change(function () {
                 var valgtFraFlyplass = $("#drop1").val();
                 var valgtTilFlyplass = $("#drop2").val();
+                var valgtFraDato = $("#tilDato").val();
+                var valgteSeter = $("#antallPersoner").val();
 
                 $.ajax({
                     url: '/Home/hentStrekning',
                     type: 'GET',
                     data: {
                         fraFlyPlass: valgtFraFlyplass,
-                        tilFlyPlass: valgtTilFlyplass
+                        tilFlyPlass: valgtTilFlyplass,
+                        dato: valgtFraFlyplass,
+                        antallLedigeSeter: valgteSeter
                     },
                     dataType: 'json',
                     success: function (retur) {
