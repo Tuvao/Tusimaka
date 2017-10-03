@@ -98,9 +98,19 @@ select::-ms-expand {
     color: black;
 }
 
-#bekreft, #sok {
+#bekreft {
     background-color: #224652;
     color: white;
+}
+
+#sok {
+    background-color: #224652;
+    color: white;
+    padding: 0.3em;
+    font-size: 1.2em;
+    height: 3em;
+    width: 100%;
+    border: none;
 }
 
 button:hover {
