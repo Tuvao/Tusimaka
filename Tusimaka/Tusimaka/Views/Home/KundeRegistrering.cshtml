@@ -16,8 +16,30 @@
 <body>
     <h2>Kunderegistrering</h2>
 
+    <form action="" method="post">
+            <div class="col-md-10" id="fornavn">
+                <p>FORNAVN</p>
+                <input id="fornavn" type="text" class="knappUtseende selectUtseende" />
+            </div>
+            <div class="col-md-10" id="etternavn">
+                <p>ETTERNAVN</p>
+                <input id="etternavn" type="text" class="knappUtseende selectUtseende" />
+            </div>
+            <div class="col-md-10" id="kjonn">
+                <p>KJØNN</p>
+                <select id="velgKjonn" class="knappUtseende selectUtseende">
+                    <option name="velg" disabled selected>Velg</option>
+                    <option name="mann">Mann</option>
+                    <option name="kvinne">Kvinne</option>
+                </select>
+            </div>
+            <div class="col-md-10">
+                <a href="Bestill" id="tilbake" class="knapp">Tilbake</a>
+                <input type="submit" name="registrer" id="registrer" value="Registerer" class="knapp" />
+            </div>
+    </form>
 
-    @using (Html.BeginForm())
+    @*@using (Html.BeginForm("Bekreftelse", "Home"))
     {
         @Html.AntiForgeryToken()
 
@@ -50,18 +72,15 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-10">
-                        <a href="~/Views/Home/Bestill.cshtml"/><a/>
-                    </div>
-                    <div class="col-md-10">
                         <button id="tilbake" class="knapp">
                             @Html.ActionLink("Tilbake til bestilling", "Bestill")
                         </button>
-                        <input type="submit" id="registrer" value="Registerer" class="knapp"/>
+                        <input type="submit" name="registrer" id="registrer" value="Registerer" class="knapp"/>
                     </div>
                 </div>
             </div>
         </div>
-    }
+    }*@
 
     
     </body>
