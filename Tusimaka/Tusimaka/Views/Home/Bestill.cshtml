@@ -51,12 +51,7 @@
 
                 $("#drop2").removeAttr("disabled");
                 $("#dropDown2").show();
-                $("#bekreftetTilFraSted").hide();
-                $("#bekreftKnapper").hide();
-                $("#returDato").hide();
-                $("#bekreftetRetur").hide();
-                $("#bekreft").attr("disabled");
-                $("#retur").attr("disabled");
+                skjulEndre();
             });
 
             function VisDropDown2(tilListe) {
@@ -74,36 +69,21 @@
                 $("#returKnapp").removeAttr("disabled");
                 $("#tilDato").removeAttr("disabled");
                 $("#turDato").show();
-                $("#bekreftetTilFraSted").hide();
-                $("#bekreftKnapper").hide();
-                $("#returDato").hide();
-                $("#bekreftetRetur").hide();
-                $("#bekreft").attr("disabled");
-                $("#retur").attr("disabled");
+                skjulEndre();
             });
 
             $("#tilDato").change(function () {
 
                 $("#personValg").show();
                 $("#antallPersoner").removeAttr("disabled");
-                $("#bekreftetTilFraSted").hide();
-                $("#bekreftKnapper").hide();
-                $("#returDato").hide();
-                $("#bekreftetRetur").hide();
-                $("#bekreft").attr("disabled");
-                $("#retur").attr("disabled");
+                skjulEndre();
             });
 
             $("#personValg").change(function () {
 
                 $("#sokReise").show();
                 $("#sok").removeAttr("disabled");
-                $("#bekreftetTilFraSted").hide();
-                $("#bekreftKnapper").hide();
-                $("#returDato").hide();
-                $("#bekreftetRetur").hide();
-                $("#bekreft").attr("disabled");
-                $("#retur").attr("disabled");
+                skjulEndre();
             })
 
             $("#sokReise").click(function () {
@@ -138,7 +118,7 @@
                 $("#retur").removeAttr("disabled");
                 $("#sok").html("Endre søk");
             })
-
+            
             $("#retur").click(function () {
 
                 $("#returDato").show();
@@ -175,6 +155,15 @@
                 $("#bekreft").removeAttr("disabled");
                 $("#bekreft").show();
             })
+
+            function skjulEndre() {
+                $("#bekreftetTilFraSted").hide();
+                $("#bekreftKnapper").hide();
+                $("#returDato").hide();
+                $("#bekreftetRetur").hide();
+                $("#bekreft").attr("disabled");
+                $("#retur").attr("disabled");
+            }
 
             function VisStrekninger(strekninger) {
                 var utStreng = "<form><table class='table'><tr><th>Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th><th>Ledige seter</th><th>Velg</th></tr>";
@@ -262,7 +251,7 @@
             </div>
             <div class="row">
                 <div hidden="hidden" id="bekreftetTilFraSted">
-                    <p>Når ønsker du å reise?</p>
+                    <h3>Når ønsker du å reise?</h3>
                     <div id="strekninger"></div>
                 </div>
             </div>
@@ -274,7 +263,7 @@
             </div>
             <div class="row">
                 <div hidden="hidden" id="bekreftetRetur">
-                    <p>Når ønsker du å reise tilbake?</p>
+                    <h3>Når ønsker du å reise tilbake?</h3>
                     <div id="returBy"></div>
                 </div>
             </div>
