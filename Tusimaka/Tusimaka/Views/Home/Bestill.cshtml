@@ -139,7 +139,7 @@
                 for (var i in strekninger) {
                     utStreng += "<tr><td>" + strekninger[i].fraFlyplass + "</td><td>" + strekninger[i].tilFlyplass +
                         "</td><td>" + $("#tilDato").val() + "</td><td>" + strekninger[i].tid + "</td><td>" + strekninger[i].pris +
-                        "</td><td>" + strekninger[i].antallLedigeSeter + "</td><td><input type='radio' name='velgKnapp' class='' id='velgKnapp'></td><tr/>";
+                        "</td><td>" + strekninger[i].antallLedigeSeter + "</td><td><input type='radio' name='velgStrekning' value='" + strekninger[i].id + "' class='' id='velgKnapp'></td><tr/>";
                 }//<button type='button' class='' id='velgKnapp'>Velg</button>
                 utStreng += "</table></form>"
                 $("#strekninger").empty().append(utStreng);
@@ -150,7 +150,7 @@
                 for (var i in retur) {
                     utStreng += "<tr><td>" + retur[i].tilFlyplass + "</td><td>" + retur[i].fraFlyplass +
                         "</td><td>" + $("#fraDato").val() + "</td><td>" + retur[i].tid + "</td><td>" + retur[i].pris +
-                        "</td><td>" + retur[i].antallLedigeSeter + "</td><td><input type='radio' name='velgKnapp' class='' id='velgKnapp'></td><tr/>";
+                        "</td><td>" + retur[i].antallLedigeSeter + "</td><td><input type='radio' name='velgRetur' value='" + strekninger[i].id + "' class='' id='velgKnapp'></td><tr/>";
                 }
                 utStreng += "</table></form>"
                 
