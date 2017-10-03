@@ -20,6 +20,11 @@ namespace Tusimaka.Controllers
             return View();
         }
 
+        public ActionResult KundeRegistrering()
+        {
+            return View();
+        }
+
         public string hentAlleFraFlyplasser()
         {
             using (var db = new DBContext())
