@@ -13,9 +13,10 @@
 <body>
 
     <h2 id="indextekst">Tusimaka Airlines</h2>
-    <p>Fly high</p>
     <div>
-        @Html.ActionLink("Bestill flybillett her!", "Bestill")
+        <form action="/Home/Bestill">
+            <input type="submit" value="Bestill her!" class="knapp" id="bekreft"/>
+        </form>
     </div>
     </body>
 </html>
