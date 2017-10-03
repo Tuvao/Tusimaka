@@ -24,20 +24,7 @@ namespace Tusimaka.Models
             {
                 modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             }
-        public class DB : DbContext
-        {
-            public DB()
-                : base("name=Kunde")
-            {
-                Database.CreateIfNotExists();
-            }
-            public DbSet<Kunde> Kunder { get; set; }
-
-            protected override void OnModelCreating(DbModelBuilder modelBuilder)
-            {
-                modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-            }
-        }
+        
 
     }
 
