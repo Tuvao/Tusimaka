@@ -95,12 +95,15 @@ td {
     color: black;
 }
 .selectUtseende {
-    padding: 0.1em 2em;
+    padding-right: 0.5em;
     font-size: 1.2em;
     min-height: 3em;
-    min-width: 9em;
+    min-width: 10em;
     border: 2px solid #224652;
     position: relative;
+}
+.no-gutter{
+    margin: 0;
 }
 
 /*tar bort default pil*/
