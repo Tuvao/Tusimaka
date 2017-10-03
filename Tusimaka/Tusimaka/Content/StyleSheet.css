@@ -166,6 +166,11 @@ button:hover {
     position: relative;
 }
 
+input[type=date]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    display: none;
+}
+
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes example {
     from {
