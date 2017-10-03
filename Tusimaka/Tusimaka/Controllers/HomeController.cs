@@ -73,12 +73,12 @@ namespace Tusimaka.Controllers
             }
         }
 
-        public string hentStrekning(string fraFlyplass, string tilFlyPlass)
+        public string hentStrekning(string fraFlyplass, string tilFlyPlass, string dato)
         {
             using (var db = new DBContext())
             {
                 List<strekning> alleFly = db.Strekning.Where(
-                    f => f.tilFlyplass == tilFlyPlass && f.fraFlyplass == fraFlyplass).ToList();
+                    f => f.tilFlyplass == tilFlyPlass && f.fraFlyplass == fraFlyplass && f.dato == dato) .ToList();
 
                 var jsonSerializer = new JavaScriptSerializer();
                 return jsonSerializer.Serialize(alleFly);
