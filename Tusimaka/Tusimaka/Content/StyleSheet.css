@@ -98,7 +98,7 @@ select::-ms-expand {
     color: black;
 }
 
-#bekreft {
+#bekreft, #sok {
     background-color: #224652;
     color: white;
 }
