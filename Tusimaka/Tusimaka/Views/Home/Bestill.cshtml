@@ -142,6 +142,9 @@
                 $("#bekreft").show();
             });
 
+            $("#bekreft").click(function () {
+                $.session.set("antallPersoner", $("#antallPersoner").val())
+            });
             $("#fraDato").change(function () {
                 var valgtFraFlyplass = $("#drop1").val();
                 var valgtTilFlyplass = $("#drop2").val();
@@ -168,8 +171,6 @@
                 });
 
                 $("#bekreftetTilFraSted").show();
-                //$("#bekreft").removeAttr("disabled");
-                //$("#bekreft").show();
             })
 
             function skjulEndre() {
@@ -222,7 +223,9 @@
             //VISER ANT PERSONER I ALERT! .... 
             $('#antallPersoner').change(function () {
                 alert($('#antallPersoner').val());
+
             })
+
             function VisRetur(retur) {
                 var utStreng = "<form><table class='table'><tr><th>Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th><th>Ledige seter</th><th>Velg</th></tr>";
                 if (retur.length == 0) {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
 
 namespace Tusimaka.Models
 {
@@ -14,5 +15,6 @@ namespace Tusimaka.Models
         public string tid { get; set; }
         public string pris { get; set; }
         public int antallLedigeSeter { get; set; }
+        
     }
 }

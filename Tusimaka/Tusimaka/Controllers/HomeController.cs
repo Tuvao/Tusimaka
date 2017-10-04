@@ -17,6 +17,11 @@ namespace Tusimaka.Controllers
         }
         public ActionResult Bestill()
         {
+
+            return View();
+        }
+        public ActionResult Betaling()
+        {
             return View();
         }
         public ActionResult KundeRegistrering()
@@ -25,11 +30,22 @@ namespace Tusimaka.Controllers
             {
                 //her må vi også få med strekningsid
                 //vi har jo ikke lagret noe i databasen enda, så er usikker på hvordan vi skal få det fram?
+                
+                //var fra = Request.Form["drop1"];
+                //Session["drop1"] = fra;
 
-                var fra = Request.Form["drop1"];
-                Session["drop1"] = fra;
+                //var fra1 = (List<strekning>)Session["drop1"]; //har bare prøvd noe her
 
-                var fra1 = (List<strekning>)Session["drop1"]; //har bare prøvd noe her
+                //antallPers
+                Session["antall"] = Request.Form["antallPersoner"];
+                
+
+                //Det tor skrev
+                //Session["hei"] = alleFly;
+
+                //var allefly1 = (List<strekning>)Session["hei"];
+
+
 
                 //var allefly1 = (List<strekning>)Session["hei"];
 
@@ -60,11 +76,12 @@ namespace Tusimaka.Controllers
             using (var db = new DBContext())
             {
                 List<strekning> alleFly = db.Strekning.ToList();
-                Session["hei"] = alleFly;
+                //Session["hei"] = alleFly;
 
-                var allefly1 = (List<strekning>)Session["hei"];
+                //var allefly1 = (List<strekning>)Session["hei"];
 
                 var alleFraFly = new List<string>();
+
 
                 foreach (strekning f in alleFly)
                 {
