@@ -203,24 +203,6 @@
                 
                 utStreng += "</table></form>"
                 $("#strekninger").empty().append(utStreng);
-            }
-            //function VisAntallPersoner() {
-            //    var antall = '';
-            //    antall += "<option class='dropdown' value='' selected disabled>Velg</option>";
-            //    for (i = 1; i <= 8; i++) {
-            //        antall += '<option value=' + i + '>' + i + '</option>';
-            //    }
-            //    $("#antallPersoner").empty().append(antall);
-                
-            //    if (antall >= 1) {
-            //        alert('Hey');
-            //    }
-            //}
-
-            //VISER ANT PERSONER I ALERT! .... 
-            $('#antallPersoner').change(function () {
-                alert($('#antallPersoner').val());
-            })
 
             function VisRetur(retur) {
                 var utStreng = "<form><table class='table'><tr><th>Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th><th>Ledige seter</th><th>Velg</th></tr>";
