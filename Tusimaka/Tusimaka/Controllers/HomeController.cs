@@ -17,10 +17,12 @@ namespace Tusimaka.Controllers
         }
         public ActionResult Bestill()
         {
-            Session["Bestilling"] = new List<Models.FlyBestilling>();
             return View();
         }
-       
+        public ActionResult KundeRegistrering()
+        {
+            return View();
+        }
 
         //public ActionResult KundeRegistrer(Kunde innKunde)
         //{
@@ -33,7 +35,7 @@ namespace Tusimaka.Controllers
         //        }
         //        catch (Exception feil)
         //        {
-                    
+
         //        }
         //    }
         //    return RedirectToAction("Liste");
