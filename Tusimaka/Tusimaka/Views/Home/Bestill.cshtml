@@ -143,8 +143,8 @@
             });
 
             $("#fraDato").change(function () {
-                var valgtFraFlyplass = $("#drop1").val();
-                var valgtTilFlyplass = $("#drop2").val();
+                var valgtFraFlyplass = $("#drop2").val();
+                var valgtTilFlyplass = $("#drop1").val();
                 var valgtFraDato = $("#fraDato").val();
                 var valgteSeter = $("#antallPersoner").val();
                 console.log(valgteSeter);
@@ -167,9 +167,7 @@
                     }
                 });
 
-                $("#bekreftetTilFraSted").show();
-                //$("#bekreft").removeAttr("disabled");
-                //$("#bekreft").show();
+                $("#bekreftetRetur").show();
             })
 
             function skjulEndre() {
@@ -223,6 +221,7 @@
             $('#antallPersoner').change(function () {
                 alert($('#antallPersoner').val());
             })
+
             function VisRetur(retur) {
                 var utStreng = "<form><table class='table'><tr><th>Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th><th>Ledige seter</th><th>Velg</th></tr>";
                 if (retur.length == 0) {
@@ -232,7 +231,7 @@
                 }
                 else {
                     for (var i in retur) {
-                        utStreng += "<tr><td>" + retur[i].tilFlyplass + "</td><td>" + retur[i].fraFlyplass +
+                        utStreng += "<tr><td>" + retur[i].fraFlyplass + "</td><td>" + retur[i].tilFlyplass +
                             "</td><td>" + retur[i].dato + "</td><td>" + retur[i].tid + "</td><td>" + retur[i].pris +
                             "</td><td>" + retur[i].antallLedigeSeter + "</td><td><input type='radio' name='velgRetur' value='" + retur[i].id + "' class=''/></td><tr/>";
                     }
