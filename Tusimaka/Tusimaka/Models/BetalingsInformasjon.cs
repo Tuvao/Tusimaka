@@ -10,7 +10,7 @@ namespace Tusimaka.Models
     {
         public int id { get; set; }
         public string kortnummer { get; set; }
-        public string utløpsdato { get; set; }
+        public string utlopsdato { get; set; }
         public string cvc { get; set; }
     }
 }

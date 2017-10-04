@@ -47,6 +47,7 @@ namespace Tusimaka.Controllers
         public ActionResult RegistrerBetaling()
         {
             var kunder = (List<Models.Kunde>)Session["kunde"];
+            Console.WriteLine(kunder + "dette er i kontroller hei");
             return View(kunder);
         }
 

@@ -9,19 +9,14 @@
 
 @using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
-
-    <p>
-        @foreach (var item in Model)
-        {
-            @item.Fornavn
-        }
-        HEI
-    </p>
-
+    foreach (var item in Model)
+    {
+        var fornavn = item.Fornavn;
+        <p>@fornavn</p>
+    }
+    
 }
-
-
+@*@Html.DisplayFor(modelItem => item.Fornavn)*@
     @*<div class="form-horizontal">
         <h4>BetalingsInformasjon</h4>
         <hr />
@@ -54,9 +49,8 @@
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
-    </div>
-}
+    </div>*@
 
 <div>
     @Html.ActionLink("Back to List", "Index")
-</div>*@
+</div>
