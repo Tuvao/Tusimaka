@@ -148,7 +148,6 @@
                 var valgtTilFlyplass = $("#drop1").val();
                 var valgtFraDato = $("#fraDato").val();
                 var valgteSeter = $("#antallPersoner").val();
-                console.log(valgteSeter);
 
                 $.ajax({
                     url: '/Home/hentStrekning',
@@ -169,7 +168,6 @@
                 });
 
                 $("#bekreftetRetur").show();
-                $("#bekreft").hide();
             })
 
             function skjulEndre() {
@@ -183,6 +181,29 @@
                 $("#lukk").hide();
             }
 
+            
+            function VisRetur(retur) {
+                var utStreng = "<table class='table'><tr><th>Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th><th>Ledige seter</th><th>Velg</th></tr>";
+                if (retur.length == 0) {
+                    utStreng = "<h4>Det finnes ingen strekninger! Prøv å endre søket ditt.</h4>";
+                    $("#bekreft").attr("disabled");
+                    $("#bekreft").hide();
+                }
+                else {
+                    for (var i in retur) {
+                        utStreng += "<tr><td>" + retur[i].fraFlyplass + "</td><td>" + retur[i].tilFlyplass +
+                            "</td><td>" + retur[i].dato + "</td><td>" + retur[i].tid + "</td><td>" + retur[i].pris +
+                            "</td><td>" + retur[i].antallLedigeSeter + "</td><td><input type='radio' name='ReturId' value='" + retur[i].id + "' class=''/></td><tr/>";
+                    }
+                    $("#bekreft").show();
+                    $("#bekreft").removeAttr("disabled");
+                }
+                utStreng += "</table>"
+
+                $("#returBy").empty().append(utStreng);
+                $("#bekreftetRetur").show();
+
+            }
             function VisStrekninger(strekninger) {
                 var utStreng = "";
                 if (strekninger.length == 0) {
@@ -193,7 +214,7 @@
                     $("#bekreft").attr("disabled");
                 }
                 else {
-                    utStreng = "<form><table class='table'><tr><th>Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th><th>Ledige seter</th><th>Velg</th></tr>";
+                    utStreng = "<table class='table'><tr><th>Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th><th>Ledige seter</th><th>Velg</th></tr>";
                     var resultat = true;
                     for (var i in strekninger) {
                         utStreng += "<tr><td>" + strekninger[i].fraFlyplass + "</td><td>" + strekninger[i].tilFlyplass +
@@ -202,31 +223,8 @@
                     }
                 }
 
-                utStreng += "</table></form>"
+                utStreng += "</table>"
                 $("#strekninger").empty().append(utStreng);
-            }
-            function VisRetur(retur) {
-                var utStreng = "<form><table class='table'><tr><th>Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th><th>Ledige seter</th><th>Velg</th></tr>";
-                if (retur.length == 0) {
-                    utStreng = "<h4>Det finnes ingen strekninger! Prøv å endre søket ditt.</h4>";
-                    $("#bekreft").attr("disabled");
-                    $("#bekreft").hide();
-                }
-                else {
-                    for (var i in retur) {
-                        utStreng += "<tr><td>" + retur[i].fraFlyplass + "</td><td>" + retur[i].tilFlyplass +
-                            "</td><td>" + retur[i].dato + "</td><td>" + retur[i].tid + "</td><td>" + retur[i].pris +
-                            "</td><td>" + retur[i].antallLedigeSeter + "</td><td><input type='radio' name='velgRetur' onChange='VisBekreftKnapper()' value='" + retur[i].id + "' class=''/></td><tr/>";
-                    }
-                    if(name=velgKnapp)
-                    $("#bekreft").show();
-                    $("#bekreft").removeAttr("disabled");
-                }
-                utStreng += "</table></form>"
-
-                $("#returBy").empty().append(utStreng);
-                $("#bekreftetRetur").show();
-
             }
 
 
@@ -266,9 +264,6 @@
 
 
             alert($('input[name=StrekningsId]:checked').val());
-        }
-        function VisBekreftKnapper() {
-            $("#bekreft").show();
         }
     </script>
 </head>
