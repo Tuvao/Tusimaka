@@ -25,8 +25,17 @@
         foreach (var item in Model)
         {
             var ant = item.AntallPersoner;
-            <h3>Du har valgt @ant  personer, men vi trenger bare infoen til deg som bestiller. Fyll inn her! </h3>
-            
+
+            if (ant == 1)
+            {
+                <h3>Du har valgt @ant  person, men vi trenger bare infoen til deg som bestiller. Fyll inn her! </h3>
+            }
+            else
+            {
+                <h3>Du har valgt @ant  personer, men vi trenger bare infoen til deg som bestiller. Fyll inn her! </h3>
+            }
+
+
             <div class="skjema">
                 <div class="form-group">
                     <h4>Kunde</h4>
