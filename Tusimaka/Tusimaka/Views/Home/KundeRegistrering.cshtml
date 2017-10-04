@@ -20,6 +20,8 @@
 </head>
 <body>
     <h2>Kunderegistrering</h2>
+@using (Html.BeginForm("Bekreftelse", "Home"))
+{
         @foreach (var item in Model)
         {
             var ant = item.AntallPersoner;
@@ -56,10 +58,8 @@
                 </div>
             }
         }
-
-    <form action="" method="post">
-        <div id="kunde"></div>
-    </form>
+    <input type="submit" name="registrer" id="registrer" value="Registerer" class="knapp" />
+}
 
     @*@using (Html.BeginForm("Bekreftelse", "Home"))
     {
