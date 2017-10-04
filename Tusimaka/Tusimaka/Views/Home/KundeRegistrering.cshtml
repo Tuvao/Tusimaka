@@ -11,6 +11,9 @@
     <title>Index</title>
     <link href="@Url.Content("~/Content/StyleSheet.css")" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
+        function tilbakeKnapp() {
+            window.history.back();
+        }
     </script>
 </head>
 <body>
@@ -34,7 +37,7 @@
                 </select>
             </div>
             <div class="col-md-10">
-                <a href="Bestill" id="tilbake" class="knapp">Tilbake</a>
+                <button onclick="tilbakeKnapp()" id="tilbake" class="knapp">Tilbake</button>
                 <input type="submit" name="registrer" id="registrer" value="Registerer" class="knapp" />
             </div>
     </form>
