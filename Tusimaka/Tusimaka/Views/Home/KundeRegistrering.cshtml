@@ -25,38 +25,37 @@
         foreach (var item in Model)
         {
             var ant = item.AntallPersoner;
-            <h3>Du har valgt @ant  personer! Vennligst fyll inn info for hver av de reisende. </h3>
-            for (int antall = 1; antall <= ant; antall++)
-            {
-                <div class="skjema" id="@antall">
-                    <div class="form-group">
-                        <h4>Kunde @antall</h4>
-                        <!--FIKS-->
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-10" id="fornavn">
-                            <p>FORNAVN</p>
-                            <input id="fornavn @antall" type="text" class="knappUtseende selectUtseende" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-10" id="etternavn">
-                            <p>ETTERNAVN</p>
-                            <input id="etternavn @antall" type="text" class="knappUtseende selectUtseende" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-10" id="kjonn @antall">
-                            <p>KJØNN</p>
-                            <select id="velgKjonn" class="knappUtseende selectUtseende">
-                                <option name="velg" disabled selected>Velg</option>
-                                <option name="mann">Mann</option>
-                                <option name="kvinne">Kvinne</option>
-                            </select>
-                        </div>
+            <h3>Du har valgt @ant  personer, men vi trenger bare infoen til deg som bestiller. Fyll inn her! </h3>
+            
+            <div class="skjema" id="@antall">
+                <div class="form-group">
+                    <h4>Kunde @antall</h4>
+                    <!--FIKS-->
+                </div>
+                <div class="form-group">
+                    <div class="col-md-10" id="fornavn">
+                        <p>FORNAVN</p>
+                        <input id="fornavn @antall" type="text" class="knappUtseende selectUtseende" />
                     </div>
                 </div>
-            }
+                <div class="form-group">
+                    <div class="col-md-10" id="etternavn">
+                        <p>ETTERNAVN</p>
+                        <input id="etternavn @antall" type="text" class="knappUtseende selectUtseende" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-10" id="kjonn @antall">
+                        <p>KJØNN</p>
+                        <select id="velgKjonn" class="knappUtseende selectUtseende">
+                            <option name="velg" disabled selected>Velg</option>
+                            <option name="mann">Mann</option>
+                            <option name="kvinne">Kvinne</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
         }
     <input type="submit" name="registrer" id="registrer" value="Registerer" class="knapp" />
 }
