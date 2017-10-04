@@ -1,4 +1,5 @@
-﻿@model Tusimaka.Models.BetalingsInformasjon
+﻿@*@model Tusimaka.Models.BetalingsInformasjon*@
+@model List<Tusimaka.Models.Kunde>
 
 @{
     ViewBag.Title = "RegistrerBetaling";
@@ -6,11 +7,22 @@
 
 <h2>RegistrerBetaling</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
+
+    <p>
+        @foreach (var item in Model)
+        {
+            @item.Fornavn
+        }
+        HEI
+    </p>
+
+}
+
+
+    @*<div class="form-horizontal">
         <h4>BetalingsInformasjon</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -47,4 +59,4 @@
 
 <div>
     @Html.ActionLink("Back to List", "Index")
-</div>
+</div>*@

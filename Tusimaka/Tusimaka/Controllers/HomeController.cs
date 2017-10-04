@@ -31,12 +31,23 @@ namespace Tusimaka.Controllers
         public ActionResult KundeRegistrering()
         {
             var bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsInfo"];
+            Session["kunde"] = new List<Models.Kunde>();
             return View(bestillinger);
         }
 
-        public ActionResult Betaling()
+        [HttpPost]
+        public ActionResult KundeRegistrering(Models.Kunde innKunde)
         {
-            return View();
+            var kunder = (List<Models.Kunde>)Session["kunde"];
+            kunder.Add(innKunde);
+            Session["kunde"] = kunder;
+            return RedirectToAction("RegistrerBetaling");
+        }
+
+        public ActionResult RegistrerBetaling()
+        {
+            var kunder = (List<Models.Kunde>)Session["kunde"];
+            return View(kunder);
         }
 
         //public ActionResult KundeRegistrering(Kunde innKunde)
