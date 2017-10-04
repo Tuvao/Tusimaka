@@ -198,7 +198,6 @@
                         utStreng += "<tr><td>" + strekninger[i].fraFlyplass + "</td><td>" + strekninger[i].tilFlyplass +
                             "</td><td>" + strekninger[i].dato + "</td><td>" + strekninger[i].tid + "</td><td>" + strekninger[i].pris +
                             "</td><td>" + strekninger[i].antallLedigeSeter + "</td><td><input type='radio' name='StrekningsId' onChange='VisKnapper()' value='" + strekninger[i].id + "' class=''/></td><tr/>";
-                        alert(strekninger[i].id);
                     }
                 }
 
@@ -255,6 +254,9 @@
             $("#bekreft").show();
             $("#bekreft").removeAttr("disabled");
             $("#retur").removeAttr("disabled");
+
+
+            alert($('input[name=StrekningsId]:checked').val());
         }
     </script>
 </head>
