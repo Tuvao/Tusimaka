@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
@@ -19,29 +20,43 @@ namespace Tusimaka.Controllers
         {
             return View();
         }
-        //httppost antall reisende
-   
-        public ActionResult KundeRegistrering()
+        [HttpPost]
+        public ActionResult kundeRegistrering(FormCollection innListe)
         {
-            return View();
+            using (var db = new Models.DBContext())
+            {
+                var strekninger = db.Strekning.ToList();
+                var nedTrekk = new List<string>();
+                nedTrekk.Add("---Velg	her---");
+                foreach (var b in strekninger)
+                {
+                    nedTrekk.Add(b.fraFlyplass);
+                }
+                return View(nedTrekk);
+            }
         }
 
-        public ActionResult KundeRegistrer(Kunde innKunde)
-        {
-            using (var db = new DBContext())
-            {
-                try
-                {
-                    db.Kunder.Add(innKunde);
-                    db.SaveChanges();
-                }
-                catch (Exception feil)
-                {
-                    // her bør det komme noe mer
-                }
-            }
-            return RedirectToAction("Liste");
-        }
+        //public ActionResult KundeRegistrering()
+        //{
+        //    return View();
+        //}
+
+        //public ActionResult KundeRegistrer(Kunde innKunde)
+        //{
+        //    using (var db = new DBContext())
+        //    {
+        //        try
+        //        {
+        //            db.Kunder.Add(innKunde);
+        //            db.SaveChanges();
+        //        }
+        //        catch (Exception feil)
+        //        {
+        //            // her bør det komme noe mer
+        //        }
+        //    }
+        //    return RedirectToAction("Liste");
+        //}
 
 
         public string hentAlleFraFlyplasser()
