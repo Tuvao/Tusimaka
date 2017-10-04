@@ -15,6 +15,10 @@
         function tilbakeKnapp() {
             window.history.back();
         }
+
+        $(document).ready(function () {
+            $(".kunde").append("hei");
+        }
     </script>
 </head>
 <body>
@@ -22,32 +26,17 @@
     <p>
         @foreach (var item in Model)
         {
-            @Html.DisplayFor(modelItem => item.AntallPersoner);
-            @Html.DisplayFor(modelItem => item.StrekningsId);
+            @Html.DisplayFor(modelItem => item.AntallPersoner);<br/>
+            @Html.DisplayFor(modelItem => item.StrekningsId);<br/>
+            if (@Html.DisplayFor(modelItem => item.ReturId)!= null)
+            {
+                @Html.DisplayFor(modelItem => item.ReturId);<br />
+            }
         }
 
     </p>
     <form action="" method="post">
-            <div class="col-md-10" id="fornavn">
-                <p>FORNAVN</p>
-                <input id="fornavn" type="text" class="knappUtseende selectUtseende" />
-            </div>
-            <div class="col-md-10" id="etternavn">
-                <p>ETTERNAVN</p>
-                <input id="etternavn" type="text" class="knappUtseende selectUtseende" />
-            </div>
-            <div class="col-md-10" id="kjonn">
-                <p>KJØNN</p>
-                <select id="velgKjonn" class="knappUtseende selectUtseende">
-                    <option name="velg" disabled selected>Velg</option>
-                    <option name="mann">Mann</option>
-                    <option name="kvinne">Kvinne</option>
-                </select>
-            </div>
-            <div class="col-md-10">
-                <input type="button" onclick="tilbakeKnapp()" id="tilbake" class="knapp" value="Tilbake"/>
-                <input type="submit" name="registrer" id="registrer" value="Registerer" class="knapp" />
-            </div>
+        <div class="kunde"></div>
     </form>
 
     @*@using (Html.BeginForm("Bekreftelse", "Home"))

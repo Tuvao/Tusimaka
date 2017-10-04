@@ -11,6 +11,8 @@ namespace Tusimaka.Models
     {
         public int StrekningsId { get; set; }
         public int AntallPersoner { get; set; }
+        public int? ReturId { get; set; }
+
 
     }
 }
