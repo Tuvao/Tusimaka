@@ -193,7 +193,7 @@
                     for (var i in retur) {
                         utStreng += "<tr><td>" + retur[i].fraFlyplass + "</td><td>" + retur[i].tilFlyplass +
                             "</td><td>" + retur[i].dato + "</td><td>" + retur[i].tid + "</td><td>" + retur[i].pris +
-                            "</td><td>" + retur[i].antallLedigeSeter + "</td><td><input type='radio' name='ReturId' value='" + retur[i].id + "' class=''/></td><tr/>";
+                            "</td><td>" + retur[i].antallLedigeSeter + "</td><td><input type='radio' name='ReturId' onChange='VisBekreftKnapper()' value='" + retur[i].id + "' class=''/></td><tr/>";
                     }
                     $("#bekreft").show();
                     $("#bekreft").removeAttr("disabled");
@@ -202,6 +202,7 @@
 
                 $("#returBy").empty().append(utStreng);
                 $("#bekreftetRetur").show();
+                $("#bekreft").hide();
 
             }
             function VisStrekninger(strekninger) {
@@ -244,9 +245,6 @@
 
             tilDato.disabled = false;
             tilDato.setAttribute('min', dato);
-
-            
-
             });
 
         function bekreft() {
@@ -264,6 +262,9 @@
 
 
             alert($('input[name=StrekningsId]:checked').val());
+        }
+        function VisBekreftKnapper() {
+            $("#bekreft").show();
         }
     </script>
 </head>
