@@ -120,7 +120,7 @@
                 $("#retur").removeAttr("disabled");
                 $("#sok").html("Endre søk");
             })
-
+            
             $("#retur").click(function () {
 
                 $("#returDato").show();
@@ -204,7 +204,23 @@
                 utStreng += "</table></form>"
                 $("#strekninger").empty().append(utStreng);
             }
+            //function VisAntallPersoner() {
+            //    var antall = '';
+            //    antall += "<option class='dropdown' value='' selected disabled>Velg</option>";
+            //    for (i = 1; i <= 8; i++) {
+            //        antall += '<option value=' + i + '>' + i + '</option>';
+            //    }
+            //    $("#antallPersoner").empty().append(antall);
+                
+            //    if (antall >= 1) {
+            //        alert('Hey');
+            //    }
+            //}
 
+            //VISER ANT PERSONER I ALERT! .... 
+            $('#antallPersoner').change(function () {
+                alert($('#antallPersoner').val());
+            })
             function VisRetur(retur) {
                 var utStreng = "<form><table class='table'><tr><th>Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th><th>Ledige seter</th><th>Velg</th></tr>";
                 if (retur.length == 0) {
@@ -257,7 +273,6 @@
     </script>
 </head>
 <body>
-    <!--col-lg-2 col-mg-2-->
     <form action="/Home/KundeRegistrering" method="post">
         <div class="container">
             <div class="row no-gutters">
@@ -277,7 +292,7 @@
                 <div id="personValg" class="col col-lg-2 col-md-3 col-sm-6 col-xs-12" hidden="hidden">
                     <p>ANTALL PERSONER</p>
                     <select id="antallPersoner" class="knappUtseende selectUtseende" disabled>
-                        <option name="velg" disabled selected>Velg</option>
+                        <option name="velg" disabled selected >Velg</option>
                         <option name="en" value="1">1</option>
                         <option name="to" value="2">2</option>
                         <option name="tre" value="3">3</option>
