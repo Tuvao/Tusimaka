@@ -169,6 +169,7 @@
                 });
 
                 $("#bekreftetRetur").show();
+                $("#bekreft").hide();
             })
 
             function skjulEndre() {
@@ -215,7 +216,7 @@
                     for (var i in retur) {
                         utStreng += "<tr><td>" + retur[i].fraFlyplass + "</td><td>" + retur[i].tilFlyplass +
                             "</td><td>" + retur[i].dato + "</td><td>" + retur[i].tid + "</td><td>" + retur[i].pris +
-                            "</td><td>" + retur[i].antallLedigeSeter + "</td><td><input type='radio' name='velgRetur' value='" + retur[i].id + "' class=''/></td><tr/>";
+                            "</td><td>" + retur[i].antallLedigeSeter + "</td><td><input type='radio' name='velgRetur' onChange='VisBekreftKnapper()' value='" + retur[i].id + "' class=''/></td><tr/>";
                     }
                     if(name=velgKnapp)
                     $("#bekreft").show();
@@ -265,6 +266,9 @@
 
 
             alert($('input[name=StrekningsId]:checked').val());
+        }
+        function VisBekreftKnapper() {
+            $("#bekreft").show();
         }
     </script>
 </head>
