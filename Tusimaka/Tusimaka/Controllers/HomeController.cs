@@ -17,41 +17,62 @@ namespace Tusimaka.Controllers
         }
         public ActionResult Bestill()
         {
-
+            Session["bestillingsInfo"] = new List<Models.FlyBestillinger>();
             return View();
         }
+        [HttpPost]
+        public ActionResult Bestill(Models.FlyBestillinger innFlyInfo)
+        {
+            List<Models.FlyBestillinger> bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsInfo"];
+            bestillinger.Add(innFlyInfo);
+            Session["bestillingsInfo"] = bestillinger;
+            return RedirectToAction("KundeRegistrering");
+        }
+        public ActionResult KundeRegistrering()
+        {
+            var bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsInfo"];
+            return View(bestillinger);
+        }
+
+
+
         public ActionResult Betaling()
         {
             return View();
         }
-        public ActionResult KundeRegistrering()
-        {
-            using (var db = new DBContext())
-            {
-                //her må vi også få med strekningsid
-                //vi har jo ikke lagret noe i databasen enda, så er usikker på hvordan vi skal få det fram?
+        //public ActionResult KundeRegistrering()
+        //{
+
+
+
+
+
+            //using (var db = new DBContext())
+            //{
+            //    //her må vi også få med strekningsid
+            //    //vi har jo ikke lagret noe i databasen enda, så er usikker på hvordan vi skal få det fram?
                 
-                //var fra = Request.Form["drop1"];
-                //Session["drop1"] = fra;
+            //    //var fra = Request.Form["drop1"];
+            //    //Session["drop1"] = fra;
 
-                //var fra1 = (List<strekning>)Session["drop1"]; //har bare prøvd noe her
+            //    //var fra1 = (List<strekning>)Session["drop1"]; //har bare prøvd noe her
 
-                //antallPers
-                Session["antall"] = Request.Form["antallPersoner"];
+            //    //antallPers
+            //    Session["antall"] = Request.Form["antallPersoner"];
                 
 
-                //Det tor skrev
-                //Session["hei"] = alleFly;
+            //    //Det tor skrev
+            //    //Session["hei"] = alleFly;
 
-                //var allefly1 = (List<strekning>)Session["hei"];
+            //    //var allefly1 = (List<strekning>)Session["hei"];
 
 
 
-                //var allefly1 = (List<strekning>)Session["hei"];
+            //    //var allefly1 = (List<strekning>)Session["hei"];
 
-                return View();
-            }
-        }
+            //    return View();
+            //}
+        //}
 
         //public ActionResult KundeRegistrer(Kunde innKunde)
         //{

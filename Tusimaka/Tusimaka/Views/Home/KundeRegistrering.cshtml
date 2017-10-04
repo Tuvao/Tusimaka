@@ -1,4 +1,5 @@
-﻿@model Tusimaka.Models.Kunde
+﻿@*@model Tusimaka.Models.Kunde*@
+@model  List<Tusimaka.Models.FlyBestillinger>
 
 @{
     ViewBag.Title = "KundeRegistrering";
@@ -18,7 +19,14 @@
 </head>
 <body>
     <h2>Kunderegistrering</h2>
+    <p>
+        @foreach (var item in Model)
+        {
+            @Html.DisplayFor(modelItem => item.AntallPersoner);
+            @Html.DisplayFor(modelItem => item.StrekningsId);
+        }
 
+    </p>
     <form action="" method="post">
             <div class="col-md-10" id="fornavn">
                 <p>FORNAVN</p>
