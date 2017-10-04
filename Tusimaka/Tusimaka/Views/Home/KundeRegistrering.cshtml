@@ -22,7 +22,7 @@
     <h2>Kunderegistrering</h2>
 @using (Html.BeginForm("Bekreftelse", "Home"))
 {
-        @foreach (var item in Model)
+        foreach (var item in Model)
         {
             var ant = item.AntallPersoner;
             <h3>Du har valgt @ant  personer! Vennligst fyll inn info for hver av de reisende. </h3>
