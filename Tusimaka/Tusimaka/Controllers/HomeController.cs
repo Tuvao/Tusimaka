@@ -19,29 +19,27 @@ namespace Tusimaka.Controllers
         {
             return View();
         }
-        //httppost antall reisende
-   
         public ActionResult KundeRegistrering()
         {
             return View();
         }
 
-        public ActionResult KundeRegistrer(Kunde innKunde)
-        {
-            using (var db = new DBContext())
-            {
-                try
-                {
-                    db.Kunder.Add(innKunde);
-                    db.SaveChanges();
-                }
-                catch (Exception feil)
-                {
-                    // her bør det komme noe mer
-                }
-            }
-            return RedirectToAction("Liste");
-        }
+        //public ActionResult KundeRegistrer(Kunde innKunde)
+        //{
+        //    using (var db = new DBContext())
+        //    {
+        //        try
+        //        {
+        //            db.Kunder.Add(innKunde);
+        //            db.SaveChanges();
+        //        }
+        //        catch (Exception feil)
+        //        {
+
+        //        }
+        //    }
+        //    return RedirectToAction("Liste");
+        //}
 
 
         public string hentAlleFraFlyplasser()
