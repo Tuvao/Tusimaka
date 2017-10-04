@@ -9,10 +9,10 @@ namespace Tusimaka.Models
 {
     public class FlyBestillinger
     {
+        public int Id { get; set; }
+        public int KundeId { get; set; }
         public int StrekningsId { get; set; }
         public int AntallPersoner { get; set; }
         public int? ReturId { get; set; }
-
-
     }
 }

@@ -19,6 +19,7 @@ namespace Tusimaka.Models
             public DbSet<strekning> Strekning { get; set; }
             
             public DbSet<Kunde> Kunder { get; set; }
+            public DbSet<FlyBestillinger> FlyBestillinger { get; set; }
 
             protected override void OnModelCreating(DbModelBuilder modelBuilder)
             {

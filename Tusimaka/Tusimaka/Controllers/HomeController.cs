@@ -23,7 +23,7 @@ namespace Tusimaka.Controllers
         [HttpPost]
         public ActionResult Bestill(Models.FlyBestillinger innFlyInfo)
         {
-            List<Models.FlyBestillinger> bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsInfo"];
+            var bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsInfo"];
             bestillinger.Add(innFlyInfo);
             Session["bestillingsInfo"] = bestillinger;
             return RedirectToAction("KundeRegistrering");
@@ -31,6 +31,7 @@ namespace Tusimaka.Controllers
         public ActionResult KundeRegistrering()
         {
             var bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsInfo"];
+            Session["bestillingsInfo"] = bestillinger;
             Session["kunde"] = new List<Models.Kunde>();
             return View(bestillinger);
         }
@@ -38,6 +39,8 @@ namespace Tusimaka.Controllers
         [HttpPost]
         public ActionResult KundeRegistrering(Models.Kunde innKunde)
         {
+            var bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsInfo"];
+            Session["bestillingsInfo"] = bestillinger;
             var kunder = (List<Models.Kunde>)Session["kunde"];
             kunder.Add(innKunde);
             Session["kunde"] = kunder;
@@ -46,10 +49,35 @@ namespace Tusimaka.Controllers
 
         public ActionResult RegistrerBetaling()
         {
+            var bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsInfo"];
+            Session["bestillingsInfo"] = bestillinger;
             var kunder = (List<Models.Kunde>)Session["kunde"];
-            Console.WriteLine(kunder + "dette er i kontroller hei");
-            return View(kunder);
+            Session["kunde"] = kunder;
+            Session["betalingsinfo"] = new List<Models.BetalingsInformasjon>();
+            return View();
         }
+        [HttpPost]
+        public ActionResult RegistrerBetaling(Models.BetalingsInformasjon innBetaling)
+        {
+            var bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsInfo"];
+            Session["bestillingsInfo"] = bestillinger;
+            var kunder = (List<Models.Kunde>)Session["kunde"];
+            Session["kunde"] = kunder;
+            var betaling = (List<Models.BetalingsInformasjon>)Session["betalingsinfo"];
+            betaling.Add(innBetaling);
+            Session["betalingsinfo"] = betaling;
+            return RedirectToAction("Bekreftelse");
+        }
+
+        public ActionResult Bekreftelse()
+        {
+            var bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsInfo"];
+            var kunder = (List<Models.Kunde>)Session["kunde"];
+            var betaling = (List<Models.BetalingsInformasjon>)Session["betalingsinfo"];
+            return View();
+        }
+
+
 
         //public ActionResult KundeRegistrering(Kunde innKunde)
         //{
