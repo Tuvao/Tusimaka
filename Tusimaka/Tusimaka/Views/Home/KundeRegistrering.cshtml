@@ -20,6 +20,8 @@
 </head>
 <body>
     <h2>Kunderegistrering</h2>
+@using (Html.BeginForm("Bekreftelse", "Home"))
+{
         @foreach (var item in Model)
         {
             var ant = item.AntallPersoner;
@@ -34,17 +36,17 @@
                     <div class="form-group">
                         <div class="col-md-10" id="fornavn">
                             <p>FORNAVN</p>
-                            <input id="fornavn" type="text" class="knappUtseende selectUtseende" />
+                            <input id="fornavn @antall" type="text" class="knappUtseende selectUtseende" />
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-10" id="etternavn">
                             <p>ETTERNAVN</p>
-                            <input id="etternavn" type="text" class="knappUtseende selectUtseende" />
+                            <input id="etternavn @antall" type="text" class="knappUtseende selectUtseende" />
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-md-10" id="kjonn">
+                        <div class="col-md-10" id="kjonn @antall">
                             <p>KJØNN</p>
                             <select id="velgKjonn" class="knappUtseende selectUtseende">
                                 <option name="velg" disabled selected>Velg</option>
@@ -56,10 +58,8 @@
                 </div>
             }
         }
-
-    <form action="" method="post">
-        <div id="kunde"></div>
-    </form>
+    <input type="submit" name="registrer" id="registrer" value="Registerer" class="knapp" />
+}
 
     @*@using (Html.BeginForm("Bekreftelse", "Home"))
     {
