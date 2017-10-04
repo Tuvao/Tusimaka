@@ -34,7 +34,11 @@ namespace Tusimaka.Controllers
             return View(bestillinger);
         }
 
+        public ActionResult RegistrerBetaling()
+        {
 
+            return View();
+        }
 
         public ActionResult Betaling()
         {
