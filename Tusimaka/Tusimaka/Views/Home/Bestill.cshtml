@@ -179,6 +179,8 @@
                 $("#bekreftetRetur").hide();
                 $("#bekreft").attr("disabled");
                 $("#retur").attr("disabled");
+                $("#lukk").attr("disabled");
+                $("#lukk").hide();
             }
 
             function VisStrekninger(strekninger) {
@@ -196,7 +198,7 @@
                     for (var i in strekninger) {
                         utStreng += "<tr><td>" + strekninger[i].fraFlyplass + "</td><td>" + strekninger[i].tilFlyplass +
                             "</td><td>" + strekninger[i].dato + "</td><td>" + strekninger[i].tid + "</td><td>" + strekninger[i].pris +
-                            "</td><td>" + strekninger[i].antallLedigeSeter + "</td><td><input type='radio' name='velgTur' onChange='VisReturKnapp()' value='" + strekninger[i].id + "' class=''/></td><tr/>";
+                            "</td><td>" + strekninger[i].antallLedigeSeter + "</td><td><input type='radio' name='velgTur' onChange='VisKnapper()' value='" + strekninger[i].id + "' class=''/></td><tr/>";
 
                     }
                 }
@@ -249,10 +251,12 @@
         });
     </script>
     <script type="text/javascript">
-        function VisReturKnapp() {
+        function VisKnapper() {
             $("#bekreftKnapper").show();
             $("#retur").show();
+            $("#bekreft").show();
             $("#bekreft").removeAttr("disabled");
+            $("#retur").removeAttr("disabled");
         }
     </script>
 </head>
@@ -307,7 +311,7 @@
                 </div>
                 <div id="avbrytRetur" hidden class="col col-lg-2 col-md-2 col-sm-3 col-xs-6">
                     <p>.</p>
-                    <button type="button" id="lukk" disabled>Lukk retur</button>
+                    <button type="button" id="lukk" class="knapp" disabled>Lukk retur</button>
                 </div>
             </div>
             <div class="row">
