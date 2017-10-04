@@ -15,11 +15,13 @@ namespace Tusimaka.Models
             var Strekning3 = new strekning { fraFlyplass = "Oslo", tilFlyplass = "Bergen", dato = "2017-10-20", tid = "13:00", pris = "2150", antallLedigeSeter = 34 };
             var Strekning4 = new strekning { fraFlyplass = "Bergen", tilFlyplass = "Trondheim", dato = "2017-10-20", tid = "14:00", pris = "1450", antallLedigeSeter = 90 };
             var Strekning5 = new strekning { fraFlyplass = "Oslo", tilFlyplass = "Bergen", dato = "2017-10-20", tid = "14:00", pris = "1450", antallLedigeSeter = 12 };
+            var Strekning6 = new strekning { fraFlyplass = "Oslo", tilFlyplass = "Bergen", dato = "2017-10-21", tid = "17:00", pris = "2450", antallLedigeSeter = 12 };
             context.Strekning.Add(Strekning1);
             context.Strekning.Add(Strekning2);
             context.Strekning.Add(Strekning3);
             context.Strekning.Add(Strekning4);
             context.Strekning.Add(Strekning5);
+            context.Strekning.Add(Strekning6);
             base.Seed(context);
         }
     }
