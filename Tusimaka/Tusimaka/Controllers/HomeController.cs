@@ -31,10 +31,19 @@ namespace Tusimaka.Controllers
         public ActionResult KundeRegistrering()
         {
             var bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsInfo"];
+            //Nytt:
+            Session["kunder"] = new List<Models.Kunde>();
             return View(bestillinger);
         }
 
-
+        [HttpPost]
+        public ActionResult KundeRegistrering (Models.Kunde innKunde)
+        {
+            List<Models.Kunde> kunder = (List<Models.Kunde>)Session["kunder"];
+            kunder.Add(innKunde);
+            //Session["bestillingsInfo"] = bestillinger;
+            return RedirectToAction("KundeRegistrering");
+        }
 
         public ActionResult Betaling()
         {
@@ -42,11 +51,6 @@ namespace Tusimaka.Controllers
         }
         //public ActionResult KundeRegistrering()
         //{
-
-
-
-
-
             //using (var db = new DBContext())
             //{
             //    //her må vi også få med strekningsid
