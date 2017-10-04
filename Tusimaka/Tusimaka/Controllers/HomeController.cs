@@ -40,6 +40,25 @@ namespace Tusimaka.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult KundeRegistrering(Models.Kunde innKunde)
+        {
+            using (var db = new Models.DBContext())
+            {
+                try
+                {
+                    db.Kunder.Add(innKunde);
+                    db.SaveChanges();
+                }
+                catch (Exception feil)
+                {
+                    // her bør det komme noe mer
+                }
+            }
+            return RedirectToAction("Liste");
+        }
+
         //public ActionResult KundeRegistrering()
         //{
 
@@ -47,31 +66,31 @@ namespace Tusimaka.Controllers
 
 
 
-            //using (var db = new DBContext())
-            //{
-            //    //her må vi også få med strekningsid
-            //    //vi har jo ikke lagret noe i databasen enda, så er usikker på hvordan vi skal få det fram?
-                
-            //    //var fra = Request.Form["drop1"];
-            //    //Session["drop1"] = fra;
+        //using (var db = new DBContext())
+        //{
+        //    //her må vi også få med strekningsid
+        //    //vi har jo ikke lagret noe i databasen enda, så er usikker på hvordan vi skal få det fram?
 
-            //    //var fra1 = (List<strekning>)Session["drop1"]; //har bare prøvd noe her
+        //    //var fra = Request.Form["drop1"];
+        //    //Session["drop1"] = fra;
 
-            //    //antallPers
-            //    Session["antall"] = Request.Form["antallPersoner"];
-                
+        //    //var fra1 = (List<strekning>)Session["drop1"]; //har bare prøvd noe her
 
-            //    //Det tor skrev
-            //    //Session["hei"] = alleFly;
-
-            //    //var allefly1 = (List<strekning>)Session["hei"];
+        //    //antallPers
+        //    Session["antall"] = Request.Form["antallPersoner"];
 
 
+        //    //Det tor skrev
+        //    //Session["hei"] = alleFly;
 
-            //    //var allefly1 = (List<strekning>)Session["hei"];
+        //    //var allefly1 = (List<strekning>)Session["hei"];
 
-            //    return View();
-            //}
+
+
+        //    //var allefly1 = (List<strekning>)Session["hei"];
+
+        //    return View();
+        //}
         //}
 
         //public ActionResult KundeRegistrer(Kunde innKunde)
@@ -154,6 +173,26 @@ namespace Tusimaka.Controllers
                 return jsonSerializer.Serialize(alleFly);
             }
         }
+
+        [HttpPost]
+        public ActionResult Betaling(Models.BetalingsInformasjon innBetaling)
+        {
+            using (var db = new Models.DBContext())
+            {
+                try
+                {
+                    db.Betalinger.Add(innBetaling);
+                    db.SaveChanges();
+                }
+                catch (Exception feil)
+                {
+                    // her bør det komme noe mer
+                }
+            }
+            return RedirectToAction("Liste");
+            //Dette må vel Redirect til en side der det står «Takk for din bestilling!»
+        }
+
 
     }
 }
