@@ -119,8 +119,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BetalingsInformasjon.cs" />
     <Compile Include="Models\DBContext.cs" />
     <Compile Include="Models\DBInit.cs" />
+    <Compile Include="Models\FlyBestillinger.cs" />
     <Compile Include="Models\Kunde.cs" />
     <Compile Include="Models\strekning.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
