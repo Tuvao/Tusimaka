@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
@@ -20,26 +19,23 @@ namespace Tusimaka.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public ActionResult kundeRegistrering(FormCollection innListe)
+        public ActionResult KundeRegistrering()
         {
-            using (var db = new Models.DBContext())
+            using (var db = new DBContext())
             {
-                var strekninger = db.Strekning.ToList();
-                var nedTrekk = new List<string>();
-                nedTrekk.Add("---Velg	her---");
-                foreach (var b in strekninger)
-                {
-                    nedTrekk.Add(b.fraFlyplass);
-                }
-                return View(nedTrekk);
+                //her må vi også få med strekningsid
+                //vi har jo ikke lagret noe i databasen enda, så er usikker på hvordan vi skal få det fram?
+
+                var fra = Request.Form["drop1"];
+                Session["drop1"] = fra;
+
+                var fra1 = (List<strekning>)Session["drop1"]; //har bare prøvd noe her
+
+                //var allefly1 = (List<strekning>)Session["hei"];
+
+                return View();
             }
         }
-
-        //public ActionResult KundeRegistrering()
-        //{
-        //    return View();
-        //}
 
         //public ActionResult KundeRegistrer(Kunde innKunde)
         //{
@@ -52,7 +48,7 @@ namespace Tusimaka.Controllers
         //        }
         //        catch (Exception feil)
         //        {
-        //            // her bør det komme noe mer
+
         //        }
         //    }
         //    return RedirectToAction("Liste");
@@ -64,6 +60,9 @@ namespace Tusimaka.Controllers
             using (var db = new DBContext())
             {
                 List<strekning> alleFly = db.Strekning.ToList();
+                Session["hei"] = alleFly;
+
+                var allefly1 = (List<strekning>)Session["hei"];
 
                 var alleFraFly = new List<string>();
 
