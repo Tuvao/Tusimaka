@@ -39,22 +39,22 @@ namespace Tusimaka.Controllers
             return View();
         }
 
-        public ActionResult KundeRegistrering(Kunde innKunde)
-        {
-            using (var db = new DBContext())
-            {
-                try
-                {
-                    db.Kunder.Add(innKunde);
-                    db.SaveChanges();
-                }
-                catch (Exception feil)
-                {
-                    //Legg til noe her??
-                }
-            }
-            return View();
-        }
+        //public ActionResult KundeRegistrering(Kunde innKunde)
+        //{
+        //    using (var db = new DBContext())
+        //    {
+        //        try
+        //        {
+        //            db.Kunder.Add(innKunde);
+        //            db.SaveChanges();
+        //        }
+        //        catch (Exception feil)
+        //        {
+        //            //Legg til noe her??
+        //        }
+        //    }
+        //    return View();
+        //}
 
 
         public string hentAlleFraFlyplasser()
