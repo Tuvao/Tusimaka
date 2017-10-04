@@ -12,9 +12,5 @@ namespace Tusimaka.Models
         public string kortnummer { get; set; }
         public string utløpsdato { get; set; }
         public string cvc { get; set; }
-        public Boolean godkjent { get; set; }
-
-        public ICollection<Kunde> Kunder { get; set; }
-        public ICollection<strekning> Strekninger { get; set; }
     }
 }
