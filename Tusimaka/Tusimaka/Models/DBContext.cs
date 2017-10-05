@@ -17,7 +17,6 @@ namespace Tusimaka.Models
                 Database.SetInitializer(new DBInit());
             }
             public virtual DbSet<strekning> Strekning { get; set; }
-            
             public virtual DbSet<Kunde> Kunder { get; set; }
             public virtual DbSet<FlyBestillinger> FlyBestillinger { get; set; }
             public virtual DbSet<KomplettReise> KomplettReise { get; set; }

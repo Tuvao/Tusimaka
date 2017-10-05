@@ -30,5 +30,8 @@ namespace Tusimaka.Models
         [Display(Name = "Korttype")]
         [Required(ErrorMessage = "Korttype må velges!")]
         public string Korttype { get; set; }
+
+        public virtual FlyBestillinger FlyBestillinger { get; set; }
+        public virtual KomplettReise KomplettReise { get; set; }
     }
 }
