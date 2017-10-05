@@ -16,6 +16,8 @@ namespace Tusimaka.Models
         public string tid { get; set; }
         public string pris { get; set; }
         public int antallLedigeSeter { get; set; }
+
+        public virtual FlyBestillinger FlyBestillinger { get; set; }
         
     }
 }

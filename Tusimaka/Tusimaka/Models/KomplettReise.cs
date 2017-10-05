@@ -11,6 +11,8 @@ namespace Tusimaka.Models
     {
         public int KundeID { get; set; }
         public int FlyBestillingsID { get; set; }
+        public int BetalingsID { get; set; }
+
 
     }
 }
