@@ -1,5 +1,5 @@
 ﻿@*@model Tusimaka.Models.Kunde*@
-@model  List<Tusimaka.Models.FlyBestillinger>
+@model Tusimaka.Models.FlyBestillinger
 
 @{
     ViewBag.Title = "KundeRegistrering";
@@ -22,9 +22,8 @@
     <h2>Kunderegistrering</h2>
     @using (Html.BeginForm())
     {
-        foreach (var item in Model)
-        {
-            var ant = item.AntallPersoner;
+        
+            var ant = Model.AntallPersoner;
 
             if (ant == 1)
             {
@@ -71,7 +70,6 @@
                 <input type="submit" name="registrer" id="registrer" value="Registerer" class="knapp" />
             </div>
         </div>
-     }
 
                 @*@using (Html.BeginForm("Bekreftelse", "Home"))
                     {

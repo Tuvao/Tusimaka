@@ -17,13 +17,13 @@ namespace Tusimaka.Controllers
         }
         public ActionResult Bestill()
         {
-            Session["bestillingsInfo"] = new List<Models.FlyBestillinger>();
             return View();
         }
         [HttpPost]
         public ActionResult Bestill(Models.FlyBestillinger innFlyInfo)
         {
-            var bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsInfo"];
+            Session["bestillingsInfo"] = new Models.FlyBestillinger();
+            var bestillinger = (Models.FlyBestillinger)Session["bestillingsInfo"];
             bestillinger.Add(innFlyInfo);
             Session["bestillingsInfo"] = bestillinger;
             return RedirectToAction("KundeRegistrering");
@@ -38,7 +38,7 @@ namespace Tusimaka.Controllers
 
 
         [HttpPost]
-        public ActionResult KundeRegistrering(Models.Kunde innKunde, Models.Kunde innKunder, Models.FlyBestillinger innFlyBestilling, Models.strekning innStrekning)
+        public ActionResult KundeRegistrering(Models.Kunde innKunde, Models.FlyBestillinger innFlyBestilling)
         {
             //var bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsInfo"];
             //Session["bestillingsInfo"] = bestillinger;
@@ -46,7 +46,7 @@ namespace Tusimaka.Controllers
             bool OK = db.lagreKunde(innKunde);
             if (OK)
             {
-                bool OK2 = db.lagreFlyBestilling(innFlyBestilling, innKunde, innStrekning);
+                bool OK2 = db.lagreFlyBestilling(innFlyBestilling);
                 if(OK2)
                 {
                     return RedirectToAction("RegistrerBetaling");

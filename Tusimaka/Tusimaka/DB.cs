@@ -14,7 +14,6 @@ namespace Tusimaka
             {
                 int kundeId = db.Kunder.Max(k => k.kundeID);
                 Models.Kunder hentEnKunde = db.Kunder.FirstOrDefault(k => k.kundeID == kundeId);
-                
                 return hentEnKunde;
             }
         }
@@ -41,25 +40,27 @@ namespace Tusimaka
             }
         }
 
-        public bool lagreFlyBestilling(FlyBestillinger innFlyBestilling, Kunde innKunder, strekning innStrekning)
+        public bool lagreFlyBestilling(FlyBestillinger innFlyBestilling)
         {
             using (var db = new DBContext())
             {
                 try
                 {
+                    int kundeId = db.Kunder.Max(k => k.kundeID);
                     
-                    //Models.Kunder hentEnKunde = db.Kunder.kundeID.FirstOrDefault(k => k.kundeID == kundeId);
-                   
+                    //int strekning = db.Strekning.Where(s => s.StrekningsID);
+                    //var strekningsId = db.Strekning.Where(s => s.StrekningsID == strekning).Select(s => s.StrekningsID).First();
 
                     var nyFlyBestilling = new FlyBestilling();
-                    var nyKunde = new Kunder();
-                    var nyStrekning = new strekning();
+                    nyFlyBestilling.kundeID = kundeId;
+                    nyFlyBestilling.strekningsID = innFlyBestilling.StrekningsID;
                     nyFlyBestilling.antallPersoner = innFlyBestilling.AntallPersoner;
-                    nyKunde.kundeID = innKunder.KundeID;
-                    nyStrekning.StrekningsID = innStrekning.StrekningsID;
-       
+                    
+                    if (innFlyBestilling.ReturID != null)
+                    {
+                        nyFlyBestilling.returID = innFlyBestilling.ReturID;
+                    }
                     db.FlyBestilling.Add(nyFlyBestilling);
-                    db.Kunder.Add(nyKunde);
 
                     db.SaveChanges();
                     return true;
