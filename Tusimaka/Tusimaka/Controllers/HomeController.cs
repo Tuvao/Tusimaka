@@ -74,8 +74,14 @@ namespace Tusimaka.Controllers
             var bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsInfo"];
             var kunder = (List<Models.Kunde>)Session["kunde"];
             var betaling = (List<Models.BetalingsInformasjon>)Session["betalingsinfo"];
-            return View();
+            return View(bestillinger);
         }
+       
+        //[HttpPost]
+        //public ActionResult Bekreftelse()
+        //{
+
+        //}
 
 
 

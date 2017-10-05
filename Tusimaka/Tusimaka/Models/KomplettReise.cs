@@ -14,8 +14,8 @@ namespace Tusimaka.Models
         public int FlyBestillingsID { get; set; }
         public int BetalingsID { get; set; }
 
-        public virtual Kunde Kunde { get; set; }
-        public virtual FlyBestillinger FlyBestillinger { get; set; }
-        public virtual BetalingsInformasjon BetalingsInformasjon { get; set; }
+        //public virtual Kunde Kunde { get; set; }
+        //public virtual FlyBestillinger FlyBestillinger { get; set; }
+        //public virtual BetalingsInformasjon BetalingsInformasjon { get; set; }
     }
 }

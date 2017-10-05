@@ -26,6 +26,6 @@ namespace Tusimaka.Models
         public string Kjonn { get; set; }
 
         public virtual List<FlyBestillinger> FlyBestillinger { get; set; }
-        public virtual KomplettReise KomplettReise { get; set; }
+        //public virtual KomplettReise KomplettReise { get; set; }
     }
 }

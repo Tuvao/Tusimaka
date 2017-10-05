@@ -15,8 +15,8 @@ namespace Tusimaka.Models
         public int AntallPersoner { get; set; }
         public int? ReturId { get; set; }
 
-        public virtual Kunde Kunde { get; set; }
-        public virtual strekning Strekning { get; set; }
-        public virtual KomplettReise KomplettReise { get; set; }
+        //public virtual Kunde Kunde { get; set; }
+        //public virtual strekning Strekning { get; set; }
+        //public virtual KomplettReise KomplettReise { get; set; }
     }
 }
