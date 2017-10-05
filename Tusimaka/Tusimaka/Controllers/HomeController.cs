@@ -28,6 +28,7 @@ namespace Tusimaka.Controllers
             Session["bestillingsInfo"] = bestillinger;
             return RedirectToAction("KundeRegistrering");
         }
+        
         public ActionResult KundeRegistrering()
         {
             var bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsinfo"];
@@ -35,6 +36,7 @@ namespace Tusimaka.Controllers
             //Session["kunde"] = new List<Models.Kunde>();
             return View(bestillinger);
         }
+
 
         [HttpPost]
         public ActionResult KundeRegistrering(Models.Kunde innKunde)
@@ -44,23 +46,18 @@ namespace Tusimaka.Controllers
             //var kunder = (List<Models.Kunde>)Session["kunde"];
             //kunder.Add(innKunde);
             //Session["kunde"] = kunder;
-            using (var db = new Models.DBContext())
-                {
-                    try
-                    {
-                        db.Kunder.Add(innKunde);
-                        db.SaveChanges();
-                    }
-                    catch (Exception feil)
-                    {
-                        //Legg til noe her??
-                    }
-                }
-            return RedirectToAction("RegistrerBetaling");
+            var db = new DB();
+            bool OK = db.lagreKunde(innKunde);
+            if (OK)
+            {
+                return RedirectToAction("RegistrerBetaling");
+            }
+            return View();
         }
 
         public ActionResult RegistrerBetaling()
         {
+            
             var bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsInfo"];
             Session["bestillingsInfo"] = bestillinger;
             //var kunder = (List<Models.Kunde>)Session["kunde"];
@@ -87,7 +84,9 @@ namespace Tusimaka.Controllers
             //var kunder = (List<Models.Kunde>)Session["kunde"];
             var betaling = (List<Models.BetalingsInformasjon>)Session["betalingsinfo"];
 
-
+            //Lister ut kunder
+            //var db = new DB();
+            //List<Kunde> alleKunder = db.alleKunder();
             return View();
         }
        
