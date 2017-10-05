@@ -25,7 +25,6 @@ namespace Tusimaka.Models
         [Display(Name = "Kjonn")]
         [Required(ErrorMessage = "Kjønn må oppgis!")]
         public string Kjonn { get; set; }
-
-        public virtual List<FlyBestillinger> FlyBestillinger { get; set; }
+        
     }
 }
