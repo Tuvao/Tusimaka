@@ -87,8 +87,12 @@ namespace Tusimaka.Controllers
             //var kunder = (List<Models.Kunde>)Session["kunde"];
             var betaling = (List<Models.BetalingsInformasjon>)Session["betalingsinfo"];
 
-
-            return View();
+            using (var db = new Models.DBContext())
+            {
+                List<Models.Kunde> alleKunder = db.Kunder.ToList();
+                return View(alleKunder);
+            }
+            
         }
        
         //[HttpPost]
