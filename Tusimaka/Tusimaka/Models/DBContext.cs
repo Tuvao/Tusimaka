@@ -20,6 +20,9 @@ namespace Tusimaka.Models
             
             public virtual DbSet<Kunde> Kunder { get; set; }
             public virtual DbSet<FlyBestillinger> FlyBestillinger { get; set; }
+            public virtual DbSet<KomplettReise> KomplettReise { get; set; }
+
+            public virtual DbSet<BetalingsInformasjon> BetalingsInformasjon { get; set; }
 
             protected override void OnModelCreating(DbModelBuilder modelBuilder)
             {
