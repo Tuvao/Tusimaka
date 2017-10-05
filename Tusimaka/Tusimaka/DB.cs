@@ -8,21 +8,16 @@ namespace Tusimaka
 {
     public class DB
     {
-        //public List<Kunde> alleKunder()
-        //{
-        //    using (var db = new DBContext())
-        //    {
-        //        List<Kunde> alleKunder = db.Kunder.Select(k => new Kunde
-        //        {
-        //            KundeID = k.kundeID,
-        //            Fornavn = k.fornavn,
-        //            Etternavn = k.etternavn,
-        //            Kjonn = k.kjonn
-        //        }).ToList();
-
-        //        return alleKunder;
-        //    }
-        //}
+        public Kunder hentEnKunde()
+        {
+            using (var db = new DBContext())
+            {
+                int kundeId = db.Kunder.Max(k => k.kundeID);
+                Models.Kunder hentEnKunde = db.Kunder.FirstOrDefault(k => k.kundeID == kundeId);
+                
+                return hentEnKunde;
+            }
+        }
 
         public bool lagreKunde(Kunde innKunde)
         {
@@ -36,6 +31,36 @@ namespace Tusimaka
                     nyKunde.kjonn = innKunde.Kjonn;
                     
                     db.Kunder.Add(nyKunde);
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception feil)
+                {
+                    return false;
+                }
+            }
+        }
+
+        public bool lagreFlyBestilling(FlyBestillinger innFlyBestilling, Kunde innKunder, strekning innStrekning)
+        {
+            using (var db = new DBContext())
+            {
+                try
+                {
+                    
+                    //Models.Kunder hentEnKunde = db.Kunder.kundeID.FirstOrDefault(k => k.kundeID == kundeId);
+                   
+
+                    var nyFlyBestilling = new FlyBestilling();
+                    var nyKunde = new Kunder();
+                    var nyStrekning = new strekning();
+                    nyFlyBestilling.antallPersoner = innFlyBestilling.AntallPersoner;
+                    nyKunde.kundeID = innKunder.KundeID;
+                    nyStrekning.StrekningsID = innStrekning.StrekningsID;
+       
+                    db.FlyBestilling.Add(nyFlyBestilling);
+                    db.Kunder.Add(nyKunde);
+
                     db.SaveChanges();
                     return true;
                 }

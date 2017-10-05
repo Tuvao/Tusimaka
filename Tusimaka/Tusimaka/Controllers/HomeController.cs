@@ -33,24 +33,24 @@ namespace Tusimaka.Controllers
         {
             var bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsinfo"];
             Session["bestillingsinfo"] = bestillinger;
-            //Session["kunde"] = new List<Models.Kunde>();
             return View(bestillinger);
         }
 
 
         [HttpPost]
-        public ActionResult KundeRegistrering(Models.Kunde innKunde)
+        public ActionResult KundeRegistrering(Models.Kunde innKunde, Models.Kunde innKunder, Models.FlyBestillinger innFlyBestilling, Models.strekning innStrekning)
         {
-            var bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsInfo"];
-            Session["bestillingsInfo"] = bestillinger;
-            //var kunder = (List<Models.Kunde>)Session["kunde"];
-            //kunder.Add(innKunde);
-            //Session["kunde"] = kunder;
+            //var bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsInfo"];
+            //Session["bestillingsInfo"] = bestillinger;
             var db = new DB();
             bool OK = db.lagreKunde(innKunde);
             if (OK)
             {
-                return RedirectToAction("RegistrerBetaling");
+                bool OK2 = db.lagreFlyBestilling(innFlyBestilling, innKunde, innStrekning);
+                if(OK2)
+                {
+                    return RedirectToAction("RegistrerBetaling");
+                }
             }
             return View();
         }
@@ -60,8 +60,6 @@ namespace Tusimaka.Controllers
             
             var bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsInfo"];
             Session["bestillingsInfo"] = bestillinger;
-            //var kunder = (List<Models.Kunde>)Session["kunde"];
-            //Session["kunde"] = kunder;
             Session["betalingsinfo"] = new List<Models.BetalingsInformasjon>();
             return View();
         }
@@ -70,8 +68,6 @@ namespace Tusimaka.Controllers
         {
             var bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsInfo"];
             Session["bestillingsInfo"] = bestillinger;
-            //var kunder = (List<Models.Kunde>)Session["kunde"];
-            //Session["kunde"] = kunder;
             var betaling = (List<Models.BetalingsInformasjon>)Session["betalingsinfo"];
             betaling.Add(innBetaling);
             Session["betalingsinfo"] = betaling;
@@ -81,53 +77,21 @@ namespace Tusimaka.Controllers
         public ActionResult Bekreftelse()
         {
             var bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsInfo"];
-            //var kunder = (List<Models.Kunde>)Session["kunde"];
             var betaling = (List<Models.BetalingsInformasjon>)Session["betalingsinfo"];
 
             //Lister ut kunder
-            //var db = new DB();
-            //List<Kunde> alleKunder = db.alleKunder();
-            return View();
+            var db = new DB();
+            Kunder hentEnKunde = db.hentEnKunde();
+            return View(hentEnKunde);
         }
-       
-        //[HttpPost]
-        //public ActionResult Bekreftelse()
-        //{
-
-        //}
-
-
-
-        //public ActionResult KundeRegistrering(Kunde innKunde)
-        //{
-        //    using (var db = new DBContext())
-        //    {
-        //        try
-        //        {
-        //            db.Kunder.Add(innKunde);
-        //            db.SaveChanges();
-        //        }
-        //        catch (Exception feil)
-        //        {
-        //            //Legg til noe her??
-        //        }
-        //    }
-        //    return View();
-        //}
-
-
         public string hentAlleFraFlyplasser()
         {
             using (var db = new DBContext())
             {
                 List<strekning> alleFly = db.Strekning.ToList();
-                //Session["hei"] = alleFly;
-
-                //var allefly1 = (List<strekning>)Session["hei"];
 
                 var alleFraFly = new List<string>();
-
-
+                
                 foreach (strekning f in alleFly)
                 {
                     string funnetStrekning = alleFraFly.FirstOrDefault(fl => fl.Contains(f.fraFlyplass));
@@ -172,7 +136,7 @@ namespace Tusimaka.Controllers
             using (var db = new DBContext())
             {
                 List<strekning> alleFly = db.Strekning.Where(
-                    f => f.tilFlyplass == tilFlyPlass && f.fraFlyplass == fraFlyplass && f.dato == dato && f.antallLedigeSeter >= antallLedigeSeter) .ToList();
+                    f => f.tilFlyplass == tilFlyPlass && f.fraFlyplass == fraFlyplass && f.dato == dato && f.antallLedigeSeter >= antallLedigeSeter).ToList();
 
                 var jsonSerializer = new JavaScriptSerializer();
                 return jsonSerializer.Serialize(alleFly);

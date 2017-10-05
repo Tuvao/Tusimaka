@@ -1,4 +1,4 @@
-﻿@model List<Tusimaka.Models.Kunde>
+﻿@model Tusimaka.Models.Kunder
 
 @{
     ViewBag.Title = "Bekreftelse";
@@ -15,19 +15,25 @@
     </tr>
 
 
-@foreach (var item in Model) {
+
     <tr>
         <td>
-            @item.Fornavn
+            @Model.fornavn
+        </td>
+        <td>
+            @Model.etternavn
+        </td>
+        <td>
+            @Model.kjonn
         </td>
     </tr>
     <tr>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.KundeID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.KundeID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.KundeID })
-        </td>
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id=Model.kundeID }) |
+            @Html.ActionLink("Details", "Details", new { id= .kundeID }) |
+            @Html.ActionLink("Delete", "Delete", new { id= Kunder.kundeID })
+        </td>*@
     </tr>
-}
+
 
 </table>
