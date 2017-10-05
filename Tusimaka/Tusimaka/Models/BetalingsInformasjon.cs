@@ -9,8 +9,9 @@ namespace Tusimaka.Models
 {
     public class BetalingsInformasjon
     {
-        public int Id { get; set; }
-        public int FlyBestillingsId { get; set; }
+        [Key]
+        public int BestillingsID { get; set; }
+        public int FlyBestillingsID { get; set; }
         [Display(Name = "Kortnummer")]
         [Required(ErrorMessage = "Kortnummeret må oppgis!")]
         [RegularExpression(@"[0-9]{16}", ErrorMessage = "Kortnummeret må bestå av 16 sifre.")]
@@ -30,8 +31,5 @@ namespace Tusimaka.Models
         [Display(Name = "Korttype")]
         [Required(ErrorMessage = "Korttype må velges!")]
         public string Korttype { get; set; }
-
-        //public virtual FlyBestillinger FlyBestillinger { get; set; }
-        //public virtual KomplettReise KomplettReise { get; set; }
     }
 }

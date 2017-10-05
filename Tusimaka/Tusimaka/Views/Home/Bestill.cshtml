@@ -193,7 +193,7 @@
                     for (var i in retur) {
                         utStreng += "<tr><td>" + retur[i].fraFlyplass + "</td><td>" + retur[i].tilFlyplass +
                             "</td><td>" + retur[i].dato + "</td><td>" + retur[i].tid + "</td><td>" + retur[i].pris +
-                            "</td><td>" + retur[i].antallLedigeSeter + "</td><td><input type='radio' name='ReturId' onChange='VisBekreftKnapper()' value='" + retur[i].id + "' class=''/></td><tr/>";
+                            "</td><td>" + retur[i].antallLedigeSeter + "</td><td><input type='radio' name='ReturId' onChange='VisBekreftKnapper()' value='" + retur[i].StrekningsID + "' class=''/></td><tr/>";
                     }
                     $("#bekreft").show();
                     $("#bekreft").removeAttr("disabled");
@@ -220,7 +220,7 @@
                     for (var i in strekninger) {
                         utStreng += "<tr><td>" + strekninger[i].fraFlyplass + "</td><td>" + strekninger[i].tilFlyplass +
                             "</td><td>" + strekninger[i].dato + "</td><td>" + strekninger[i].tid + "</td><td>" + strekninger[i].pris +
-                            "</td><td>" + strekninger[i].antallLedigeSeter + "</td><td><input type='radio' name='StrekningsId' onChange='VisKnapper()' value='" + strekninger[i].id + "' class=''/></td><tr/>";
+                            "</td><td>" + strekninger[i].antallLedigeSeter + "</td><td><input type='radio' name='StrekningsId' onChange='VisKnapper()' value='" + strekninger[i].StrekningsID + "' class=''/></td><tr/>";
                     }
                 }
 

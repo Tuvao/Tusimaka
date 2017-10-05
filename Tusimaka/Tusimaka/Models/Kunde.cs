@@ -9,7 +9,8 @@ namespace Tusimaka.Models
 {
     public class Kunde
     {
-        public int Id { get; set; }
+        [Key]
+        public int KundeID { get; set; }
 
         [Display(Name ="Fornavn")]
         [Required(ErrorMessage ="Fornavn må oppgis!")]
@@ -26,6 +27,5 @@ namespace Tusimaka.Models
         public string Kjonn { get; set; }
 
         public virtual List<FlyBestillinger> FlyBestillinger { get; set; }
-        //public virtual KomplettReise KomplettReise { get; set; }
     }
 }

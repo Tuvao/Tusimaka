@@ -30,9 +30,9 @@ namespace Tusimaka.Controllers
         }
         public ActionResult KundeRegistrering()
         {
-            var bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsInfo"];
-            Session["bestillingsInfo"] = bestillinger;
-            Session["kunde"] = new List<Models.Kunde>();
+            var bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsinfo"];
+            Session["bestillingsinfo"] = bestillinger;
+            //Session["kunde"] = new List<Models.Kunde>();
             return View(bestillinger);
         }
 
@@ -41,9 +41,21 @@ namespace Tusimaka.Controllers
         {
             var bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsInfo"];
             Session["bestillingsInfo"] = bestillinger;
-            var kunder = (List<Models.Kunde>)Session["kunde"];
-            kunder.Add(innKunde);
-            Session["kunde"] = kunder;
+            //var kunder = (List<Models.Kunde>)Session["kunde"];
+            //kunder.Add(innKunde);
+            //Session["kunde"] = kunder;
+            using (var db = new Models.DBContext())
+                {
+                    try
+                    {
+                        db.Kunder.Add(innKunde);
+                        db.SaveChanges();
+                    }
+                    catch (Exception feil)
+                    {
+                        //Legg til noe her??
+                    }
+                }
             return RedirectToAction("RegistrerBetaling");
         }
 
@@ -51,8 +63,8 @@ namespace Tusimaka.Controllers
         {
             var bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsInfo"];
             Session["bestillingsInfo"] = bestillinger;
-            var kunder = (List<Models.Kunde>)Session["kunde"];
-            Session["kunde"] = kunder;
+            //var kunder = (List<Models.Kunde>)Session["kunde"];
+            //Session["kunde"] = kunder;
             Session["betalingsinfo"] = new List<Models.BetalingsInformasjon>();
             return View();
         }
@@ -61,8 +73,8 @@ namespace Tusimaka.Controllers
         {
             var bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsInfo"];
             Session["bestillingsInfo"] = bestillinger;
-            var kunder = (List<Models.Kunde>)Session["kunde"];
-            Session["kunde"] = kunder;
+            //var kunder = (List<Models.Kunde>)Session["kunde"];
+            //Session["kunde"] = kunder;
             var betaling = (List<Models.BetalingsInformasjon>)Session["betalingsinfo"];
             betaling.Add(innBetaling);
             Session["betalingsinfo"] = betaling;
@@ -72,9 +84,11 @@ namespace Tusimaka.Controllers
         public ActionResult Bekreftelse()
         {
             var bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsInfo"];
-            var kunder = (List<Models.Kunde>)Session["kunde"];
+            //var kunder = (List<Models.Kunde>)Session["kunde"];
             var betaling = (List<Models.BetalingsInformasjon>)Session["betalingsinfo"];
-            return View(bestillinger);
+
+
+            return View();
         }
        
         //[HttpPost]
