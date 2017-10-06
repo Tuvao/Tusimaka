@@ -23,19 +23,27 @@ namespace Tusimaka.Controllers
         public ActionResult Bestill(FlyBestillinger innFlyInfo)
         {
             //Dataene fra Bestill legges i Sessions helt til vi får kundeID og kan legge dataene i DB
-            Session["bestillingsInfo"] = new List<Models.FlyBestillinger>();
-            var bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsInfo"];
-            bestillinger.Add(innFlyInfo);
-            Session["bestillingsInfo"] = bestillinger;
-            return RedirectToAction("KundeRegistrering");
+            //Session["bestillingsInfo"] = new List<Models.FlyBestillinger>();
+            //var bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsInfo"];
+            //bestillinger.Add(innFlyInfo);
+            //Session["bestillingsInfo"] = bestillinger;
+            var db = new DB();
+            bool OK = db.lagreFlyBestilling(innFlyInfo);
+            if (OK)
+            {
+                return RedirectToAction("KundeRegistrering");
+            }
+            else
+            {
+                return View();
+            }
         }
         
         public ActionResult KundeRegistrering()
         {
             //Dataene fra Bestill viewet må ligge i en session og vises i KundeReg viewet 
             //for å vise rett antall passasjerer. 
-            var bestillinger = Session["bestillingsinfo"];
-            return View(bestillinger);
+            return View();
         }
 
 
@@ -51,34 +59,36 @@ namespace Tusimaka.Controllers
             bool OK = db.lagreKunde(innKunde);
             if (OK)
             {
-                
-                //bool OK2 = db.lagreFlyBestilling(bestillinger);
-                //if (OK2)
-                //{
-                    return RedirectToAction("RegistrerBetaling");
-                //}
+               return RedirectToAction("RegistrerBetaling");
             }
-            return View();
+            else
+            {
+                return View();
+            }
+           
         }
 
         public ActionResult RegistrerBetaling()
         {
-            Session["betalingsinfo"] = new Models.BetalingsInformasjon();
+            
             return View();
         }
         [HttpPost]
         public ActionResult RegistrerBetaling(Models.BetalingsInformasjon innBetaling)
         {
-            var betaling = (List<Models.BetalingsInformasjon>)Session["betalingsinfo"];
-            betaling.Add(innBetaling);
-            Session["betalingsinfo"] = betaling;
-            return RedirectToAction("Bekreftelse");
+            var db = new DB();
+            bool OK2 = db.registrereKundeIdMotFlyBestilling();
+            if (OK2)
+            {
+                return RedirectToAction("Bekreftelse");
+            }
+            return View();
         }
 
         public ActionResult Bekreftelse()
         {
-            var bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsInfo"];
-            var betaling = (List<Models.BetalingsInformasjon>)Session["betalingsinfo"];
+            //var bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsInfo"];
+            //var betaling = (List<Models.BetalingsInformasjon>)Session["betalingsinfo"];
 
             //Lister ut kunder
             var db = new DB();

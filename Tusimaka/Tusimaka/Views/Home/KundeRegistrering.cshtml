@@ -1,5 +1,5 @@
 ﻿@*@model Tusimaka.Models.Kunde*@
-@model List<Tusimaka.Models.FlyBestillinger>
+@model Tusimaka.Models.FlyBestilling
 
 @{
     ViewBag.Title = "KundeRegistrering";
@@ -18,32 +18,29 @@
 </head>
 <body>
     <h2>Kunderegistrering</h2>
+    
+
+    @*@if (Model.antallPersoner == 1)
+    {
+    <h3>Du har valgt @Model.antallPersoner  person, men vi trenger bare infoen til deg som bestiller. Fyll inn her! </h3>
+    }
+    else
+    {
+    <h3>Du har valgt @Model.antallPersoner  personer, men vi trenger bare infoen til deg som bestiller. Fyll inn her! </h3>
+    }*@
     @using (Html.BeginForm())
     {
+
+
+
         
-
-
-        //var ant = Model.AntallPersoner;
-
-        @*if (ant == 1)
-        {
-                <h3>Du har valgt @ant  person, men vi trenger bare infoen til deg som bestiller. Fyll inn her! </h3>
-            }
-            else
-            {
-                <h3>Du har valgt @ant  personer, men vi trenger bare infoen til deg som bestiller. Fyll inn her! </h3>
-            }*@
 
 
             <div class="skjema">
                 <div class="form-group">
                     <h4>Kunde</h4>
                     <!--FIKS-->
-                    @foreach (var item in Model)
-                    {
-                            @item.AntallPersoner
-                       
-                    }
+                    
                 </div>
                 <div class="form-group">
                     <div class="col-md-10" id="fornavn">
@@ -68,13 +65,13 @@
                     </div>
                 </div>
             </div>
-            
-        }
         <div class="form-group">
             <div class="col-md-10" id="registrerKnapp">
                 <input type="submit" name="registrer" id="registrer" value="Registerer" class="knapp" />
             </div>
         </div>
+            
+        }
 
                 @*@using (Html.BeginForm("Bekreftelse", "Home"))
                     {

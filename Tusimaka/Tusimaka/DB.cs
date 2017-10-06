@@ -48,12 +48,9 @@ namespace Tusimaka
             {
                 try
                 {
-                    //Finner siste kundeID som ble lagt til i kunder. 
-                    int kundeId = db.Kunder.Max(k => k.kundeID);
-
                     var nyFlyBestilling = new FlyBestilling();
-                    nyFlyBestilling.kundeID = kundeId;
-                    nyFlyBestilling.strekningsID = innFlyBestilling.StrekningsID;
+                    //nyFlyBestilling.kundeID = kundeId;
+                    nyFlyBestilling.StrekningsID = innFlyBestilling.StrekningsID;
                     nyFlyBestilling.antallPersoner = innFlyBestilling.AntallPersoner;
 
                     if (innFlyBestilling.ReturID != null)
@@ -65,6 +62,31 @@ namespace Tusimaka
                     return true;
                 }
                 catch (Exception feil)
+                {
+                    return false;
+                }
+            }
+        }
+        public bool registrereKundeIdMotFlyBestilling ()
+        {
+            using (var db = new DBContext())
+            {
+                try
+                {
+                    //Finner siste kundeID som ble lagt til i Kunder i DB. 
+                    int kundeId = db.Kunder.Max(k => k.kundeID);
+                    //Finner siste FlyBestillingsID som ble lagt til i FlyBestilling i DB.
+                    int flyBestillingsId = db.FlyBestilling.Max(f => f.flyBestillingsID);
+
+                    var nyFlyBestillingKunde = new FlyBestillingKunde();
+                    nyFlyBestillingKunde.FlyBestillingsID = flyBestillingsId;
+                    nyFlyBestillingKunde.KundeID = kundeId;
+
+                    db.FlyBestillingKunde.Add(nyFlyBestillingKunde);
+                    db.SaveChanges();
+                    return true;
+                }
+                catch
                 {
                     return false;
                 }
