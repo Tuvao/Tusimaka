@@ -100,7 +100,7 @@ select::-ms-expand {
     color: black;
 }
 
-#bekreft, #registrer, #sok{
+#bekreft, #registrer, #sok, #bekreftBetaling {
     background-color: #224652;
     color: white;
 }
