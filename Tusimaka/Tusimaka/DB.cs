@@ -12,7 +12,9 @@ namespace Tusimaka
         {
             using (var db = new DBContext())
             {
+                //finner siste registrert i DB
                 int kundeId = db.Kunder.Max(k => k.kundeID);
+                //henter ut registrert informasjon om ønsket kunde.
                 Models.Kunder hentEnKunde = db.Kunder.FirstOrDefault(k => k.kundeID == kundeId);
                 return hentEnKunde;
             }
@@ -28,7 +30,7 @@ namespace Tusimaka
                     nyKunde.fornavn = innKunde.Fornavn;
                     nyKunde.etternavn = innKunde.Etternavn;
                     nyKunde.kjonn = innKunde.Kjonn;
-                    
+
                     db.Kunder.Add(nyKunde);
                     db.SaveChanges();
                     return true;
@@ -46,22 +48,19 @@ namespace Tusimaka
             {
                 try
                 {
+                    //Finner siste kundeID som ble lagt til i kunder. 
                     int kundeId = db.Kunder.Max(k => k.kundeID);
-                    
-                    //int strekning = db.Strekning.Where(s => s.StrekningsID);
-                    //var strekningsId = db.Strekning.Where(s => s.StrekningsID == strekning).Select(s => s.StrekningsID).First();
 
                     var nyFlyBestilling = new FlyBestilling();
                     nyFlyBestilling.kundeID = kundeId;
                     nyFlyBestilling.strekningsID = innFlyBestilling.StrekningsID;
                     nyFlyBestilling.antallPersoner = innFlyBestilling.AntallPersoner;
-                    
+
                     if (innFlyBestilling.ReturID != null)
                     {
                         nyFlyBestilling.returID = innFlyBestilling.ReturID;
                     }
                     db.FlyBestilling.Add(nyFlyBestilling);
-
                     db.SaveChanges();
                     return true;
                 }
@@ -71,21 +70,5 @@ namespace Tusimaka
                 }
             }
         }
-        //public List<FlyBestillinger> alleFlyBestillinger()
-        //{
-        //    using (var db = new DBContext())
-        //    {
-        //        List<FlyBestillinger> alleFlyBestillinger = db.FlyBestilling.Select(f => new FlyBestillinger
-        //        {
-        //            FlyBestillingsID = f.flyBestillingsID,
-        //            KundeID = f.kundeID,
-        //            StrekningsID = f.strekningsID,
-        //            AntallPersoner = f.antallPersoner,
-        //            ReturID = f.returID
-        //        }).ToList();
-
-        //        return alleFlyBestillinger;
-        //    }
-        //}
     }
 }

@@ -20,10 +20,11 @@ namespace Tusimaka.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Bestill(Models.FlyBestillinger innFlyInfo)
+        public ActionResult Bestill(FlyBestillinger innFlyInfo)
         {
-            Session["bestillingsInfo"] = new Models.FlyBestillinger();
-            var bestillinger = (Models.FlyBestillinger)Session["bestillingsInfo"];
+            //Dataene fra Bestill legges i Sessions helt til vi får kundeID og kan legge dataene i DB
+            Session["bestillingsInfo"] = new List<Models.FlyBestillinger>();
+            var bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsInfo"];
             bestillinger.Add(innFlyInfo);
             Session["bestillingsInfo"] = bestillinger;
             return RedirectToAction("KundeRegistrering");
@@ -31,43 +32,43 @@ namespace Tusimaka.Controllers
         
         public ActionResult KundeRegistrering()
         {
-            var bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsinfo"];
-            Session["bestillingsinfo"] = bestillinger;
+            //Dataene fra Bestill viewet må ligge i en session og vises i KundeReg viewet 
+            //for å vise rett antall passasjerer. 
+            var bestillinger = Session["bestillingsinfo"];
             return View(bestillinger);
         }
 
 
         [HttpPost]
-        public ActionResult KundeRegistrering(Models.Kunde innKunde, Models.FlyBestillinger innFlyBestilling)
+        public ActionResult KundeRegistrering(Kunde innKunde)
         {
+            //var bestillinger = Session["bestillingsinfo"];
+            //("HEi" + innKunde.Fornavn);
+            //var bestilling = (Models.FlyBestillinger)Session["bestillingsinfo"];
             //var bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsInfo"];
             //Session["bestillingsInfo"] = bestillinger;
             var db = new DB();
             bool OK = db.lagreKunde(innKunde);
             if (OK)
             {
-                bool OK2 = db.lagreFlyBestilling(innFlyBestilling);
-                if(OK2)
-                {
+                
+                //bool OK2 = db.lagreFlyBestilling(bestillinger);
+                //if (OK2)
+                //{
                     return RedirectToAction("RegistrerBetaling");
-                }
+                //}
             }
             return View();
         }
 
         public ActionResult RegistrerBetaling()
         {
-            
-            var bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsInfo"];
-            Session["bestillingsInfo"] = bestillinger;
-            Session["betalingsinfo"] = new List<Models.BetalingsInformasjon>();
+            Session["betalingsinfo"] = new Models.BetalingsInformasjon();
             return View();
         }
         [HttpPost]
         public ActionResult RegistrerBetaling(Models.BetalingsInformasjon innBetaling)
         {
-            var bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsInfo"];
-            Session["bestillingsInfo"] = bestillinger;
             var betaling = (List<Models.BetalingsInformasjon>)Session["betalingsinfo"];
             betaling.Add(innBetaling);
             Session["betalingsinfo"] = betaling;

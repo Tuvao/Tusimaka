@@ -1,12 +1,10 @@
 ﻿@*@model Tusimaka.Models.Kunde*@
-@model Tusimaka.Models.FlyBestillinger
+@model List<Tusimaka.Models.FlyBestillinger>
 
 @{
     ViewBag.Title = "KundeRegistrering";
 }
-<!DOCTYPE html>
 
-<html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
@@ -23,22 +21,29 @@
     @using (Html.BeginForm())
     {
         
-            var ant = Model.AntallPersoner;
 
-            if (ant == 1)
-            {
+
+        //var ant = Model.AntallPersoner;
+
+        @*if (ant == 1)
+        {
                 <h3>Du har valgt @ant  person, men vi trenger bare infoen til deg som bestiller. Fyll inn her! </h3>
             }
             else
             {
                 <h3>Du har valgt @ant  personer, men vi trenger bare infoen til deg som bestiller. Fyll inn her! </h3>
-            }
+            }*@
 
 
             <div class="skjema">
                 <div class="form-group">
                     <h4>Kunde</h4>
                     <!--FIKS-->
+                    @foreach (var item in Model)
+                    {
+                            @item.AntallPersoner
+                       
+                    }
                 </div>
                 <div class="form-group">
                     <div class="col-md-10" id="fornavn">
@@ -116,4 +121,3 @@
 
 
     </body>
-</html>

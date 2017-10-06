@@ -13,7 +13,6 @@
         $(document).ready(function () {
 
             // hent alle fraFlyplass, bygg opp dropdown1 når siden lastes
-
             $.ajax({
                 url: '/Home/hentAlleFraFlyplasser',
                 type: 'GET',
@@ -76,7 +75,7 @@
             $("#tilDato").change(function () {
 
                 $("#personValg").show();
-                $("#antallPersoner").removeAttr("disabled");
+                $("#AntallPersoner").removeAttr("disabled");
                 skjulEndre();
             });
 
@@ -91,7 +90,7 @@
                 var valgtFraFlyplass = $("#drop1").val();
                 var valgtTilFlyplass = $("#drop2").val();
                 var valgtDato = $("#tilDato").val();
-                var valgteSeter = $("#antallPersoner").val();
+                var valgteSeter = $("#AntallPersoner").val();
 
                 $.ajax({
                     url: '/Home/hentStrekning',
@@ -117,13 +116,11 @@
                 fraDato.setAttribute('min', valgtDato);
 
                 $("#bekreftetTilFraSted").show();
-                //$("#bekreftKnapper").show();
                 $("#retur").removeAttr("disabled");
                 $("#sok").html("Endre søk");
             })
             
             $("#retur").click(function () {
-
                 $("#returDato").show();
                 $("#fraDato").removeAttr("disabled");
                 $("#bekreft").hide();
@@ -131,7 +128,6 @@
                 $("#lukk").removeAttr("disabled");
                 $("#lukk").show();
                 $("#avbrytRetur").show();
-
             });
 
             $("#lukk").click(function () {
@@ -147,7 +143,7 @@
                 var valgtFraFlyplass = $("#drop2").val();
                 var valgtTilFlyplass = $("#drop1").val();
                 var valgtFraDato = $("#fraDato").val();
-                var valgteSeter = $("#antallPersoner").val();
+                var valgteSeter = $("#AntallPersoner").val();
 
                 $.ajax({
                     url: '/Home/hentStrekning',
@@ -170,41 +166,6 @@
                 $("#bekreftetRetur").show();
             })
 
-            function skjulEndre() {
-                $("#bekreftetTilFraSted").hide();
-                $("#bekreftKnapper").hide();
-                $("#returDato").hide();
-                $("#bekreftetRetur").hide();
-                $("#bekreft").attr("disabled");
-                $("#retur").attr("disabled");
-                $("#lukk").attr("disabled");
-                $("#lukk").hide();
-            }
-
-            
-            function VisRetur(retur) {
-                var utStreng = "<table class='table'><tr><th>Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th><th>Ledige seter</th><th>Velg</th></tr>";
-                if (retur.length == 0) {
-                    utStreng = "<h4>Det finnes ingen strekninger! Prøv å endre søket ditt.</h4>";
-                    $("#bekreft").attr("disabled");
-                    $("#bekreft").hide();
-                }
-                else {
-                    for (var i in retur) {
-                        utStreng += "<tr><td>" + retur[i].fraFlyplass + "</td><td>" + retur[i].tilFlyplass +
-                            "</td><td>" + retur[i].dato + "</td><td>" + retur[i].tid + "</td><td>" + retur[i].pris +
-                            "</td><td>" + retur[i].antallLedigeSeter + "</td><td><input type='radio' name='ReturId' onChange='VisBekreftKnapper()' value='" + retur[i].StrekningsID + "' class=''/></td><tr/>";
-                    }
-                    $("#bekreft").show();
-                    $("#bekreft").removeAttr("disabled");
-                }
-                utStreng += "</table>"
-
-                $("#returBy").empty().append(utStreng);
-                $("#bekreftetRetur").show();
-                $("#bekreft").hide();
-
-            }
             function VisStrekninger(strekninger) {
                 var utStreng = "";
                 if (strekninger.length == 0) {
@@ -220,7 +181,7 @@
                     for (var i in strekninger) {
                         utStreng += "<tr><td>" + strekninger[i].fraFlyplass + "</td><td>" + strekninger[i].tilFlyplass +
                             "</td><td>" + strekninger[i].dato + "</td><td>" + strekninger[i].tid + "</td><td>" + strekninger[i].pris +
-                            "</td><td>" + strekninger[i].antallLedigeSeter + "</td><td><input type='radio' name='StrekningsId' onChange='VisKnapper()' value='" + strekninger[i].StrekningsID + "' class=''/></td><tr/>";
+                            "</td><td>" + strekninger[i].antallLedigeSeter + "</td><td><input type='radio' name='StrekningsId' onChange='VisBekreftRetur()' value='" + strekninger[i].StrekningsID + "' class=''/></td><tr/>";
                     }
                 }
 
@@ -228,7 +189,29 @@
                 $("#strekninger").empty().append(utStreng);
             }
 
+            function VisRetur(retur) {
+                var utStreng = "<table class='table'><tr><th>Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th><th>Ledige seter</th><th>Velg</th></tr>";
+                if (retur.length == 0) {
+                    utStreng = "<h4>Det finnes ingen strekninger! Prøv å endre søket ditt.</h4>";
+                    $("#bekreft").attr("disabled");
+                    $("#bekreft").hide();
+                }
+                else {
+                    for (var i in retur) {
+                        utStreng += "<tr><td>" + retur[i].fraFlyplass + "</td><td>" + retur[i].tilFlyplass +
+                            "</td><td>" + retur[i].dato + "</td><td>" + retur[i].tid + "</td><td>" + retur[i].pris +
+                            "</td><td>" + retur[i].antallLedigeSeter + "</td><td><input type='radio' name='ReturId' onChange='VisBekreftRetur()' value='" + retur[i].StrekningsID + "' class=''/></td><tr/>";
+                    }
+                    $("#bekreft").show();
+                    $("#bekreft").removeAttr("disabled");
+                }
+                utStreng += "</table>"
 
+                $("#returBy").empty().append(utStreng);
+                $("#bekreftetRetur").show();
+                $("#bekreft").hide();
+
+            }
             //Finner dagens dato og legger til
             var tilDato = document.getElementById("tilDato");
 
@@ -253,17 +236,30 @@
 
     </script>
     <script type="text/javascript">
-        function VisKnapper() {
-            $("#bekreftKnapper").show();
+        function VisBekreftRetur() {
             $("#retur").show();
             $("#bekreft").show();
             $("#bekreft").removeAttr("disabled");
             $("#retur").removeAttr("disabled");
-
-
             alert($('input[name=StrekningsId]:checked').val());
         }
-        function VisBekreftKnapper() {
+        function SkjulBekreftRetur() {
+            $("#retur").hide();
+            $("#bekreft").hide();
+        }
+        function skjulEndre() {
+            $("#bekreftetTilFraSted").hide();
+            $("#retur").hide();
+            $("#returDato").hide();
+            $("#bekreftetRetur").hide();
+            $("#bekreft").hide();
+            $("#bekreft").attr("disabled");
+            $("#retur").attr("disabled");
+            $("#lukk").attr("disabled");
+            $("#lukk").hide();
+        }
+        function VisSisteBekreftKnappen() {
+            $("#sisteBekreft").show();
             $("#bekreft").show();
         }
     </script>
@@ -272,70 +268,67 @@
     @using (Html.BeginForm())
     {
         <div class="container">
-            <div class="row no-gutters">
-                <h1 class="header">Velg din flyreise</h1>
-                <div class="col col-lg-2 col-md-3 col-sm-6 col-xs-12" id="dropDown1">
-                    <p>FRA</p>
-                    <select id="drop1" class="selectUtseende knappUtseende"></select>
+            @*div for å finne ønsket flight*@
+            <div class="bestemFlight">
+                <div class="row no-gutters">
+                    <h1 class="header">Velg din flyreise</h1>
+                    <div class="col col-lg-2 col-md-3 col-sm-6 col-xs-12" id="dropDown1">
+                        <p>FRA</p>
+                        <select id="drop1" class="selectUtseende knappUtseende"></select>
+                    </div>
+                    <div class="col col-lg-2 col-md-3 col-sm-6 col-xs-12" id="dropDown2" hidden="hidden">
+                        <p>TIL</p>
+                        <select id="drop2" class="selectUtseende knappUtseende" disabled></select>
+                    </div> 
+                    <div id="turDato" class="col col-lg-2 col-md-3 col-sm-6 col-xs-12" hidden="hidden">
+                        <p>DATO</p>
+                        <input id="tilDato" type="date" onkeydown="return false" class="knappUtseende selectUtseende" disabled>
+                    </div>
+                    <div id="personValg" class="col col-lg-2 col-md-3 col-sm-6 col-xs-12" hidden="hidden">
+                        <p>ANTALL PERSONER</p>
+                        <select id="AntallPersoner" name="AntallPersoner" class="knappUtseende selectUtseende" disabled>
+                            <option name="velg" disabled selected >Velg</option>
+                            <option name="en" value="1">1</option>
+                            <option name="to" value="2">2</option>
+                            <option name="tre" value="3">3</option>
+                            <option name="fire" value="4">4</option>
+                            <option name="fem" value="5">5</option>
+                            <option name="seks" value="6">6</option>
+                            <option name="syv" value="7">7</option>
+                            <option name="atte" value="8">8</option>
+                        </select>
+                    </div>
+                    <div id="sokReise" class="col col-lg-2 col-md-2 col-sm-3 col-xs-6" hidden="hidden">
+                        <p>.</p>
+                        <button type="button" id="sok" disabled="disabled">Søk</button>
+                    </div>
                 </div>
-                <div class="col col-lg-2 col-md-3 col-sm-6 col-xs-12" id="dropDown2" hidden="hidden">
-                    <p>TIL</p>
-                    <select id="drop2" class="selectUtseende knappUtseende" disabled></select>
+                <div class="row">
+                    <div hidden="hidden" id="bekreftetTilFraSted">
+                        <h3>Når ønsker du å reise?</h3>
+                        <div id="strekninger"></div>
+                    </div>
                 </div>
-                <div id="turDato" class="col col-lg-2 col-md-3 col-sm-6 col-xs-12" hidden="hidden">
-                    <p>DATO</p>
-                    <input id="tilDato" type="date" onkeydown="return false" class="knappUtseende selectUtseende" disabled>
+                <div class="row">
+                    <div id="returDato" class="col col-lg-2 col-md-2 col-sm-3 col-xs-6" hidden="hidden">
+                        <p>RETUR-DATO</p>
+                        <input id="fraDato" type="date" onkeydown="return false" class="knappUtseende selectUtseende" disabled">
+                    </div>
+                    <div id="avbrytRetur" hidden class="col col-lg-2 col-md-2 col-sm-3 col-xs-6">
+                        <p>.</p>
+                        <button type="button" id="lukk" class="knapp" disabled>Lukk retur</button>
+                    </div>
                 </div>
-                <div id="personValg" class="col col-lg-2 col-md-3 col-sm-6 col-xs-12" hidden="hidden">
-                    <p>ANTALL PERSONER</p>
-                    <select id="antallPersoner" name="antallPersoner" class="knappUtseende selectUtseende" disabled>
-                        <option name="velg" disabled selected >Velg</option>
-                        <option name="en" value="1">1</option>
-                        <option name="to" value="2">2</option>
-                        <option name="tre" value="3">3</option>
-                        <option name="fire" value="4">4</option>
-                        <option name="fem" value="5">5</option>
-                        <option name="seks" value="6">6</option>
-                        <option name="syv" value="7">7</option>
-                        <option name="atte" value="8">8</option>
-                    </select>
-                    @*@Html.EditorFor(model => model.StrekningsId, new { htmlAttributes = new { @class = "form-control" } })*@
-
-
+                <div class="row">
+                    <div hidden="hidden" id="bekreftetRetur">
+                        <h3>Når ønsker du å reise tilbake?</h3>
+                        <div id="returBy"></div>
+                    </div>
                 </div>
-
-                <div id="sokReise" class="col col-lg-2 col-md-2 col-sm-3 col-xs-6" hidden="hidden">
-                    <p>.</p>
-                    <button type="button" id="sok" disabled="disabled">Søk</button>
-                </div>
-            </div>
-            <div class="row">
-                <div hidden="hidden" id="bekreftetTilFraSted">
-                    <h3>Når ønsker du å reise?</h3>
-                    <div id="strekninger"></div>
-                </div>
-            </div>
-            <div class="row">
-                <div id="returDato" class="col col-lg-2 col-md-2 col-sm-3 col-xs-6" hidden="hidden">
-                    <p>RETUR-DATO</p>
-                    <input id="fraDato" type="date" onkeydown="return false" class="knappUtseende selectUtseende" disabled">
-                </div>
-                <div id="avbrytRetur" hidden class="col col-lg-2 col-md-2 col-sm-3 col-xs-6">
-                    <p>.</p>
-                    <button type="button" id="lukk" class="knapp" disabled>Lukk retur</button>
-                </div>
-            </div>
-            <div class="row">
-                <div hidden="hidden" id="bekreftetRetur">
-                    <h3>Når ønsker du å reise tilbake?</h3>
-                    <div id="returBy"></div>
-                </div>
-            </div>
-            <div class="row">
-                <div hidden="hidden" id="bekreftKnapper">
-                    <button type="button" id="retur" class="knapp" disabled="disabled">Bestill returbiletter</button>
-                    <input type="submit" value="Bekreft" class="knapp" id="bekreft" disabled="disabled" />
-                </div>
+                <div class="row">
+                    <button type="button" id="retur" class="knapp" disabled="disabled" hidden="hidden">Bestill returbiletter</button>
+                    <input type="submit" value="Bekreft" class="knapp" id="bekreft" disabled="disabled"  hidden="hidden" />
+                 </div>
             </div>
         </div>
     }
