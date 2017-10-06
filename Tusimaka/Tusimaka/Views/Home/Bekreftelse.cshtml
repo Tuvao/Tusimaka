@@ -9,20 +9,26 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<p>Takk for din bestilling, @Model.fornavn  @Model.etternavn</p>
+<p>Her er informasjonen om din neste reise: </p>
+
+@*<table class="table">
     <tr>
         <th></th>
     </tr>
 
     <tr>
         <td>
-            @Model.fornavn
+           @Model.fornavn
         </td>
         <td>
-            @Model.etternavn
+           @Model.etternavn
         </td>
         <td>
-            @Model.kjonn
+           @Model.kjonn
+        </td>
+        <td>
+    
         </td>
     </tr>
     <tr>
@@ -35,11 +41,11 @@
     </tr>
     <tr>
         @*<td>
-            @Html.ActionLink("Edit", "Edit", new { id=Model.kundeID }) |
-            @Html.ActionLink("Details", "Details", new { id= .kundeID }) |
-            @Html.ActionLink("Delete", "Delete", new { id= Kunder.kundeID })
-        </td>*@
-    </tr>
+                @Html.ActionLink("Edit", "Edit", new { id=Model.kundeID }) |
+                @Html.ActionLink("Details", "Details", new { id= .kundeID }) |
+                @Html.ActionLink("Delete", "Delete", new { id= Kunder.kundeID })
+            </td>
+        </tr>
 
 
-</table>
+    </table>*@

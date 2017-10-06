@@ -120,5 +120,21 @@ namespace Tusimaka
                 return hentEnKunde;
             }
         }
+
+        public strekning hentStrekning()
+        {
+            using (var db = new DBContext())
+            {
+                int flyBestillingsId = db.FlyBestilling.Max(f => f.flyBestillingsID);
+
+                
+                //finner siste registrert i DB
+                int strekningsid = db.Strekning.Max(s => s.StrekningsID);
+                //henter ut registrert informasjon om ønsket kunde.
+                Models.strekning hentStrekning = db.Strekning.FirstOrDefault(s => s.StrekningsID == strekningsid);
+
+                return hentStrekning;
+            }
+        }
     }
 }
