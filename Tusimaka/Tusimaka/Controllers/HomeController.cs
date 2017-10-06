@@ -82,7 +82,7 @@ namespace Tusimaka.Controllers
             if (OK2)
             {
                 var db2 = new DB();
-                bool OK3 = db2.lagreBetalingsinformasjon(innBetaling, flyBestilling);
+                bool OK3 = db2.lagreBetalingsinformasjon(innBetaling);
                 if(OK3)
                 {
                     return RedirectToAction("Bekreftelse");
