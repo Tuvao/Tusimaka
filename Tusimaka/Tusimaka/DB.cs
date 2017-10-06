@@ -93,14 +93,16 @@ namespace Tusimaka
             }
         }
 
-        public bool lagreBetalingsinformasjon(BetalingsInformasjon innBetaling, FlyBestillingKunde flyBestilling)
+        public bool lagreBetalingsinformasjon(BetalingsInformasjon innBetaling)
         {
             using (var db = new DBContext())
             {
                 try
                 {
+                    int flyBestillingsId = db.FlyBestilling.Max(f => f.flyBestillingsID);
+
                     var nyBetaling = new BetalingsInfo();
-                    nyBetaling.FlyBestillingsID = flyBestilling.FlyBestillingsID; //er litt usikker på hvordan man kobler det opp mot den andre tabellen
+                    nyBetaling.FlyBestillingsID = flyBestillingsId;
                     nyBetaling.Kortnummer = innBetaling.Kortnummer;
                     nyBetaling.Utlopsmnd = innBetaling.Utlopsmnd;
                     nyBetaling.Utlopsaar = innBetaling.Utlopsaar;
