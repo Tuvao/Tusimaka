@@ -92,5 +92,31 @@ namespace Tusimaka
                 }
             }
         }
+
+        public bool lagreBetalingsinformasjon(BetalingsInformasjon innBetaling, FlyBestillingKunde flyBestilling)
+        {
+            using (var db = new DBContext())
+            {
+                try
+                {
+                    var nyBetaling = new BetalingsInfo();
+                    nyBetaling.FlyBestillingsID = flyBestilling.FlyBestillingsID; //er litt usikker på hvordan man kobler det opp mot den andre tabellen
+                    nyBetaling.Kortnummer = innBetaling.Kortnummer;
+                    nyBetaling.Utlopsmnd = innBetaling.Utlopsmnd;
+                    nyBetaling.Utlopsaar = innBetaling.Utlopsaar;
+                    nyBetaling.Utlopsmnd = innBetaling.Utlopsmnd;
+                    nyBetaling.CVC = innBetaling.CVC;
+                    nyBetaling.Korttype = innBetaling.Korttype;
+
+                    db.BetalingsInfo.Add(nyBetaling);
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception feil)
+                {
+                    return false;
+                }
+            }
+        }
     }
 }

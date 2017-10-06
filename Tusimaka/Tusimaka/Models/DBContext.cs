@@ -43,6 +43,18 @@ namespace Tusimaka.Models
         public virtual Kunder Kunder { get; set; }
         public virtual FlyBestilling FlyBestilling { get; set; }
     }
+
+    public class BetalingsInfo
+    {
+        [Key]
+        public int BestillingsID { get; set; }
+        public int FlyBestillingsID { get; set; }
+        public string Kortnummer { get; set; }
+        public string Utlopsmnd { get; set; }
+        public string Utlopsaar { get; set; }
+        public string CVC { get; set; }
+        public string Korttype { get; set; }
+    }
     public class DBContext : DbContext
     {
         public DBContext()
@@ -55,7 +67,7 @@ namespace Tusimaka.Models
         public virtual DbSet<strekning> Strekning { get; set; }
         public virtual DbSet<Kunder> Kunder { get; set; }
         public virtual DbSet<FlyBestilling> FlyBestilling { get; set; }
-        public virtual DbSet<BetalingsInformasjon> BetalingsInformasjon { get; set; }
+        public virtual DbSet<BetalingsInfo> BetalingsInfo{ get; set; }
         public virtual DbSet<FlyBestillingKunde> FlyBestillingKunde { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
