@@ -73,16 +73,25 @@ namespace Tusimaka.Controllers
             
             return View();
         }
+
         [HttpPost]
-        public ActionResult RegistrerBetaling(Models.BetalingsInformasjon innBetaling)
+        public ActionResult RegistrerBetaling(Models.BetalingsInformasjon innBetaling, Models.FlyBestillingKunde flyBestilling)
         {
             var db = new DB();
             bool OK2 = db.registrereKundeIdMotFlyBestilling();
             if (OK2)
             {
-                return RedirectToAction("Bekreftelse");
+                var db2 = new DB();
+                bool OK3 = db2.lagreBetalingsinformasjon(innBetaling, flyBestilling);
+                if(OK3)
+                {
+                    return RedirectToAction("Bekreftelse");
+                }
+                
+                
             }
             return View();
+            
         }
 
         public ActionResult Bekreftelse()
@@ -95,6 +104,7 @@ namespace Tusimaka.Controllers
             Kunder hentEnKunde = db.hentEnKunde();
             return View(hentEnKunde);
         }
+
         public string hentAlleFraFlyplasser()
         {
             using (var db = new DBContext())
