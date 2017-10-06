@@ -14,12 +14,12 @@ namespace Tusimaka.Models
 
         [Display(Name ="Fornavn")]
         [Required(ErrorMessage ="Fornavn må oppgis!")]
-        [RegularExpression(@"[ÆØÅæøåA-Za-z]", ErrorMessage="Fornavn må bestå av bokstaver")] //må få til æøå
+        //[RegularExpression(@"[a-zæøåA-ZÆØÅ]", ErrorMessage="Fornavn må bestå av bokstaver")] //må få til æøå
         public string Fornavn { get; set; }
 
         [Display(Name = "Etternavn")]
         [Required(ErrorMessage = "Etternavn må oppgis!")]
-        [RegularExpression(@"[ÆØÅæøåA-Za-z]", ErrorMessage = "Etternavn må bestå av bokstaver")]  //må få til æøå
+        //[RegularExpression(@"[a-zæøåA-ZØÅ]", ErrorMessage = "Etternavn må bestå av bokstaver")]  //må få til æøå
         public string Etternavn { get; set; }
 
         [Display(Name = "Kjonn")]
@@ -28,5 +28,11 @@ namespace Tusimaka.Models
 
         //public virtual FlyBestillingKunde FlyBestillingKunde { get; set; }
 
+    }
+
+    public enum Kjonn
+    {
+        Mann,
+        Kvinne
     }
 }
