@@ -121,20 +121,21 @@ namespace Tusimaka
             }
         }
 
-        public strekning hentStrekning()
-        {
-            using (var db = new DBContext())
-            {
-                int flyBestillingsId = db.FlyBestilling.Max(f => f.flyBestillingsID);
+        //public string hentBestilling()
+        //{
+        //    using (var db = new DBContext())
+        //    {
 
-                
-                //finner siste registrert i DB
-                int strekningsid = db.Strekning.Max(s => s.StrekningsID);
-                //henter ut registrert informasjon om ønsket kunde.
-                Models.strekning hentStrekning = db.Strekning.FirstOrDefault(s => s.StrekningsID == strekningsid);
+        //        int flyBestillingsId = db.FlyBestilling.Max(f => f.flyBestillingsID);
 
-                return hentStrekning;
-            }
-        }
+        //        Models.FlyBestilling finnStrekning = db.FlyBestilling.FirstOrDefault(f => f.flyBestillingsID == flyBestillingsId);
+        //        int strekningsId = finnStrekning.StrekningsID;
+        //        List<strekning> finnStrekningList = db.Strekning.Where(s => s.StrekningsID == strekningsId).ToList();
+
+        //        var jsonSerializer = new JavaScriptSerializer();
+        //        return jsonSerializer.Serialize(finnStrekningList);
+        //    }
+        //}
+
     }
 }

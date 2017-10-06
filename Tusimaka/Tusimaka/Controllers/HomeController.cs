@@ -162,5 +162,20 @@ namespace Tusimaka.Controllers
                 return jsonSerializer.Serialize(alleFly);
             }
         }
+        public string hentBestilling()
+        {
+            using (var db = new DBContext())
+            {
+
+                int flyBestillingsId = db.FlyBestilling.Max(f => f.flyBestillingsID);
+
+                Models.FlyBestilling finnStrekning = db.FlyBestilling.FirstOrDefault(f => f.flyBestillingsID == flyBestillingsId);
+                int strekningsId = finnStrekning.StrekningsID;
+                List<strekning> finnStrekningList = db.Strekning.Where(s => s.StrekningsID == strekningsId).ToList();
+
+                var jsonSerializer = new JavaScriptSerializer();
+                return jsonSerializer.Serialize(finnStrekningList);
+            }
+        }
     }
 }

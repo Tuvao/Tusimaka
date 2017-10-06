@@ -3,15 +3,51 @@
 @{
     ViewBag.Title = "Bekreftelse";
 }
+<script type="text/javascript">
+    $().ready(function () {
+        window.onload = VisBestilling();
+        function VisBestilling() {
+            $.ajax({
+                url: '/Home/hentBestilling',
+                type: 'GET',
+                dataType: 'json',
+                success: function (finnStrekningList) {
+                    VisValgtStrekning(finnStrekningList);
+                },
+                error: function (x, y, z) {
+                    alert(x + '\n' + y + '\n' + z);
+                }
+            });
 
+            function VisValgtStrekning(finnStrekningList) {
+                console.log("jeg kan kjre");
+                var utStreng = "";
+                console.log(finnStrekningList.flyTid + "Antll prs");
+                utStreng += "<table><tr><td>Her er din bestilling</td></tr>";
+                for (var i in finnStrekningList) {
+                    utStreng += "<tr><td>Fra flyplass</td><td>" + finnStrekningList[i].fraFlyplass + "</td></tr>";
+                    utStreng += "<tr><td></td><td>" + finnStrekningList[i].tilFlyplass + "</td></tr>";
+                    utStreng += "<tr><td></td><td>" + finnStrekningList[i].dato + "</td></tr>";
+                    utStreng += "<tr><td></td><td>" + finnStrekningList[i].tid + "</td></tr>";
+                    utStreng += "<tr><td>Pris</td><td>" + finnStrekningList[i].pris + "</td></tr>";
+                    utStreng += "<tr><td></td><td>" + finnStrekningList[i].flyTid + "</td></tr>";
+                }
+                utStreng += "</table>";
+                $("visTur").empty().append(utStreng);
+            }
+        }
+    });
+</script>
 <h2>Bekreftelse</h2>
-
 <p>
+
+
     @Html.ActionLink("Create New", "Create")
 </p>
 <p>Takk for din bestilling, @Model.fornavn  @Model.etternavn</p>
-<p>Her er informasjonen om din neste reise: </p>
+<p>Her er informasjonen om din bestilling: </p>
 
+    <div id="visTur"></div>
 @*<table class="table">
     <tr>
         <th></th>
