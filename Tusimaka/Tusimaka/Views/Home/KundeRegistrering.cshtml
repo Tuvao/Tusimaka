@@ -19,17 +19,19 @@
     <h2>Kunderegistrering</h2>
   
     @using (Html.BeginForm())
-    {
+    { 
             <div class="skjema">
                 <div class="form-group">
                     <h4>Kunde</h4>
                     <!--FIKS-->
-
                 </div>
                 <div class="form-group">
                     <div class="col-md-10" id="fornavn">
                         <p>FORNAVN</p>
                         <input name="Fornavn" type="text" class="knappUtseende selectUtseende" />
+                        <!--<span class="field-validation-error text-danger"
+                              data-valmsg-for="Fornavn"
+                              data-valmsg-replace="true">Fornavn må oppgis.</span>-->
                     </div>
                 </div>
                 <div class="form-group">
@@ -49,56 +51,56 @@
                     </div>
                 </div>
             </div>
-        <div class="form-group">
-            <div class="col-md-10" id="registrerKnapp">
-                <input type="submit" name="registrer" id="registrer" value="Registerer" class="knapp" />
+            <div class="form-group">
+                <div class="col-md-10" id="registrerKnapp">
+                    <input type="submit" name="registrer" id="registrer" value="Registerer" class="knapp" />
+                </div>
             </div>
-        </div>
-            
-        }
 
-                @*@using (Html.BeginForm("Bekreftelse", "Home"))
-                    {
-                        @Html.AntiForgeryToken()
+            }
 
-                        <div class="form-horizontal">
-                            <h4>Vennligst oppgi informasjon om reisende</h4>
-                            <hr />
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            <div class="skjema">
-                                <div class="form-group">
-                                    <div class="col-md-10" id="fornavn">
-                                        <p>FORNAVN</p>
-                                        <input id="fornavn" type="text" class="knappUtseende selectUtseende" />
-                                    </div>
+            @*@using (Html.BeginForm("Bekreftelse", "Home"))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        <h4>Vennligst oppgi informasjon om reisende</h4>
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="skjema">
+                            <div class="form-group">
+                                <div class="col-md-10" id="fornavn">
+                                    <p>FORNAVN</p>
+                                    <input id="fornavn" type="text" class="knappUtseende selectUtseende" />
                                 </div>
-                                <div class="form-group">
-                                    <div class="col-md-10" id="etternavn">
-                                        <p>ETTERNAVN</p>
-                                        <input id="etternavn" type="text" class="knappUtseende selectUtseende" />
-                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-10" id="etternavn">
+                                    <p>ETTERNAVN</p>
+                                    <input id="etternavn" type="text" class="knappUtseende selectUtseende" />
                                 </div>
-                                <div class="form-group">
-                                    <div class="col-md-10" id="kjonn">
-                                        <p>KJØNN</p>
-                                        <select id="velgKjonn" class="knappUtseende selectUtseende" >
-                                            <option name="velg" disabled selected>Velg</option>
-                                            <option name="mann">Mann</option>
-                                            <option name="kvinne">Kvinne</option>
-                                        </select>
-                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-10" id="kjonn">
+                                    <p>KJØNN</p>
+                                    <select id="velgKjonn" class="knappUtseende selectUtseende" >
+                                        <option name="velg" disabled selected>Velg</option>
+                                        <option name="mann">Mann</option>
+                                        <option name="kvinne">Kvinne</option>
+                                    </select>
                                 </div>
-                                <div class="form-group">
-                                    <div class="col-md-10">
-                                        <button id="tilbake" class="knapp">
-                                            @Html.ActionLink("Tilbake til bestilling", "Bestill")
-                                        </button>
-                                        <input type="submit" name="registrer" id="registrer" value="Registerer" class="knapp"/>
-                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <button id="tilbake" class="knapp">
+                                        @Html.ActionLink("Tilbake til bestilling", "Bestill")
+                                    </button>
+                                    <input type="submit" name="registrer" id="registrer" value="Registerer" class="knapp"/>
                                 </div>
                             </div>
                         </div>
-                    }*@
+                    </div>
+                }*@
 
 
-    </body>
+</body>
