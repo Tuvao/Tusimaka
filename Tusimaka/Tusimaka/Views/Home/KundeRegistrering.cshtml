@@ -34,12 +34,12 @@
                 <div class="form-group">
                     <h4>Kunde</h4>
                     <!--FIKS-->
-                    
+
                 </div>
                 <div class="form-group">
                     <div class="col-md-10" id="fornavn">
                         <p>FORNAVN</p>
-                        <input name="Fornavn" type="text" class="knappUtseende selectUtseende" />
+                        <input name="Fornavn" type="text" class="knappUtseende selectUtseende" />@Html.ValidationMessageFor(model => model.Fornavn, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
