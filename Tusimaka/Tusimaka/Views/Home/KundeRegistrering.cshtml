@@ -1,5 +1,5 @@
 ﻿@*@model Tusimaka.Models.Kunde*@
-@model Tusimaka.Models.FlyBestilling
+@model List<Tusimaka.Models.FlyBestillinger>
 
 @{
     ViewBag.Title = "KundeRegistrering";
@@ -13,21 +13,11 @@
         function tilbakeKnapp() {
             window.history.back();
         }
-        
     </script>
 </head>
 <body>
     <h2>Kunderegistrering</h2>
-    
-
-    @*@if (Model.antallPersoner == 1)
-    {
-    <h3>Du har valgt @Model.antallPersoner  person, men vi trenger bare infoen til deg som bestiller. Fyll inn her! </h3>
-    }
-    else
-    {
-    <h3>Du har valgt @Model.antallPersoner  personer, men vi trenger bare infoen til deg som bestiller. Fyll inn her! </h3>
-    }*@
+  
     @using (Html.BeginForm())
     {
             <div class="skjema">
