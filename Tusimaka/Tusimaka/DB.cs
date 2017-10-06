@@ -2,24 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Script.Serialization;
 using Tusimaka.Models;
 
 namespace Tusimaka
 {
     public class DB
     {
-        public Kunder hentEnKunde()
-        {
-            using (var db = new DBContext())
-            {
-                //finner siste registrert i DB
-                int kundeId = db.Kunder.Max(k => k.kundeID);
-                //henter ut registrert informasjon om ønsket kunde.
-                Models.Kunder hentEnKunde = db.Kunder.FirstOrDefault(k => k.kundeID == kundeId);
-                return hentEnKunde;
-            }
-        }
-
         public bool lagreKunde(Kunde innKunde)
         {
             using (var db = new DBContext())
@@ -67,7 +56,7 @@ namespace Tusimaka
                 }
             }
         }
-        public bool registrereKundeIdMotFlyBestilling ()
+        public bool lagreKundeIdMotFlyBestilling ()
         {
             using (var db = new DBContext())
             {
@@ -118,6 +107,17 @@ namespace Tusimaka
                 {
                     return false;
                 }
+            }
+        }
+        public Kunder hentEnKunde()
+        {
+            using (var db = new DBContext())
+            {
+                //finner siste registrert i DB
+                int kundeId = db.Kunder.Max(k => k.kundeID);
+                //henter ut registrert informasjon om ønsket kunde.
+                Models.Kunder hentEnKunde = db.Kunder.FirstOrDefault(k => k.kundeID == kundeId);
+                return hentEnKunde;
             }
         }
     }

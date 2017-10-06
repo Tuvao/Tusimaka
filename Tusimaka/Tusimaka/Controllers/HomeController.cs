@@ -78,7 +78,7 @@ namespace Tusimaka.Controllers
         public ActionResult RegistrerBetaling(Models.BetalingsInformasjon innBetaling, Models.FlyBestillingKunde flyBestilling)
         {
             var db = new DB();
-            bool OK2 = db.registrereKundeIdMotFlyBestilling();
+            bool OK2 = db.lagreKundeIdMotFlyBestilling();
             if (OK2)
             {
                 var db2 = new DB();
@@ -151,7 +151,6 @@ namespace Tusimaka.Controllers
                 return jsonSerializer.Serialize(alleTilFly);
             }
         }
-
         public string hentStrekning(string fraFlyplass, string tilFlyPlass, string dato, int antallLedigeSeter)
         {
             using (var db = new DBContext())
@@ -163,6 +162,5 @@ namespace Tusimaka.Controllers
                 return jsonSerializer.Serialize(alleFly);
             }
         }
-
     }
 }
