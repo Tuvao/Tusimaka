@@ -18,7 +18,7 @@ namespace Tusimaka.Models
         [RegularExpression(@"[0-9]{16}", ErrorMessage = "Kortnummeret må bestå av 16 sifre.")]
         public string Kortnummer { get; set; }
 
-        [Display(Name = "Utlopsmaaned")]
+        [Display(Name = "Utlopsmnd")]
         [Required(ErrorMessage = "Utlopsmaaned må oppgis!")]
         [RegularExpression(@"[0-9]{2}", ErrorMessage = "Utlopsmaaned må bestå av 2 sifre.")]
         public string Utlopsmnd { get; set; }
