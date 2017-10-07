@@ -51,7 +51,6 @@ namespace Tusimaka.Controllers
         public ActionResult KundeRegistrering(Kunde innKunde)
         {
             //var bestillinger = Session["bestillingsinfo"];
-            //("HEi" + innKunde.Fornavn);
             //var bestilling = (Models.FlyBestillinger)Session["bestillingsinfo"];
             //var bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsInfo"];
             //Session["bestillingsInfo"] = bestillinger;

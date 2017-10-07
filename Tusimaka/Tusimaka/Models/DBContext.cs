@@ -15,6 +15,7 @@ namespace Tusimaka.Models
         public int kundeID { get; set; }
         public string fornavn { get; set; }
         public string etternavn { get; set; }
+        public string epost { get; set; }
         public string kjonn { get; set; }
 
         //public virtual List<FlyBestillinger> FlyBestillinger { get; set; }

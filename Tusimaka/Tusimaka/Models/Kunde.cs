@@ -16,12 +16,17 @@ namespace Tusimaka.Models
         [Required(ErrorMessage ="Fornavn må oppgis!")]
         [RegularExpression(@"[a-zæøåA-ZÆØÅ]{1,30}", ErrorMessage="Fornavn må bestå av bokstaver")]
         public string Fornavn { get; set; }
-
+        
         [Display(Name = "Etternavn")]
         [Required(ErrorMessage = "Etternavn må oppgis!")]
         [RegularExpression(@"[a-zæøåA-ZØÅ]{1,30}", ErrorMessage = "Etternavn må bestå av bokstaver")]
         public string Etternavn { get; set; }
 
+        [Display(Name = "Epost")]
+        [Required(ErrorMessage = "E-post må oppgis!")]
+        [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", ErrorMessage = "Etternavn må bestå av bokstaver")]
+        public string Epost { get; set; }
+        //^[_A-Za-z'`+-.]{1,30}+([_A-Za-z0-9'+-.]+)*@([A-Za-z0-9-])+(\\.[A-Za-z0-9]+)*(\\.([A-Za-z]*){3,30})$
         [Display(Name = "Kjonn")]
         [Required(ErrorMessage = "Kjønn må oppgis!")]
         public string Kjonn { get; set; }

@@ -19,6 +19,7 @@ namespace Tusimaka
                     nyKunde.fornavn = innKunde.Fornavn;
                     nyKunde.etternavn = innKunde.Etternavn;
                     nyKunde.kjonn = innKunde.Kjonn;
+                    nyKunde.epost = innKunde.Epost;
 
                     db.Kunder.Add(nyKunde);
                     db.SaveChanges();
