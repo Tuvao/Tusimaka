@@ -68,10 +68,7 @@ td {
     }
 
 /*Knapper og dropdown stil/farge*/
-/*.knappUtseende {
-    background-color: white;
-    color: black;
-}*/
+
 .selectUtseende {
     padding: 0.3em;
     font-size: 1.2em;
@@ -87,27 +84,13 @@ td {
 select::-ms-expand {
     display: none;
 }
-
-.formFelter {
-    padding: 0.3em;
-    font-size: 1.2em;
-    height: 2.5em;
-    width: 100%;
-    border: 2px solid #224652;
-    position: relative;
-    background-color: white;
-    color: black;
+.utlop{
+    max-width: 1em;
+}
+.cvc{
+    max-width: 1.2em;
 }
 
-.utlop {
-    padding: 0.3em;
-    font-size: 1.2em;
-    height: 2.5em;
-    border: 2px solid #224652;
-    position: relative;
-    background-color: white;
-    color: black;
-}
 
 /*størrelse på divene til Til og Fra select*/
 
