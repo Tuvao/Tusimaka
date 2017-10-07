@@ -5,6 +5,7 @@
 }
 <script type="text/javascript">
     $(document).ready(function () {
+            // hent alle reiser, vises når siden lastes
             $.ajax({
                 url: '/Home/hentBestilling',
                 type: 'GET',
@@ -17,6 +18,7 @@
                 }
             });
 
+            // viser reiseinformasjon
             function VisValgtStrekning(finnStrekninger) {
                 var utStreng = "<h3>Bestilt tur</h3><table>";
                 utStreng += "<tr><th>Fra flyplass: </th><td>" + finnStrekninger.fraFlyplass + "</td></tr>";
@@ -28,6 +30,8 @@
                 utStreng += "</table>";
                 $("#VisTur").empty().append(utStreng);
             }
+
+            // hent alle retur, vises når siden lastes om retur er valgt
             $.ajax({
                 url: '/Home/hentRetur',
                 type: 'GET',
@@ -40,6 +44,7 @@
                 }
             });
 
+            // Viser returinformasjon om retur er valgt
             function VisEvtRetur(finnRetur) {
                 if (finnRetur.fraFlyplass != null) {
                     var utStreng = "<table><tr><th>Retur</th></tr>";

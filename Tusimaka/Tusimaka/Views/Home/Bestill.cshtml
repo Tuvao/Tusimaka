@@ -25,6 +25,7 @@
                 }
             });
 
+            // viser fra-steder i dropdown
             function VisDropDown1(fraListe) {
                 var utStreng = "";
                 utStreng += "<option class='dropdown' value='' selected disabled>Velg</option>";
@@ -34,6 +35,7 @@
                 $("#drop1").empty().append(utStreng);
             }
 
+            // når fra-sted er valgt skal valg av til-sted dukke opp
             $("#drop1").change(function () {
                 var fraFlyplassVerdi = $(this).val();
                 $.ajax({
@@ -54,6 +56,7 @@
                 skjulEndre();
             });
 
+            // viser til-steder i dropdown
             function VisDropDown2(tilListe) {
                 var utStreng = "";
                 utStreng += "<option class='dropdown' value='' selected disabled>Velg</option>";
@@ -63,7 +66,7 @@
                 $("#drop2").empty().append(utStreng);
             }
 
-            // opprett en hendelse på dropdown-listen valgtFlyplass når siden lastes
+            // når til-sted er valgt skal valg av dato dukke opp
             $("#drop2").change(function () {
 
                 $("#returKnapp").removeAttr("disabled");
@@ -72,6 +75,7 @@
                 skjulEndre();
             });
 
+            // når dato er valgt skal valg av antall personer dukke opp
             $("#tilDato").change(function () {
 
                 $("#personValg").show();
@@ -79,6 +83,7 @@
                 skjulEndre();
             });
 
+            // når antall personer er valgt skal en søk-knapp dukke opp
             $("#personValg").change(function () {
 
                 $("#sokReise").show();
@@ -86,6 +91,7 @@
                 skjulEndre();
             })
 
+            // når dato er valgt skal strekninger dukke opp
             $("#sokReise").click(function () {
                 var valgtFraFlyplass = $("#drop1").val();
                 var valgtTilFlyplass = $("#drop2").val();
@@ -119,7 +125,8 @@
                 $("#retur").removeAttr("disabled");
                 $("#sok").html("Endre søk");
             })
-            
+
+            // når man velger retur skal valg av returdato dukke opp, mens bekreft- og returknapp skal forsvinne
             $("#retur").click(function () {
                 $("#returDato").show();
                 $("#fraDato").removeAttr("disabled");
@@ -130,15 +137,7 @@
                 $("#avbrytRetur").show();
             });
 
-            $("#lukk").click(function () {
-                $("#returDato").hide();
-                $("#retur").show();
-                $("#lukk").hide();
-                $("#avbrytRetur").hide();
-                $("#bekreftetRetur").hide();
-                $("#bekreft").show();
-            });
-
+            // når returdato er valgt skal strekninger dukke opp
             $("#fraDato").change(function () {
                 var valgtFraFlyplass = $("#drop2").val();
                 var valgtTilFlyplass = $("#drop1").val();
@@ -166,6 +165,17 @@
                 $("#bekreftetRetur").show();
             })
 
+            // når "lukk retur" klikkes skal valg av returdato og bekreftknappene forsvinne
+            $("#lukk").click(function () {
+                $("#returDato").hide();
+                $("#retur").show();
+                $("#lukk").hide();
+                $("#avbrytRetur").hide();
+                $("#bekreftetRetur").hide();
+                $("#bekreft").show();
+            });
+
+            // Viser reise-strekninger med dato, klokkeslett, pris og reisetid
             function VisStrekninger(strekninger) {
                 var utStreng = "";
                 if (strekninger.length == 0) {
@@ -188,6 +198,7 @@
                 $("#strekninger").empty().append(utStreng);
             }
 
+            // Viser retur-strekninger med dato, klokkeslett, pris og reisetid
             function VisRetur(retur) {
                 var utStreng = "<table class='table'><tr><th>Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th><th>Fly tid</th><th>Velg</th></tr>";
                 if (retur.length == 0) {
@@ -212,6 +223,7 @@
                 $("#bekreft").hide();
 
             }
+
             //Finner dagens dato og legger til
             var tilDato = document.getElementById("tilDato");
 
