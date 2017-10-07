@@ -19,23 +19,21 @@
         <div class="form-group">
             <div class="col-md-10">
                 <p>KORTNUMMER</p>
-                @Html.EditorFor(model => model.Kortnummer, new { htmlAttributes = new { @class = "knappUtseende selectUtseende" } })
+                @Html.EditorFor(model => model.Kortnummer, new { htmlAttributes = new { @class = "formFelter" } })
                 @Html.ValidationMessageFor(model => model.Kortnummer, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            <div class="col-md-10">
+            <div class="col-md-2 col-sm-2 col-xs-10">
                 <p>UTLØPSMÅNED</p>
-                @Html.EditorFor(model => model.Utlopsmnd, new { htmlAttributes = new { @class = "knappUtseende selectUtseende" } })
+                @Html.EditorFor(model => model.Utlopsmnd, new { htmlAttributes = new { @class = "formFelter" } })
                 @Html.ValidationMessageFor(model => model.Utlopsmnd, "", new { @class = "text-danger" })
             </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-10">
+        
+            <div class="col-md-2 col-sm-2 col-xs-10">
                 <p>UTLØPSÅR</p>
-                @Html.EditorFor(model => model.Utlopsaar, new { htmlAttributes = new { @class = "knappUtseende selectUtseende" } })
+                @Html.EditorFor(model => model.Utlopsaar, new { htmlAttributes = new { @class = "formFelter" } })
                 @Html.ValidationMessageFor(model => model.Utlopsaar, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -43,7 +41,7 @@
         <div class="form-group">
             <div class="col-md-10">
                 <p>CVC</p>
-                @Html.EditorFor(model => model.CVC, new { htmlAttributes = new { @class = "knappUtseende selectUtseende" } })
+                @Html.EditorFor(model => model.CVC, new { htmlAttributes = new { @class = "formFelter" } })
                 @Html.ValidationMessageFor(model => model.CVC, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -51,7 +49,7 @@
         <div class="form-group">
             <div class="col-md-10">
                 <p>KORTTYPE</p>
-                @Html.EditorFor(model => model.Korttype, new { htmlAttributes = new { @class = "knappUtseende selectUtseende" } })
+                @Html.EditorFor(model => model.Korttype, new { htmlAttributes = new { @class = "formFelter" } })
                 @Html.ValidationMessageFor(model => model.Korttype, "", new { @class = "text-danger" })
             </div>
         </div>
