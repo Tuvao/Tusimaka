@@ -100,9 +100,9 @@ namespace Tusimaka.Controllers
             //var betaling = (List<Models.BetalingsInformasjon>)Session["betalingsinfo"];
 
             //Lister ut kunder
-            var db = new DB();
-            Kunder hentEnKunde = db.hentEnKunde();
-            return View(hentEnKunde);
+            //var db = new DB();
+            //Kunder hentEnKunde = db.hentEnKunde();
+            return View();
         }
 
         public string hentAlleFraFlyplasser()
@@ -166,15 +166,29 @@ namespace Tusimaka.Controllers
         {
             using (var db = new DBContext())
             {
-
                 int flyBestillingsId = db.FlyBestilling.Max(f => f.flyBestillingsID);
-
                 Models.FlyBestilling finnStrekning = db.FlyBestilling.FirstOrDefault(f => f.flyBestillingsID == flyBestillingsId);
                 int strekningsId = finnStrekning.StrekningsID;
-                List<strekning> finnStrekningList = db.Strekning.Where(s => s.StrekningsID == strekningsId).ToList();
+                Models.strekning finnStrekningList = db.Strekning.FirstOrDefault(s => s.StrekningsID == strekningsId);
 
                 var jsonSerializer = new JavaScriptSerializer();
                 return jsonSerializer.Serialize(finnStrekningList);
+            }
+        }
+        public string hentRetur()
+        {
+            using (var db = new DBContext())
+            {
+                int flyBestillingsId = db.FlyBestilling.Max(f => f.flyBestillingsID);
+                Models.FlyBestilling finnRetur = db.FlyBestilling.FirstOrDefault(f => f.flyBestillingsID == flyBestillingsId);
+                Models.strekning finnReturList = new Models.strekning();
+                if (finnRetur.returID != null){
+                    int? returId = finnRetur.returID;
+                    finnReturList = db.Strekning.FirstOrDefault(r => r.StrekningsID == returId );
+                }
+
+                var jsonSerializer = new JavaScriptSerializer();
+                return jsonSerializer.Serialize(finnReturList);
             }
         }
     }
