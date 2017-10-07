@@ -14,18 +14,16 @@ namespace Tusimaka.Models
         public int FlyBestillingsID { get; set; }
 
         [Display(Name = "Kortnummer")]
-        [Required(ErrorMessage = "Kortnummeret må oppgis!")]
+        [Required(ErrorMessage = "Kortnummeret må oppgis")]
         [RegularExpression(@"[0-9]{16}", ErrorMessage = "Kortnummeret må bestå av 16 sifre.")]
         public string Kortnummer { get; set; }
 
         [Display(Name = "Utlopsmnd")]
-        [Required(ErrorMessage = "Utlopsmaaned må oppgis!")]
-        [RegularExpression(@"[0-9]{2}", ErrorMessage = "Utlopsmaaned må bestå av 2 sifre.")]
+        [Required(ErrorMessage = "Utlopsmåned må oppgis")]
         public string Utlopsmnd { get; set; }
 
         [Display(Name = "Utlopsaar")]
-        [Required(ErrorMessage = "Utlopsaar må oppgis!")]
-        [RegularExpression(@"[0-9]{2}", ErrorMessage = "Utlopsaar må bestå av 2 sifre.")]
+        [Required(ErrorMessage = "Utlopsår må oppgis!")]
         public string Utlopsaar { get; set; }
 
         [Display(Name = "CVC")]
@@ -34,7 +32,8 @@ namespace Tusimaka.Models
         public string CVC { get; set; }
 
         [Display(Name = "Korttype")]
-        [Required(ErrorMessage = "Korttype må velges!")]
+        [Required(ErrorMessage = "Korttype må velges")]
+        [RegularExpression(@"[a-zæøåA-ZÆØÅ ]{2,30}", ErrorMessage = "Korttype må bestå av bokstaver")]
         public string Korttype { get; set; }
     }
 }

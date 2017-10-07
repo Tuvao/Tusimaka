@@ -18,13 +18,13 @@
             });
 
             function VisValgtStrekning(finnStrekninger) {
-                var utStreng = "<table><tr><th>Bestilt tur</th></tr>";
-                utStreng += "<tr><td>Fra flyplass</td><td>" + finnStrekninger.fraFlyplass + "</td></tr>";
-                utStreng += "<tr><td>Til flyplass</td><td>" + finnStrekninger.tilFlyplass + "</td></tr>";
-                utStreng += "<tr><td>Dato</td><td>" + finnStrekninger.dato + "</td></tr>";
-                utStreng += "<tr><td>Tidspunkt</td><td>" + finnStrekninger.tid + "</td></tr>";
-                utStreng += "<tr><td>Pris</td><td>" + finnStrekninger.pris + "</td></tr>";
-                utStreng += "<tr><td>Reisetid</td><td>" + finnStrekninger.flyTid + "</td></tr>";
+                var utStreng = "<h3>Bestilt tur</h3><table>";
+                utStreng += "<tr><th>Fra flyplass: </th><td>" + finnStrekninger.fraFlyplass + "</td></tr>";
+                utStreng += "<tr><th>Til flyplass: </th><td>" + finnStrekninger.tilFlyplass + "</td></tr>";
+                utStreng += "<tr><th>Dato: </th><td>" + finnStrekninger.dato + "</td></tr>";
+                utStreng += "<tr><th>Tidspunkt: </th><td>" + finnStrekninger.tid + "</td></tr>";
+                utStreng += "<tr><th>Pris: </th><td>" + finnStrekninger.pris + " NOK</td></tr>";
+                utStreng += "<tr><th>Reisetid: </th><td>" + finnStrekninger.flyTid + " min</td></tr>";
                 utStreng += "</table>";
                 $("#VisTur").empty().append(utStreng);
             }
@@ -56,13 +56,8 @@
     });
 </script>
 <h2>Bekreftelse</h2>
-<p>
 
-
-    @Html.ActionLink("Create New", "Create")
-</p>
 <p>Takk for din bestilling, @*@Model.fornavn  @Model.etternavn*@</p>
-<p>Her er informasjonen om din bestilling: </p>
 
     <div id="VisTur" class="BekreftelsesDivBoks"></div>
     <div id="VisRetur" class="BekreftelsesDivBoks"></div>

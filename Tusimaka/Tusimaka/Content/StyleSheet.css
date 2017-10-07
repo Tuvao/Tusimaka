@@ -25,50 +25,6 @@ span {
     margin-bottom: 1em;
 }
 
-.tekstFelt {
-    width: 200%;
-    height: 3em;
-    padding: 1em;
-    font-size: 1.2em;
-    border-bottom: 0.125em solid #D6EBF2;
-    border-right: 0.125em solid #D6EBF2;
-}
-
-    .tekstFelt:hover {
-        border: 2px solid grey
-    }
-
-    .tekstFelt:focus {
-        border: 2px solid grey;
-        border-radius: 5px;
-    }
-
-th {
-    font-size: 1.1em;
-}
-
-td {
-    padding: 0.5em;
-}
-
-#bestill {
-    border: none;
-    color: white;
-    letter-spacing: 1px;
-    background-color: #022E3C;
-    width: 200%;
-    height: 3em;
-    font-size: 1.2em;
-    text-align: center;
-    margin-top: 2em;
-}
-
-    #bestill:hover {
-        opacity: 0.8;
-    }
-
-/*Knapper og dropdown stil/farge*/
-
 .selectUtseende {
     padding: 0.3em;
     font-size: 1.2em;
@@ -80,26 +36,54 @@ td {
     color: black;
 }
 
+.tekstFelt {
+    padding: 0.3em;
+    font-size: 1.2em;
+    height: 2.5em;
+    width: 100%;
+    border: 2px solid #224652;
+    position: relative;
+    background-color: white;
+    color: black;
+}
+
 /*tar bort default pil*/
 select::-ms-expand {
     display: none;
 }
-.utlop{
-    max-width: 1em;
+
+tr {
+    margin:3em;
 }
-.cvc{
-    max-width: 1.2em;
+th {
+    font-size: 1.1em;
 }
 
-
-/*størrelse på divene til Til og Fra select*/
+td {
+    padding: 2em;
+}
 
 .knapp {
     padding: 0.1em 2em;
     font-size: 1.3em;
-    min-height: 2.5em;
+    min-height: 3em;
     min-width: 9em;
     border: none;
+}
+    
+    .knapp:hover {
+        opacity: 0.8;
+    }
+
+#sok {
+    padding: 0.3em;
+    font-size: 1.2em;
+    height: 3em;
+    width: 100%;
+    border: none;
+}
+#sokReise p{
+    color: white;
 }
 
 #retur, #tilbake {
@@ -113,27 +97,14 @@ select::-ms-expand {
 }
 
 
-#registrer {
+#registrer, #bekreftBetaling {
     margin-top:2em;
 }
 
-#sok {
-    padding: 0.3em;
-    font-size: 1.2em;
-    height: 3em;
-    width: 100%;
-    border: none;
-}
-#sokReise p{
-    color: white;
-}
 
 a, a:hover {
     text-decoration: none;
     color:black;
-}
-.knapp:hover {
-    opacity:0.7;
 }
 
 #indextekst {
@@ -146,9 +117,9 @@ a, a:hover {
 }
 
 
-#bekreftetTilFraSted {
+/*#bekreftetTilFraSted {
     position: relative;
-}
+}*/
 
 input[type=radio] {
     width: 30px;

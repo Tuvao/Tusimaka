@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "RegistrerBetaling";
 }
+
 <link href="~/Content/StyleSheet.css" rel="stylesheet" />
 <h2>RegistrerBetaling</h2>
 
@@ -11,37 +12,83 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>BetalingsInformasjon</h4>
+        <h4>Betalingsinformasjon</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.BestillingsID)
         <div class="form-group">
             <div class="col-md-10">
                 <p>KORTNUMMER</p>
-                @Html.EditorFor(model => model.Kortnummer, new { htmlAttributes = new { @class = "selectUtseende" } })
+                @Html.EditorFor(model => model.Kortnummer, new { htmlAttributes = new { @class = "tekstFelt" } })
                 @Html.ValidationMessageFor(model => model.Kortnummer, "", new { @class = "text-danger" })
             </div>
         </div>
-        @*col-lg-1 col-md-2 col-sm-2 col-xs-10*@
+        
         <div class="form-group">
+            <div class="col-md-10" id="Utlopsmnd">
+                <p>UTLØPSMÅNED</p>
+                <select id="velgUtlopsmnd" class="tekstFelt">
+                    <option name="MM" disabled selected>MM</option>
+                    <option name="jan">01</option>
+                    <option name="feb">02</option>
+                    <option name="mar">03</option>
+                    <option name="apr">04</option>
+                    <option name="mai">05</option>
+                    <option name="jun">06</option>
+                    <option name="jul">07</option>
+                    <option name="aug">08</option>
+                    <option name="sep">09</option>
+                    <option name="okt">10</option>
+                    <option name="nov">11</option>
+                    <option name="des">12</option>
+                </select>
+                @Html.ValidationMessageFor(model => model.Utlopsaar, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10" id="Utlopsaar">
+                <p>UTLØPSÅR</p>
+                <select id="velgUtlopsaar" class="tekstFelt">
+                    <option name="YY" disabled selected>YY</option>
+                    <option name="17">17</option>
+                    <option name="18">18</option>
+                    <option name="19">19</option>
+                    <option name="20">20</option>
+                    <option name="21">21</option>
+                    <option name="22">22</option>
+                    <option name="23">23</option>
+                    <option name="24">24</option>
+                    <option name="25">25</option>
+                    <option name="26">26</option>
+                    <option name="27">27</option>
+                    <option name="28">28</option>
+                    <option name="29">29</option>
+                    <option name="30">30</option>
+                    <option name="31">31</option>
+                </select>
+                @Html.ValidationMessageFor(model => model.Utlopsaar, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        @*<div class="form-group">
             <div class="col-md-10">
                 <p>UTLØPSMÅNED</p>
-                @Html.EditorFor(model => model.Utlopsmnd, new { htmlAttributes = new { @class = "selectUtseende" } })
+                @Html.EditorFor(model => model.Utlopsmnd, new { htmlAttributes = new { @class = "tekstFelt" } })
                 @Html.ValidationMessageFor(model => model.Utlopsmnd, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
             <div class="col-md-10">
                 <p>UTLØPSÅR</p>
-                @Html.EditorFor(model => model.Utlopsaar, new { htmlAttributes = new { @class = "selectUtseende" } })
+                @Html.EditorFor(model => model.Utlopsaar, new { htmlAttributes = new { @class = "tekstFelt" } })
                 @Html.ValidationMessageFor(model => model.Utlopsaar, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             <div class="col-md-10">
                 <p>CVC</p>
-                @Html.EditorFor(model => model.CVC, new { htmlAttributes = new { @class = "selectUtseende" } })
+                @Html.EditorFor(model => model.CVC, new { htmlAttributes = new { @class = "tekstFelt" } })
                 @Html.ValidationMessageFor(model => model.CVC, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -49,7 +96,7 @@
         <div class="form-group">
             <div class="col-md-10">
                 <p>KORTTYPE</p>
-                @Html.EditorFor(model => model.Korttype, new { htmlAttributes = new { @class = "selectUtseende" } })
+                @Html.EditorFor(model => model.Korttype, new { htmlAttributes = new { @class = "tekstFelt" } })
                 @Html.ValidationMessageFor(model => model.Korttype, "", new { @class = "text-danger" })
             </div>
         </div>
