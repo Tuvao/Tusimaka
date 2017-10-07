@@ -4,38 +4,55 @@
     ViewBag.Title = "Bekreftelse";
 }
 <script type="text/javascript">
-    $().ready(function () {
-        window.onload = VisBestilling();
-        function VisBestilling() {
+    $(document).ready(function () {
             $.ajax({
                 url: '/Home/hentBestilling',
                 type: 'GET',
                 dataType: 'json',
-                success: function (finnStrekningList) {
-                    VisValgtStrekning(finnStrekningList);
+                success: function (finnStrekninger) {
+                    VisValgtStrekning(finnStrekninger);
                 },
                 error: function (x, y, z) {
                     alert(x + '\n' + y + '\n' + z);
                 }
             });
 
-            function VisValgtStrekning(finnStrekningList) {
-                console.log("jeg kan kjre");
-                var utStreng = "";
-                console.log(finnStrekningList.flyTid + "Antll prs");
-                utStreng += "<table><tr><td>Her er din bestilling</td></tr>";
-                for (var i in finnStrekningList) {
-                    utStreng += "<tr><td>Fra flyplass</td><td>" + finnStrekningList[i].fraFlyplass + "</td></tr>";
-                    utStreng += "<tr><td></td><td>" + finnStrekningList[i].tilFlyplass + "</td></tr>";
-                    utStreng += "<tr><td></td><td>" + finnStrekningList[i].dato + "</td></tr>";
-                    utStreng += "<tr><td></td><td>" + finnStrekningList[i].tid + "</td></tr>";
-                    utStreng += "<tr><td>Pris</td><td>" + finnStrekningList[i].pris + "</td></tr>";
-                    utStreng += "<tr><td></td><td>" + finnStrekningList[i].flyTid + "</td></tr>";
-                }
+            function VisValgtStrekning(finnStrekninger) {
+                var utStreng = "<table><tr><th>Bestilt tur</th></tr>";
+                utStreng += "<tr><td>Fra flyplass</td><td>" + finnStrekninger.fraFlyplass + "</td></tr>";
+                utStreng += "<tr><td>Til flyplass</td><td>" + finnStrekninger.tilFlyplass + "</td></tr>";
+                utStreng += "<tr><td>Dato</td><td>" + finnStrekninger.dato + "</td></tr>";
+                utStreng += "<tr><td>Tidspunkt</td><td>" + finnStrekninger.tid + "</td></tr>";
+                utStreng += "<tr><td>Pris</td><td>" + finnStrekninger.pris + "</td></tr>";
+                utStreng += "<tr><td>Reisetid</td><td>" + finnStrekninger.flyTid + "</td></tr>";
                 utStreng += "</table>";
-                $("visTur").empty().append(utStreng);
+                $("#VisTur").empty().append(utStreng);
             }
-        }
+            $.ajax({
+                url: '/Home/hentRetur',
+                type: 'GET',
+                dataType: 'json',
+                success: function (finnRetur) {
+                    VisEvtRetur(finnRetur);
+                },
+                error: function (x, y, z) {
+                    alert(x + '\n' + y + '\n' + z);
+                }
+            });
+
+            function VisEvtRetur(finnRetur) {
+                if (finnRetur.flyFlass != null) {
+                    var utStreng = "<table><tr><th>Retur</th></tr>";
+                    utStreng += "<tr><td>Fra flyplass</td><td>" + finnRetur.fraFlyplass + "</td></tr>";
+                    utStreng += "<tr><td>Til flyplass</td><td>" + finnRetur.tilFlyplass + "</td></tr>";
+                    utStreng += "<tr><td>Dato</td><td>" + finnRetur.dato + "</td></tr>";
+                    utStreng += "<tr><td>Tidspunkt</td><td>" + finnRetur.tid + "</td></tr>";
+                    utStreng += "<tr><td>Pris</td><td>" + finnRetur.pris + "</td></tr>";
+                    utStreng += "<tr><td>Reisetid</td><td>" + finnRetur.flyTid + "</td></tr>";
+                    utStreng += "</table>";
+                    $("#VisRetur").empty().append(utStreng);
+                }
+            }
     });
 </script>
 <h2>Bekreftelse</h2>
@@ -44,10 +61,11 @@
 
     @Html.ActionLink("Create New", "Create")
 </p>
-<p>Takk for din bestilling, @Model.fornavn  @Model.etternavn</p>
+<p>Takk for din bestilling, @*@Model.fornavn  @Model.etternavn*@</p>
 <p>Her er informasjonen om din bestilling: </p>
 
-    <div id="visTur"></div>
+    <div id="VisTur" class="BekreftelsesDivBoks"></div>
+    <div id="VisRetur"></div>
 @*<table class="table">
     <tr>
         <th></th>
