@@ -18,8 +18,8 @@ namespace Tusimaka
                     var nyKunde = new Kunder();
                     nyKunde.fornavn = innKunde.Fornavn;
                     nyKunde.etternavn = innKunde.Etternavn;
-                    nyKunde.kjonn = innKunde.Kjonn;
                     nyKunde.epost = innKunde.Epost;
+                    nyKunde.kjonn = innKunde.Kjonn;
 
                     db.Kunder.Add(nyKunde);
                     db.SaveChanges();

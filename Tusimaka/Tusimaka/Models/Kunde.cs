@@ -35,9 +35,5 @@ namespace Tusimaka.Models
 
     }
 
-    public enum Kjonn
-    {
-        Mann,
-        Kvinne
-    }
+    
 }
