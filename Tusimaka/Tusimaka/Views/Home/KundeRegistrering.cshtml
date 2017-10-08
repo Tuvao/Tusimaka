@@ -1,7 +1,7 @@
 ﻿@model Tusimaka.Models.Kunde
 
 @{
-    ViewBag.Title = "KundeRegistrering";
+    ViewBag.Title = "Kunderegistrering";
 }
 <link href="~/Content/StyleSheet.css" rel="stylesheet" />
 <h2>Kunderegistrering</h2>
@@ -11,7 +11,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Kunde</h4>
+        <h4>Vennligst registrerer informasjon til betalende</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.KundeID)
