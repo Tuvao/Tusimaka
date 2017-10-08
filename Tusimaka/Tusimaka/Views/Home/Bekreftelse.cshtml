@@ -6,7 +6,7 @@
 <link href="@Url.Content("~/Content/StyleSheet.css")" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
     $(document).ready(function () {
-            // hent alle reiser, vises når siden lastes
+            // henter siste bestilling, vises når siden lastes
             $.ajax({
                 url: '/Home/hentBestilling',
                 type: 'GET',
@@ -18,8 +18,7 @@
                     alert(x + '\n' + y + '\n' + z);
                 }
             });
-
-            // viser reiseinformasjon
+            //viser ut informasjon om siste bestilling
             function VisValgtStrekning(finnStrekninger) {
                 var utStreng = "<table><tr><h4>BESTILT TUR</h4></tr>";
                 utStreng += "<tr><th>FRA FLYPLASS</th><td>" + finnStrekninger.fraFlyplass + "</td></tr>";
@@ -62,6 +61,7 @@
                     $("#VisRetur").hide();
                 }
             }
+            //henter referansenummer(flyBestillingsID) på siste bestilling
             $.ajax({
                 url: '/Home/hentReferanseNR',
                 type: 'GET',
@@ -74,7 +74,7 @@
                 }
             });
 
-            // Viser returinformasjon om retur er valgt
+            // Viser referansenummer på siste bestilling
             function VisRefNr(finnRefNr) {
                 var utStreng = "<table><tr><td>Her er ditt referansenummer</td>";
                 utStreng += "<th>" + finnRefNr.flyBestillingsID + "</th></tr></table>";
@@ -85,48 +85,13 @@
 
     
 </script>
-<div class="BekreftelseKundeInfoDiv">
-    <h2>Bekreftelse</h2>
-    <p>Takk for din bestilling, @Model.fornavn  @Model.etternavn</p>
-    <div id="VisBekreftelsesNR"></div>
-</div>
-
+    <div class="BekreftelseKundeInfoDiv">
+        <h2>Bekreftelse</h2>
+        <p>Takk for din bestilling @Model.fornavn  @Model.etternavn</p>
+        <div id="VisBekreftelsesNR"></div>
+    </div>
     <div id="VisTur" class="BekreftelsesDivBoks"></div>
     <div id="VisRetur" class="BekreftelsesDivBoks"></div>
-@*<table class="table">
-    <tr>
-        <th></th>
-    </tr>
-
-    <tr>
-        <td>
-           @Model.fornavn
-        </td>
-        <td>
-           @Model.etternavn
-        </td>
-        <td>
-           @Model.kjonn
-        </td>
-        <td>
-    
-        </td>
-    </tr>
-    <tr>
-        <td>
-        </td>
-        <td></td>
-        <td></td>
-
-        <td></td>
-    </tr>
-    <tr>
-        @*<td>
-                @Html.ActionLink("Edit", "Edit", new { id=Model.kundeID }) |
-                @Html.ActionLink("Details", "Details", new { id= .kundeID }) |
-                @Html.ActionLink("Delete", "Delete", new { id= Kunder.kundeID })
-            </td>
-        </tr>
-
-
-    </table>*@
+    <form action="/Home/Bestill">
+        <input type="submit" value="Bestill ny flytur her" class="knapp" id="bekreft" />
+    </form>

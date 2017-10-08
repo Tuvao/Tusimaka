@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Betalingsinformasjon</h4>
+        <h4>Fyll inn betalingsinformasjon</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.BestillingsID)
@@ -64,20 +64,6 @@
                 @Html.ValidationMessageFor(model => model.Utlopsaar, "", new { @class = "text-danger" })
             </div>
         </div>
-        @*<div class="form-group">
-            <div class="col-md-10">
-                <p>UTLØPSMÅNED</p>
-                @Html.EditorFor(model => model.Utlopsmnd, new { htmlAttributes = new { @class = "tekstFelt" } })
-                @Html.ValidationMessageFor(model => model.Utlopsmnd, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-10">
-                <p>UTLØPSÅR</p>
-                @Html.EditorFor(model => model.Utlopsaar, new { htmlAttributes = new { @class = "tekstFelt" } })
-                @Html.ValidationMessageFor(model => model.Utlopsaar, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
 
         <div class="form-group">
             <div class="col-md-10">

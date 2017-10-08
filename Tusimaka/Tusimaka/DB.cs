@@ -39,7 +39,7 @@ namespace Tusimaka
                 try
                 {
                     var nyFlyBestilling = new FlyBestilling();
-                    //nyFlyBestilling.kundeID = kundeId;
+
                     nyFlyBestilling.StrekningsID = innFlyBestilling.StrekningsID;
                     nyFlyBestilling.antallPersoner = innFlyBestilling.AntallPersoner;
 
@@ -47,6 +47,7 @@ namespace Tusimaka
                     {
                         nyFlyBestilling.returID = innFlyBestilling.ReturID;
                     }
+
                     db.FlyBestilling.Add(nyFlyBestilling);
                     db.SaveChanges();
                     return true;
@@ -114,29 +115,12 @@ namespace Tusimaka
         {
             using (var db = new DBContext())
             {
-                //finner siste registrert i DB
+                //finner siste kunde registrert i kunde tabellen i DB
                 int kundeId = db.Kunder.Max(k => k.kundeID);
                 //henter ut registrert informasjon om ønsket kunde.
                 Models.Kunder hentEnKunde = db.Kunder.FirstOrDefault(k => k.kundeID == kundeId);
                 return hentEnKunde;
             }
         }
-
-        //public string hentBestilling()
-        //{
-        //    using (var db = new DBContext())
-        //    {
-
-        //        int flyBestillingsId = db.FlyBestilling.Max(f => f.flyBestillingsID);
-
-        //        Models.FlyBestilling finnStrekning = db.FlyBestilling.FirstOrDefault(f => f.flyBestillingsID == flyBestillingsId);
-        //        int strekningsId = finnStrekning.StrekningsID;
-        //        List<strekning> finnStrekningList = db.Strekning.Where(s => s.StrekningsID == strekningsId).ToList();
-
-        //        var jsonSerializer = new JavaScriptSerializer();
-        //        return jsonSerializer.Serialize(finnStrekningList);
-        //    }
-        //}
-
     }
 }

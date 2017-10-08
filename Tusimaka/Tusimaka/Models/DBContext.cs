@@ -17,19 +17,14 @@ namespace Tusimaka.Models
         public string etternavn { get; set; }
         public string epost { get; set; }
         public string kjonn { get; set; }
-
-        //public virtual List<FlyBestillinger> FlyBestillinger { get; set; }
     }
     public class FlyBestilling
     {
         [Key]
         public int flyBestillingsID { get; set; }
-        //public int kundeID { get; set; }
         public int StrekningsID { get; set; }
         public int antallPersoner { get; set; }
         public int? returID { get; set; }
-
-        //public virtual Kunde Kunde { get; set; }
         
         public virtual strekning Strekning { get; set; }
     }

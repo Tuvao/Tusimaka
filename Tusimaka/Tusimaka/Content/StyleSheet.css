@@ -90,7 +90,9 @@ td {
     background-color: lightgrey;
     color: black;
 }
-
+div#VisAntallPers{
+    display: inline-block;
+}
 #bekreft, #registrer, #sok, #bekreftBetaling {
     background-color: #224652;
     color: white;

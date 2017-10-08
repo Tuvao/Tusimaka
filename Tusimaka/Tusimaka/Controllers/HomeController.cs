@@ -22,11 +22,9 @@ namespace Tusimaka.Controllers
         [HttpPost]
         public ActionResult Bestill(FlyBestillinger innFlyInfo)
         {
-            //Dataene fra Bestill legges i Sessions helt til vi får kundeID og kan legge dataene i DB
-            //Session["bestillingsInfo"] = new List<Models.FlyBestillinger>();
-            //var bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsInfo"];
-            //bestillinger.Add(innFlyInfo);
-            //Session["bestillingsInfo"] = bestillinger;
+            //henter data fra utfylt skjema i Bestill siden, lagrer i FlyBestilling tabell i DB
+            //om OK, sender videre til neste side. 
+            //selve funksjonene gjøres i DB.cs
             var db = new DB();
             bool OK = db.lagreFlyBestilling(innFlyInfo);
             if (OK)
@@ -41,8 +39,6 @@ namespace Tusimaka.Controllers
         
         public ActionResult KundeRegistrering()
         {
-            //Dataene fra Bestill viewet må ligge i en session og vises i KundeReg viewet 
-            //for å vise rett antall passasjerer. 
             return View();
         }
 
@@ -50,10 +46,8 @@ namespace Tusimaka.Controllers
         [HttpPost]
         public ActionResult KundeRegistrering(Kunde innKunde)
         {
-            //var bestillinger = Session["bestillingsinfo"];
-            //var bestilling = (Models.FlyBestillinger)Session["bestillingsinfo"];
-            //var bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsInfo"];
-            //Session["bestillingsInfo"] = bestillinger;
+            //henter data fra utfylt skjema i KundeRegistrering siden, lagrer i Kunde tabell i DB
+            //om OK, sender videre til neste side. 
             var db = new DB();
             bool OK = db.lagreKunde(innKunde);
             if (OK)
@@ -76,6 +70,11 @@ namespace Tusimaka.Controllers
         [HttpPost]
         public ActionResult RegistrerBetaling(Models.BetalingsInformasjon innBetaling, Models.FlyBestillingKunde flyBestilling)
         {
+            //henter data fra utfylt skjema i RegistrerBetaling siden
+            //selve funksjonene gjøres i DB.cs
+            //kobler først KundeID mot FlyBestillingsID i hjelpetabellen FlyBestillingKunde i DB
+            //om OK, lagres betalingsinformasjon i BetalingsInfo i tabellen i DB. 
+            //sender videre til neste side om OK
             var db = new DB();
             bool OK2 = db.lagreKundeIdMotFlyBestilling();
             if (OK2)
@@ -86,8 +85,6 @@ namespace Tusimaka.Controllers
                 {
                     return RedirectToAction("Bekreftelse");
                 }
-                
-                
             }
             return View();
             
@@ -95,10 +92,7 @@ namespace Tusimaka.Controllers
 
         public ActionResult Bekreftelse()
         {
-            //var bestillinger = (List<Models.FlyBestillinger>)Session["bestillingsInfo"];
-            //var betaling = (List<Models.BetalingsInformasjon>)Session["betalingsinfo"];
-
-            //Lister ut kunder
+            //Lister ut og tilgjengeliggjør dataene fra ønsket kunde(spesifisert i DB.cs) i Viewet til Bekreftelse
             var db = new DB();
             Kunder hentEnKunde = db.hentEnKunde();
             return View(hentEnKunde);
@@ -199,6 +193,17 @@ namespace Tusimaka.Controllers
 
                 var jsonSerializer = new JavaScriptSerializer();
                 return jsonSerializer.Serialize(finnRefNr);
+            }
+        }
+        public string hentAntallPersoner()
+        {
+            using (var db = new DBContext())
+            {
+                int flyBestillingsId = db.FlyBestilling.Max(f => f.flyBestillingsID);
+                Models.FlyBestilling finnAntallPers = db.FlyBestilling.FirstOrDefault(f => f.flyBestillingsID == flyBestillingsId);
+
+                var jsonSerializer = new JavaScriptSerializer();
+                return jsonSerializer.Serialize(finnAntallPers);
             }
         }
     }

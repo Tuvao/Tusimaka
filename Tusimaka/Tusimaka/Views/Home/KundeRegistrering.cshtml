@@ -4,13 +4,36 @@
     ViewBag.Title = "KundeRegistrering";
 }
 <link href="~/Content/StyleSheet.css" rel="stylesheet" />
+<script type="text/javascript">
+    //henter antall personer fra flyBestilling tabellen i DB
+    $(document).ready(function () {
+        $.ajax({
+            url: '/Home/hentAntallPersoner',
+            type: 'GET',
+            dataType: 'json',
+            success: function (antallPersoner) {
+                VisAntallPersoner(antallPersoner);
+            },
+            error: function (x, y, z) {
+                alert(x + '\n' + y + '\n' + z);
+            }
+        });
+        function VisAntallPersoner(antallPersoner) {
+            var utStreng = "<h5>Du har bestilt for ";
+            utStreng += antallPersoner.antallPersoner;
+            utStreng += " person(er)</h5>";
+            $("#VisAntallPers").empty().append(utStreng);
+            $("#VisAntallPers").show();
+        }
+    });
+</script>
 <h2>Kunderegistrering</h2>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-    
     <div class="form-horizontal">
+        <div id="VisAntallPers"></div>
         <h4>Vennligst registrer informasjon til betalende kunde</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
