@@ -99,9 +99,9 @@ namespace Tusimaka.Controllers
             //var betaling = (List<Models.BetalingsInformasjon>)Session["betalingsinfo"];
 
             //Lister ut kunder
-            //var db = new DB();
-            //Kunder hentEnKunde = db.hentEnKunde();
-            return View();
+            var db = new DB();
+            Kunder hentEnKunde = db.hentEnKunde();
+            return View(hentEnKunde);
         }
 
         public string hentAlleFraFlyplasser()
@@ -188,6 +188,17 @@ namespace Tusimaka.Controllers
 
                 var jsonSerializer = new JavaScriptSerializer();
                 return jsonSerializer.Serialize(finnReturList);
+            }
+        }
+        public string hentReferanseNR()
+        {
+            using (var db = new DBContext())
+            {
+                int flyBestillingsId = db.FlyBestilling.Max(f => f.flyBestillingsID);
+                Models.FlyBestilling finnRefNr = db.FlyBestilling.FirstOrDefault(f => f.flyBestillingsID == flyBestillingsId);
+
+                var jsonSerializer = new JavaScriptSerializer();
+                return jsonSerializer.Serialize(finnRefNr);
             }
         }
     }

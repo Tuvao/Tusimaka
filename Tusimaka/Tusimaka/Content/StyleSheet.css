@@ -95,6 +95,11 @@ td {
     background-color: #224652;
     color: white;
 }
+.BekreftelseKundeInfoDiv {
+    color: #1B576B;
+    display: block;
+    font-size: 1.3em;
+}
 .BekreftelsesDivBoks {
     display: inline-block;
     max-width: 40%;

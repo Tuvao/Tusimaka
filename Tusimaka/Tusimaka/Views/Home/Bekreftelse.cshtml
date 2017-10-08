@@ -57,13 +57,39 @@
                     utStreng += "<tr><th>REISETID</th><td>" + finnRetur.flyTid + " min</td></tr>";
                     utStreng += "</table>";
                     $("#VisRetur").empty().append(utStreng);
+                    $("#VisRetur").show();
+                } else {
+                    $("#VisRetur").hide();
                 }
             }
-    });
-</script>
-<h2>Bekreftelse</h2>
+            $.ajax({
+                url: '/Home/hentReferanseNR',
+                type: 'GET',
+                dataType: 'json',
+                success: function (finnRefNr) {
+                    VisRefNr(finnRefNr);
+                },
+                error: function (x, y, z) {
+                    alert(x + '\n' + y + '\n' + z);
+                }
+            });
 
-<p>Takk for din bestilling, @*@Model.fornavn  @Model.etternavn*@</p>
+            // Viser returinformasjon om retur er valgt
+            function VisRefNr(finnRefNr) {
+                var utStreng = "<table><tr><td>Her er ditt referansenummer</td>";
+                utStreng += "<th>" + finnRefNr.flyBestillingsID + "</th></tr></table>";
+                $("#VisBekreftelsesNR").empty().append(utStreng);
+                $("#VisBekreftelsesNR").show();
+            }
+    });
+
+    
+</script>
+<div class="BekreftelseKundeInfoDiv">
+    <h2>Bekreftelse</h2>
+    <p>Takk for din bestilling, @Model.fornavn  @Model.etternavn</p>
+    <div id="VisBekreftelsesNR"></div>
+</div>
 
     <div id="VisTur" class="BekreftelsesDivBoks"></div>
     <div id="VisRetur" class="BekreftelsesDivBoks"></div>
