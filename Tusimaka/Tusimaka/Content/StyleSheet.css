@@ -95,12 +95,27 @@ td {
     background-color: #224652;
     color: white;
 }
-BekreftelsesDivBoks {
+.BekreftelsesDivBoks {
     display: inline-block;
-    margin: 2em;
-    max-width: 30%;
+    max-width: 40%;
+    margin-right: 10%;
+    background-color: #3C6C7C;
+    color: white;
+    padding: 3.4em;
+    margin-top: 5%;
 }
-
+    .BekreftelsesDivBoks td {
+        padding: 1em;
+        font-size: 1.3em;
+    }
+.BekreftelsesDivBoks th {
+    padding: 0.2em;
+    padding-right: 2.5em;
+}
+    .BekreftelsesDivBoks h4 {
+        border-bottom: 1px solid white;
+        padding-bottom: 0.2em;
+    }
 
 a, a:hover {
     text-decoration: none;

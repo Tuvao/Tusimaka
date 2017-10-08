@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Bekreftelse";
 }
+<link href="@Url.Content("~/Content/StyleSheet.css")" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
     $(document).ready(function () {
             // hent alle reiser, vises når siden lastes
@@ -20,13 +21,13 @@
 
             // viser reiseinformasjon
             function VisValgtStrekning(finnStrekninger) {
-                var utStreng = "<h4>Bestilt tur:</h4><table>";
-                utStreng += "<tr><th>Fra flyplass: </th><td>" + finnStrekninger.fraFlyplass + "</td></tr>";
-                utStreng += "<tr><th>Til flyplass: </th><td>" + finnStrekninger.tilFlyplass + "</td></tr>";
-                utStreng += "<tr><th>Dato: </th><td>" + finnStrekninger.dato + "</td></tr>";
-                utStreng += "<tr><th>Tidspunkt: </th><td>" + finnStrekninger.tid + "</td></tr>";
-                utStreng += "<tr><th>Pris: </th><td>" + finnStrekninger.pris + " NOK</td></tr>";
-                utStreng += "<tr><th>Reisetid: </th><td>" + finnStrekninger.flyTid + " min</td></tr>";
+                var utStreng = "<table><tr><h4>BESTILT TUR</h4></tr>";
+                utStreng += "<tr><th>FRA FLYPLASS</th><td>" + finnStrekninger.fraFlyplass + "</td></tr>";
+                utStreng += "<tr><th>TIL FLYPLASS</th><td>" + finnStrekninger.tilFlyplass + "</td></tr>";
+                utStreng += "<tr><th>DATO</th><td>" + finnStrekninger.dato + "</td></tr>";
+                utStreng += "<tr><th>TIDSPUNKT</th><td>" + finnStrekninger.tid + "</td></tr>";
+                utStreng += "<tr><th>PRIS</th><td>" + finnStrekninger.pris + " NOK</td></tr>";
+                utStreng += "<tr><th>REISETID</th><td>" + finnStrekninger.flyTid + " min</td></tr>";
                 utStreng += "</table>";
                 $("#VisTur").empty().append(utStreng);
             }
@@ -47,13 +48,13 @@
             // Viser returinformasjon om retur er valgt
             function VisEvtRetur(finnRetur) {
                 if (finnRetur.fraFlyplass != null) {
-                    var utStreng = "<table><tr><th>Retur</th></tr>";
-                    utStreng += "<tr><th>Fra flyplass</th><td>" + finnRetur.fraFlyplass + "</td></tr>";
-                    utStreng += "<tr><th>Til flyplass</th><td>" + finnRetur.tilFlyplass + "</td></tr>";
-                    utStreng += "<tr><th>Dato</th><td>" + finnRetur.dato + "</td></tr>";
-                    utStreng += "<tr><th>Tidspunkt</th><td>" + finnRetur.tid + "</td></tr>";
-                    utStreng += "<tr><th>Pris</th><td>" + finnRetur.pris + "</td></tr>";
-                    utStreng += "<tr><th>Reisetid</th><td>" + finnRetur.flyTid + "</td></tr>";
+                    var utStreng = "<table><tr><h4>RETUR</h4></tr>";
+                    utStreng += "<tr><th>FRA FLYPLASS</th><td>" + finnRetur.fraFlyplass + "</td></tr>";
+                    utStreng += "<tr><th>TIL  FLYPLASS</th><td>" + finnRetur.tilFlyplass + "</td></tr>";
+                    utStreng += "<tr><th>DATO</th><td>" + finnRetur.dato + "</td></tr>";
+                    utStreng += "<tr><th>TIDSPUNKT</th><td>" + finnRetur.tid + "</td></tr>";
+                    utStreng += "<tr><th>PRIS</th><td>" + finnRetur.pris + " NOK</td></tr>";
+                    utStreng += "<tr><th>REISETID</th><td>" + finnRetur.flyTid + " min</td></tr>";
                     utStreng += "</table>";
                     $("#VisRetur").empty().append(utStreng);
                 }
