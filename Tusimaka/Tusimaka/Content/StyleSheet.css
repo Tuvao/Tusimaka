@@ -100,26 +100,30 @@ td {
     display: block;
     font-size: 1.3em;
 }
+.BekreftelseKundeInfoDiv td{
+    padding-left: 0em;
+}
 .BekreftelsesDivBoks {
     display: inline-block;
     max-width: 40%;
+    min-width: 25em;
     margin-right: 10%;
     background-color: #3C6C7C;
     color: white;
     padding: 3.4em;
-    margin-top: 5%;
+    margin-top: 2%;
 }
     .BekreftelsesDivBoks td {
         padding: 1em;
         font-size: 1.3em;
     }
 .BekreftelsesDivBoks th {
-    padding: 0.2em;
-    padding-right: 2.5em;
+    padding: 4%;
+    padding-right: 3em;
 }
     .BekreftelsesDivBoks h4 {
         border-bottom: 1px solid white;
-        padding-bottom: 0.2em;
+        padding-bottom: 1%;
     }
 
 a, a:hover {
