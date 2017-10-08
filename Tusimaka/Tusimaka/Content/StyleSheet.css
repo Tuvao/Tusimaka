@@ -124,9 +124,9 @@ a, a:hover {
 
 #indextekst {
     color: #224652;
-    -webkit-animation-name: tusimaka; 
-    -webkit-animation-duration: 4s; 
-    animation-name:  tusimaka;
+    -webkit-animation-name: tusimaka;
+    -webkit-animation-duration: 4s;
+    animation-name: tusimaka;
     animation-duration: 10s;
     font-size: 10em;
 }
