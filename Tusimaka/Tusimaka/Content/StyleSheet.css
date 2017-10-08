@@ -82,7 +82,7 @@ td {
     width: 100%;
     border: none;
 }
-.hide {
+.usynlig {
     color: white;
 }
 
@@ -95,10 +95,10 @@ td {
     background-color: #224652;
     color: white;
 }
-
-
-#registrer, #bekreftBetaling {
-    margin-top:2em;
+BekreftelsesDivBoks {
+    display: inline-block;
+    margin: 2em;
+    max-width: 30%;
 }
 
 

@@ -20,7 +20,7 @@
 
             // viser reiseinformasjon
             function VisValgtStrekning(finnStrekninger) {
-                var utStreng = "<h3>Bestilt tur</h3><table>";
+                var utStreng = "<h4>Bestilt tur:</h4><table>";
                 utStreng += "<tr><th>Fra flyplass: </th><td>" + finnStrekninger.fraFlyplass + "</td></tr>";
                 utStreng += "<tr><th>Til flyplass: </th><td>" + finnStrekninger.tilFlyplass + "</td></tr>";
                 utStreng += "<tr><th>Dato: </th><td>" + finnStrekninger.dato + "</td></tr>";
@@ -48,12 +48,12 @@
             function VisEvtRetur(finnRetur) {
                 if (finnRetur.fraFlyplass != null) {
                     var utStreng = "<table><tr><th>Retur</th></tr>";
-                    utStreng += "<tr><td>Fra flyplass</td><td>" + finnRetur.fraFlyplass + "</td></tr>";
-                    utStreng += "<tr><td>Til flyplass</td><td>" + finnRetur.tilFlyplass + "</td></tr>";
-                    utStreng += "<tr><td>Dato</td><td>" + finnRetur.dato + "</td></tr>";
-                    utStreng += "<tr><td>Tidspunkt</td><td>" + finnRetur.tid + "</td></tr>";
-                    utStreng += "<tr><td>Pris</td><td>" + finnRetur.pris + "</td></tr>";
-                    utStreng += "<tr><td>Reisetid</td><td>" + finnRetur.flyTid + "</td></tr>";
+                    utStreng += "<tr><th>Fra flyplass</th><td>" + finnRetur.fraFlyplass + "</td></tr>";
+                    utStreng += "<tr><th>Til flyplass</th><td>" + finnRetur.tilFlyplass + "</td></tr>";
+                    utStreng += "<tr><th>Dato</th><td>" + finnRetur.dato + "</td></tr>";
+                    utStreng += "<tr><th>Tidspunkt</th><td>" + finnRetur.tid + "</td></tr>";
+                    utStreng += "<tr><th>Pris</th><td>" + finnRetur.pris + "</td></tr>";
+                    utStreng += "<tr><th>Reisetid</th><td>" + finnRetur.flyTid + "</td></tr>";
                     utStreng += "</table>";
                     $("#VisRetur").empty().append(utStreng);
                 }
