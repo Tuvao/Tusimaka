@@ -128,11 +128,11 @@ a, a:hover {
 }
 
 #indextekst {
-    color: deepskyblue;
-    -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
-    -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
-    animation-name: example;
-    animation-duration: 4s;
+    color: #224652;
+    -webkit-animation-name: tusimaka; 
+    -webkit-animation-duration: 4s; 
+    animation-name:  tusimaka;
+    animation-duration: 10s;
     font-size: 10em;
 }
 
@@ -146,27 +146,16 @@ input[type=date]::-webkit-inner-spin-button {
     display: none;
 }
 
-/* Safari 4.0 - 8.0 */
-@-webkit-keyframes example {
+@-webkit-keyframes tusimaka {
     from {
-        color: deepskyblue;
+        color: #52747F;
     }
 
     to {
-        color: cornflowerblue;
+        color: #224652;
     }
 }
 
-/* Standard syntax */
-@keyframes example {
-    from {
-        color: deepskyblue;
-    }
-
-    to {
-        color: cornflowerblue;
-    }
-}
 
 ul {
     list-style-type: none;
