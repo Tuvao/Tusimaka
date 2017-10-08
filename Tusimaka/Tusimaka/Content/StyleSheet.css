@@ -95,6 +95,11 @@ td {
     background-color: #224652;
     color: white;
 }
+.BekreftelseKundeInfoDiv {
+    color: #1B576B;
+    display: block;
+    font-size: 1.3em;
+}
 .BekreftelsesDivBoks {
     display: inline-block;
     max-width: 40%;
@@ -130,11 +135,6 @@ a, a:hover {
     animation-duration: 4s;
     font-size: 10em;
 }
-
-
-/*#bekreftetTilFraSted {
-    position: relative;
-}*/
 
 input[type=radio] {
     width: 30px;
