@@ -27,20 +27,20 @@
         <div class="form-group">
             <div class="col-md-10" id="Utlopsmnd">
                 <p>UTLØPSMÅNED</p>
-                <select id="velgUtlopsmnd" class="tekstFelt">
+                <select id="velgUtlopsmnd" class="tekstFelt" name="Utlopsmnd">
                     <option name="MM" disabled selected>MM</option>
-                    <option name="jan">01</option>
-                    <option name="feb">02</option>
-                    <option name="mar">03</option>
-                    <option name="apr">04</option>
-                    <option name="mai">05</option>
-                    <option name="jun">06</option>
-                    <option name="jul">07</option>
-                    <option name="aug">08</option>
-                    <option name="sep">09</option>
-                    <option name="okt">10</option>
-                    <option name="nov">11</option>
-                    <option name="des">12</option>
+                    <option name="jan" value="01" >01</option>
+                    <option name="feb" value="02">02</option>
+                    <option name="mar" value="03">03</option>
+                    <option name="apr" value="04">04</option>
+                    <option name="mai" value="05">05</option>
+                    <option name="jun" value="06">06</option>
+                    <option name="jul" value="07">07</option>
+                    <option name="aug" value="08">08</option>
+                    <option name="sep" value="09">09</option>
+                    <option name="okt" value="10">10</option>
+                    <option name="nov" value="11">11</option>
+                    <option name="des" value="12">12</option>
                 </select>
                 @Html.ValidationMessageFor(model => model.Utlopsaar, "", new { @class = "text-danger" })
             </div>
@@ -49,23 +49,17 @@
         <div class="form-group">
             <div class="col-md-10" id="Utlopsaar">
                 <p>UTLØPSÅR</p>
-                <select id="velgUtlopsaar" class="tekstFelt">
+                <select id="velgUtlopsaar" class="tekstFelt" name="Utlopsaar">
                     <option name="YY" disabled selected>YY</option>
-                    <option name="17">17</option>
-                    <option name="18">18</option>
-                    <option name="19">19</option>
-                    <option name="20">20</option>
-                    <option name="21">21</option>
-                    <option name="22">22</option>
-                    <option name="23">23</option>
-                    <option name="24">24</option>
-                    <option name="25">25</option>
-                    <option name="26">26</option>
-                    <option name="27">27</option>
-                    <option name="28">28</option>
-                    <option name="29">29</option>
-                    <option name="30">30</option>
-                    <option name="31">31</option>
+                    <option name="17" value="17">17</option>
+                    <option name="18" value="18">18</option>
+                    <option name="19" value="19">19</option>
+                    <option name="20" value="20">20</option>
+                    <option name="21" value="21">21</option>
+                    <option name="22" value="22">22</option>
+                    <option name="23" value="23">23</option>
+                    <option name="24" value="24">24</option>
+                    <option name="25" value="25">25</option>
                 </select>
                 @Html.ValidationMessageFor(model => model.Utlopsaar, "", new { @class = "text-danger" })
             </div>
@@ -94,11 +88,15 @@
         </div>
         
         <div class="form-group">
-            <div class="col-md-10">
+            <div class="col-md-10" id="velgkorttype">
                 <p>KORTTYPE</p>
-                @Html.EditorFor(model => model.Korttype, new { htmlAttributes = new { @class = "tekstFelt" } })
-                @Html.ValidationMessageFor(model => model.Korttype, "", new { @class = "text-danger" })
-            </div>
+                    <select id="velgKorttype" class="tekstFelt" Name ="Korttype">
+                        <option name="Korttype" disabled selected>Velg korttype</option>
+                        <option name="Visa" value="Visa">Visa</option>
+                        <option name="Mastercard" value="Mastercard">Mastercard</option>
+                    </select>
+                    @Html.ValidationMessageFor(model => model.Korttype, "", new { @class = "text-danger" })
+                </div>
         </div>
 
         <div class="form-group">
@@ -110,7 +108,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Tilbake til Kunderegistrering", "KundeRegistrering")
 </div>
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
