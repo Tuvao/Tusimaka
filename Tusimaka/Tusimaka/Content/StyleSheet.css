@@ -40,11 +40,13 @@ span {
     padding: 0.3em;
     font-size: 1.2em;
     height: 2.5em;
-    width: 100%;
     border: 2px solid #224652;
     position: relative;
     background-color: white;
     color: black;
+}
+.fullStrl {
+    width: 100%;
 }
 
 /*tar bort default pil*/
@@ -68,6 +70,7 @@ td {
     min-height: 3em;
     min-width: 9em;
     border: none;
+    margin-top: 0.4em;
 }
     
     .knapp:hover {
@@ -84,7 +87,6 @@ td {
 .usynlig {
     color: white;
 }
-
 #retur, #tilbake {
     background-color: lightgrey;
     color: black;
@@ -92,9 +94,15 @@ td {
 /*div#VisAntallPers{
     display: inline-block;
 }*/
-.sidestill{
-    display: inline-block;
-    margin-right: 3%;
+#utlopscvc td{
+    padding: 0;
+    padding-right: 1.2em;
+}
+.maxWidth100 {
+    max-width: 100%
+}
+.maxWidth58 {
+    max-width: 58%;
 }
 #bekreft, #registrer, #sok, #bekreftBetaling {
     background-color: #224652;

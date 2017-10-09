@@ -41,7 +41,7 @@
         <div class="form-group">
             <div class="col-md-10">
                 <p>FORNAVN</p>
-                @Html.EditorFor(model => model.Fornavn, new { htmlAttributes = new { @class = "tekstFelt" } })
+                @Html.EditorFor(model => model.Fornavn, new { htmlAttributes = new { @class = "tekstFelt fullStrl" } })
                 @Html.ValidationMessageFor(model => model.Fornavn, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -49,7 +49,7 @@
         <div class="form-group">
             <div class="col-md-10">
                 <p>ETTERNAVN</p>
-                @Html.EditorFor(model => model.Etternavn, new { htmlAttributes = new { @class = "tekstFelt" } })
+                @Html.EditorFor(model => model.Etternavn, new { htmlAttributes = new { @class = "tekstFelt fullStrl" } })
                 @Html.ValidationMessageFor(model => model.Etternavn, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -57,7 +57,7 @@
         <div class="form-group">
             <div class="col-md-10">
                 <p>E-POST</p>
-                @Html.EditorFor(model => model.Epost, new { htmlAttributes = new { @class = "tekstFelt" } })
+                @Html.EditorFor(model => model.Epost, new { htmlAttributes = new { @class = "tekstFelt fullStrl" } })
                 @Html.ValidationMessageFor(model => model.Epost, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -65,7 +65,7 @@
         <div class="form-group">
             <div class="col-md-10" id="kjonn">
                 <p>KJØNN</p>
-                <select id="velgKjonn" class="tekstFelt" name="kjonn" required>
+                <select id="velgKjonn" class="tekstFelt fullStrl" name="kjonn" required>
                     <option name="velg" disabled selected>Velg</option>
                     <option name="mann" value="Mann">Mann</option>
                     <option name="kvinne" value="Kvinne">Kvinne</option>
