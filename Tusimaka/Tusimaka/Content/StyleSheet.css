@@ -89,8 +89,12 @@ td {
     background-color: lightgrey;
     color: black;
 }
-div#VisAntallPers{
+/*div#VisAntallPers{
     display: inline-block;
+}*/
+.sidestill{
+    display: inline-block;
+    margin-right: 3%;
 }
 #bekreft, #registrer, #sok, #bekreftBetaling {
     background-color: #224652;
