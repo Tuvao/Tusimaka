@@ -206,5 +206,21 @@ namespace Tusimaka.Controllers
                 return jsonSerializer.Serialize(finnAntallPers);
             }
         }
+
+
+
+        public ActionResult AdminStart()
+        {
+
+            return View();
+        }
+        public ActionResult KundeAdministrer()
+        {
+            using (var db = new Models.DBContext())
+            {
+                List<Models.Kunder> alleKunder = db.Kunder.ToList();
+                return View(alleKunder);
+            }
+        }
     }
 }
