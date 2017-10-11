@@ -39,7 +39,7 @@ namespace Tusimaka.DAL
                 //finner siste kunde registrert i kunde tabellen i DB
                 int kundeId = db.Kunder.Max(k => k.kundeID);
                 //henter ut registrert informasjon om ønsket kunde.
-                DAL.Kunder hentEnKunde = db.Kunder.FirstOrDefault(k => k.kundeID == kundeId);
+                Kunder hentEnKunde = db.Kunder.FirstOrDefault(k => k.kundeID == kundeId);
                 return hentEnKunde;
             }
         }

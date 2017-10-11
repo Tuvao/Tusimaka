@@ -4,8 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
-using Tusimaka.Models;
-using static Tusimaka.Models.DBContext;
+using Tusimaka.BLL;
+using Tusimaka.Model;
 
 namespace Tusimaka.Controllers
 {
@@ -25,7 +25,7 @@ namespace Tusimaka.Controllers
             //henter data fra utfylt skjema i Bestill siden, lagrer i FlyBestilling tabell i DB
             //om OK, sender videre til neste side. 
             //selve funksjonene gjøres i DB.cs
-            var db = new DB();
+            var db = new BestillBLL();
             bool OK = db.lagreFlyBestilling(innFlyInfo);
             if (OK)
             {
@@ -42,13 +42,13 @@ namespace Tusimaka.Controllers
             return View();
         }
 
-
+        //fikset
         [HttpPost]
         public ActionResult KundeRegistrering(Kunde innKunde)
         {
             //henter data fra utfylt skjema i KundeRegistrering siden, lagrer i Kunde tabell i DB
             //om OK, sender videre til neste side. 
-            var db = new DB();
+            var db = new KundeBLL();
             bool OK = db.lagreKunde(innKunde);
             if (OK)
             {
@@ -93,8 +93,8 @@ namespace Tusimaka.Controllers
         public ActionResult Bekreftelse()
         {
             //Lister ut og tilgjengeliggjør dataene fra ønsket kunde(spesifisert i DB.cs) i Viewet til Bekreftelse
-            var db = new DB();
-            Kunder hentEnKunde = db.hentEnKunde();
+            var db = new KundeBLL();
+            Kunde hentEnKunde = db.hentEnKunde();
             return View(hentEnKunde);
         }
 
