@@ -8,6 +8,11 @@ namespace Tusimaka.DAL
 {
     public class KundeDAL
     {
+        //?
+        public ActionResult slett(innKunde)
+        {
+
+        }
 
     }
 }
