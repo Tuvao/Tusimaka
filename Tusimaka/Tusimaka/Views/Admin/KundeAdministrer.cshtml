@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Tusimaka.Model.Kunde>
+
+@{
+    ViewBag.Title = "KundeAdministrer";
+}
+
+<h2>KundeAdministrer</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Fornavn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Etternavn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Epost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kjonn)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fornavn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Etternavn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Epost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kjonn)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.KundeID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.KundeID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.KundeID })
+        </td>
+    </tr>
+}
+
+</table>

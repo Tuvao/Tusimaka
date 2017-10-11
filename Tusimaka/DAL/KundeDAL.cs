@@ -32,7 +32,7 @@ namespace Tusimaka.DAL
             }
         }
 
-        public Kunder hentEnKunde()
+        public Kunde hentEnKunde()
         {
             using (var db = new DBContext())
             {
@@ -40,7 +40,28 @@ namespace Tusimaka.DAL
                 int kundeId = db.Kunder.Max(k => k.kundeID);
                 //henter ut registrert informasjon om ønsket kunde.
                 Kunder hentEnKunde = db.Kunder.FirstOrDefault(k => k.kundeID == kundeId);
-                return hentEnKunde;
+                Kunde sisteKunde = new Kunde();
+                sisteKunde.Fornavn = hentEnKunde.fornavn;
+                sisteKunde.Etternavn = hentEnKunde.etternavn;
+                sisteKunde.KundeID = hentEnKunde.kundeID;
+                sisteKunde.Epost = hentEnKunde.epost;
+                return sisteKunde;
+            }
+        }
+
+        public List<Kunde> hentAlle()
+        {
+            using (var db = new DBContext())
+            {
+            List<Kunde> alleKunder = db.Kunder.Select(k => new Kunde()
+                                    {
+                                        KundeID = k.kundeID,
+                                        Fornavn = k.fornavn,
+                                        Etternavn = k.etternavn,
+                                        Epost = k.epost,
+                                        Kjonn = k.kjonn
+                                    }).ToList();
+            return alleKunder;
             }
         }
     }

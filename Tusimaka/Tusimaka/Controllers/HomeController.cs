@@ -68,14 +68,14 @@ namespace Tusimaka.Controllers
         }
 
         [HttpPost]
-        public ActionResult RegistrerBetaling(Models.BetalingsInformasjon innBetaling, Models.FlyBestillingKunde flyBestilling)
+        public ActionResult RegistrerBetaling(Model.BetalingsInformasjon innBetaling, Model.FlyBestillingKunde flyBestilling)
         {
             //henter data fra utfylt skjema i RegistrerBetaling siden
             //selve funksjonene gjøres i DB.cs
             //kobler først KundeID mot FlyBestillingsID i hjelpetabellen FlyBestillingKunde i DB
             //om OK, lagres betalingsinformasjon i BetalingsInfo i tabellen i DB. 
             //sender videre til neste side om OK
-            var db = new DB();
+            var db = new BestillingBLL();
             bool OK2 = db.lagreKundeIdMotFlyBestilling();
             if (OK2)
             {
@@ -90,9 +90,10 @@ namespace Tusimaka.Controllers
             
         }
 
+        //fikset
         public ActionResult Bekreftelse()
         {
-            //Lister ut og tilgjengeliggjør dataene fra ønsket kunde(spesifisert i DB.cs) i Viewet til Bekreftelse
+            //Lister ut og tilgjengeliggjør dataene fra ønsket kunde i Viewet til Bekreftelse
             var db = new KundeBLL();
             Kunde hentEnKunde = db.hentEnKunde();
             return View(hentEnKunde);
@@ -204,22 +205,6 @@ namespace Tusimaka.Controllers
 
                 var jsonSerializer = new JavaScriptSerializer();
                 return jsonSerializer.Serialize(finnAntallPers);
-            }
-        }
-
-
-
-        public ActionResult AdminStart()
-        {
-
-            return View();
-        }
-        public ActionResult KundeAdministrer()
-        {
-            using (var db = new Models.DBContext())
-            {
-                List<Models.Kunder> alleKunder = db.Kunder.ToList();
-                return View(alleKunder);
             }
         }
     }
