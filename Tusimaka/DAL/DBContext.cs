@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Web;
+using Tusimaka.Model;
 
 namespace Tusimaka.DAL
 {
@@ -28,6 +29,19 @@ namespace Tusimaka.DAL
         
         public virtual strekning Strekning { get; set; }
     }
+    public class strekning
+    {
+        [Key]
+        public int StrekningsID { get; set; }
+        public string fraFlyplass { get; set; }
+        public string tilFlyplass { get; set; }
+        public string dato { get; set; }
+        public string tid { get; set; }
+        public string pris { get; set; }
+        public int flyTid { get; set; }
+        public int antallLedigeSeter { get; set; }
+    }
+
     //Hjelpetabell for å kunne registrere kundeid til flybestillingsordre i etterkant. 
     public class FlyBestillingKunder
     {
@@ -58,13 +72,13 @@ namespace Tusimaka.DAL
         {
             Database.CreateIfNotExists();
 
-            Database.SetInitializer(new DBInit());
+            //Database.SetInitializer(new DBInit());
         }
         public virtual DbSet<strekning> Strekning { get; set; }
         public virtual DbSet<Kunder> Kunder { get; set; }
         public virtual DbSet<FlyBestilling> FlyBestilling { get; set; }
         public virtual DbSet<BetalingsInfo> BetalingsInfo{ get; set; }
-        public virtual DbSet<FlyBestillingKunde> FlyBestillingKunde { get; set; }
+        public virtual DbSet<FlyBestillingKunder> FlyBestillingKunder { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -128,13 +128,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\BetalingsInformasjon.cs" />
-    <Compile Include="Models\DBContext.cs" />
-    <Compile Include="Models\DBInit.cs" />
-    <Compile Include="Models\FlyBestillinger.cs" />
-    <Compile Include="Models\FlyBestillingKunde.cs" />
-    <Compile Include="Models\Kunde.cs" />
-    <Compile Include="Models\strekning.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -172,6 +165,9 @@
       <Project>{b82c8561-a25b-4d86-adee-aca2aa68c591}</Project>
       <Name>Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
