@@ -25,7 +25,7 @@ namespace Tusimaka.Controllers
             //henter data fra utfylt skjema i Bestill siden, lagrer i FlyBestilling tabell i DB
             //om OK, sender videre til neste side. 
             //selve funksjonene gjøres i DB.cs
-            var db = new BestillBLL();
+            var db = new BestillingBLL();
             bool OK = db.lagreFlyBestilling(innFlyInfo);
             if (OK)
             {
