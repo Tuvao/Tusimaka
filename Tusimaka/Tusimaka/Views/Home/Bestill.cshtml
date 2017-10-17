@@ -14,7 +14,7 @@
 
             // hent alle fraFlyplass, bygg opp dropdown1 når siden lastes
             $.ajax({
-                url: '/Home/hentAlleFraFlyplasser',
+                url: '/FlyBLL/hentAlleFraFlyplasser',
                 type: 'GET',
                 dataType: 'json',
                 success: function (fraListe) {

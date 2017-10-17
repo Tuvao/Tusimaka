@@ -31,5 +31,10 @@ namespace Tusimaka.BLL
             var BestillDAL = new BestillingDAL();
             return BestillDAL.hentBestilling();
         }
+        public string hentReferanseNR()
+        {
+            var BestillDAL = new BestillingDAL();
+            return BestillDAL.hentReferanseNR();
+        }
     }
 }

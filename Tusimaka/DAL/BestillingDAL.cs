@@ -88,5 +88,16 @@ namespace Tusimaka.DAL
                 return jsonSerializer.Serialize(finnStrekningList);
             }
         }
+        public string hentReferanseNR()
+        {
+            using (var db = new DBContext())
+            {
+                int flyBestillingsId = db.FlyBestilling.Max(f => f.flyBestillingsID);
+                FlyBestilling finnRefNr = db.FlyBestilling.FirstOrDefault(f => f.flyBestillingsID == flyBestillingsId);
+
+                var jsonSerializer = new JavaScriptSerializer();
+                return jsonSerializer.Serialize(finnRefNr);
+            }
+        }
     }
 }

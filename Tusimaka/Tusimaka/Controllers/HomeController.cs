@@ -15,10 +15,12 @@ namespace Tusimaka.Controllers
         {
             return View();
         }
+
         public ActionResult Bestill()
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult Bestill(FlyBestillinger innFlyInfo)
         {
@@ -41,8 +43,7 @@ namespace Tusimaka.Controllers
         {
             return View();
         }
-
-        //fikset
+        
         [HttpPost]
         public ActionResult KundeRegistrering(Kunde innKunde)
         {
@@ -90,7 +91,6 @@ namespace Tusimaka.Controllers
             
         }
 
-        //fikset
         public ActionResult Bekreftelse()
         {
             //Lister ut og tilgjengeliggjør dataene fra ønsket kunde i Viewet til Bekreftelse
@@ -98,92 +98,5 @@ namespace Tusimaka.Controllers
             Kunde hentEnKunde = db.hentEnKunde();
             return View(hentEnKunde);
         }
-
-        public string hentAlleFraFlyplasser()
-        {
-            using (var db = new DBContext())
-            {
-                List<strekning> alleFly = db.Strekning.ToList();
-
-                var alleFraFly = new List<string>();
-                
-                foreach (strekning f in alleFly)
-                {
-                    string funnetStrekning = alleFraFly.FirstOrDefault(fl => fl.Contains(f.fraFlyplass));
-                    if (funnetStrekning == null)
-                    {
-                        // ikke funnet strekning i listen, legg den inn i listen
-                        alleFraFly.Add(f.fraFlyplass);
-                    }
-                }
-                var jsonSerializer = new JavaScriptSerializer();
-                return jsonSerializer.Serialize(alleFraFly);
-            }
-        }
-
-        public string hentTilFlyplasser(string fraFlyPlass)
-        {
-            using (var db = new DBContext())
-            {
-                List<strekning> alleFly = db.Strekning.ToList();
-
-                var alleTilFly = new List<string>();
-
-                foreach (strekning f in alleFly)
-                {
-                    if (f.fraFlyplass == fraFlyPlass)
-                    {
-                        string funnetStrekning = alleTilFly.FirstOrDefault(fl => fl.Contains(f.tilFlyplass));
-                        if (funnetStrekning == null)
-                        {
-                            // ikke funnet strekning i listen, legg den inn i listen
-                            alleTilFly.Add(f.tilFlyplass);
-                        }
-                    }
-                }
-                var jsonSerializer = new JavaScriptSerializer();
-                return jsonSerializer.Serialize(alleTilFly);
-            }
-        }
-        public string hentStrekning(string fraFlyplass, string tilFlyPlass, string dato, int antallLedigeSeter)
-        {
-            using (var db = new DBContext())
-            {
-                List<strekning> alleFly = db.Strekning.Where(
-                    f => f.tilFlyplass == tilFlyPlass && f.fraFlyplass == fraFlyplass && f.dato == dato && f.antallLedigeSeter >= antallLedigeSeter).ToList();
-
-                var jsonSerializer = new JavaScriptSerializer();
-                return jsonSerializer.Serialize(alleFly);
-            }
-        }
-        
-        public string hentRetur()
-        {
-            using (var db = new DBContext())
-            {
-                int flyBestillingsId = db.FlyBestilling.Max(f => f.flyBestillingsID);
-                Models.FlyBestilling finnRetur = db.FlyBestilling.FirstOrDefault(f => f.flyBestillingsID == flyBestillingsId);
-                Models.strekning finnReturList = new Models.strekning();
-                if (finnRetur.returID != null){
-                    int? returId = finnRetur.returID;
-                    finnReturList = db.Strekning.FirstOrDefault(r => r.StrekningsID == returId );
-                }
-
-                var jsonSerializer = new JavaScriptSerializer();
-                return jsonSerializer.Serialize(finnReturList);
-            }
-        }
-        public string hentReferanseNR()
-        {
-            using (var db = new DBContext())
-            {
-                int flyBestillingsId = db.FlyBestilling.Max(f => f.flyBestillingsID);
-                Models.FlyBestilling finnRefNr = db.FlyBestilling.FirstOrDefault(f => f.flyBestillingsID == flyBestillingsId);
-
-                var jsonSerializer = new JavaScriptSerializer();
-                return jsonSerializer.Serialize(finnRefNr);
-            }
-        }
-        
     }
 }

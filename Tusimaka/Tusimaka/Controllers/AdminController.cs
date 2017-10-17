@@ -16,13 +16,13 @@ namespace Tusimaka.Controllers
         {
             return View();
         }
-        public ActionResult KundeAdministrer()
-        {
-            var db = new DBContext())
-            {
-                List<Model.Kunder> alleKunder = db.Kunder.ToList();
-                return View(alleKunder);
-            }
-        }
+        //public ActionResult KundeAdministrer()
+        //{
+        //    var db = new DBContext())
+        //    {
+        //        List<Model.Kunder> alleKunder = db.Kunder.ToList();
+        //        return View(alleKunder);
+        //    }
+        //}
     }
 }
