@@ -25,5 +25,13 @@ namespace Tusimaka.DAL
                 }
             }
         }
+        private static byte[] lagHash(string innPassord)
+        {
+            byte[] innData, utData;
+            var algoritme = System.Security.Cryptography.SHA256.Create();
+            innData = System.Text.Encoding.ASCII.GetBytes(innPassord);
+            utData = algoritme.ComputeHash(innData);
+            return utData;
+        }
     }
 }
