@@ -8,15 +8,14 @@ namespace Tusimaka.DAL
 {
     public class AdminDAL
     {
-
-        private static bool Bruker_i_DB(bruker innBruker)
+        private static bool BrukerIDB(AdminBrukere innAdminBruker)
         {
-            using (var db = new BrukerContext())
+            using (var db = new DBContext())
             {
-                byte[] passordDb = lagHash(innBruker.Passord);
-                dbBruker funnetBruker = db.Brukere.FirstOrDefault
-                (b => b.Passord == passordDb && b.Navn == innBruker.Navn);
-                if (funnetBruker == null)
+                byte[] passordDb = lagHash(innAdminBruker.passord);
+                AdminBrukere funnetAdminBruker = db.AdminBrukere.FirstOrDefault
+                (b => b.passord == passordDb && b.brukernavn == innAdminBruker.brukernavn);
+                if (funnetAdminBruker == null)
                 {
                     return false;
                 }
