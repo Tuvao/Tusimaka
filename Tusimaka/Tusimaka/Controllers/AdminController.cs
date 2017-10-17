@@ -26,6 +26,7 @@ namespace Tusimaka.Controllers
         [HttpPost]
         public ActionResult LoggInn(AdminBruker innAdminBruker)
         {
+
             if (BrukerIDB(innAdminBruker))
             {
                 Session["LoggetInn"] = true;

@@ -78,8 +78,8 @@ namespace Tusimaka.DAL
             : base("name=Fly")
         {
             Database.CreateIfNotExists();
-
-            //Database.SetInitializer(new DBInit());
+            
+            Database.SetInitializer(new DBInit());
         }
         public virtual DbSet<strekning> Strekning { get; set; }
         public virtual DbSet<Kunder> Kunder { get; set; }

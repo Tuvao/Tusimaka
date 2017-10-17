@@ -52,6 +52,7 @@
     <Compile Include="BestillingDAL.cs" />
     <Compile Include="BetalingDAL.cs" />
     <Compile Include="DBContext.cs" />
+    <Compile Include="DBInit.cs" />
     <Compile Include="FlyDAL.cs" />
     <Compile Include="KundeDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

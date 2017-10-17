@@ -3,8 +3,6 @@
 @{
     ViewBag.Title = "LoggInn";
 }
-
-<h2>LoggInn</h2>
 <!DOCTYPE html>
 
 <html>
@@ -20,7 +18,7 @@
     {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)
-
+        
         <fieldset>
             <legend>Logg inn</legend>
             <div class="editor-label">

@@ -18,11 +18,11 @@ namespace Tusimaka
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Bestill", id = UrlParameter.Optional }
             );
-            //routes.MapRoute(
-            //    name: "Admin",
-            //    url: "{controller}/{action}/{id}",
-            //    defaults: new { controller = "Admin", action = "AdminLogin", id = UrlParameter.Optional }
-            //);
+            routes.MapRoute(
+                name: "Admin",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Admin", action = "LoggInn", id = UrlParameter.Optional }
+            );
         }
     }
 }
