@@ -10,11 +10,35 @@ namespace Tusimaka.Controllers
 {
     public class AdminController : Controller
     {
-        // GET: Admin
-        //Index går til admin start viewet
-        public ActionResult Index()
+        public ActionResult LoggInn()
         {
+            if(Session["LoggetInn"] == null)
+            {
+                Session["LoggetInn"] = false;
+                ViewBag.Innlogget = false;
+            }
+            else
+            {
+                ViewBag.Innlogget = (bool)Session["LoggetInn"];
+            }
             return View();
+        }
+        [HttpPost]
+        public ActionResult LoggInn(AdminBruker innAdminBruker)
+        {
+            if (BrukerIDB(innAdminBruker))
+            {
+                Session["LoggetInn"] = true;
+                ViewBag.Innlogget = true;
+                return View();
+            }
+            else
+            {
+                Session["LoggetInn"] = false;
+                ViewBag.Innlogget = false;
+                return View();
+            }
+
         }
         //public ActionResult KundeAdministrer()
         //{

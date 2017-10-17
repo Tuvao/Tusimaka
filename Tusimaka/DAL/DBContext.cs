@@ -65,6 +65,13 @@ namespace Tusimaka.DAL
         public string CVC { get; set; }
         public string Korttype { get; set; }
     }
+    public class AdminBrukere
+    {
+        [Key]
+        public string brukernavn { get; set; }
+        public byte[] passord { get; set; }
+    }
+
     public class DBContext : DbContext
     {
         public DBContext()
@@ -79,6 +86,7 @@ namespace Tusimaka.DAL
         public virtual DbSet<FlyBestilling> FlyBestilling { get; set; }
         public virtual DbSet<BetalingsInfo> BetalingsInfo{ get; set; }
         public virtual DbSet<FlyBestillingKunder> FlyBestillingKunder { get; set; }
+        public virtual DbSet<AdminBrukere> AdminBrukere { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

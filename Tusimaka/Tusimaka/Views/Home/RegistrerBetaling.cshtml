@@ -77,41 +77,8 @@
                         </td>
                     </tr>
                 </table>
-                
             </div>
-            @*<div class="col col-lg-1 col-md-1 col-sm-5 col-xs-10 sidestill" id="Utlopsaar">
-                <table>
-                    <tr>
-                        <td>
-                            <span> </span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <select id="velgUtlopsaar" class="tekstFelt" name="Utlopsaar" required>
-                                <option name="YY" disabled selected>YY</option>
-                                <option name="17" value="17">17</option>
-                                <option name="18" value="18">18</option>
-                                <option name="19" value="19">19</option>
-                                <option name="20" value="20">20</option>
-                                <option name="21" value="21">21</option>
-                                <option name="22" value="22">22</option>
-                                <option name="23" value="23">23</option>
-                                <option name="24" value="24">24</option>
-                                <option name="25" value="25">25</option>
-                            </select>
-                            @Html.ValidationMessageFor(model => model.Utlopsaar, "", new { @class = "text-danger" })
-                        </td>
-                    </tr>
-                </table>
-            </div>*@
-            @*<div class="col col-lg-1 col-md-1 col-sm-4 col-xs-10 sidestill">
-                <span>CVC</span>
-                @Html.EditorFor(model => model.CVC, new { htmlAttributes = new { @class = "tekstFelt" } })
-                @Html.ValidationMessageFor(model => model.CVC, "", new { @class = "text-danger" })
-            </div>*@
         </div>
-
         <div class="row">
             <div class="col-md-10" id="velgkorttype">
                 <span>KORTTYPE</span>
@@ -123,7 +90,6 @@
                 @Html.ValidationMessageFor(model => model.Korttype, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="row">
             <div class="col-md-10">
                 <input type="submit" value="Bekreft betaling" name="BekreftBetaling" id="bekreftBetaling" class="knapp" />
