@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 using Tusimaka.DAL;
 using Tusimaka.Model;
 
 namespace Tusimaka.DAL
 {
-    class BestillingDAL
+    public class BestillingDAL
     {
         public bool lagreFlyBestilling(FlyBestillinger innFlyBestilling)
         {
@@ -61,6 +62,30 @@ namespace Tusimaka.DAL
                 {
                     return false;
                 }
+            }
+        }
+        public string hentAntallPersoner()
+        {
+            using (var db = new DBContext())
+            {
+                int flyBestillingsId = db.FlyBestilling.Max(f => f.flyBestillingsID);
+                FlyBestilling finnAntallPers = db.FlyBestilling.FirstOrDefault(f => f.flyBestillingsID == flyBestillingsId);
+
+                var jsonSerializer = new JavaScriptSerializer();
+                return jsonSerializer.Serialize(finnAntallPers);
+            }
+        }
+        public string hentBestilling()
+        {
+            using (var db = new DBContext())
+            {
+                int flyBestillingsId = db.FlyBestilling.Max(f => f.flyBestillingsID);
+                FlyBestilling finnStrekning = db.FlyBestilling.FirstOrDefault(f => f.flyBestillingsID == flyBestillingsId);
+                int strekningsId = finnStrekning.StrekningsID;
+                strekning finnStrekningList = db.Strekning.FirstOrDefault(s => s.StrekningsID == strekningsId);
+
+                var jsonSerializer = new JavaScriptSerializer();
+                return jsonSerializer.Serialize(finnStrekningList);
             }
         }
     }

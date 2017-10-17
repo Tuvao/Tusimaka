@@ -79,7 +79,7 @@ namespace Tusimaka.Controllers
             bool OK2 = db.lagreKundeIdMotFlyBestilling();
             if (OK2)
             {
-                var db2 = new DB();
+                var db2 = new BetalingBLL();
                 bool OK3 = db2.lagreBetalingsinformasjon(innBetaling);
                 if(OK3)
                 {
@@ -156,19 +156,7 @@ namespace Tusimaka.Controllers
                 return jsonSerializer.Serialize(alleFly);
             }
         }
-        public string hentBestilling()
-        {
-            using (var db = new DBContext())
-            {
-                int flyBestillingsId = db.FlyBestilling.Max(f => f.flyBestillingsID);
-                Models.FlyBestilling finnStrekning = db.FlyBestilling.FirstOrDefault(f => f.flyBestillingsID == flyBestillingsId);
-                int strekningsId = finnStrekning.StrekningsID;
-                Models.strekning finnStrekningList = db.Strekning.FirstOrDefault(s => s.StrekningsID == strekningsId);
-
-                var jsonSerializer = new JavaScriptSerializer();
-                return jsonSerializer.Serialize(finnStrekningList);
-            }
-        }
+        
         public string hentRetur()
         {
             using (var db = new DBContext())
@@ -196,16 +184,6 @@ namespace Tusimaka.Controllers
                 return jsonSerializer.Serialize(finnRefNr);
             }
         }
-        public string hentAntallPersoner()
-        {
-            using (var db = new DBContext())
-            {
-                int flyBestillingsId = db.FlyBestilling.Max(f => f.flyBestillingsID);
-                Models.FlyBestilling finnAntallPers = db.FlyBestilling.FirstOrDefault(f => f.flyBestillingsID == flyBestillingsId);
-
-                var jsonSerializer = new JavaScriptSerializer();
-                return jsonSerializer.Serialize(finnAntallPers);
-            }
-        }
+        
     }
 }

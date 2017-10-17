@@ -8,7 +8,7 @@ using Tusimaka.Model;
 
 namespace Tusimaka.DAL
 {
-    class BetalingDAL
+     public class BetalingDAL
     {
         public bool lagreBetalingsinformasjon(BetalingsInformasjon innBetaling)
         {

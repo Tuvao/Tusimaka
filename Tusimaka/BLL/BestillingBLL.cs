@@ -6,14 +6,30 @@ using System.Threading.Tasks;
 using Tusimaka.DAL;
 using Tusimaka.Model;
 
+
 namespace Tusimaka.BLL
 {
-    class BestillingBLL
+    public class BestillingBLL
     {
-        //public bool lagreKundeIdMotFlyBestilling()
-        //{
-        //    var bestillingDAL = new BestillingDAL();
-        //    return kundeDAL.lagreKunde(innKunde);
-        //}
+        public bool lagreFlyBestilling(FlyBestillinger innFlyBestilling)
+        {
+            var BestillDAL = new BestillingDAL();
+            return BestillDAL.lagreFlyBestilling(innFlyBestilling);
+        }
+        public bool lagreKundeIdMotFlyBestilling()
+        {
+            var BestillDAL = new BestillingDAL();
+            return BestillDAL.lagreKundeIdMotFlyBestilling();
+        }
+        public string hentAntallPersoner()
+        {
+            var BestillDAL = new BestillingDAL();
+            return BestillDAL.hentAntallPersoner();
+        }
+        public string hentBestilling()
+        {
+            var BestillDAL = new BestillingDAL();
+            return BestillDAL.hentBestilling();
+        }
     }
 }
