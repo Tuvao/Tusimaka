@@ -58,7 +58,7 @@ namespace Tusimaka.DAL
                     db.SaveChanges();
                     return true;
                 }
-                catch
+                catch (Exception feil)
                 {
                     return false;
                 }
