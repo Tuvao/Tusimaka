@@ -8,12 +8,5 @@ namespace Tusimaka
 {
     public class DB
     {
-        
-
-        
-        
-
-        
-        
     }
 }

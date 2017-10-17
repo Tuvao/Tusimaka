@@ -64,7 +64,6 @@ namespace Tusimaka.Controllers
 
         public ActionResult RegistrerBetaling()
         {
-            
             return View();
         }
 
@@ -76,10 +75,12 @@ namespace Tusimaka.Controllers
             //kobler først KundeID mot FlyBestillingsID i hjelpetabellen FlyBestillingKunde i DB
             //om OK, lagres betalingsinformasjon i BetalingsInfo i tabellen i DB. 
             //sender videre til neste side om OK
+            Console.WriteLine("Regbetalingsview");
             var db = new BestillingBLL();
             bool OK2 = db.lagreKundeIdMotFlyBestilling();
             if (OK2)
             {
+                Console.WriteLine("LagreKundeID funker");
                 var db2 = new BetalingBLL();
                 bool OK3 = db2.lagreBetalingsinformasjon(innBetaling);
                 if(OK3)
@@ -88,7 +89,6 @@ namespace Tusimaka.Controllers
                 }
             }
             return View();
-            
         }
 
         public ActionResult Bekreftelse()
@@ -97,6 +97,31 @@ namespace Tusimaka.Controllers
             var db = new KundeBLL();
             Kunde hentEnKunde = db.hentEnKunde();
             return View(hentEnKunde);
+        }
+        public string hentAlleFraFlyplasser()
+        {
+            var flyBLL = new FlyBLL();
+            return flyBLL.hentAlleFraFlyplasser();
+        }
+        public string hentTilFlyplasser(string fraFlyPlass)
+        {
+            var flyBLL = new FlyBLL();
+            return flyBLL.hentTilFlyplasser(fraFlyPlass);
+        }
+        public string hentStrekning(string fraFlyplass, string tilFlyPlass, string dato, int antallLedigeSeter)
+        {
+            var flyBLL = new FlyBLL();
+            return flyBLL.hentStrekning(fraFlyplass, tilFlyPlass, dato, antallLedigeSeter);
+        }
+        public string hentRetur()
+        {
+            var flyBLL = new FlyBLL();
+            return flyBLL.hentRetur();
+        }
+        public string hentAntallPersoner()
+        {
+            var BestillBLL = new BestillingBLL();
+            return BestillBLL.hentAntallPersoner();
         }
     }
 }

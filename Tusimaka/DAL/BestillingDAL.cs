@@ -54,7 +54,6 @@ namespace Tusimaka.DAL
                     nyFlyBestillingKunde.kundeID = kundeId;
 
                     db.FlyBestillingKunder.Add(nyFlyBestillingKunde);
-                    
                     db.SaveChanges();
                     return true;
                 }
