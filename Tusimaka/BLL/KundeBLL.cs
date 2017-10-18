@@ -21,12 +21,5 @@ namespace Tusimaka.BLL
             var kundeDAL = new KundeDAL();
             return kundeDAL.hentEnKunde();
         }
-        public List<Kunde> hentAlleKunder()
-        {
-            var kundeDAL = new KundeDAL();
-            List<Kunde> alleKunder = kundeDAL.hentAlleKunder();
-            return alleKunder;
-        }
-
     }
 }

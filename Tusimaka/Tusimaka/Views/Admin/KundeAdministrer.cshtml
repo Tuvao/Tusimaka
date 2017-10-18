@@ -3,11 +3,44 @@
 @{
     ViewBag.Title = "KundeAdministrer";
 }
+<script type="text/javascript">
+    $(document).ready(function () {
+        // lag en hendelse som utføres når en a-href med "data-SletteModal = true" trykkes.
+        $('a[data-sletteModal=true]').click(function () {
 
+            // hent inn data-taggene fra denne a-hef lenken
+            var data_navn = $(this).data('navn');
+            var data_id = $(this).data('id');
+
+            // legg ut dataene i div'en i modal-view'et
+            $('#slettKunde').html(data_navn);
+
+            // lag en hendelse for knappen for å slette via ajax, knappen ligger i modal-view'et
+            // må ligge inne i denne overordnede funksjonen for at id'én som er valgt kan brukes
+            $("#sletteModalKnapp").click(function () {
+                // id som skal slettes ligger i data_id
+                $.ajax({
+                    url: '@Url.Action("slettKunde", "Admin")',
+                    data: { id: data_id },  // en parameter inn i slett(id)-metoden i kunde-kontrolleren (JSON-objekt)
+                    success: function () {
+                        // må kalle liste-metoden for å vise den nye listen av kunder
+                        $.ajax({
+                            url: '@Url.Action("KundeAdministrer", "Admin")',
+                            success: function () {
+                                // så må siden reloades!
+                                window.location.reload();
+                            }
+                        });
+                        }
+                    });
+                })
+            })
+        });
+</script>
 <h2>KundeAdministrer</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "RegistrerKunde")
 </p>
 <table class="table">
     <tr>
@@ -43,9 +76,11 @@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.KundeID }) |
             @Html.ActionLink("Details", "Details", new { id=item.KundeID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.KundeID })
+            <a href="#sletteModal" class="btn btn-large btn-danger" id="sletteKnapp"
+               data-navn="@item.Fornavn @item.Etternavn @item.Epost @item.Kjonn"
+               data-id="@item.KundeID" data-toggle="modal" data-sletteModal="true">Slett</a>
         </td>
     </tr>
 }
-
 </table>
+@Html.Partial("SlettKundeModal")

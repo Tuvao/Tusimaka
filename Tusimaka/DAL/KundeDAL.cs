@@ -47,22 +47,6 @@ namespace Tusimaka.DAL
                 sisteKunde.Epost = hentEnKunde.epost;
                 return sisteKunde;
             }
-        }
-
-        public List<Kunde> hentAlleKunder()
-        {
-            using (var db = new DBContext())
-            {
-            List<Kunde> alleKunder = db.Kunder.Select(k => new Kunde()
-                                    {
-                                        KundeID = k.kundeID,
-                                        Fornavn = k.fornavn,
-                                        Etternavn = k.etternavn,
-                                        Epost = k.epost,
-                                        Kjonn = k.kjonn
-                                    }).ToList();
-            return alleKunder;
-            }
-        }
+        }    
     }
 }

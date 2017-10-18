@@ -47,9 +47,34 @@ namespace Tusimaka.Controllers
         }
         public ActionResult KundeAdministrer()
         {
-            var db = new KundeBLL();
+            var db = new AdminKundeBLL();
             List<Kunde> alleKunder = db.hentAlleKunder();
             return View(alleKunder);
+        }
+        public ActionResult RegistrerKunde()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult RegistrerKunde(Kunde innKunde)
+        {
+            var db = new KundeBLL();
+            bool OK = db.lagreKunde(innKunde);
+            if (OK)
+            {
+                return RedirectToAction("KundeAdministrer");
+            }
+            else
+            {
+                return View();
+            }
+        }
+        public void slettKunde(int id)
+        {
+            // denne kalles via et Ajax-kall
+            var adminKundeBLL = new AdminKundeBLL();
+            bool slettOK = adminKundeBLL.slettKunde(id);
+            // kunne returnert en feil dersom slettingen feilet....
         }
     }
 }

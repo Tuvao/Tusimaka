@@ -144,6 +144,8 @@
     <Content Include="Views\Admin\KundeAdministrer.cshtml" />
     <Content Include="Views\Admin\AdminStart.cshtml" />
     <Content Include="Views\Admin\LoggInn.cshtml" />
+    <Content Include="Views\Admin\RegistrerKunde.cshtml" />
+    <Content Include="Views\Admin\SlettKundeModal.cshtml" />
     <None Include="Views\Home\Bestill.cshtml" />
     <Content Include="Views\Home\RegistrerBetaling.cshtml" />
     <Content Include="Views\Home\Bekreftelse.cshtml" />

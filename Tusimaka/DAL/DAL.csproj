@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminDAL.cs" />
+    <Compile Include="AdminKundeDAL.cs" />
     <Compile Include="BestillingDAL.cs" />
     <Compile Include="BetalingDAL.cs" />
     <Compile Include="DBContext.cs" />
