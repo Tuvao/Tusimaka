@@ -37,7 +37,7 @@
             </div>
             <p><input type="submit" value="Logg inn" /></p>
             @if (ViewBag.Innlogget)
-                {
+            {
                 <p style="color:blue">Logget inn</p>
             }
             else
@@ -48,7 +48,6 @@
     }
     <div>
         @Html.ActionLink("Back to List", "Index") <br />
-        @Html.ActionLink("Register bruker", "Registrer") <br />
         @Html.ActionLink("Innlogget side", "AdminStart") <br />
     </div>
 </body>

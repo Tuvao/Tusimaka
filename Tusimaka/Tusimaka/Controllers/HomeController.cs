@@ -123,5 +123,15 @@ namespace Tusimaka.Controllers
             var BestillBLL = new BestillingBLL();
             return BestillBLL.hentAntallPersoner();
         }
+        public string hentReferanseNR()
+        {
+            var BestillBLL = new BestillingBLL();
+            return BestillBLL.hentReferanseNR();
+        }
+        public string hentBestilling()
+        {
+            var BestillBLL = new BestillingBLL();
+            return BestillBLL.hentBestilling();
+        }
     }
 }

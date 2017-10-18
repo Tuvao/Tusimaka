@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Tusimaka.BLL;
 using Tusimaka.Model;
+using Tusimaka.BLL;
 
 namespace Tusimaka.Controllers
 {
     public class AdminController : Controller
     {
+        public ActionResult Index()
+        {
+            return View();
+        }
         public ActionResult LoggInn()
         {
             if(Session["LoggetInn"] == null)
@@ -26,8 +30,8 @@ namespace Tusimaka.Controllers
         [HttpPost]
         public ActionResult LoggInn(AdminBruker innAdminBruker)
         {
-
-            if (BrukerIDB(innAdminBruker))
+            var ok = new AdminBLL();
+            if (ok.Bruker_i_DB(innAdminBruker))
             {
                 Session["LoggetInn"] = true;
                 ViewBag.Innlogget = true;
@@ -41,13 +45,11 @@ namespace Tusimaka.Controllers
             }
 
         }
-        //public ActionResult KundeAdministrer()
-        //{
-        //    var db = new DBContext())
-        //    {
-        //        List<Model.Kunder> alleKunder = db.Kunder.ToList();
-        //        return View(alleKunder);
-        //    }
-        //}
+        public ActionResult KundeAdministrer()
+        {
+            var db = new KundeBLL();
+            List<Kunde> alleKunder = db.hentAlleKunder();
+            return View(alleKunder);
+        }
     }
 }

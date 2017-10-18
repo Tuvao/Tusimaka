@@ -31,7 +31,7 @@ namespace Tusimaka.DAL
         //        }
         //    }
         //}
-        public bool BrukerIDB(AdminBruker innAdminBruker)
+        public bool Bruker_i_DB(AdminBruker innAdminBruker)
         {
             using (var db = new DBContext())
             {

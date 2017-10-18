@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Tusimaka.DAL;
 using Tusimaka.Model;
 
-
 namespace Tusimaka.BLL
 {
     public class BestillingBLL

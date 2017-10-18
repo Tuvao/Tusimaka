@@ -10,10 +10,10 @@ namespace Tusimaka.BLL
 {
     public class AdminBLL
     {
-        public bool BrukerIDB(AdminBruker innAdminBruker)
+        public bool Bruker_i_DB(AdminBruker innAdminBruker)
         {
             var adminDAL = new AdminDAL();
-            return adminDAL.BrukerIDB(innAdminBruker);
+            return adminDAL.Bruker_i_DB(innAdminBruker);
         }
     }
 }

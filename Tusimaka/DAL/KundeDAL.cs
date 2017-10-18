@@ -49,7 +49,7 @@ namespace Tusimaka.DAL
             }
         }
 
-        public List<Kunde> hentAlle()
+        public List<Kunde> hentAlleKunder()
         {
             using (var db = new DBContext())
             {
