@@ -39,6 +39,24 @@ namespace Tusimaka.DAL
                 return false;
             }
         }
+        public bool endreKunde(int id, Kunde innKunde)
+        {
+            var db = new DBContext();
+            try
+            {
+                Kunder endreKunde = db.Kunder.Find(id);
+                endreKunde.fornavn = innKunde.Fornavn;
+                endreKunde.etternavn = innKunde.Etternavn;
+                endreKunde.epost = innKunde.Epost;
+                endreKunde.kjonn = innKunde.Kjonn;
+                db.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
     }
 }

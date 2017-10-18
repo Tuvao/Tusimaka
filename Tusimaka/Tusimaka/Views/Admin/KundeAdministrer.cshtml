@@ -74,7 +74,7 @@
             @Html.DisplayFor(modelItem => item.Kjonn)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.KundeID }) |
+            @Html.ActionLink("Edit", "EndreKunde", new { id=item.KundeID }) |
             @Html.ActionLink("Details", "Details", new { id=item.KundeID }) |
             <a href="#sletteModal" class="btn btn-large btn-danger" id="sletteKnapp"
                data-navn="@item.Fornavn @item.Etternavn @item.Epost @item.Kjonn"

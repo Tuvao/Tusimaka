@@ -21,6 +21,11 @@ namespace Tusimaka.BLL
             var adminKundeDAL = new AdminKundeDAL();
             return adminKundeDAL.slettKunde(slettId);
         }
+        public bool endreKunde(int slettId, Kunde innKunde)
+        {
+            var adminKundeDAL = new AdminKundeDAL();
+            return adminKundeDAL.endreKunde(slettId, innKunde);
+        }
 
     }
 }
