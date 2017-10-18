@@ -69,9 +69,11 @@ namespace Tusimaka.Controllers
                 return View();
             }
         }
-        public ActionResult EndreKunde()
+        public ActionResult EndreKunde(int id)
         {
-            return View();
+            var adminKundeBLL = new AdminKundeBLL();
+            Kunde hentSpesifikKunde = adminKundeBLL.hentDenneKunden(id);
+            return View(hentSpesifikKunde);
         }
         [HttpPost]
         public ActionResult EndreKunde(int id, Kunde innKunde)
@@ -79,6 +81,10 @@ namespace Tusimaka.Controllers
             var adminKundeBLL = new AdminKundeBLL();
             bool endreOK = adminKundeBLL.endreKunde(id, innKunde);
             return RedirectToAction("KundeAdministrer");
+        }
+        public ActionResult KundeBestillinger(int id)
+        {
+            return View();
         }
         public void slettKunde(int id)
         {
