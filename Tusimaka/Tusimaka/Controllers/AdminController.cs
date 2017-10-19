@@ -84,7 +84,9 @@ namespace Tusimaka.Controllers
         }
         public ActionResult KundeBestillinger(int id)
         {
-            return View();
+            var adminBestillingBLL = new AdminBestillingBLL();
+            List<FlyBestillingKunde> alleBestillinger = adminBestillingBLL.test(id);
+            return View(alleBestillinger);
         }
         public void slettKunde(int id)
         {
