@@ -6,7 +6,13 @@
 <h2>Velkommen, admin!</h2>
 <h3>Hva vil du gjøre?</h3>
 <ul>
-    <li>Se databaselogg</li>
-    <li>Administrer kunder og bestillinger</li>
+    <li>@Html.ActionLink("Administrer Kunder", "KundeAdministrer")</li>
     <li>Flyruter</li>
+    <li>Se databaselogg</li>
 </ul>
+    <p style="color:blue">Logget inn</p>
+                    <div>
+                        @Html.ActionLink("Back to List", "Index") <br />
+                        
+                    </div>
+
