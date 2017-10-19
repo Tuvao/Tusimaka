@@ -125,5 +125,10 @@ namespace Tusimaka.Controllers
             bool slettOK = adminKundeBLL.slettKunde(id);
             // kunne returnert en feil dersom slettingen feilet....
         }
+        public void slettFlyrute(int slettFlyruteId)
+        {
+            var adminFlyruteBLL = new AdminFlyruterBLL();
+            bool slettOK = adminFlyruteBLL.slettFlyrute(slettFlyruteId);
+        }
     }
 }
