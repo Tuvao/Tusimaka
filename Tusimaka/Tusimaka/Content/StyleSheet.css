@@ -36,6 +36,17 @@ span {
     color: black;
 }
 
+.selectUtseendeAdmin {
+    padding: 0.3em;
+    font-size: 1.2em;
+    height: 3em;
+    width: 100%;
+    border: 2px solid #235945;
+    position: relative;
+    background-color: white;
+    color: black;
+}
+
 .tekstFelt {
     padding: 0.3em;
     font-size: 1.2em;
@@ -45,6 +56,17 @@ span {
     background-color: white;
     color: black;
 }
+
+.tekstFeltAdmin {
+    padding: 0.3em;
+    font-size: 1.2em;
+    height: 2.5em;
+    border: 2px solid #235945;
+    position: relative;
+    background-color: white;
+    color: black;
+}
+
 .fullStrl {
     width: 100%;
 }
@@ -77,6 +99,7 @@ td {
         opacity: 0.8;
     }
 
+
 #sok {
     padding: 0.3em;
     font-size: 1.2em;
@@ -108,6 +131,12 @@ td {
     background-color: #224652;
     color: white;
 }
+
+#loggInn, #create {
+    background-color: #235945;
+    color: white;
+}
+
 .BekreftelseKundeInfoDiv {
     color: #1B576B;
     display: block;
@@ -138,11 +167,6 @@ td {
         border-bottom: 1px solid white;
         padding-bottom: 1%;
     }
-
-a, a:hover {
-    text-decoration: none;
-    color:black;
-}
 
 #indextekst {
     color: #224652;
@@ -176,5 +200,29 @@ input[type=date]::-webkit-inner-spin-button {
 
 ul {
     list-style-type: none;
+    margin-top: 4em;
+    margin-bottom:4em;
+}
+.adminStartKnapp a,
+.adminStartKnapp a:hover, .adminStartKnapp a:focus {
+    color: white;
+    text-decoration: none;
+    padding: 1.5em 0em;
+    width:100%;
+}
+.adminStartKnapp li {
+    font-size: 1.3em;
+    margin-top: 1em;
+    margin-bottom:1em;
+    color: white;
+    min-height: 3em;
+    min-width: 9em;
+    max-width: 17em;
+    padding: 1em 2em;
+    background-color: #235945;
+    border-radius: 0px 0px 40px 0px;
 }
 
+    .adminStartKnapp li:hover {
+        border-radius: 0px 40px 40px 0px;
+    }
