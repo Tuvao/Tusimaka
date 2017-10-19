@@ -51,11 +51,35 @@ namespace Tusimaka.Controllers
             //Legg til if session[LoggetInn"] == true
             return View();
         }
+        public ActionResult FlyruterAdministrer()
+        {
+            var db = new AdminFlyruterBLL();
+            List<strekning> alleFlyruter = db.hentAlleFlyruter();
+            return View(alleFlyruter);
+        }
         public ActionResult KundeAdministrer()
         {
             var db = new AdminKundeBLL();
             List<Kunde> alleKunder = db.hentAlleKunder();
             return View(alleKunder);
+        }
+        public ActionResult RegistrerFlyrute()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult RegistrerFlyrute(strekning innFlyrute)
+        {
+            var db = new AdminFlyruterBLL();
+            bool OK = db.lagreFlyrute(innFlyrute);
+            if (OK)
+            {
+                return RedirectToAction("FlyruterAdministrer");
+            }
+            else
+            {
+                return View();
+            }
         }
         public ActionResult RegistrerKunde()
         {

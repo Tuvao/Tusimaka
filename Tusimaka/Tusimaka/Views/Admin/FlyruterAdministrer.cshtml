@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Tusimaka.Model.strekning>
+
+@{
+    ViewBag.Title = "FlyruterAdministrer";
+}
+
+<h2>FlyruterAdministrer</h2>
+
+<p>
+    @Html.ActionLink("Create New", "RegistrerFlyrute")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.fraFlyplass)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tilFlyplass)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dato)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pris)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.flyTid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.antallLedigeSeter)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.fraFlyplass)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tilFlyplass)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dato)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pris)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.flyTid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.antallLedigeSeter)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.StrekningsID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.StrekningsID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.StrekningsID })
+        </td>
+    </tr>
+}
+
+</table>

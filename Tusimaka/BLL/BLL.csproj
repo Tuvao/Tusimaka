@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="AdminBestillingBLL.cs" />
     <Compile Include="AdminBLL.cs" />
+    <Compile Include="AdminFlyruterBLL.cs" />
     <Compile Include="AdminKundeBLL.cs" />
     <Compile Include="BestillingBLL.cs" />
     <Compile Include="BetalingBLL.cs" />

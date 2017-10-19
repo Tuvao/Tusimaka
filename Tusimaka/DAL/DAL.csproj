@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="AdminBestillingDAL.cs" />
     <Compile Include="AdminDAL.cs" />
+    <Compile Include="AdminFlyruterDAL.cs" />
     <Compile Include="AdminKundeDAL.cs" />
     <Compile Include="BestillingDAL.cs" />
     <Compile Include="BetalingDAL.cs" />
