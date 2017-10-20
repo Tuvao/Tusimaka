@@ -3,11 +3,45 @@
 @{
     ViewBag.Title = "FlyruterAdministrer";
 }
+<script type="text/javascript">
+    $(document).ready(function () {
+        // lag en hendelse som utføres når en a-href med "data-SletteModal = true" trykkes.
+        $('a[data-sletteFlyruterModal=true]').click(function () {
+
+            // hent inn data-taggene fra denne a-hef lenken
+            var data_navn = $(this).data('navn');
+            var data_id = $(this).data('id');
+
+            // legg ut dataene i div'en i modal-view'et
+            $('#slettFlyrute').html(data_navn);
+
+            // lag en hendelse for knappen for å slette via ajax, knappen ligger i modal-view'et
+            // må ligge inne i denne overordnede funksjonen for at id'én som er valgt kan brukes
+            $("#sletteFlyruteModalKnapp").click(function () {
+                // id som skal slettes ligger i data_id
+                $.ajax({
+                    url: '@Url.Action("slettFlyrute", "Admin")',
+                    data: { id: data_id },  // en parameter inn i slett(id)-metoden i kunde-kontrolleren (JSON-objekt)
+                    success: function () {
+                        // må kalle liste-metoden for å vise den nye listen av kunder
+                        $.ajax({
+                            url: '@Url.Action("FlyruterAdministrer", "Admin")',
+                            success: function () {
+                                // så må siden reloades!
+                                window.location.reload();
+                            }
+                        });
+                        }
+                    });
+                })
+            })
+        });
+</script>
 
 <h2>FlyruterAdministrer</h2>
 
 <p>
-    @Html.ActionLink("Create New", "RegistrerFlyrute")
+    @Html.ActionLink("Legg til ny flyrute", "RegistrerFlyrute")
 </p>
 <table class="table">
     <tr>
@@ -61,9 +95,12 @@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.StrekningsID }) |
             @Html.ActionLink("Details", "Details", new { id=item.StrekningsID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.StrekningsID })
+            <a href="#sletteFlyruterModal" class="btn btn-large btn-danger" id="sletteKnapp"
+               data-navn="@item.tilFlyplass @item.fraFlyplass @item.dato @item.tid"
+               data-id="@item.StrekningsID" data-toggle="modal" data-sletteFlyruterModal="true">Slett</a>
         </td>
     </tr>
 }
 
 </table>
+@Html.Partial("SlettFlyruterModal")

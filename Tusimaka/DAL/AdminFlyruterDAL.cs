@@ -51,5 +51,22 @@ namespace Tusimaka.DAL
                 }
             }
         }
+        public bool slettFlyrute(int slettFlyruteId)
+        {
+            var db = new DBContext();
+            try
+            {
+                strekning slettFlyrute = db.Strekning.Find(slettFlyruteId);
+                db.Strekning.Remove(slettFlyrute);
+                db.SaveChanges();
+                Console.Write("riktig");
+                return true;
+            }
+            catch (Exception feil)
+            {
+                Console.Write("feil");
+                return false;
+            }
+        }
     }
 }
