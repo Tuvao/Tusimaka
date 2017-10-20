@@ -4,75 +4,75 @@
     ViewBag.Title = "RegistrerFlyrute";
 }
 
-<h2>RegistrerFlyrute</h2>
 
-@using (Html.BeginForm()) 
+<link href="~/Content/StyleSheet.css" rel="stylesheet" />
+<h2>Registrer Flyrute</h2>
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
     <div class="form-horizontal">
-        <h4>strekning</h4>
-        <hr />
+        <hr/>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.StrekningsID)
         <div class="form-group">
-            @Html.LabelFor(model => model.fraFlyplass, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.fraFlyplass, new { htmlAttributes = new { @class = "form-control" } })
+                <p>FRA FLYPLASS</p>
+                @Html.EditorFor(model => model.fraFlyplass, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
                 @Html.ValidationMessageFor(model => model.fraFlyplass, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.tilFlyplass, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.tilFlyplass, new { htmlAttributes = new { @class = "form-control" } })
+                <p>TIL FLYPLASS</p>
+                @Html.EditorFor(model => model.tilFlyplass, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
                 @Html.ValidationMessageFor(model => model.tilFlyplass, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.dato, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.dato, new { htmlAttributes = new { @class = "form-control" } })
+                <p>DATO</p>
+                @Html.EditorFor(model => model.dato, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
                 @Html.ValidationMessageFor(model => model.dato, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.tid, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.tid, new { htmlAttributes = new { @class = "form-control" } })
+                <p>TID</p>
+                @Html.EditorFor(model => model.tid, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
                 @Html.ValidationMessageFor(model => model.tid, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.pris, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.pris, new { htmlAttributes = new { @class = "form-control" } })
+                <p>PRIS</p>
+                @Html.EditorFor(model => model.pris, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
                 @Html.ValidationMessageFor(model => model.pris, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.flyTid, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.flyTid, new { htmlAttributes = new { @class = "form-control" } })
+                <p>FLYTID</p>
+                @Html.EditorFor(model => model.flyTid, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
                 @Html.ValidationMessageFor(model => model.flyTid, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.antallLedigeSeter, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.antallLedigeSeter, new { htmlAttributes = new { @class = "form-control" } })
+                <p>LEDIGE SETER</p>
+                @Html.EditorFor(model => model.antallLedigeSeter, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
                 @Html.ValidationMessageFor(model => model.antallLedigeSeter, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+            <div class="col-md-10">
+                <input type="submit" value="Create" id="create" class="knapp" />
             </div>
         </div>
     </div>
@@ -81,3 +81,7 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

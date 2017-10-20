@@ -8,42 +8,48 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/StyleSheet.css" rel="stylesheet" />
     <title>Index</title>
 </head>
 <body>
-    <script src="~/Scripts/jquery-1.8.2.min.js"></script>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    <h2>Logg Inn</h2>
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true)
-            <fieldset>
-                <legend>Logg inn</legend>
-                <div class="editor-label">
-                    @Html.LabelFor(model => model.Brukernavn)
+        <div class="form-horizontal">
+            <hr/>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <div class="col-md-10">
+                    <p>BRUKERNAVN</p>
+                    @Html.EditorFor(model => model.Brukernavn, new { htmlAttributes = new { @class = "selectUtseendeAdmin fullStrl" } })
+                    @Html.ValidationMessageFor(model => model.Brukernavn, "", new { @class = "text-danger" })
                 </div>
-                <div class="editor-field">
-                    @Html.EditorFor(model => model.Brukernavn)
-                    @Html.ValidationMessageFor(model => model.Brukernavn)
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <p>PASSORD</p>
+                    @Html.EditorFor(model => model.Passord, new { htmlAttributes = new { @class = "selectUtseendeAdmin fullStrl" } })
+                    @Html.ValidationMessageFor(model => model.Passord, "", new { @class = "text-danger" })
                 </div>
-                <div class="editor-label">
-                    @Html.LabelFor(model => model.Passord)
+            </div>
+                
+                    <input type="submit" value="Logg inn" id="loggInn" class="knapp" />
+                    @if (ViewBag.Innlogget)
+                    {
+                        <p style="color:blue">Logget inn</p>
+                    }
+                    else
+                    {
+                        <p style="color:red">Ikke logget inn</p>
+                    }
                 </div>
-                <div class="editor-field">
-                    @Html.EditorFor(model => model.Passord)
-                    @Html.ValidationMessageFor(model => model.Passord)
-                </div>
-                <input type="submit" value="Logg inn" />
-                @if (ViewBag.Innlogget)
-                {
-                    <p style="color:blue">Logget inn</p>
-                }
-                else
-                {
-                    <p style="color:red">Ikke logget inn</p>
-                }
-            </fieldset>
-    }
+     }
+
+    <script src="~/Scripts/jquery-1.8.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 </body>
+
 </html>
