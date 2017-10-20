@@ -23,16 +23,16 @@ namespace Tusimaka.DAL
     {
         [Key]
         public int flyBestillingsID { get; set; }
-        public int StrekningsID { get; set; }
+        public int strekningsID { get; set; }
         public int antallPersoner { get; set; }
         public int? returID { get; set; }
         
-        public virtual strekning Strekning { get; set; }
+        public virtual Strekninger Strekninger { get; set; }
     }
-    public class strekning
+    public class Strekninger
     {
         [Key]
-        public int StrekningsID { get; set; }
+        public int strekningsID { get; set; }
         public string fraFlyplass { get; set; }
         public string tilFlyplass { get; set; }
         public string dato { get; set; }
@@ -79,9 +79,9 @@ namespace Tusimaka.DAL
         {
             Database.CreateIfNotExists();
             
-            //Database.SetInitializer(new DBInit());
+            Database.SetInitializer(new DBInit());
         }
-        public virtual DbSet<strekning> Strekning { get; set; }
+        public virtual DbSet<Strekninger> Strekninger { get; set; }
         public virtual DbSet<Kunder> Kunder { get; set; }
         public virtual DbSet<FlyBestilling> FlyBestilling { get; set; }
         public virtual DbSet<BetalingsInfo> BetalingsInfo{ get; set; }

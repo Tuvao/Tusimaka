@@ -9,28 +9,6 @@ namespace Tusimaka.DAL
 {
     public class AdminDAL
     {
-        //public bool registrerAdminBruker()
-        //{
-        //    using(var db = new DBContext())
-        //    {
-        //        try
-        //        {
-        //            string sattBrukernavn = "Admin";
-        //            string sattPassord = "Bord321";
-        //            var nyAdminBruker = new AdminBrukere();
-        //            byte[] hashetPassord = lagHash(sattPassord);
-        //            nyAdminBruker.passord = hashetPassord;
-        //            nyAdminBruker.brukernavn = sattBrukernavn;
-        //            db.AdminBrukere.Add(nyAdminBruker);
-        //            db.SaveChanges();
-        //            return true;
-        //        }
-        //        catch (Exception feil)
-        //        {
-        //            return false;
-        //        }
-        //    }
-        //}
         public bool Bruker_i_DB(AdminBruker innAdminBruker)
         {
             using (var db = new DBContext())

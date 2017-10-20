@@ -47,7 +47,7 @@
     <Compile Include="FlyBestillingKunde.cs" />
     <Compile Include="Kunde.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="strekning.cs" />
+    <Compile Include="Strekning.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -3,45 +3,46 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tusimaka.Model;
 
 namespace Tusimaka.DAL
 {
     public class AdminFlyruterDAL
     {
-        public List<Model.strekning> hentAlleFlyruter()
+        public List<Strekning> hentAlleFlyruter()
         {
             using (var db = new DBContext())
             {
-                List<Model.strekning> alleStrekninger = db.Strekning.Select(s => new Model.strekning()
+                List<Strekning> alleStrekninger = db.Strekninger.Select(s => new Strekning()
                 {
-                    StrekningsID = s.StrekningsID,
-                    tilFlyplass = s.tilFlyplass,
-                    fraFlyplass = s.fraFlyplass,
-                    dato = s.dato,
-                    tid = s.tid,
-                    pris = s.pris,
-                    flyTid = s.flyTid,
-                    antallLedigeSeter = s.antallLedigeSeter
+                    StrekningsID = s.strekningsID,
+                    TilFlyplass = s.tilFlyplass,
+                    FraFlyplass = s.fraFlyplass,
+                    Dato = s.dato,
+                    Tid = s.tid,
+                    Pris = s.pris,
+                    FlyTid = s.flyTid,
+                    AntallLedigeSeter = s.antallLedigeSeter
                 }).ToList();
                 return alleStrekninger;
             }
         }
-        public bool lagreFlyrute(Model.strekning innFlyrute)
+        public bool lagreFlyrute(Strekning innFlyrute)
         {
             using (var db = new DBContext())
             {
                 try
                 {
-                    var nyFlyruter = new strekning();
-                    nyFlyruter.tilFlyplass = innFlyrute.tilFlyplass;
-                    nyFlyruter.fraFlyplass = innFlyrute.fraFlyplass;
-                    nyFlyruter.dato = innFlyrute.dato;
-                    nyFlyruter.tid = innFlyrute.tid;
-                    nyFlyruter.pris = innFlyrute.pris;
-                    nyFlyruter.flyTid = innFlyrute.flyTid;
-                    nyFlyruter.antallLedigeSeter = innFlyrute.antallLedigeSeter;
+                    var nyFlyruter = new Strekninger();
+                    nyFlyruter.tilFlyplass = innFlyrute.TilFlyplass;
+                    nyFlyruter.fraFlyplass = innFlyrute.FraFlyplass;
+                    nyFlyruter.dato = innFlyrute.Dato;
+                    nyFlyruter.tid = innFlyrute.Tid;
+                    nyFlyruter.pris = innFlyrute.Pris;
+                    nyFlyruter.flyTid = innFlyrute.FlyTid;
+                    nyFlyruter.antallLedigeSeter = innFlyrute.AntallLedigeSeter;
 
-                    db.Strekning.Add(nyFlyruter);
+                    db.Strekninger.Add(nyFlyruter);
                     db.SaveChanges();
                     return true;
                 }
@@ -73,8 +74,8 @@ namespace Tusimaka.DAL
             var db = new DBContext();
             try
             {
-                DAL.strekning slettFlyrute = db.Strekning.Find(slettFlyruteId);
-                db.Strekning.Remove(slettFlyrute);
+                Strekninger slettFlyrute = db.Strekninger.Find(slettFlyruteId);
+                db.Strekninger.Remove(slettFlyrute);
                 db.SaveChanges();
                 Console.Write("riktig");
                 return true;
@@ -85,19 +86,19 @@ namespace Tusimaka.DAL
                 return false;
             }
         }
-        public bool endreFlyrute(int id, Model.strekning innFlyrute)
+        public bool endreFlyrute(int id, Strekning innFlyrute)
         {
             var db = new DBContext();
             try
             {
-                DAL.strekning endreFlyrute = db.Strekning.Find(id);
-                endreFlyrute.fraFlyplass = innFlyrute.fraFlyplass;
-                endreFlyrute.tilFlyplass = innFlyrute.tilFlyplass;
-                endreFlyrute.dato = innFlyrute.dato;
-                endreFlyrute.tid = innFlyrute.tid;
-                endreFlyrute.pris = innFlyrute.pris;
-                endreFlyrute.flyTid = innFlyrute.flyTid;
-                endreFlyrute.antallLedigeSeter = innFlyrute.antallLedigeSeter;
+                Strekninger endreFlyrute = db.Strekninger.Find(id);
+                endreFlyrute.fraFlyplass = innFlyrute.FraFlyplass;
+                endreFlyrute.tilFlyplass = innFlyrute.TilFlyplass;
+                endreFlyrute.dato = innFlyrute.Dato;
+                endreFlyrute.tid = innFlyrute.Tid;
+                endreFlyrute.pris = innFlyrute.Pris;
+                endreFlyrute.flyTid = innFlyrute.FlyTid;
+                endreFlyrute.antallLedigeSeter = innFlyrute.AntallLedigeSeter;
                 db.SaveChanges();
                 return true;
             }
@@ -106,11 +107,11 @@ namespace Tusimaka.DAL
                 return false;
             }
         }
-        public Model.strekning hentDenneFlyruten(int flyid)
+        public Strekning hentDenneFlyruten(int flyid)
         {
             var db = new DBContext();
 
-            var denneFlyruten = db.Strekning.Find(flyid);
+            var denneFlyruten = db.Strekninger.Find(flyid);
 
             if (denneFlyruten == null)
             {
@@ -118,16 +119,16 @@ namespace Tusimaka.DAL
             }
             else
             {
-                var utFlyrute = new Model.strekning()
+                var utFlyrute = new Strekning()
                 {
-                    StrekningsID = denneFlyruten.StrekningsID,
-                    fraFlyplass = denneFlyruten.fraFlyplass,
-                    tilFlyplass = denneFlyruten.tilFlyplass,
-                    dato = denneFlyruten.dato,
-                    tid = denneFlyruten.tid,
-                    pris = denneFlyruten.pris,
-                    flyTid = denneFlyruten.flyTid,
-                    antallLedigeSeter = denneFlyruten.antallLedigeSeter
+                    StrekningsID = denneFlyruten.strekningsID,
+                    FraFlyplass = denneFlyruten.fraFlyplass,
+                    TilFlyplass = denneFlyruten.tilFlyplass,
+                    Dato = denneFlyruten.dato,
+                    Tid = denneFlyruten.tid,
+                    Pris = denneFlyruten.pris,
+                    FlyTid = denneFlyruten.flyTid,
+                    AntallLedigeSeter = denneFlyruten.antallLedigeSeter
                 };
                 return utFlyrute;
             }

@@ -19,7 +19,7 @@ namespace Tusimaka.DAL
                 {
                     var nyFlyBestilling = new FlyBestilling();
 
-                    nyFlyBestilling.StrekningsID = innFlyBestilling.StrekningsID;
+                    nyFlyBestilling.strekningsID = innFlyBestilling.StrekningsID;
                     nyFlyBestilling.antallPersoner = innFlyBestilling.AntallPersoner;
 
                     if (innFlyBestilling.ReturID != null)
@@ -80,8 +80,8 @@ namespace Tusimaka.DAL
             {
                 int flyBestillingsId = db.FlyBestilling.Max(f => f.flyBestillingsID);
                 FlyBestilling finnStrekning = db.FlyBestilling.FirstOrDefault(f => f.flyBestillingsID == flyBestillingsId);
-                int strekningsId = finnStrekning.StrekningsID;
-                strekning finnStrekningList = db.Strekning.FirstOrDefault(s => s.StrekningsID == strekningsId);
+                int strekningsId = finnStrekning.strekningsID;
+                Strekninger finnStrekningList = db.Strekninger.FirstOrDefault(s => s.strekningsID == strekningsId);
 
                 var jsonSerializer = new JavaScriptSerializer();
                 return jsonSerializer.Serialize(finnStrekningList);

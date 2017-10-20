@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
+using Tusimaka.Model;
 
 namespace Tusimaka.DAL
 {
@@ -13,11 +14,11 @@ namespace Tusimaka.DAL
         {
             using (var db = new DBContext())
             {
-                List<strekning> alleFly = db.Strekning.ToList();
+                List<Strekninger> alleFly = db.Strekninger.ToList();
 
                 var alleFraFly = new List<string>();
 
-                foreach (strekning f in alleFly)
+                foreach (Strekninger f in alleFly)
                 {
                     string funnetStrekning = alleFraFly.FirstOrDefault(fl => fl.Contains(f.fraFlyplass));
                     if (funnetStrekning == null)
@@ -35,11 +36,11 @@ namespace Tusimaka.DAL
         {
             using (var db = new DBContext())
             {
-                List<strekning> alleFly = db.Strekning.ToList();
+                List<Strekninger> alleFly = db.Strekninger.ToList();
 
                 var alleTilFly = new List<string>();
 
-                foreach (strekning f in alleFly)
+                foreach (Strekninger f in alleFly)
                 {
                     if (f.fraFlyplass == fraFlyPlass)
                     {
@@ -59,7 +60,7 @@ namespace Tusimaka.DAL
         {
             using (var db = new DBContext())
             {
-                List<strekning> alleFly = db.Strekning.Where(
+                List<Strekninger> alleFly = db.Strekninger.Where(
                     f => f.tilFlyplass == tilFlyPlass && f.fraFlyplass == fraFlyplass && f.dato == dato && f.antallLedigeSeter >= antallLedigeSeter).ToList();
 
                 var jsonSerializer = new JavaScriptSerializer();
@@ -73,11 +74,11 @@ namespace Tusimaka.DAL
             {
                 int flyBestillingsId = db.FlyBestilling.Max(f => f.flyBestillingsID);
                 FlyBestilling finnRetur = db.FlyBestilling.FirstOrDefault(f => f.flyBestillingsID == flyBestillingsId);
-                strekning finnReturList = new strekning();
+                Strekninger finnReturList = new Strekninger();
                 if (finnRetur.returID != null)
                 {
                     int? returId = finnRetur.returID;
-                    finnReturList = db.Strekning.FirstOrDefault(r => r.StrekningsID == returId);
+                    finnReturList = db.Strekninger.FirstOrDefault(r => r.strekningsID == returId);
                 }
 
                 var jsonSerializer = new JavaScriptSerializer();

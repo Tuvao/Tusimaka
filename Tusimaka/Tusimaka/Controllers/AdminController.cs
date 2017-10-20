@@ -54,7 +54,7 @@ namespace Tusimaka.Controllers
         public ActionResult FlyruterAdministrer()
         {
             var db = new AdminFlyruterBLL();
-            List<strekning> alleFlyruter = db.hentAlleFlyruter();
+            List<Strekning> alleFlyruter = db.hentAlleFlyruter();
             return View(alleFlyruter);
         }
         public ActionResult KundeAdministrer()
@@ -68,7 +68,7 @@ namespace Tusimaka.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult RegistrerFlyrute(strekning innFlyrute)
+        public ActionResult RegistrerFlyrute(Strekning innFlyrute)
         {
             var db = new AdminFlyruterBLL();
             bool OK = db.lagreFlyrute(innFlyrute);
@@ -121,12 +121,12 @@ namespace Tusimaka.Controllers
         public ActionResult EndreFlyrute(int flyid)
         {
             var adminFlyruteBLL = new AdminFlyruterBLL();
-            Model.strekning hentSpesifikFlyrute = adminFlyruteBLL.hentDenneFlyruten(flyid);
+            Strekning hentSpesifikFlyrute = adminFlyruteBLL.hentDenneFlyruten(flyid);
             return View(hentSpesifikFlyrute);
         }
         
         [HttpPost]
-        public ActionResult EndreFlyrute(int flyid, strekning innFlyrute)
+        public ActionResult EndreFlyrute(int flyid, Strekning innFlyrute)
         {
             var adminFlyruterBLL = new AdminFlyruterBLL();
             bool endreOK = adminFlyruterBLL.endreFlyrute(flyid, innFlyrute);

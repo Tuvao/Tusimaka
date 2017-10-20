@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Tusimaka.Model.strekning>
+﻿@model IEnumerable<Tusimaka.Model.Strekning>
 
 @{
     ViewBag.Title = "FlyruterAdministrer";
@@ -73,31 +73,31 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.fraFlyplass)
+            @Html.DisplayFor(modelItem => item.FraFlyplass)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.tilFlyplass)
+            @Html.DisplayFor(modelItem => item.TilFlyplass)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.dato)
+            @Html.DisplayFor(modelItem => item.Dato)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.tid)
+            @Html.DisplayFor(modelItem => item.Tid)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.pris)
+            @Html.DisplayFor(modelItem => item.Pris)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.flyTid)
+            @Html.DisplayFor(modelItem => item.FlyTid)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.antallLedigeSeter)
+            @Html.DisplayFor(modelItem => item.AntallLedigeSeter)
         </td>
         <td>
             @Html.ActionLink("Edit", "EndreFlyrute", new { id=item.StrekningsID }) |
             @Html.ActionLink("Details", "Details", new { id=item.StrekningsID }) |
             <a href="#sletteFlyruterModal" class="btn btn-large btn-danger" id="sletteKnapp"
-               data-navn="@item.tilFlyplass @item.fraFlyplass @item.dato @item.tid"
+               data-navn="@item.FraFlyplass @item.TilFlyplass @item.Dato @item.Tid @item.Pris @item.FlyTid @item.AntallLedigeSeter"
                data-id="@item.StrekningsID" data-toggle="modal" data-sletteFlyruterModal="true">Slett</a>
         </td>
     </tr>

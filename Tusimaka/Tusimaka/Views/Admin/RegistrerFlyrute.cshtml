@@ -1,4 +1,4 @@
-﻿@model Tusimaka.Model.strekning
+﻿@model Tusimaka.Model.Strekning
 
 @{
     ViewBag.Title = "RegistrerFlyrute";
@@ -17,56 +17,56 @@
         <div class="form-group">
             <div class="col-md-10">
                 <p>FRA FLYPLASS</p>
-                @Html.EditorFor(model => model.fraFlyplass, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
-                @Html.ValidationMessageFor(model => model.fraFlyplass, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.FraFlyplass, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
+                @Html.ValidationMessageFor(model => model.FraFlyplass, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-10">
                 <p>TIL FLYPLASS</p>
-                @Html.EditorFor(model => model.tilFlyplass, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
-                @Html.ValidationMessageFor(model => model.tilFlyplass, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.TilFlyplass, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
+                @Html.ValidationMessageFor(model => model.TilFlyplass, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-10">
                 <p>DATO</p>
-                @Html.EditorFor(model => model.dato, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
-                @Html.ValidationMessageFor(model => model.dato, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Dato, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
+                @Html.ValidationMessageFor(model => model.Dato, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-10">
                 <p>TID</p>
-                @Html.EditorFor(model => model.tid, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
-                @Html.ValidationMessageFor(model => model.tid, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Tid, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
+                @Html.ValidationMessageFor(model => model.Tid, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-10">
                 <p>PRIS</p>
-                @Html.EditorFor(model => model.pris, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
-                @Html.ValidationMessageFor(model => model.pris, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Pris, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
+                @Html.ValidationMessageFor(model => model.Pris, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-10">
                 <p>FLYTID</p>
-                @Html.EditorFor(model => model.flyTid, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
-                @Html.ValidationMessageFor(model => model.flyTid, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.FlyTid, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
+                @Html.ValidationMessageFor(model => model.FlyTid, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-10">
                 <p>LEDIGE SETER</p>
-                @Html.EditorFor(model => model.antallLedigeSeter, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
-                @Html.ValidationMessageFor(model => model.antallLedigeSeter, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.AntallLedigeSeter, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
+                @Html.ValidationMessageFor(model => model.AntallLedigeSeter, "", new { @class = "text-danger" })
             </div>
         </div>
 

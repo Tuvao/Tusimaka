@@ -4,23 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Tusimaka.DAL;
+using Tusimaka.Model;
 
 namespace Tusimaka.BLL
 {
     public class AdminFlyruterBLL
     {
-        public List<Model.strekning> hentAlleFlyruter()
+        public List<Strekning> hentAlleFlyruter()
         {
             var flyruterDAL = new AdminFlyruterDAL();
-            List<Model.strekning> alleFlyruter = flyruterDAL.hentAlleFlyruter();
+            List<Strekning> alleFlyruter = flyruterDAL.hentAlleFlyruter();
             return alleFlyruter;
         }
-        public bool lagreFlyrute(Model.strekning innFlyrute)
+        public bool lagreFlyrute(Strekning innFlyrute)
         {
             var flyruteDAL = new AdminFlyruterDAL();
             return flyruteDAL.lagreFlyrute(innFlyrute);
         }
-        public bool endreFlyrute(int id, Model.strekning innFlytur)
+        public bool endreFlyrute(int id, Strekning innFlytur)
         {
             var adminFlyruteDAL = new AdminFlyruterDAL();
             return adminFlyruteDAL.endreFlyrute(id, innFlytur);
@@ -30,7 +31,7 @@ namespace Tusimaka.BLL
             var adminFlyruteDAL = new AdminFlyruterDAL();
             return adminFlyruteDAL.slettFlyrute(slettFlyruteId);
         }
-        public Model.strekning hentDenneFlyruten(int flyid)
+        public Strekning hentDenneFlyruten(int flyid)
         {
             var adminFlyruteDAL = new AdminFlyruterDAL();
             return adminFlyruteDAL.hentDenneFlyruten(flyid);
