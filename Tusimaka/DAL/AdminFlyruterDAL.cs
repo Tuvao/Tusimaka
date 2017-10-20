@@ -53,12 +53,12 @@ namespace Tusimaka.DAL
             }
         }
 
-        public bool slettKunde(int slettId)
+        public bool slettKunde(int id)
         {
             var db = new DBContext();
             try
             {
-                Kunder slettKunde = db.Kunder.Find(slettId);
+                Kunder slettKunde = db.Kunder.Find(id);
                 db.Kunder.Remove(slettKunde);
                 db.SaveChanges();
                 return true;
@@ -69,12 +69,12 @@ namespace Tusimaka.DAL
             }
         }
 
-        public bool slettFlyrute(int slettFlyruteId)
+        public bool slettFlyrute(int id)
         {
             var db = new DBContext();
             try
             {
-                Strekninger slettFlyrute = db.Strekninger.Find(slettFlyruteId);
+                Strekninger slettFlyrute = db.Strekninger.Find(id);
                 db.Strekninger.Remove(slettFlyrute);
                 db.SaveChanges();
                 Console.Write("riktig");
@@ -107,11 +107,11 @@ namespace Tusimaka.DAL
                 return false;
             }
         }
-        public Strekning hentDenneFlyruten(int flyid)
+        public Strekning hentDenneFlyruten(int id)
         {
             var db = new DBContext();
 
-            var denneFlyruten = db.Strekninger.Find(flyid);
+            var denneFlyruten = db.Strekninger.Find(id);
 
             if (denneFlyruten == null)
             {

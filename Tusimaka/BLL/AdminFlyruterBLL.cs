@@ -31,10 +31,10 @@ namespace Tusimaka.BLL
             var adminFlyruteDAL = new AdminFlyruterDAL();
             return adminFlyruteDAL.slettFlyrute(slettFlyruteId);
         }
-        public Strekning hentDenneFlyruten(int flyid)
+        public Strekning hentDenneFlyruten(int id)
         {
             var adminFlyruteDAL = new AdminFlyruterDAL();
-            return adminFlyruteDAL.hentDenneFlyruten(flyid);
+            return adminFlyruteDAL.hentDenneFlyruten(id);
         }
     }
 }

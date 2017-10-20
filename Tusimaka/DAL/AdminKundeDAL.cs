@@ -24,12 +24,12 @@ namespace Tusimaka.DAL
                 return alleKunder;
             }
         }
-        public bool slettKunde(int slettId)
+        public bool slettKunde(int id)
         {
             var db = new DBContext();
             try
             {
-                Kunder slettKunde = db.Kunder.Find(slettId);
+                Kunder slettKunde = db.Kunder.Find(id);
                 db.Kunder.Remove(slettKunde);
                 db.SaveChanges();
                 return true;

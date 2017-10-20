@@ -118,18 +118,18 @@ namespace Tusimaka.Controllers
             List<FlyBestillingKunde> alleBestillinger = adminBestillingBLL.test(id);
             return View(alleBestillinger);
         }
-        public ActionResult EndreFlyrute(int flyid)
+        public ActionResult EndreFlyrute(int id)
         {
             var adminFlyruteBLL = new AdminFlyruterBLL();
-            Strekning hentSpesifikFlyrute = adminFlyruteBLL.hentDenneFlyruten(flyid);
+            Strekning hentSpesifikFlyrute = adminFlyruteBLL.hentDenneFlyruten(id);
             return View(hentSpesifikFlyrute);
         }
         
         [HttpPost]
-        public ActionResult EndreFlyrute(int flyid, Strekning innFlyrute)
+        public ActionResult EndreFlyrute(int id, Strekning innFlyrute)
         {
             var adminFlyruterBLL = new AdminFlyruterBLL();
-            bool endreOK = adminFlyruterBLL.endreFlyrute(flyid, innFlyrute);
+            bool endreOK = adminFlyruterBLL.endreFlyrute(id, innFlyrute);
             return RedirectToAction("FlyruterAdministrer");
         }
         public void slettKunde(int id)
@@ -139,21 +139,10 @@ namespace Tusimaka.Controllers
             bool slettOK = adminKundeBLL.slettKunde(id);
             // kunne returnert en feil dersom slettingen feilet....
         }
-        public void slettFlyrute(int slettFlyruteId)
+        public void slettFlyrute(int id)
         {
-            //var adminFlyruteBLL = new AdminFlyruterBLL();
-            //bool slettOK = adminFlyruteBLL.slettFlyrute(slettFlyruteId);
-
-            var db = new AdminFlyruterBLL();
-            bool OK = db.slettFlyrute(slettFlyruteId);
-            if (OK)
-            {
-                Console.WriteLine("Blir slettet");
-            }
-            else
-            {
-                Console.WriteLine("Blir ikke slettet");
-            }
+            var adminFlyruteBLL = new AdminFlyruterBLL();
+            bool slettOK = adminFlyruteBLL.slettFlyrute(id);
         }
     }
 }

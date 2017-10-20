@@ -16,15 +16,15 @@ namespace Tusimaka.BLL
             List<Kunde> alleKunder = kundeDAL.hentAlleKunder();
             return alleKunder;
         }
-        public bool slettKunde(int slettId)
+        public bool slettKunde(int id)
         {
             var adminKundeDAL = new AdminKundeDAL();
-            return adminKundeDAL.slettKunde(slettId);
+            return adminKundeDAL.slettKunde(id);
         }
-        public bool endreKunde(int slettId, Kunde innKunde)
+        public bool endreKunde(int id, Kunde innKunde)
         {
             var adminKundeDAL = new AdminKundeDAL();
-            return adminKundeDAL.endreKunde(slettId, innKunde);
+            return adminKundeDAL.endreKunde(id, innKunde);
         }
         public Kunde hentDenneKunden(int id)
         {
