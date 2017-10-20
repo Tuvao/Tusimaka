@@ -150,6 +150,7 @@
     <Content Include="Views\Admin\FlyruterAdministrer.cshtml" />
     <Content Include="Views\Admin\RegistrerFlyrute.cshtml" />
     <Content Include="Views\Admin\SlettFlyruterModal.cshtml" />
+    <Content Include="Views\Admin\EndreFlyrute.cshtml" />
     <None Include="Views\Home\Bestill.cshtml" />
     <Content Include="Views\Home\RegistrerBetaling.cshtml" />
     <Content Include="Views\Home\Bekreftelse.cshtml" />

@@ -20,11 +20,20 @@ namespace Tusimaka.BLL
             var flyruteDAL = new AdminFlyruterDAL();
             return flyruteDAL.lagreFlyrute(innFlyrute);
         }
-
+        public bool endreFlyrute(int id, Model.strekning innFlytur)
+        {
+            var adminFlyruteDAL = new AdminFlyruterDAL();
+            return adminFlyruteDAL.endreFlyrute(id, innFlytur);
+        }
         public bool slettFlyrute(int slettFlyruteId)
         {
             var adminFlyruteDAL = new AdminFlyruterDAL();
             return adminFlyruteDAL.slettFlyrute(slettFlyruteId);
+        }
+        public Model.strekning hentDenneFlyruten(int flyid)
+        {
+            var adminFlyruteDAL = new AdminFlyruterDAL();
+            return adminFlyruteDAL.hentDenneFlyruten(flyid);
         }
     }
 }
