@@ -5,10 +5,10 @@
 <link href="~/Content/StyleSheet.css" rel="stylesheet" />
 <h2>Velkommen, admin!</h2>
 <hr/>
-<ul class="adminStartKnapp">
-    <li>@Html.ActionLink("Administrer Kunder", "KundeAdministrer")</li>
-    <li>@Html.ActionLink("Administrer flyruter", "FlyruterAdministrer")</li>
-    <li>Se databaselogg</li>
-</ul>
+<div class="adminStartKnapp">
+    <span class="knapp">@Html.ActionLink("Administrer Kunder", "KundeAdministrer")</span>
+    <span class="knapp">@Html.ActionLink("Administrer flyruter", "FlyruterAdministrer")</span>
+    <span class="knapp">Se databaselogg</span>
+</div>
     <p style="color:blue">Logget inn</p>
 
