@@ -23,6 +23,7 @@
                     url: '@Url.Action("slettFlyrute", "Admin")',
                     data: { id: data_id },  // en parameter inn i slett(id)-metoden i kunde-kontrolleren (JSON-objekt)
                     success: function () {
+                        console.log("Dette funker - ajax url action slettFlyrute");
                         // må kalle liste-metoden for å vise den nye listen av kunder
                         $.ajax({
                             url: '@Url.Action("FlyruterAdministrer", "Admin")',
@@ -93,7 +94,7 @@
             @Html.DisplayFor(modelItem => item.antallLedigeSeter)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.StrekningsID }) |
+            @Html.ActionLink("Edit", "EndreFlyrute", new { id=item.StrekningsID }) |
             @Html.ActionLink("Details", "Details", new { id=item.StrekningsID }) |
             <a href="#sletteFlyruterModal" class="btn btn-large btn-danger" id="sletteKnapp"
                data-navn="@item.tilFlyplass @item.fraFlyplass @item.dato @item.tid"
