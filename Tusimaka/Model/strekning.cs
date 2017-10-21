@@ -34,7 +34,7 @@ namespace Tusimaka.Model
         [Display(Name = "tilFlyplass")]
         [Required(ErrorMessage = "Pris må oppgis")]
         [RegularExpression(@"[0-9]{1,6}", ErrorMessage = "Pris må bestå av et positivt tall")]
-        public string Pris { get; set; }
+        public int Pris { get; set; }
 
         [Display(Name = "flyTid")]
         [Required(ErrorMessage = "Flytid må oppgis")]

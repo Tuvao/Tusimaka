@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Tusimaka.Model.FlyBestillingKunde>
+﻿@model IEnumerable<Tusimaka.Model.KundeBestillinger>
 
 @{
     ViewBag.Title = "KundeBestillinger";
@@ -12,10 +12,34 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.FlyBestillingsID)
+            Kunde id
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.KundeID)
+            Fornavn
+        </th>
+        <th>
+            Etternavn
+        </th>
+        <th>
+            Flight Nr
+        </th>
+        <th>
+            Fra flyplass
+        </th>
+        <th>
+            Til flyplass)
+        </th>
+        <th>
+            Dato
+        </th>
+        <th>
+            Tidspunkt
+        </th>
+        <th>
+            Pris
+        </th>
+        <th>
+            Antall personer
         </th>
         <th></th>
     </tr>
@@ -23,20 +47,41 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.FlyBestillingsID)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.KundeID)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.FlyBestillingsKundeID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.FlyBestillingsKundeID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.FlyBestillingsKundeID })
+            @Html.DisplayFor(modelItem => item.Fornavn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Etternavn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StrekningsID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FraFlyplass)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TilFlyplass)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dato)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pris)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AntallPersoner)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
         </td>
     </tr>
 }
 
 </table>
-<div>
-    @Html.ActionLink("Tilbake til kundeadmin", "KundeAdministrer")
-</div>

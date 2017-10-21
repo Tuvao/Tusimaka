@@ -75,7 +75,7 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "EndreKunde", new { id=item.KundeID }) |
-            @Html.ActionLink("Se bestillinger", "KundeBestillinger1", new { id=item.KundeID }) |
+            @Html.ActionLink("Se bestillinger", "KundeBestillinger", new { id=item.KundeID }) |
             <a href="#sletteModal" class="btn btn-large btn-danger" id="sletteKnapp"
                data-navn="@item.Fornavn @item.Etternavn @item.Epost @item.Kjonn"
                data-id="@item.KundeID" data-toggle="modal" data-sletteModal="true">Slett</a>

@@ -37,7 +37,7 @@ namespace Tusimaka.DAL
         public string tilFlyplass { get; set; }
         public string dato { get; set; }
         public string tid { get; set; }
-        public string pris { get; set; }
+        public int pris { get; set; }
         public int flyTid { get; set; }
         public int antallLedigeSeter { get; set; }
     }
@@ -81,7 +81,7 @@ namespace Tusimaka.DAL
         {
             Database.CreateIfNotExists();
             
-            Database.SetInitializer(new DBInit());
+            //Database.SetInitializer(new DBInit());
         }
         public virtual DbSet<Strekninger> Strekninger { get; set; }
         public virtual DbSet<Kunder> Kunder { get; set; }

@@ -46,6 +46,7 @@
     <Compile Include="FlyBestillinger.cs" />
     <Compile Include="FlyBestillingKunde.cs" />
     <Compile Include="Kunde.cs" />
+    <Compile Include="KundeBestillinger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Strekning.cs" />
   </ItemGroup>
