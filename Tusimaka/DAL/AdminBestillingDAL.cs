@@ -3,27 +3,50 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 using Tusimaka.Model;
 
 namespace Tusimaka.DAL
 {
     public class AdminBestillingDAL
     {
+        //TEST4
+        //public List<Strekninger> hentAlleKundensBestillinger(int id)
+        //{
+        //    using (var db = new DBContext())
+        //    {
+        //        List<Strekninger> alleBestillinger = db.Strekninger.ToList();
+        //        var kundeBestillinger = new List<Strekninger>();
+        //        List<FlyBestillingKunder> kundeSineBestillinger = db.FlyBestillingKunder.Where(f => f.KundeID == id).ToList();
+        //        foreach (FlyBestillingKunder bestillinger in kundeSineBestillinger)
+        //        {
+        //            List<FlyBestilling> flybestillingsId = db.FlyBestilling.Where(f => f.FlyBestillingsID == bestillinger.FlyBestillingsID).ToList();
+        //            foreach (FlyBestilling flybestillinger in flybestillingsId)
+        //            {
+        //                List <Strekninger> kundesBestillinger = db.Strekninger.Where(s => s.StrekningsID == flybestillinger.StrekningsID).ToList();
+                        
+        //            }
+        //        }
+                
+        //        var jsonSerializer = new JavaScriptSerializer();
+        //        return jsonSerializer.Serialize(kundeBestillinger);
+        //    }
+        //}
         //TEST3
-        public List<FlyBestillingKunde> test(int KundeId)
-        {
-            var db = new DBContext();
+        //public List<FlyBestillingKunde> test(int id)
+        //{
+        //    var db = new DBContext();
 
-            //var enKunde = db.Kunder.Find(KundeId);
+        //    //var enKunde = db.Kunder.Find(KundeId);
 
-            List<FlyBestillingKunde> alleKundeBestillinger = db.FlyBestillingKunder.Where(f => f.kundeID == KundeId).Select(f => new FlyBestillingKunde()
-            {
-                FlyBestillingsID = f.flyBestillingsID,
-                KundeID = f.kundeID
-            }).ToList();
-            return alleKundeBestillinger;
+        //    List<FlyBestillingKunde> alleKundeBestillinger = db.FlyBestillingKunder.Where(f => f.KundeID == id).Select(f => new FlyBestillingKunde()
+        //    {
+        //        FlyBestillingsID = f.FlyBestillingsID,
+        //        KundeID = f.KundeID
+        //    }).ToList();
+        //    return alleKundeBestillinger;
 
-        }
+        //}
 
             //Tankegang
             //public List<strekning> hentKundesFlyBestillingsID(int KundeId)

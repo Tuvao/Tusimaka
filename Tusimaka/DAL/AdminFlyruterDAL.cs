@@ -15,7 +15,7 @@ namespace Tusimaka.DAL
             {
                 List<Strekning> alleStrekninger = db.Strekninger.Select(s => new Strekning()
                 {
-                    StrekningsID = s.strekningsID,
+                    StrekningsID = s.StrekningsID,
                     TilFlyplass = s.tilFlyplass,
                     FraFlyplass = s.fraFlyplass,
                     Dato = s.dato,
@@ -121,7 +121,7 @@ namespace Tusimaka.DAL
             {
                 var utFlyrute = new Strekning()
                 {
-                    StrekningsID = denneFlyruten.strekningsID,
+                    StrekningsID = denneFlyruten.StrekningsID,
                     FraFlyplass = denneFlyruten.fraFlyplass,
                     TilFlyplass = denneFlyruten.tilFlyplass,
                     Dato = denneFlyruten.dato,

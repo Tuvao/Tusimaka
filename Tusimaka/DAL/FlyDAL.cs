@@ -72,13 +72,13 @@ namespace Tusimaka.DAL
         {
             using (var db = new DBContext())
             {
-                int flyBestillingsId = db.FlyBestilling.Max(f => f.flyBestillingsID);
-                FlyBestilling finnRetur = db.FlyBestilling.FirstOrDefault(f => f.flyBestillingsID == flyBestillingsId);
+                int flyBestillingsId = db.FlyBestilling.Max(f => f.FlyBestillingsID);
+                FlyBestilling finnRetur = db.FlyBestilling.FirstOrDefault(f => f.FlyBestillingsID == flyBestillingsId);
                 Strekninger finnReturList = new Strekninger();
-                if (finnRetur.returID != null)
+                if (finnRetur.ReturID != null)
                 {
-                    int? returId = finnRetur.returID;
-                    finnReturList = db.Strekninger.FirstOrDefault(r => r.strekningsID == returId);
+                    int? returId = finnRetur.ReturID;
+                    finnReturList = db.Strekninger.FirstOrDefault(r => r.StrekningsID == returId);
                 }
 
                 var jsonSerializer = new JavaScriptSerializer();

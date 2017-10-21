@@ -22,13 +22,13 @@ namespace Tusimaka.Controllers
         }
 
         [HttpPost]
-        public ActionResult Bestill(FlyBestillinger innFlyInfo)
+        public ActionResult Bestill(FlyBestillinger innFlyinfo)
         {
             //henter data fra utfylt skjema i Bestill siden, lagrer i FlyBestilling tabell i DB
             //om OK, sender videre til neste side. 
-            //selve funksjonene gjøres i DB.cs
+            //selve funksjonene gjøres i laget Bestilling DAL
             var db = new BestillingBLL();
-            bool OK = db.lagreFlyBestilling(innFlyInfo);
+            bool OK = db.lagreFlyBestilling(innFlyinfo);
             if (OK)
             {
                 return RedirectToAction("KundeRegistrering");

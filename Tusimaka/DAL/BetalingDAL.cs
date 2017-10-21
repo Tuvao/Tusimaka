@@ -16,7 +16,7 @@ namespace Tusimaka.DAL
             {
                 try
                 {
-                    int flyBestillingsId = db.FlyBestilling.Max(f => f.flyBestillingsID);
+                    int flyBestillingsId = db.FlyBestilling.Max(f => f.FlyBestillingsID);
 
                     var nyBetaling = new BetalingsInfo();
                     nyBetaling.FlyBestillingsID = flyBestillingsId;

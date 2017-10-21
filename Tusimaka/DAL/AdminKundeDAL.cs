@@ -15,7 +15,7 @@ namespace Tusimaka.DAL
             {
                 List<Kunde> alleKunder = db.Kunder.Select(k => new Kunde()
                 {
-                    KundeID = k.kundeID,
+                    KundeID = k.KundeID,
                     Fornavn = k.fornavn,
                     Etternavn = k.etternavn,
                     Epost = k.epost,
@@ -71,7 +71,7 @@ namespace Tusimaka.DAL
             {
                 var utKunde = new Kunde()
                 {
-                    KundeID = denneKunden.kundeID,
+                    KundeID = denneKunden.KundeID,
                     Fornavn = denneKunden.fornavn,
                     Etternavn = denneKunden.etternavn,
                     Epost = denneKunden.epost,

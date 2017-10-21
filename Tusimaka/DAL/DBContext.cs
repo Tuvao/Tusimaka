@@ -13,7 +13,7 @@ namespace Tusimaka.DAL
     public class Kunder
     {
         [Key]
-        public int kundeID { get; set; }
+        public int KundeID { get; set; }
         public string fornavn { get; set; }
         public string etternavn { get; set; }
         public string epost { get; set; }
@@ -22,17 +22,17 @@ namespace Tusimaka.DAL
     public class FlyBestilling
     {
         [Key]
-        public int flyBestillingsID { get; set; }
-        public int strekningsID { get; set; }
+        public int FlyBestillingsID { get; set; }
+        public int StrekningsID { get; set; }
         public int antallPersoner { get; set; }
-        public int? returID { get; set; }
+        public int? ReturID { get; set; }
         
         public virtual Strekninger Strekninger { get; set; }
     }
     public class Strekninger
     {
         [Key]
-        public int strekningsID { get; set; }
+        public int StrekningsID { get; set; }
         public string fraFlyplass { get; set; }
         public string tilFlyplass { get; set; }
         public string dato { get; set; }
@@ -47,8 +47,8 @@ namespace Tusimaka.DAL
     {
         [Key]
         public int flyBestillingsKundeID { get; set; }
-        public int flyBestillingsID { get; set; }
-        public int kundeID { get; set; }
+        public int FlyBestillingsID { get; set; }
+        public int KundeID { get; set; }
 
         public virtual Kunder Kunder { get; set; }
         public virtual FlyBestilling FlyBestilling { get; set; }
@@ -64,6 +64,8 @@ namespace Tusimaka.DAL
         public string Utlopsaar { get; set; }
         public string CVC { get; set; }
         public string Korttype { get; set; }
+
+        public virtual FlyBestilling FlyBestilling { get; set; }
     }
     public class AdminBrukere
     {
