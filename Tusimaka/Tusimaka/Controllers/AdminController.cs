@@ -112,11 +112,11 @@ namespace Tusimaka.Controllers
             bool endreOK = adminKundeBLL.endreKunde(id, innKunde);
             return RedirectToAction("KundeAdministrer");
         }
-        public ActionResult KundeBestillinger(int id)
+        public ActionResult KundeBestillinger(/*int id*/)
         {
-            var adminBestillingBLL = new AdminBestillingBLL();
-            List<FlyBestillingKunde> alleBestillinger = adminBestillingBLL.test(id);
-            return View(alleBestillinger);
+            //var adminBestillingBLL = new AdminBestillingBLL();
+            //List<FlyBestillingKunde> alleBestillinger = adminBestillingBLL.test(id);
+            return View(/*alleBestillinger*/);
         }
         public ActionResult EndreFlyrute(int id)
         {
