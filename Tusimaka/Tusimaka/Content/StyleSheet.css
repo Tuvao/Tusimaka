@@ -226,3 +226,7 @@ ul {
     .adminStartKnapp li:hover {
         border-radius: 0px 40px 40px 0px;
     }
+p.fyll_inn_skjema{
+    display: inline-block;
+    margin-right: 3%;
+}

@@ -18,22 +18,13 @@
         @Html.HiddenFor(model => model.BestillingsID)
         <div class="row">
             <div class="col-md-10">
-                <span>KORTNUMMER</span>
-                @Html.EditorFor(model => model.Kortnummer, new { htmlAttributes = new { @class = "tekstFelt fullStrl" } })
+                @Html.EditorFor(model => model.Kortnummer, new { htmlAttributes = new { placeholder = "Kortnummer", @class = "tekstFelt fullStrl" } })
                 @Html.ValidationMessageFor(model => model.Kortnummer, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="row">
             <div class="col col-lg-1 col-md-1 col-sm-5 col-xs-10 sidestill" id="utlopscvc">
                 <table>
-                    <tr>
-                        <td colspan="2">
-                            <span>UTLØPSDATO</span>
-                        </td>
-                        <td>
-                            <span>CVC</span>
-                        </td>
-                    </tr>
                     <tr>
                         <td>
                             <select id="velgUtlopsmnd" class="maxWidth100 tekstFelt" name="Utlopsmnd" required>
@@ -71,7 +62,7 @@
                         <td class="col col-lg-1 col-md-1 col-sm-1 col-xs-10">
                             <div class="utlopscvc">
                                 @*CVC*@
-                                @Html.EditorFor(model => model.CVC, new { htmlAttributes = new { @class = "tekstFelt maxWidth58" } })
+                                @Html.EditorFor(model => model.CVC, new { htmlAttributes = new { placeholder = "CVC", @class = "tekstFelt maxWidth58" } })
                                 @Html.ValidationMessageFor(model => model.CVC, "", new { @class = "text-danger" })
                             </div>
                         </td>
@@ -81,7 +72,6 @@
         </div>
         <div class="row">
             <div class="col-md-10" id="velgkorttype">
-                <span>KORTTYPE</span>
                 <select id="velgKorttype" class="tekstFelt fullStrl" Name="Korttype" required>
                     <option name="Korttype" disabled selected>Velg korttype</option>
                     <option name="Visa" value="Visa">Visa</option>

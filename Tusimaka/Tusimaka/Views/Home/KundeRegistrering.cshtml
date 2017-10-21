@@ -40,33 +40,33 @@
         @Html.HiddenFor(model => model.KundeID)
         <div class="form-group">
             <div class="col-md-10">
-                <p>FORNAVN</p>
-                @Html.EditorFor(model => model.Fornavn, new { htmlAttributes = new { @class = "tekstFelt fullStrl" } })
+                @*<p>FORNAVN</p>*@
+                @Html.EditorFor(model => model.Fornavn, new { htmlAttributes = new { placeholder = "Fornavn", @class = "tekstFelt fullStrl" } })
                 @Html.ValidationMessageFor(model => model.Fornavn, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-10">
-                <p>ETTERNAVN</p>
-                @Html.EditorFor(model => model.Etternavn, new { htmlAttributes = new { @class = "tekstFelt fullStrl" } })
+                @*<p>ETTERNAVN</p>*@
+                @Html.EditorFor(model => model.Etternavn, new { htmlAttributes = new { placeholder = "Etternavn", @class = "tekstFelt fullStrl" } })
                 @Html.ValidationMessageFor(model => model.Etternavn, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-10">
-                <p>E-POST</p>
-                @Html.EditorFor(model => model.Epost, new { htmlAttributes = new { @class = "tekstFelt fullStrl" } })
+                @*<p>E-POST</p>*@
+                @Html.EditorFor(model => model.Epost, new { htmlAttributes = new { placeholder = "Epost", @class = "tekstFelt fullStrl" } })
                 @Html.ValidationMessageFor(model => model.Epost, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-10" id="kjonn">
-                <p>KJØNN</p>
+                @*<p>KJØNN</p>*@
                 <select id="velgKjonn" class="tekstFelt fullStrl" name="kjonn" required>
-                    <option name="velg" disabled selected>Velg</option>
+                    <option name="velg" disabled selected>Velg kjønn</option>
                     <option name="mann" value="Mann">Mann</option>
                     <option name="kvinne" value="Kvinne">Kvinne</option>
                 </select>
