@@ -10,10 +10,10 @@ namespace Tusimaka.BLL
 {
     public class AdminBestillingBLL
     {
-        public List<FlyBestillinger> hentAlleFlybestillingsKunder(int id)
+        public List<int> hentFlybestillinger(int id)
         {
             var AdminBestillingDAL = new AdminBestillingDAL();
-            List<FlyBestillinger> alleFlybestillingKunder = AdminBestillingDAL.hentAlleFlybestillingsKunder(id);
+            List<int> alleFlybestillingKunder = AdminBestillingDAL.hentFlybestillinger(id);
             return alleFlybestillingKunder;
         }
         //public List<FlyBestillingKunde> test(int id)

@@ -10,6 +10,49 @@ namespace Tusimaka.DAL
 {
     public class AdminBestillingDAL
     {
+        public List<FlyBestilling> hentFlybestillinger(int id)
+        {
+            using (var db = new DBContext())
+            {
+                //List<FlyBestillinger> flybestillinger = new List<FlyBestillinger>();
+                List<FlyBestillingKunde> hentetFlybestillingsKunder = hentFlybestillingsKunder(id);
+                //foreach (FlyBestillingKunde flybestillingsIDelement in hentetFlybestillingsKunder)
+                //{
+                //    List<FlyBestillinger> flybestillinger = db.FlyBestilling.Where(f => f.FlyBestillingsID == flybestillingsIDelement.FlyBestillingsID).Select(fb => new FlyBestillinger()
+                //    {
+                //        FlyBestillingsID = fb.FlyBestillingsID,
+                //        StrekningsID = fb.StrekningsID,
+                //        antallPersoner = fb.antallPersoner,
+                //        ReturID = fb.ReturID
+                //    }).ToList();
+                //}
+                for(var i = 0; i< hentetFlybestillingsKunder.Count; i++)
+                {
+
+                }
+                List<FlyBestilling> flybestillinger = db.FlyBestilling.Select(fb => new FlyBestilling()
+                {
+                    FlyBestillingsID = fb.FlyBestillingsID,
+                    StrekningsID = fb.StrekningsID,
+                    antallPersoner = fb.antallPersoner,
+                    ReturID = fb.ReturID
+                }).ToList();
+                return flybestillinger;
+            }
+        }
+        public List<FlyBestillingKunde> hentFlybestillingsKunder(int id)
+        {
+            using (var db = new DBContext())
+            {
+                List<FlyBestillingKunde> kundeSineBestillinger = db.FlyBestillingKunder.Where(fbk => fbk.KundeID == id).Select(fb => new FlyBestillingKunde()
+                {
+                    FlyBestillingsKundeID = fb.flyBestillingsKundeID,
+                    FlyBestillingsID = fb.FlyBestillingsID,
+                    KundeID = fb.KundeID
+                }).ToList();
+                return kundeSineBestillinger;
+            }
+        }
         //TEST5
         //public int hentAlleFlybestillinger(int id)
         //{
