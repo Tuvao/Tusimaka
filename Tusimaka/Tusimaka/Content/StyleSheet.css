@@ -230,3 +230,7 @@ p.fyll_inn_skjema{
     display: inline-block;
     margin-right: 3%;
 }
+.tabKnapp{
+    font-size: 1.1em;
+    margin:0.3em;
+}

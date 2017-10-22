@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "FlyruterAdministrer";
 }
+<link href="@Url.Content("~/Content/StyleSheet.css")" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
     $(document).ready(function () {
         // lag en hendelse som utføres når en a-href med "data-SletteModal = true" trykkes.
@@ -32,17 +33,28 @@
                                 window.location.reload();
                             }
                         });
-                        }
-                    });
-                })
-            })
+                    }
+                });
+            });
+        });
+
+            // lag en hendelse som utføres når en a-href med "data-SletteModal = true" trykkes.
+            $('a[data-visFlyruterModal=true]').click(function () {
+
+                var data_navn = $(this).data('navn');
+                var data_id = $(this).data('id');
+
+                $('#visFlyrute').html(data_navn);
+            });
         });
 </script>
-
-<h2>FlyruterAdministrer</h2>
+<body>
+<h2>Administrer flyruter</h2>
 
 <p>
+    @Html.ActionLink("Gå tilbake til meny", "AdminStart")
     @Html.ActionLink("Legg til ny flyrute", "RegistrerFlyrute")
+    @*hvordan gjøre om button til actionlink?*@
 </p>
 <table class="table">
     <tr>
@@ -59,15 +71,8 @@
             Tid
         </th>
         <th>
-            Pris
+            Hva vil du gjøre?
         </th>
-        <th>
-            Flytid
-        </th>
-        <th>
-            Ledige seter
-        </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -85,19 +90,12 @@
             @Html.DisplayFor(modelItem => item.Tid)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Pris)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FlyTid)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AntallLedigeSeter)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "EndreFlyrute", new { id=item.StrekningsID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.StrekningsID }) |
-            <a href="#sletteFlyruterModal" class="btn btn-large btn-danger" id="sletteKnapp"
-               data-navn="@item.FraFlyplass @item.TilFlyplass @item.Dato @item.Tid @item.Pris @item.FlyTid @item.AntallLedigeSeter"
+            @Html.ActionLink("Endre", "EndreFlyrute", new { id=item.StrekningsID }, new { @class = "tabKnapp" }) |
+            <a href="#VisFlyruterModal" class="tabKnapp" id="visFlyruterKnapp"
+               data-navn="<i>Id: @item.StrekningsID</i><br/>Fra: @item.FraFlyplass <br/>Til: @item.TilFlyplass <br/>Den: @item.Dato <br/>Klokken: @item.Tid <br/>Pris: @item.Pris<br/>Flytid (i minutter): @item.FlyTid<br/>Antall ledige seter: @item.AntallLedigeSeter " 
+               data-id="@item.StrekningsID" data-toggle="modal" data-visFlyruterModal="true">Detaljer</a>|
+            <a href="#sletteFlyruterModal" class="tabKnapp" id="sletteKnapp"
+               data-navn="<i>Id: @item.StrekningsID</i><br/>Fra: @item.FraFlyplass <br/>Til: @item.TilFlyplass <br/>Den: @item.Dato <br/>Klokken: @item.Tid" @*Fjernet at vi viste frem all data!*@
                data-id="@item.StrekningsID" data-toggle="modal" data-sletteFlyruterModal="true">Slett</a>
         </td>
     </tr>
@@ -105,3 +103,6 @@
 
 </table>
 @Html.Partial("SlettFlyruterModal")
+@Html.Partial("VisFlyruterModal")
+
+</body>
