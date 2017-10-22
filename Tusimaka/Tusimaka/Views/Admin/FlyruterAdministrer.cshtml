@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "FlyruterAdministrer";
 }
+<link href="@Url.Content("~/Content/StyleSheet.css")" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
     $(document).ready(function () {
         // lag en hendelse som utføres når en a-href med "data-SletteModal = true" trykkes.
@@ -38,11 +39,14 @@
             })
         });
 </script>
-
-<h2>FlyruterAdministrer</h2>
+<body>
+<h2>Administrer flyruter</h2>
 
 <p>
-    @Html.ActionLink("Legg til ny flyrute", "RegistrerFlyrute")
+    @Html.ActionLink("Gå tilbake til meny", "AdminStart")
+        <button type="button" class="knapp">Legg til ny flyrute</button>
+        @Html.ActionLink("Legg til ny flyrute", "RegistrerFlyrute")
+        @*hvordan gjøre om button til actionlink?*@
 </p>
 <table class="table">
     <tr>
@@ -67,7 +71,9 @@
         <th>
             Ledige seter
         </th>
-        <th></th>
+        <th>
+            Hva vil du gjøre?
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -94,10 +100,10 @@
             @Html.DisplayFor(modelItem => item.AntallLedigeSeter)
         </td>
         <td>
-            @Html.ActionLink("Edit", "EndreFlyrute", new { id=item.StrekningsID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.StrekningsID }) |
-            <a href="#sletteFlyruterModal" class="btn btn-large btn-danger" id="sletteKnapp"
-               data-navn="@item.FraFlyplass @item.TilFlyplass @item.Dato @item.Tid @item.Pris @item.FlyTid @item.AntallLedigeSeter"
+            @Html.ActionLink("Endre", "EndreFlyrute", new { id=item.StrekningsID }, new { @class = "tabKnapp" }) |
+            @Html.ActionLink("Se detaljer", "Details", new { id=item.StrekningsID }, new { @class="tabKnapp"})|
+            <a href="#sletteFlyruterModal" class="tabKnapp" id="sletteKnapp"
+               data-navn="<i>Id: @item.StrekningsID</i><br/>Fra: @item.FraFlyplass <br/>Til: @item.TilFlyplass <br/>Den: @item.Dato <br/>Klokken: @item.Tid" @*Fjernet at vi viste frem all data!*@
                data-id="@item.StrekningsID" data-toggle="modal" data-sletteFlyruterModal="true">Slett</a>
         </td>
     </tr>
@@ -105,3 +111,5 @@
 
 </table>
 @Html.Partial("SlettFlyruterModal")
+
+    </body>

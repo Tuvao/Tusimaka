@@ -74,10 +74,10 @@
             @Html.DisplayFor(modelItem => item.Kjonn)
         </td>
         <td>
-            @Html.ActionLink("Edit", "EndreKunde", new { id=item.KundeID }) |
-            @Html.ActionLink("Se bestillinger", "KundeBestillinger", new { id=item.KundeID }) |
-            <a href="#sletteModal" class="btn btn-large btn-danger" id="sletteKnapp"
-               data-navn="@item.Fornavn @item.Etternavn @item.Epost @item.Kjonn"
+            @Html.ActionLink("Edit", "EndreKunde", new { id=item.KundeID }, new { @class="tabKnapp"}) |
+            @Html.ActionLink("Se bestillinger", "KundeBestillinger", new { id=item.KundeID }, new { @class = "tabKnapp" }) |
+            <a href="#sletteModal" class="tabKnapp" id="sletteKnapp"
+               data-navn="<i>KundeId: @item.KundeID </i><br/>Fornavn: @item.Fornavn<br/>Etternavn: @item.Etternavn<br/>Epost: @item.Epost <br/>Kjønn: @item.Kjonn"
                data-id="@item.KundeID" data-toggle="modal" data-sletteModal="true">Slett</a>
         </td>
     </tr>
