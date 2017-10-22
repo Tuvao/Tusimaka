@@ -33,10 +33,19 @@
                                 window.location.reload();
                             }
                         });
-                        }
-                    });
-                })
-            })
+                    }
+                });
+            });
+        });
+
+            // lag en hendelse som utføres når en a-href med "data-SletteModal = true" trykkes.
+            $('a[data-visFlyruterModal=true]').click(function () {
+
+                var data_navn = $(this).data('navn');
+                var data_id = $(this).data('id');
+
+                $('#visFlyrute').html(data_navn);
+            });
         });
 </script>
 <body>
@@ -44,9 +53,8 @@
 
 <p>
     @Html.ActionLink("Gå tilbake til meny", "AdminStart")
-        <button type="button" class="knapp">Legg til ny flyrute</button>
-        @Html.ActionLink("Legg til ny flyrute", "RegistrerFlyrute")
-        @*hvordan gjøre om button til actionlink?*@
+    @Html.ActionLink("Legg til ny flyrute", "RegistrerFlyrute")
+    @*hvordan gjøre om button til actionlink?*@
 </p>
 <table class="table">
     <tr>
@@ -61,15 +69,6 @@
         </th>
         <th>
             Tid
-        </th>
-        <th>
-            Pris
-        </th>
-        <th>
-            Flytid
-        </th>
-        <th>
-            Ledige seter
         </th>
         <th>
             Hva vil du gjøre?
@@ -91,17 +90,10 @@
             @Html.DisplayFor(modelItem => item.Tid)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Pris)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FlyTid)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AntallLedigeSeter)
-        </td>
-        <td>
             @Html.ActionLink("Endre", "EndreFlyrute", new { id=item.StrekningsID }, new { @class = "tabKnapp" }) |
-            @Html.ActionLink("Se detaljer", "Details", new { id=item.StrekningsID }, new { @class="tabKnapp"})|
+            <a href="#VisFlyruterModal" class="tabKnapp" id="visFlyruterKnapp"
+               data-navn="<i>Id: @item.StrekningsID</i><br/>Fra: @item.FraFlyplass <br/>Til: @item.TilFlyplass <br/>Den: @item.Dato <br/>Klokken: @item.Tid <br/>Pris: @item.Pris<br/>Flytid (i minutter): @item.FlyTid<br/>Antall ledige seter: @item.AntallLedigeSeter " 
+               data-id="@item.StrekningsID" data-toggle="modal" data-visFlyruterModal="true">Detaljer</a>|
             <a href="#sletteFlyruterModal" class="tabKnapp" id="sletteKnapp"
                data-navn="<i>Id: @item.StrekningsID</i><br/>Fra: @item.FraFlyplass <br/>Til: @item.TilFlyplass <br/>Den: @item.Dato <br/>Klokken: @item.Tid" @*Fjernet at vi viste frem all data!*@
                data-id="@item.StrekningsID" data-toggle="modal" data-sletteFlyruterModal="true">Slett</a>
@@ -111,5 +103,6 @@
 
 </table>
 @Html.Partial("SlettFlyruterModal")
+@Html.Partial("VisFlyruterModal")
 
-    </body>
+</body>
