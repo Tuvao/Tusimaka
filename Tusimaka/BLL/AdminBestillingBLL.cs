@@ -21,5 +21,10 @@ namespace Tusimaka.BLL
             var adminBestillDAL = new AdminBestillingDAL();
             return adminBestillDAL.LagreAdminFlyBestilling(id, nyBestilling);
         }
+        public bool SlettKundeBestilling(int id)
+        {
+            var adminBestillDAL = new AdminBestillingDAL();
+            return adminBestillDAL.SlettKundeBestilling(id);
+        }
     }
 }

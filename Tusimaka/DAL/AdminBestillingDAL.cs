@@ -68,5 +68,22 @@ namespace Tusimaka.DAL
                 }
             }
         }
+        public bool SlettKundeBestilling(int id)
+        {
+            var db = new DBContext();
+            try
+            {
+                FlyBestillingKunder slettFraHjelpetabell = db.FlyBestillingKunder.Find(id);
+                db.FlyBestillingKunder.Remove(slettFraHjelpetabell);
+                FlyBestilling slettKundeBestilling = db.FlyBestilling.Find(slettFraHjelpetabell.FlyBestillingsID);
+                db.FlyBestilling.Remove(slettKundeBestilling);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception feil)
+            {
+                return false;
+            }
+        }
     }
 }
