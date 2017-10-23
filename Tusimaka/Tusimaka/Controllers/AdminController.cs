@@ -61,7 +61,6 @@ namespace Tusimaka.Controllers
             {
                 Session["LoggetInn"] = true;
                 ViewBag.Innlogget = true;
-                //return View();
                 return RedirectToAction("AdminStart");
             }
             else

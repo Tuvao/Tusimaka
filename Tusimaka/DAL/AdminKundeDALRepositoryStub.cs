@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tusimaka.Model;
 
-namespace DAL
+namespace Tusimaka.DAL
 {
-    class AdminKundeDALRepositoryStub : DAL.IAdminKundeRepository
+    public class AdminKundeDALRepositoryStub : DAL.IAdminKundeRepository
     {
     }
 }
