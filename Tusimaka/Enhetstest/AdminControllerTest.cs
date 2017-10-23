@@ -4,6 +4,8 @@ using Tusimaka.Controllers;
 using Tusimaka.BLL;
 using Tusimaka.DAL;
 using Tusimaka.Model;
+using SessionMockUnitTest.Controllers;
+using MvcContrib.TestHelper;
 
 namespace Enhetstest
 {
@@ -23,5 +25,25 @@ namespace Enhetstest
 
 
         }
+        [TestMethod]
+        public void LoggInn()
+        {
+            //Arrange
+            var SessionMock = new TestControllerBuilder();
+        }
+        //[TestMethod]
+        //public void LoggInn()
+        //{
+        //    // Arrange
+        //    var SessionMock = new TestControllerBuilder();
+        //    var controller = new AdminController();
+        //    SessionMock.InitializeController(controller);
+        //    // setningen under må være etter InitializeController
+        //    controller.Session["LoggetInn"] = true;
+        //    // Act
+        //    var result = (ViewResult)controller.Index();
+        //    // Assert
+        //    Assert.AreEqual("", result.ViewName);
+        //}
     }
 }
