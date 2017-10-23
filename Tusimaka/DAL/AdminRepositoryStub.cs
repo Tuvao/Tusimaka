@@ -9,5 +9,16 @@ namespace Tusimaka.DAL
 {
     public class AdminRepositoryStub : DAL.IAdminRepository
     {
+        public bool Bruker_i_DB(AdminBruker innAdminBruker)
+        {
+            if (innAdminBruker.Brukernavn == "")
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }

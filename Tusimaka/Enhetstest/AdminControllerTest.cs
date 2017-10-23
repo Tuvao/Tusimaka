@@ -14,20 +14,17 @@ namespace Tusimaka.Enhetstest
     public class AdminControllerTest
     {
         [TestMethod]
-        public void RegistrerKunde()
+        public void LoggInn()
         {
-            //denne tester kun på en metode som kun returnerer et view
             // Arrange
-            var controller = new AdminController(new KundeBLL(new KundeRepositoryStub()));
+            var controller = new AdminController(new AdminBLL(new AdminRepositoryStub()));
             // Act
-            var resultat = (ViewResult)controller.RegistrerKunde();
+            var resultat = (ViewResult)controller.LoggInn();
             // Assert
             Assert.AreEqual(resultat.ViewName, "");
-
-
         }
         [TestMethod]
-        public void LoggInn()
+        public void LoggInnOK()
         {
             // Arrange
             var SessionMock = new TestControllerBuilder();
@@ -36,7 +33,7 @@ namespace Tusimaka.Enhetstest
             // setningen under må være etter InitializeController
             controller.Session["LoggetInn"] = true;
             // Act
-            var result = (ViewResult)controller.LoggInn();
+            var result = (ViewResult)controller.AdminStart();
             // Assert
             Assert.AreEqual(true, result.ViewName);
         }

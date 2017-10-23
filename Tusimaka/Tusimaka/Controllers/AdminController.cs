@@ -25,15 +25,27 @@ namespace Tusimaka.Controllers
             _adminBLL = new AdminBLL();
         }
 
-        public AdminController(IKundeLogikk kundeStub, IAdminBestillingLogikk adminBestillStub, IAdminFlyruterLogikk adminFlyruterStub, IAdminKundeLogikk adminKundeStub, IAdminLogikk adminStub)
+        public AdminController(IKundeLogikk stub)
         {
-            _kundeBLL = kundeStub;
-            _adminBestillBLL = adminBestillStub;
-            _adminFlyruterBLL = adminFlyruterStub;
-            _adminKundeBLL = adminKundeStub;
-            _adminBLL = adminStub;
+            _kundeBLL = stub;
+        }
+        public AdminController(IAdminBestillingLogikk stub)
+        {
+            _adminBestillBLL = stub;
+        }
+        public AdminController(IAdminFlyruterLogikk stub)
+        {
+            _adminFlyruterBLL = stub;
+        }
+        public AdminController(IAdminKundeLogikk stub)
+        {
+            _adminKundeBLL = stub;
         }
 
+        public AdminController(IAdminLogikk stub)
+        {
+            _adminBLL = stub;
+        }
         //public ActionResult Index()
         //{
         //    return View();
@@ -56,7 +68,8 @@ namespace Tusimaka.Controllers
         [HttpPost]
         public ActionResult LoggInn(AdminBruker innAdminBruker)
         {
-            bool ok = _adminBLL.Bruker_I_DB(innAdminBruker);
+            var adminBLL = new AdminBLL();
+            bool ok = adminBLL.Bruker_i_DB(innAdminBruker);
             if (ok)
             {
                 Session["LoggetInn"] = true;
@@ -132,16 +145,16 @@ namespace Tusimaka.Controllers
         [HttpPost]
         public ActionResult RegistrerFlyrute(Strekning innFlyrute)
         {
-            var db = new AdminFlyruterBLL();
-            bool OK = db.lagreFlyrute(innFlyrute);
-            if (OK)
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("FlyruterAdministrer");
+                var db = new AdminFlyruterBLL();
+                bool OK = db.lagreFlyrute(innFlyrute);
+                if (OK)
+                {
+                    return RedirectToAction("FlyruterAdministrer");
+                }
             }
-            else
-            {
-                return View();
-            }
+            return View();
         }
 
         public ActionResult RegistrerKunde()
@@ -160,16 +173,16 @@ namespace Tusimaka.Controllers
         [HttpPost]
         public ActionResult RegistrerKunde(Kunde innKunde)
         {
-            var db = new KundeBLL();
-            bool OK = db.lagreKunde(innKunde);
-            if (OK)
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("KundeAdministrer");
+                var db = new KundeBLL();
+                bool OK = db.lagreKunde(innKunde);
+                if (OK)
+                {
+                    return RedirectToAction("KundeAdministrer");
+                }
             }
-            else
-            {
-                return View();
-            }
+            return View();
         }
         public ActionResult EndreKunde(int id)
         {
@@ -189,9 +202,17 @@ namespace Tusimaka.Controllers
         [HttpPost]
         public ActionResult EndreKunde(int id, Kunde innKunde)
         {
-            var adminKundeBLL = new AdminKundeBLL();
-            bool endreOK = adminKundeBLL.endreKunde(id, innKunde);
-            return RedirectToAction("KundeAdministrer");
+            if (ModelState.IsValid)
+            {
+                var adminKundeBLL = new AdminKundeBLL();
+                bool endreOK = adminKundeBLL.endreKunde(id, innKunde);
+                if (endreOK)
+                {
+                    return RedirectToAction("KundeAdministrer");
+                }
+            }
+            return View();
+
         }
 
         public ActionResult KundeBestillinger(int id)
@@ -227,9 +248,16 @@ namespace Tusimaka.Controllers
         [HttpPost]
         public ActionResult EndreFlyrute(int id, Strekning innFlyrute)
         {
-            var adminFlyruterBLL = new AdminFlyruterBLL();
-            bool endreOK = adminFlyruterBLL.endreFlyrute(id, innFlyrute);
-            return RedirectToAction("FlyruterAdministrer");
+            if (ModelState.IsValid)
+            {
+                var adminFlyruterBLL = new AdminFlyruterBLL();
+                bool endreOK = adminFlyruterBLL.endreFlyrute(id, innFlyrute);
+                if (endreOK)
+                {
+                    return RedirectToAction("FlyruterAdministrer");
+                }
+            }
+            return View();
         }
 
         public ActionResult NyKundeBestilling(int id)
@@ -247,35 +275,55 @@ namespace Tusimaka.Controllers
         [HttpPost]
         public ActionResult NyKundeBestilling(int id, FlyBestillinger nyBestilling)
         {
-            if (Session["LoggetInn"] != null)
+            if (ModelState.IsValid)
             {
-                bool loggetInn = (bool)Session["LoggetInn"];
-                if (loggetInn)
+                var adminBestillBLL = new AdminBestillingBLL();
+                bool nyBestillingOK = adminBestillBLL.LagreAdminFlyBestilling(id, nyBestilling);
+                if (nyBestillingOK)
                 {
-                    var adminBestillBLL = new AdminBestillingBLL();
-                    bool nyBestillingOK = adminBestillBLL.LagreAdminFlyBestilling(id, nyBestilling);
                     return RedirectToAction("KundeAdministrer");
                 }
             }
-            return RedirectToAction("LoggInn");
+            return View();
         }
 
         public void SlettBestilling(int id)
         {
             var adminBestillBLL = new AdminBestillingBLL();
-            bool slettOK = adminBestillBLL.SlettKundeBestilling(id);
+            try
+            {
+                bool slettOK = adminBestillBLL.SlettKundeBestilling(id);
+            }
+            catch(Exception feil)
+            {
+                //logging til db
+            }
         }
 
         public void slettKunde(int id)
         {
             var adminKundeBLL = new AdminKundeBLL();
-            bool slettOK = adminKundeBLL.slettKunde(id);
+            try
+            {
+                bool slettOK = adminKundeBLL.slettKunde(id);
+            }
+            catch (Exception feil)
+            {
+                //logging til db
+            }
         }
 
         public void slettFlyrute(int id)
         {
             var adminFlyruteBLL = new AdminFlyruterBLL();
-            bool slettOK = adminFlyruteBLL.slettFlyrute(id);
+            try
+            {
+                bool slettOK = adminFlyruteBLL.slettFlyrute(id);
+            }
+            catch (Exception feil)
+            {
+                //logging til db
+            }
         }
 
     }
