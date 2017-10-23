@@ -10,5 +10,10 @@ namespace Tusimaka.BLL
 {
     public interface IAdminFlyruterLogikk
     {
+        List<Strekning> hentAlleFlyruter();
+        bool lagreFlyrute(Strekning innFlyrute);
+        bool slettFlyrute(int id);
+        bool endreFlyrute(int id, Strekning innFlyrute);
+        Strekning hentDenneFlyruten(int id);
     }
 }
