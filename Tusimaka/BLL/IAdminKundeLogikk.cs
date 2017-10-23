@@ -10,5 +10,8 @@ namespace Tusimaka.BLL
 {
     public interface IAdminKundeLogikk
     {
+        List<Kunde> hentAlleKunder();
+        bool slettKunde(int id);
+
     }
 }
