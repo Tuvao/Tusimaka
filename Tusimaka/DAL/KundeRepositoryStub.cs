@@ -27,7 +27,7 @@ namespace Tusimaka.DAL
             var kunde = new Kunde()
             {
                 KundeID = 1,
-                Fornavn = "Per",
+                Fornavn = "Marte",
                 Etternavn = "Olsen",
                 Epost = "Osloveien 82",
                 Kjonn = "Kvinne"

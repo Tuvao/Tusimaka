@@ -168,14 +168,6 @@ td {
         padding-bottom: 1%;
     }
 
-#indextekst {
-    color: #224652;
-    -webkit-animation-name: tusimaka;
-    -webkit-animation-duration: 4s;
-    animation-name: tusimaka;
-    animation-duration: 10s;
-    font-size: 10em;
-}
 
 input[type=radio] {
     width: 30px;
@@ -187,13 +179,35 @@ input[type=date]::-webkit-inner-spin-button {
     display: none;
 }
 
+image.logo {
+    -webkit-animation-name: tusimaka;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-duration: 4s;
+    animation-name: tusimaka;
+    animation-duration: 10s;
+    font-size: 10em;
+}
+
+
 @-webkit-keyframes tusimaka {
-    from {
-        color: #F4F5F5;
+    0% {
+        opacity: 1;
     }
 
-    to {
-        color: #224652;
+    25% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    75% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
     }
 }
 
@@ -233,4 +247,9 @@ p.fyll_inn_skjema{
 .tabKnapp{
     font-size: 1.1em;
     margin:0.3em;
+}
+
+div.logo {
+    width: 100px;
+    height: auto;
 }
