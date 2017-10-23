@@ -34,14 +34,14 @@ namespace Tusimaka.Controllers
             _adminBLL = adminStub;
         }
 
-        public ActionResult Index()
-        {
-            return View();
-        }
+        //public ActionResult Index()
+        //{
+        //    return View();
+        //}
 
         public ActionResult LoggInn()
         {
-            if(Session["LoggetInn"] == null)
+            if (Session["LoggetInn"] == null)
             {
                 Session["LoggetInn"] = false;
                 ViewBag.Innlogget = false;
@@ -74,27 +74,59 @@ namespace Tusimaka.Controllers
 
         public ActionResult AdminStart()
         {
-            //Legg til if session[LoggetInn"] == true
-            return View();
+            if (Session["LoggetInn"] != null)
+            {
+                bool loggetInn = (bool)Session["LoggetInn"];
+                if (loggetInn)
+                {
+                    return View();
+                }
+            }
+            return RedirectToAction("LoggInn");
         }
 
         public ActionResult FlyruterAdministrer()
         {
-            var db = new AdminFlyruterBLL();
-            List<Strekning> alleFlyruter = db.hentAlleFlyruter();
-            return View(alleFlyruter);
+            if (Session["LoggetInn"] != null)
+            {
+                bool loggetInn = (bool)Session["LoggetInn"];
+                if (loggetInn)
+                {
+                    var db = new AdminFlyruterBLL();
+                    List<Strekning> alleFlyruter = db.hentAlleFlyruter();
+                    return View(alleFlyruter);
+                }
+            }
+            return RedirectToAction("LoggInn");
         }
 
         public ActionResult KundeAdministrer()
         {
-            var db = new AdminKundeBLL();
-            List<Kunde> alleKunder = db.hentAlleKunder();
-            return View(alleKunder);
+            if (Session["LoggetInn"] != null)
+            {
+                bool loggetInn = (bool)Session["LoggetInn"];
+                if (loggetInn)
+                {
+                    var db = new AdminKundeBLL();
+                    List<Kunde> alleKunder = db.hentAlleKunder();
+                    return View(alleKunder);
+                }
+            }
+            return RedirectToAction("LoggInn");
+
         }
 
         public ActionResult RegistrerFlyrute()
         {
-            return View();
+            if (Session["LoggetInn"] != null)
+            {
+                bool loggetInn = (bool)Session["LoggetInn"];
+                if (loggetInn)
+                {
+                    return View();
+                }
+            }
+            return RedirectToAction("LoggInn");
         }
 
         [HttpPost]
@@ -114,7 +146,15 @@ namespace Tusimaka.Controllers
 
         public ActionResult RegistrerKunde()
         {
-            return View();
+            if (Session["LoggetInn"] != null)
+            {
+                bool loggetInn = (bool)Session["LoggetInn"];
+                if (loggetInn)
+                {
+                    return View();
+                }
+            }
+            return RedirectToAction("LoggInn");
         }
 
         [HttpPost]
@@ -133,9 +173,17 @@ namespace Tusimaka.Controllers
         }
         public ActionResult EndreKunde(int id)
         {
-            var adminKundeBLL = new AdminKundeBLL();
-            Kunde hentSpesifikKunde = adminKundeBLL.hentDenneKunden(id);
-            return View(hentSpesifikKunde);
+            if (Session["LoggetInn"] != null)
+            {
+                bool loggetInn = (bool)Session["LoggetInn"];
+                if (loggetInn)
+                {
+                    var adminKundeBLL = new AdminKundeBLL();
+                    Kunde hentSpesifikKunde = adminKundeBLL.hentDenneKunden(id);
+                    return View(hentSpesifikKunde);
+                }
+            }
+            return RedirectToAction("LoggInn");
         }
 
         [HttpPost]
@@ -148,16 +196,32 @@ namespace Tusimaka.Controllers
 
         public ActionResult KundeBestillinger(int id)
         {
-            var adminBestillingBLL = new AdminBestillingBLL();
-            List<KundeBestillinger> hentKundesFlyruter = adminBestillingBLL.hentKundesFlyBestillinger(id);
-            return View(hentKundesFlyruter);
+            if (Session["LoggetInn"] != null)
+            {
+                bool loggetInn = (bool)Session["LoggetInn"];
+                if (loggetInn)
+                {
+                    var adminBestillingBLL = new AdminBestillingBLL();
+                    List<KundeBestillinger> hentKundesFlyruter = adminBestillingBLL.hentKundesFlyBestillinger(id);
+                    return View(hentKundesFlyruter);
+                }
+            }
+            return RedirectToAction("LoggInn");
         }
 
         public ActionResult EndreFlyrute(int id)
         {
-            var adminFlyruteBLL = new AdminFlyruterBLL();
-            Strekning hentSpesifikFlyrute = adminFlyruteBLL.hentDenneFlyruten(id);
-            return View(hentSpesifikFlyrute);
+            if (Session["LoggetInn"] != null)
+            {
+                bool loggetInn = (bool)Session["LoggetInn"];
+                if (loggetInn)
+                {
+                    var adminFlyruteBLL = new AdminFlyruterBLL();
+                    Strekning hentSpesifikFlyrute = adminFlyruteBLL.hentDenneFlyruten(id);
+                    return View(hentSpesifikFlyrute);
+                }
+            }
+            return RedirectToAction("LoggInn");
         }
         
         [HttpPost]
@@ -170,14 +234,30 @@ namespace Tusimaka.Controllers
 
         public ActionResult NyKundeBestilling(int id)
         {
-            return View();
+            if (Session["LoggetInn"] != null)
+            {
+                bool loggetInn = (bool)Session["LoggetInn"];
+                if (loggetInn)
+                {
+                    return View();
+                }
+            }
+            return RedirectToAction("LoggInn");
         }
         [HttpPost]
         public ActionResult NyKundeBestilling(int id, FlyBestillinger nyBestilling)
         {
-            var adminBestillBLL = new AdminBestillingBLL();
-            bool nyBestillingOK = adminBestillBLL.LagreAdminFlyBestilling(id, nyBestilling);
-            return RedirectToAction("KundeAdministrer");
+            if (Session["LoggetInn"] != null)
+            {
+                bool loggetInn = (bool)Session["LoggetInn"];
+                if (loggetInn)
+                {
+                    var adminBestillBLL = new AdminBestillingBLL();
+                    bool nyBestillingOK = adminBestillBLL.LagreAdminFlyBestilling(id, nyBestilling);
+                    return RedirectToAction("KundeAdministrer");
+                }
+            }
+            return RedirectToAction("LoggInn");
         }
 
         public void SlettBestilling(int id)
