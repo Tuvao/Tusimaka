@@ -12,6 +12,7 @@ namespace Tusimaka.Model
         [Required(ErrorMessage="Brukernavn må oppgis")]
         public string Brukernavn { get; set; }
         [Required(ErrorMessage="Passord må oppgis")]
+        [DataType(DataType.Password)]
         public string Passord { get; set; }
     }
 }

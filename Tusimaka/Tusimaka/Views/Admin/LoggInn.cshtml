@@ -30,8 +30,7 @@
             <div class="form-group">
                 <div class="col-md-10">
                     <p>PASSORD</p>
-                    <input type="password" name="Passord" class="selectUtseendeAdmin fullStrl"/>
-                    @*@Html.EditorFor(model => model.Passord, new { htmlAttributes = new { @class = "selectUtseendeAdmin fullStrl" } })*@
+                    @Html.EditorFor(model => model.Passord, new { htmlAttributes = new { @class = "selectUtseendeAdmin fullStrl" } })
                     @Html.ValidationMessageFor(model => model.Passord, "", new { @class = "text-danger" })
                 </div>
             </div>
