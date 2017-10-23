@@ -3,8 +3,8 @@
 @{
     ViewBag.Title = "EndreFlyrute";
 }
+<link href="~/Content/StyleSheet.css" rel="stylesheet" />
 <h2>EndreFlyrute</h2>
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -17,85 +17,85 @@
         <div class="container col-md-6">
             <div class="form-group">
                 <div class="row">
-                    <div class="col-md-3">
+                    @*<div class="col-md-3">
                         FRA FLYPLASS
-                    </div>
+                    </div>*@
                     <div class="col-md-4">
-                        @Html.EditorFor(model => model.FraFlyplass, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.FraFlyplass, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
                         @Html.ValidationMessageFor(model => model.FraFlyplass, "", new { @class = "text-danger" })
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="row">
-                    <div class="col-md-3">
+                    @*<div class="col-md-3">
                         TIL FLYPLASS
-                    </div>
+                    </div>*@
                     <div class="col-md-4">
-                        @Html.EditorFor(model => model.TilFlyplass, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.TilFlyplass, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
                         @Html.ValidationMessageFor(model => model.TilFlyplass, "", new { @class = "text-danger" })
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="row">
-                    <div class="col-md-3">
+                    @*<div class="col-md-3">
                         DATO
-                    </div>
+                    </div>*@
                     <div class="col-md-4">
-                        @Html.EditorFor(model => model.Dato, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.Dato, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
                         @Html.ValidationMessageFor(model => model.Dato, "", new { @class = "text-danger" })
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="row">
-                    <div class="col-md-3">
+                    @*<div class="col-md-3">
                         TIDSPUNKT
-                    </div>
+                    </div>*@
                     <div class="col-md-4">
-                        @Html.EditorFor(model => model.Tid, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.Tid, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
                         @Html.ValidationMessageFor(model => model.Tid, "", new { @class = "text-danger" })
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="row">
-                    <div class="col-md-3">
+                    @*<div class="col-md-3">
                         PRIS
-                    </div>
+                    </div>*@
                     <div class="col-md-4">
-                        @Html.EditorFor(model => model.Pris, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.Pris, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
                         @Html.ValidationMessageFor(model => model.Pris, "", new { @class = "text-danger" })
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="row">
-                    <div class="col-md-3">
+                    @*<div class="col-md-3">
                         FLY TID
-                    </div>
+                    </div>*@
                     <div class="col-md-4">
-                        @Html.EditorFor(model => model.FlyTid, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.FlyTid, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
                         @Html.ValidationMessageFor(model => model.FlyTid, "", new { @class = "text-danger" })
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="row">
-                    <div class="col-md-3">
+                    @*<div class="col-md-3">
                         ANTALL SETER
-                    </div>
+                    </div>*@
                     <div class="col-md-4">
-                        @Html.EditorFor(model => model.AntallLedigeSeter, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.AntallLedigeSeter, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
                         @Html.ValidationMessageFor(model => model.AntallLedigeSeter, "", new { @class = "text-danger" })
                     </div>
                 </div>
             </div>
         </div>
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+            <div class="col-md-10">
+                <input type="submit" value="Lagre" id="lagreFlyrute" class="knapp" />
             </div>
         </div>
  </div>

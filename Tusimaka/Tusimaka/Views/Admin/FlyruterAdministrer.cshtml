@@ -68,7 +68,13 @@
             Dato
         </th>
         <th>
-            Tid
+            Tidspunkt
+        </th>
+        <th>
+            Pris
+        </th>
+        <th>
+            Reisetid
         </th>
         <th>
             Hva vil du gjøre?
@@ -88,6 +94,12 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Tid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pris)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FlyTid)
         </td>
         <td>
             @Html.ActionLink("Endre", "EndreFlyrute", new { id=item.StrekningsID }, new { @class = "tabKnapp" }) |
