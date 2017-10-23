@@ -8,8 +8,7 @@ using Tusimaka.Model;
 
 namespace Tusimaka.BLL
 {
-    //Må endre til AdminLogikk : BLL.IAdminLogikk
-    public class AdminBLL 
+    public class AdminBLL : BLL.IAdminLogikk
     {
         public bool Bruker_i_DB(AdminBruker innAdminBruker)
         {
