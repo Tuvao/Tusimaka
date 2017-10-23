@@ -10,5 +10,8 @@ namespace Tusimaka.DAL
 {
     public interface IKundeRepository
     {
+        bool lagreKunde(Kunde innKunde);
+        Kunde hentEnKunde();
+
     }
 }
