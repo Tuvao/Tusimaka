@@ -8,7 +8,7 @@ using Tusimaka.Model;
 
 namespace Tusimaka.BLL
 {
-    public class AdminKundeBLL
+    public class AdminKundeBLL : BLL.IAdminKundeLogikk
     {
         public List<Kunde> hentAlleKunder()
         {

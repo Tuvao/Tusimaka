@@ -7,7 +7,7 @@ using Tusimaka.Model;
 
 namespace Tusimaka.DAL
 {
-    public class KundeDAL
+    public class KundeDAL : DAL.IKundeRepository
     {
         public bool lagreKunde(Kunde innKunde)
         {

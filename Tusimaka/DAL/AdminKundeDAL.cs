@@ -7,7 +7,7 @@ using Tusimaka.Model;
 
 namespace Tusimaka.DAL
 {
-    public class AdminKundeDAL
+    public class AdminKundeDAL : DAL.IAdminKundeRepository
     {
         public List<Kunde> hentAlleKunder()
         {

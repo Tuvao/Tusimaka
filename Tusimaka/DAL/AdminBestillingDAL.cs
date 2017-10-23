@@ -8,7 +8,7 @@ using Tusimaka.Model;
 
 namespace Tusimaka.DAL
 {
-    public class AdminBestillingDAL
+    public class AdminBestillingDAL : DAL.IAdminBestillingRepository
     {
         public List<KundeBestillinger> hentKundesFlyBestillinger(int id)
         {

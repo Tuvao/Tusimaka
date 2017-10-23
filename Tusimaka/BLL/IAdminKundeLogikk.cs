@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tusimaka.Model;
+using Tusimaka.BLL;
 
-namespace Tusimaka.DAL
+namespace Tusimaka.BLL
 {
-    public class AdminRepositoryStub : DAL.IAdminRepository
+    public interface IAdminKundeLogikk
     {
     }
 }

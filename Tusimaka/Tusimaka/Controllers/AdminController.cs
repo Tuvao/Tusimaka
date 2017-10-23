@@ -10,7 +10,27 @@ namespace Tusimaka.Controllers
 {
     public class AdminController : Controller
     {
-        //private IKundeLogikk _KundeBLL;
+        private IKundeLogikk _kundeBLL;
+        private IAdminBestillingLogikk _adminBestillBLL;
+        //private IAdminLogikk _adminBLL;
+        private IAdminFlyruterLogikk _adminFlyruterBLL;
+        private IAdminKundeLogikk _adminKundeBLL;
+
+        public AdminController()
+        {
+            _kundeBLL = new KundeBLL();
+            _adminBestillBLL = new AdminBestillingBLL();
+            _adminFlyruterBLL = new AdminFlyruterBLL();
+            _adminKundeBLL = new AdminKundeBLL();
+        }
+
+        public AdminController(IKundeLogikk kundeStub, IAdminBestillingLogikk adminBestillStub, IAdminFlyruterLogikk adminFlyruterStub, IAdminKundeLogikk adminKundeStub)
+        {
+            _kundeBLL = kundeStub;
+            _adminBestillBLL = adminBestillStub;
+            _adminFlyruterBLL = adminFlyruterStub;
+            _adminKundeBLL = adminKundeStub;
+        }
 
         public ActionResult Index()
         {

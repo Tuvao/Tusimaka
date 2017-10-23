@@ -7,7 +7,7 @@ using Tusimaka.Model;
 
 namespace Tusimaka.DAL
 {
-    public class AdminFlyruterDAL
+    public class AdminFlyruterDAL : DAL.IAdminFlyruterRepository
     {
         public List<Strekning> hentAlleFlyruter()
         {

@@ -9,7 +9,7 @@ using Tusimaka.Model;
 namespace Tusimaka.BLL
 {
     //Må endre til KundeLogikk : BLL.IKundeLogikk
-    public class KundeBLL
+    public class KundeBLL : BLL.IKundeLogikk
     {
         //lagrekunde
         public bool lagreKunde(Kunde innKunde)
