@@ -12,7 +12,7 @@ namespace Tusimaka.Controllers
     {
         private IKundeLogikk _kundeBLL;
         private IAdminBestillingLogikk _adminBestillBLL;
-        //private IAdminLogikk _adminBLL;
+        private IAdminLogikk _adminBLL;
         private IAdminFlyruterLogikk _adminFlyruterBLL;
         private IAdminKundeLogikk _adminKundeBLL;
 
@@ -22,25 +22,22 @@ namespace Tusimaka.Controllers
             _adminBestillBLL = new AdminBestillingBLL();
             _adminFlyruterBLL = new AdminFlyruterBLL();
             _adminKundeBLL = new AdminKundeBLL();
+            _adminBLL = new AdminBLL();
         }
 
-        public AdminController(IKundeLogikk kundeStub, IAdminBestillingLogikk adminBestillStub, IAdminFlyruterLogikk adminFlyruterStub, IAdminKundeLogikk adminKundeStub)
+        public AdminController(IKundeLogikk kundeStub, IAdminBestillingLogikk adminBestillStub, IAdminFlyruterLogikk adminFlyruterStub, IAdminKundeLogikk adminKundeStub, IAdminLogikk adminStub)
         {
             _kundeBLL = kundeStub;
             _adminBestillBLL = adminBestillStub;
             _adminFlyruterBLL = adminFlyruterStub;
             _adminKundeBLL = adminKundeStub;
+            _adminBLL = adminStub;
         }
 
         public ActionResult Index()
         {
             return View();
         }
-
-        //public AdminController()
-        //{
-        //    _KundeBLL = new KundeLogikk();
-        //}
 
         public ActionResult LoggInn()
         {
@@ -59,8 +56,8 @@ namespace Tusimaka.Controllers
         [HttpPost]
         public ActionResult LoggInn(AdminBruker innAdminBruker)
         {
-            var ok = new AdminBLL();
-            if (ok.Bruker_i_DB(innAdminBruker))
+            bool ok = _adminBLL.Bruker_I_DB(innAdminBruker);
+            if (ok)
             {
                 Session["LoggetInn"] = true;
                 ViewBag.Innlogget = true;

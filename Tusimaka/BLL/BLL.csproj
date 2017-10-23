@@ -50,6 +50,7 @@
     <Compile Include="IAdminBestillingLogikk.cs" />
     <Compile Include="IAdminFlyruterLogikk.cs" />
     <Compile Include="IAdminKundeLogikk.cs" />
+    <Compile Include="IAdminLogikk.cs" />
     <Compile Include="IKundeLogikk.cs" />
     <Compile Include="KundeBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

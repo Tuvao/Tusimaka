@@ -7,7 +7,7 @@ using Tusimaka.Model;
 
 namespace Tusimaka.DAL
 {
-    public class AdminDAL
+    public class AdminDAL : DAL.IAdminRepository
     {
         public bool Bruker_i_DB(AdminBruker innAdminBruker)
         {
