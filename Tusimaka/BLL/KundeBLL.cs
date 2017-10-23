@@ -8,6 +8,7 @@ using Tusimaka.Model;
 
 namespace Tusimaka.BLL
 {
+    //Må endre til KundeLogikk : BLL.IKundeLogikk
     public class KundeBLL
     {
         //lagrekunde
@@ -23,3 +24,4 @@ namespace Tusimaka.BLL
         }
     }
 }
+   

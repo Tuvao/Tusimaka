@@ -48,6 +48,7 @@
     <Compile Include="BetalingBLL.cs" />
     <Compile Include="FlyBLL.cs" />
     <Compile Include="IAdminLogikk.cs" />
+    <Compile Include="IKundeLogikk.cs" />
     <Compile Include="KundeBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BLL
+namespace Tusimaka.BLL
 {
-    public interface IAdminLogikk
+    public interface IKundeLogikk
     {
-        
+
     }
 }

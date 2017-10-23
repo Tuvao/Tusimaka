@@ -10,11 +10,17 @@ namespace Tusimaka.Controllers
 {
     public class AdminController : Controller
     {
+        //private IKundeLogikk _KundeBLL;
 
         public ActionResult Index()
         {
             return View();
         }
+
+        //public AdminController()
+        //{
+        //    _KundeBLL = new KundeLogikk();
+        //}
 
         public ActionResult LoggInn()
         {
