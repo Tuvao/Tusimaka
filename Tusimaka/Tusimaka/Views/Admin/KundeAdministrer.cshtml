@@ -78,7 +78,8 @@
             @Html.ActionLink("Se bestillinger", "KundeBestillinger", new { id=item.KundeID }, new { @class = "tabKnapp" }) |
             <a href="#sletteModal" class="tabKnapp" id="sletteKnapp"
                data-navn="<i>KundeId: @item.KundeID </i><br/>Fornavn: @item.Fornavn<br/>Etternavn: @item.Etternavn<br/>Epost: @item.Epost <br/>Kjønn: @item.Kjonn"
-               data-id="@item.KundeID" data-toggle="modal" data-sletteModal="true">Slett</a>
+               data-id="@item.KundeID" data-toggle="modal" data-sletteModal="true">Slett</a> | 
+            @Html.ActionLink("Lag ny bestilling", "NyKundeBestilling", new { id = item.KundeID }, new { @class = "tabKnapp" })
         </td>
     </tr>
 }

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.10
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tusimaka", "Tusimaka\Tusimaka.csproj", "{E3627E7B-3763-48B5-B0B7-CF2774FB3338}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{3A08E54A-1D41-49E6-91F6-271724197205}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{B82C8561-A25B-4D86-ADEE-ACA2AA68C591}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enhetstest", "Enhetstest\Enhetstest.csproj", "{D9995092-74CC-4200-A0A8-E82EF2DDF63E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{B82C8561-A25B-4D86-ADEE-ACA2AA68C591}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B82C8561-A25B-4D86-ADEE-ACA2AA68C591}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B82C8561-A25B-4D86-ADEE-ACA2AA68C591}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9995092-74CC-4200-A0A8-E82EF2DDF63E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9995092-74CC-4200-A0A8-E82EF2DDF63E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9995092-74CC-4200-A0A8-E82EF2DDF63E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9995092-74CC-4200-A0A8-E82EF2DDF63E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

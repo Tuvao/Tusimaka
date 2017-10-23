@@ -16,17 +16,10 @@ namespace Tusimaka.BLL
             List<KundeBestillinger> hentKundensFlyBestillinger = adminBestillingDAL.hentKundesFlyBestillinger(id);
             return (hentKundensFlyBestillinger);
         }
-        //public List<int> hentFlybestillinger(int id)
-        //{
-        //    var AdminBestillingDAL = new AdminBestillingDAL();
-        //    List<int> alleFlybestillingKunder = AdminBestillingDAL.hentFlybestillinger(id);
-        //    return alleFlybestillingKunder;
-        //}
-        //public List<FlyBestillingKunde> test(int id)
-        //{
-        //    var adminBestillingDAL = new AdminBestillingDAL();
-        //    List<FlyBestillingKunde> alleBestillinger = adminBestillingDAL.test(id);
-        //    return alleBestillinger;
-        //}
+        public bool LagreAdminFlyBestilling(int id, FlyBestillinger nyBestilling)
+        {
+            var adminBestillDAL = new AdminBestillingDAL();
+            return adminBestillDAL.LagreAdminFlyBestilling(id, nyBestilling);
+        }
     }
 }

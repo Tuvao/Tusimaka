@@ -34,5 +34,39 @@ namespace Tusimaka.DAL
                 return listeKundesFlyBestillinger;
             }
         }
+        public bool LagreAdminFlyBestilling(int id, FlyBestillinger nyBestilling)
+        {
+            using (var db = new DBContext())
+            {
+                try
+                {
+                    var nyFlyBestilling = new FlyBestilling();
+                    nyFlyBestilling.StrekningsID = nyBestilling.StrekningsID;
+                    nyFlyBestilling.antallPersoner = nyBestilling.AntallPersoner;
+
+                    if (nyBestilling.ReturID != null)
+                    {
+                        nyFlyBestilling.ReturID = nyBestilling.ReturID;
+                    }
+
+                    db.FlyBestilling.Add(nyFlyBestilling);
+                    db.SaveChanges();
+
+                    Kunder denneKunden = db.Kunder.Find(id);
+
+                    var nyAdminFlyBestillingKunde = new FlyBestillingKunder();
+                    nyAdminFlyBestillingKunde.FlyBestillingsID = nyFlyBestilling.FlyBestillingsID; 
+                    nyAdminFlyBestillingKunde.KundeID = denneKunden.KundeID;
+
+                    db.FlyBestillingKunder.Add(nyAdminFlyBestillingKunde);
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception feil)
+                {
+                    return false;
+                }
+            }
+        }
     }
 }
