@@ -52,11 +52,14 @@
     <Compile Include="AdminDAL.cs" />
     <Compile Include="AdminFlyruterDAL.cs" />
     <Compile Include="AdminKundeDAL.cs" />
+    <Compile Include="AdminRepository.cs" />
+    <Compile Include="AdminRepositoryStub.cs" />
     <Compile Include="BestillingDAL.cs" />
     <Compile Include="BetalingDAL.cs" />
     <Compile Include="DBContext.cs" />
     <Compile Include="DBInit.cs" />
     <Compile Include="FlyDAL.cs" />
+    <Compile Include="IAdminRepository.cs" />
     <Compile Include="KundeDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
