@@ -156,6 +156,7 @@
     <Content Include="Views\Admin\KundeBestillinger.cshtml" />
     <Content Include="Views\Admin\VisFlyruterModal.cshtml" />
     <Content Include="Views\Admin\NyKundeBestilling.cshtml" />
+    <Content Include="Views\Admin\SlettKundeBestillingModal.cshtml" />
     <None Include="Views\Home\Bestill.cshtml" />
     <Content Include="Views\Home\RegistrerBetaling.cshtml" />
     <Content Include="Views\Home\Bekreftelse.cshtml" />

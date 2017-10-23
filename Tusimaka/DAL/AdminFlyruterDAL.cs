@@ -53,22 +53,6 @@ namespace Tusimaka.DAL
             }
         }
 
-        public bool slettKunde(int id)
-        {
-            var db = new DBContext();
-            try
-            {
-                Kunder slettKunde = db.Kunder.Find(id);
-                db.Kunder.Remove(slettKunde);
-                db.SaveChanges();
-                return true;
-            }
-            catch (Exception feil)
-            {
-                return false;
-            }
-        }
-
         public bool slettFlyrute(int id)
         {
             var db = new DBContext();
@@ -77,12 +61,10 @@ namespace Tusimaka.DAL
                 Strekninger slettFlyrute = db.Strekninger.Find(id);
                 db.Strekninger.Remove(slettFlyrute);
                 db.SaveChanges();
-                Console.Write("riktig");
                 return true;
             }
             catch (Exception feil)
             {
-                Console.Write("feil");
                 return false;
             }
         }

@@ -158,6 +158,12 @@ namespace Tusimaka.Controllers
             return RedirectToAction("KundeAdministrer");
         }
 
+        public void SlettBestilling(int id)
+        {
+            var adminBestillBLL = new AdminBestillingBLL();
+            bool slettOK = adminBestillBLL.SlettKundeBestilling(id);
+        }
+
         public void slettKunde(int id)
         {
             var adminKundeBLL = new AdminKundeBLL();

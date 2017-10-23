@@ -3,11 +3,36 @@
 @{
     ViewBag.Title = "KundeBestillinger";
 }
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('a[data-sletteKundeBestillingModal=true]').click(function () {
+            
+            var data_navn = $(this).data('navn');
+            var data_id = $(this).data('id');
+            
+            $('#slettKundeBestilling').html(data_navn);
 
+            $("#sletteKundeBestillingModalKnapp").click(function () {
+                $.ajax({
+                    url: '@Url.Action("SlettBestilling", "Admin")',
+                    data: { id: data_id }, 
+                    success: function () {
+                        $.ajax({
+                            url: '@Url.Action("KundeBestillinger", "Admin")',
+                            success: function () {
+                                window.location.reload();
+                            }
+                        });
+                        }
+                    });
+                })
+            })
+        });
+</script>
 <h2>KundeBestillinger</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Legg til ny bestilling", "NyKundeBestilling")
 </p>
 <table class="table">
     <tr>
@@ -77,11 +102,14 @@
             @Html.DisplayFor(modelItem => item.AntallPersoner)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Edit", "EndreKundeBestilling", new { id=item.KundeID }) |
             @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            <a href="#sletteKundeBestillingModal" class="tabKnapp" id="sletteKnapp"
+               data-navn="Kunde: id - @item.KundeID  Fornavn - @item.Fornavn Etternavn - @item.Etternavn<br/>FlightNR: @item.StrekningsID <br/>Fra flyplass: @item.FraFlyplass<br/>Til flyplass @item.TilFlyplass <br/>Dato: @item.Dato  <br/> Tidspunkt: @item.Tid"
+               data-id="@item.KundeID" data-toggle="modal" data-sletteKundeBestillingModal="true">Slett</a>
         </td>
     </tr>
 }
 
 </table>
+@Html.Partial("SlettKundeBestillingModal")
