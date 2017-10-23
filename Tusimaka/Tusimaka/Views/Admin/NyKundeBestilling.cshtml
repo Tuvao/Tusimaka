@@ -1,0 +1,347 @@
+﻿@model Tusimaka.Model.FlyBestillinger
+@{
+    ViewBag.Title = "Bestill flybillett for kunde";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="@Url.Content("~/Content/StyleSheet.css")" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            // hent alle fraFlyplass, bygg opp dropdown1 når siden lastes
+            $.ajax({
+                url: '/Home/hentAlleFraFlyplasser',
+                type: 'GET',
+                dataType: 'json',
+                success: function (fraListe) {
+                    VisDropDown1(fraListe);
+                },
+                error: function (x, y, z) {
+                    alert(x + '\n' + y + '\n' + z);
+                }
+            });
+
+            // viser fra-steder i dropdown
+            function VisDropDown1(fraListe) {
+                var utStreng = "";
+                utStreng += "<option class='dropdown' value='' selected disabled>Fra flyplass</option>";
+                for (var i in fraListe) {
+                    utStreng += "<option class='dropdown' value='" + fraListe[i] + "'>" + fraListe[i] + "</option>";
+                }
+                $("#drop1").empty().append(utStreng);
+            }
+
+            // når fra-sted er valgt skal valg av til-sted dukke opp
+            $("#drop1").change(function () {
+                var fraFlyplassVerdi = $(this).val();
+                $.ajax({
+                    url: '/Home/hentTilFlyplasser',
+                    type: 'GET',
+                    data: { fraFlyPlass: fraFlyplassVerdi },
+                    dataType: 'json',
+                    success: function (tilListe) {
+                        VisDropDown2(tilListe);
+                    },
+                    error: function (x, y, z) {
+                        alert(x + '\n' + y + '\n' + z);
+                    }
+                });
+
+                //$("#drop2").removeAttr("disabled");
+                //$("#dropDown2").show();
+                skjulEndre();
+            });
+
+            // viser til-steder i dropdown
+            function VisDropDown2(tilListe) {
+                var utStreng = "";
+                utStreng += "<option class='dropdown' value='' selected disabled>Til flyplass</option>";
+                for (var i in tilListe) {
+                    utStreng += "<option class='dropdown' value='" + tilListe[i] + "'>" + tilListe[i] + "</option>";
+                }
+                $("#drop2").empty().append(utStreng);
+            }
+
+            // når til-sted er valgt skal valg av dato dukke opp
+            //$("#drop2").change(function () {
+
+            //    $("#returKnapp").removeAttr("disabled");
+            //    $("#tilDato").removeAttr("disabled");
+            //    $("#turDato").show();
+            //    skjulEndre();
+            //});
+
+            // når dato er valgt skal valg av antall personer dukke opp
+            //$("#tilDato").change(function () {
+
+            //    $("#personValg").show();
+            //    $("#AntallPersoner").removeAttr("disabled");
+            //    skjulEndre();
+            //});
+
+            // når antall personer er valgt skal en søk-knapp dukke opp
+            //$("#personValg").change(function () {
+
+            //    $("#sokReise").show();
+            //    $("#sok").removeAttr("disabled");
+            //    skjulEndre();
+            //})
+
+            // når dato er valgt skal strekninger dukke opp
+            $("#sokReise").click(function () {
+                var valgtFraFlyplass = $("#drop1").val();
+                var valgtTilFlyplass = $("#drop2").val();
+                var valgtDato = $("#tilDato").val();
+                var valgteSeter = $("#AntallPersoner").val();
+
+                $.ajax({
+                    url: '/Home/hentStrekning',
+                    type: 'GET',
+                    data: {
+                        fraFlyPlass: valgtFraFlyplass,
+                        tilFlyPlass: valgtTilFlyplass,
+                        dato: valgtDato,
+                        antallLedigeSeter: valgteSeter
+                    },
+                    dataType: 'json',
+                    success: function (strekninger) {
+                        VisStrekninger(strekninger);
+                    },
+                    error: function (x, y, z) {
+                        alert(x + '\n' + y + '\n' + z);
+                    }
+                });
+
+                //Endrer retur-dato til å ikke vise tidligere datoer
+                var fraDato = document.getElementById("fraDato");
+                fraDato.disabled = false;
+                fraDato.setAttribute('min', valgtDato);
+
+                $("#bekreftetTilFraSted").show();
+                //$("#retur").removeAttr("disabled");
+                $("#sok").html("Endre søk");
+            })
+
+            // når man velger retur skal valg av returdato dukke opp, mens bekreft- og returknapp skal forsvinne
+            //$("#retur").click(function () {
+            //    $("#returDato").show();
+            //    $("#fraDato").removeAttr("disabled");
+            //    $("#bekreft").hide();
+            //    $("#retur").hide();
+            //    $("#lukk").removeAttr("disabled");
+            //    $("#lukk").show();
+            //    $("#avbrytRetur").show();
+            //});
+
+            // når returdato er valgt skal strekninger dukke opp
+            $("#fraDato").change(function () {
+                var valgtFraFlyplass = $("#drop2").val();
+                var valgtTilFlyplass = $("#drop1").val();
+                var valgtFraDato = $("#fraDato").val();
+                var valgteSeter = $("#AntallPersoner").val();
+
+                $.ajax({
+                    url: '/Home/hentStrekning',
+                    type: 'GET',
+                    data: {
+                        fraFlyPlass: valgtFraFlyplass,
+                        tilFlyPlass: valgtTilFlyplass,
+                        dato: valgtFraDato,
+                        antallLedigeSeter: valgteSeter
+                    },
+                    dataType: 'json',
+                    success: function (retur) {
+                        VisRetur(retur);
+                    },
+                    error: function (x, y, z) {
+                        alert(x + '\n' + y + '\n' + z);
+                    }
+                });
+
+                //$("#bekreftetRetur").show();
+            })
+
+            // når "lukk retur" klikkes skal valg av returdato og bekreftknappene forsvinne
+            //$("#lukk").click(function () {
+            //    $("#returDato").hide();
+            //    $("#retur").show();
+            //    $("#lukk").hide();
+            //    $("#avbrytRetur").hide();
+            //    $("#bekreftetRetur").hide();
+            //    $("#bekreft").show();
+            //});
+
+            // Viser reise-strekninger med dato, klokkeslett, pris og reisetid
+            function VisStrekninger(strekninger) {
+                var utStreng = "";
+                if (strekninger.length == 0) {
+                    var utStreng = "<h4>Det finnes ingen strekninger! Prøv å endre søket ditt.</h4>";
+                    //$("#retur").hide();
+                    //$("#bekreft").attr("disabled");
+                    //$("#bekreft").hide();
+                    //$("#bekreft").attr("disabled");
+                }
+                else {
+                    utStreng = "<table class='table'><tr><th>Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th></th><th>Fly tid</th><th>Velg</th></tr>";
+                    var resultat = true;
+                    for (var i in strekninger) {
+                        utStreng += "<tr><td>" + strekninger[i].fraFlyplass + "</td><td>" + strekninger[i].tilFlyplass +
+                            "</td><td>" + strekninger[i].dato + "</td><td>" + strekninger[i].tid + "</td><td>" + strekninger[i].pris +
+                            "</td><td>" + strekninger[i].flyTid + " min</td><td><input type='radio' name='StrekningsId' onChange='VisBekreft()' value='" + strekninger[i].StrekningsID + "' class=''/></td><tr/>";
+                    }
+                }
+                utStreng += "</table>"
+                $("#strekninger").empty().append(utStreng);
+            }
+
+            // Viser retur-strekninger med dato, klokkeslett, pris og reisetid
+            function VisRetur(retur) {
+                var utStreng = "<table class='table'><tr><th>Fra</th><th>Til</th><th>Dato</th><th>Tid</th><th>Pris</th><th>Fly tid</th><th>Velg</th></tr>";
+                if (retur.length == 0) {
+                    utStreng = "<h4>Det finnes ingen strekninger! Prøv å endre søket ditt.</h4>";
+                    $("#bekreft").attr("disabled");
+                    $("#bekreft").hide();
+                }
+                else {
+                    for (var i in retur) {
+                        utStreng += "<tr><td>" + retur[i].fraFlyplass + "</td><td>" + retur[i].tilFlyplass +
+                            "</td><td>" + retur[i].dato + "</td><td>" + retur[i].tid + "</td><td>" + retur[i].pris +
+                            "</td><td>" + retur[i].flyTid + " min</td><td><input type='radio' name='ReturId' onChange='VisBekreftRetur()' value='" + retur[i].StrekningsID + "' class=''/></td><tr/>";
+                    }
+
+                    $("#bekreft").show();
+                    $("#bekreft").removeAttr("disabled");
+                }
+                utStreng += "</table>"
+
+                $("#returBy").empty().append(utStreng);
+                $("#bekreftetRetur").show();
+                $("#bekreft").hide();
+
+            }
+
+            //Finner dagens dato og legger til
+            var tilDato = document.getElementById("tilDato");
+
+            var idag = new Date();
+
+            var dag = new String(idag.getDate());
+            var maned = new String(idag.getMonth() + 1);
+            var aar = idag.getFullYear();
+
+            if (dag.length < 2) { dag = "0" + dag; }
+            if (maned.length < 2) { maned = "0" + maned; }
+
+            var dato = new String(aar + '-' + maned + '-' + dag);
+
+            tilDato.disabled = false;
+            tilDato.setAttribute('min', dato);
+
+
+            });
+    </script>
+    <script type="text/javascript">
+        //Viser/skjuler/disabler/undisabler knapper/dropdowns/divs
+        function VisBekreft() {
+            $("#retur").show();
+            $("#bekreft").show();
+            $("#bekreft").removeAttr("disabled");
+            $("#retur").removeAttr("disabled");
+        }
+        function VisBekreftRetur() {
+            $("#retur").hide();
+            $("#bekreft").show();
+            $("#bekreft").removeAttr("disabled");
+        }
+        function SkjulBekreftRetur() {
+            $("#retur").hide();
+            $("#bekreft").hide();
+        }
+        function skjulEndre() {
+            $("#bekreftetTilFraSted").hide();
+            $("#retur").hide();
+            $("#returDato").hide();
+            $("#bekreftetRetur").hide();
+            $("#bekreft").hide();
+            $("#bekreft").attr("disabled");
+            $("#retur").attr("disabled");
+            $("#lukk").attr("disabled");
+            $("#lukk").hide();
+        }
+        function VisSisteBekreftKnappen() {
+            $("#sisteBekreft").show();
+            $("#bekreft").show();
+        }
+    </script>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <div class="container">
+            <div class="row no-gutters">
+                <h1 class="header">Velg din flyreise</h1>
+                <div class="col col-lg-2 col-md-3 col-sm-6 col-xs-12" id="dropDown1">
+                    <p>FRA</p>
+                    <select id="drop1" class="selectUtseende"></select>
+                </div>
+                <div class="col col-lg-2 col-md-3 col-sm-6 col-xs-12" id="dropDown2" @*hidden="hidden"*@>
+                    <p>TIL</p>
+                    <select id="drop2" class="selectUtseende" @*disabled*@></select>
+                </div>
+                <div id="turDato" class="col col-lg-2 col-md-3 col-sm-6 col-xs-12" @*hidden="hidden"*@>
+                    <p>DATO</p>
+                    <input id="tilDato" type="date" onkeydown="return false" class="selectUtseende" @*disabled*@>
+                </div>
+                <div id="personValg" class="col col-lg-2 col-md-3 col-sm-6 col-xs-12" @*hidden="hidden"*@>
+                    <p>ANTALL PERSONER</p>
+                    <select id="AntallPersoner" name="AntallPersoner" class="selectUtseende" @*disabled*@>
+                        <option name="velg" disabled selected>Velg</option>
+                        <option name="en" value="1">1</option>
+                        <option name="to" value="2">2</option>
+                        <option name="tre" value="3">3</option>
+                        <option name="fire" value="4">4</option>
+                        <option name="fem" value="5">5</option>
+                        <option name="seks" value="6">6</option>
+                        <option name="syv" value="7">7</option>
+                        <option name="atte" value="8">8</option>
+                    </select>
+                </div>
+                <div id="sokReise" class="col col-lg-2 col-md-2 col-sm-3 col-xs-6" @*hidden="hidden"*@>
+                    <p class="usynlig">.</p>
+                    <button type="button" id="sok" @*disabled="disabled"*@>Søk</button>
+                </div>
+            </div>
+            <div class="row">
+                <div hidden="hidden" id="bekreftetTilFraSted">
+                    <h3>Når ønsker du å reise?</h3>
+                    <div id="strekninger"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div id="returDato" class="col col-lg-2 col-md-2 col-sm-3 col-xs-6" hidden="hidden">
+                    <p>RETUR-DATO</p>
+                    <input id="fraDato" type="date" onkeydown="return false" class="knappUtseende selectUtseende" disabled">
+                </div>
+                <div id="avbrytRetur" hidden class="col col-lg-2 col-md-2 col-sm-3 col-xs-6">
+                    <p class="usynlig">.</p>
+                    <button type="button" id="lukk" class="knapp" disabled>Lukk retur</button>
+                </div>
+            </div>
+            <div class="row">
+                <div hidden="hidden" id="bekreftetRetur">
+                    <h3>Når ønsker du å reise tilbake?</h3>
+                    <div id="returBy"></div>
+                </div>
+            </div>
+            <div class="row">
+                <button type="button" id="retur" class="knapp" disabled="disabled" hidden="hidden">Bestill returbiletter</button>
+                <input type="submit" value="Bekreft" class="knapp" id="bekreft" disabled="disabled" hidden="hidden" />
+            </div>
+        </div>
+    }
+</body>
+</html>

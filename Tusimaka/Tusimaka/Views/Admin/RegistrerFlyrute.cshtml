@@ -16,56 +16,56 @@
         @Html.HiddenFor(model => model.StrekningsID)
         <div class="form-group">
             <div class="col-md-10">
-                <p>FRA FLYPLASS</p>
-                @Html.EditorFor(model => model.FraFlyplass, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
+                @*<p>FRA FLYPLASS</p>*@
+                @Html.EditorFor(model => model.FraFlyplass, new { htmlAttributes = new { placeholder="Fra flyplass", @class = "tekstFeltAdmin fullStrl" } })
                 @Html.ValidationMessageFor(model => model.FraFlyplass, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-10">
-                <p>TIL FLYPLASS</p>
-                @Html.EditorFor(model => model.TilFlyplass, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
+                @*<p>TIL FLYPLASS</p>*@
+                @Html.EditorFor(model => model.TilFlyplass, new { htmlAttributes = new { placeholder = "Til flyplass", @class = "tekstFeltAdmin fullStrl" } })
                 @Html.ValidationMessageFor(model => model.TilFlyplass, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-10">
-                <p>DATO</p>
-                @Html.EditorFor(model => model.Dato, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
+                @*<p>DATO</p>*@
+                @Html.EditorFor(model => model.Dato, new { htmlAttributes = new { placeholder = "Dato", @class = "tekstFeltAdmin fullStrl" } })
                 @Html.ValidationMessageFor(model => model.Dato, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-10">
-                <p>TID</p>
-                @Html.EditorFor(model => model.Tid, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
+                @*<p>TID</p>*@
+                @Html.EditorFor(model => model.Tid, new { htmlAttributes = new { placeholder = "Tidspunkt", @class = "tekstFeltAdmin fullStrl" } })
                 @Html.ValidationMessageFor(model => model.Tid, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-10">
-                <p>PRIS</p>
-                @Html.EditorFor(model => model.Pris, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
+                @*<p>PRIS</p>*@
+                @Html.EditorFor(model => model.Pris, new { htmlAttributes = new { placeholder = "Pris", @class = "tekstFeltAdmin fullStrl" } })
                 @Html.ValidationMessageFor(model => model.Pris, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-10">
-                <p>FLYTID</p>
-                @Html.EditorFor(model => model.FlyTid, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
+                @*<p>FLYTID</p>*@
+                @Html.EditorFor(model => model.FlyTid, new { htmlAttributes = new { placeholder = "Reisetid", @class = "tekstFeltAdmin fullStrl" } })
                 @Html.ValidationMessageFor(model => model.FlyTid, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-10">
-                <p>LEDIGE SETER</p>
-                @Html.EditorFor(model => model.AntallLedigeSeter, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
+                @*<p>LEDIGE SETER</p>*@
+                @Html.EditorFor(model => model.AntallLedigeSeter, new { htmlAttributes = new { placeholder = "Antall ledige seter", @class = "tekstFeltAdmin fullStrl" } })
                 @Html.ValidationMessageFor(model => model.AntallLedigeSeter, "", new { @class = "text-danger" })
             </div>
         </div>
