@@ -12,14 +12,14 @@ namespace Tusimaka.DAL
     {
         public bool lagreKunde(Kunde innKunde)
         {
-                if (innKunde.Fornavn == "")
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
+            if (innKunde.Fornavn == "")
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         public Kunde hentEnKunde()
