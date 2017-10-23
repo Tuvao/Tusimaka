@@ -12,6 +12,8 @@ namespace Tusimaka.BLL
     {
         List<Kunde> hentAlleKunder();
         bool slettKunde(int id);
+        bool endreKunde(int id, Kunde innKunde);
+        Kunde hentDenneKunden(int id);
 
     }
 }
