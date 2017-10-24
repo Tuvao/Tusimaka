@@ -354,7 +354,7 @@ namespace Tusimaka.Enhetstest
         }
 
         [TestMethod]
-        public void EndreFlyrute_Post_OK()
+        public void EndreFlyrute_OK()
         {
             // Arrange
             var SessionMock = new TestControllerBuilder();
@@ -382,7 +382,7 @@ namespace Tusimaka.Enhetstest
         }
 
         [TestMethod]
-        public void EndreFlyrute_Post_feil_DB()
+        public void EndreFlyrute_feil_DB()
         {
             // Arrange
             var SessionMock = new TestControllerBuilder();
