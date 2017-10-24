@@ -51,10 +51,10 @@
 <body>
 <h2>Administrer flyruter</h2>
 
-<div class="adminStartMiniKnapp">
-    <span class="miniKnapp">@Html.ActionLink("MENY", "AdminStart")</span>
-    <span class="miniKnapp">@Html.ActionLink("LEGG TIL", "RegistrerFlyrute")</span>
-</div>
+    <div class="adminMiniMeny">
+        <span class="miniMenyKnapp">@Html.ActionLink("MENY", "AdminStart")</span>
+        <span class="miniMenyKnapp">@Html.ActionLink("LEGG TIL", "RegistrerFlyrute")</span>
+    </div>
 <table class="table">
     <tr>
         <th>
@@ -100,15 +100,19 @@
         <td>
             @Html.DisplayFor(modelItem => item.FlyTid)
         </td>
-        <td>
-            @Html.ActionLink("Endre", "EndreFlyrute", new { id=item.StrekningsID }, new { @class = "tabKnapp" }) |
-            <a href="#VisFlyruterModal" class="tabKnapp" id="visFlyruterKnapp"
-               data-navn="<i>Id: @item.StrekningsID</i><br/>Fra: @item.FraFlyplass <br/>Til: @item.TilFlyplass <br/>Den: @item.Dato <br/>Klokken: @item.Tid <br/>Pris: @item.Pris<br/>Flytid (i minutter): @item.FlyTid<br/>Antall ledige seter: @item.AntallLedigeSeter " 
-               data-id="@item.StrekningsID" data-toggle="modal" data-visFlyruterModal="true">Detaljer</a>|
-            <a href="#sletteFlyruterModal" class="tabKnapp" id="sletteKnapp"
-               data-navn="<i>Id: @item.StrekningsID</i><br/>Fra: @item.FraFlyplass <br/>Til: @item.TilFlyplass <br/>Den: @item.Dato <br/>Klokken: @item.Tid" @*Fjernet at vi viste frem all data!*@
-               data-id="@item.StrekningsID" data-toggle="modal" data-sletteFlyruterModal="true">Slett</a>
-        </td>
+        <td class="adminStartMiniKnapp">
+            <span class="miniKnapp">@Html.ActionLink("Endre", "EndreFlyrute", new { id = item.StrekningsID }, new { @class = "tabKnapp" })</span>
+            <span class="miniKnapp detaljer">
+                <a href="#VisFlyruterModal" class="tabKnapp" id="visFlyruterKnapp"
+                   data-navn="<i>Id: @item.StrekningsID</i><br/>Fra: @item.FraFlyplass <br/>Til: @item.TilFlyplass <br/>Den: @item.Dato <br/>Klokken: @item.Tid <br/>Pris: @item.Pris<br/>Flytid (i minutter): @item.FlyTid<br/>Antall ledige seter: @item.AntallLedigeSeter "
+                   data-id="@item.StrekningsID" data-toggle="modal" data-visFlyruterModal="true">Detaljer</a>
+            </span>
+            <span class="miniKnapp slett">
+                <a href="#sletteFlyruterModal" class="tabKnapp" id="sletteKnapp"
+                   data-navn="<i>Id: @item.StrekningsID</i><br/>Fra: @item.FraFlyplass <br/>Til: @item.TilFlyplass <br/>Den: @item.Dato <br/>Klokken: @item.Tid" @*Fjernet at vi viste frem all data!*@
+                   data-id="@item.StrekningsID" data-toggle="modal" data-sletteFlyruterModal="true">Slett</a>
+            </span>
+</td>
     </tr>
 }
 

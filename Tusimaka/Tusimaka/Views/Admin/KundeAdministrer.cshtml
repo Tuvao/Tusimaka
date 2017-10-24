@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "KundeAdministrer";
 }
+<link href="~/Content/StyleSheet.css" rel="stylesheet" />
 <script type="text/javascript">
     $(document).ready(function () {
         // lag en hendelse som utføres når en a-href med "data-SletteModal = true" trykkes.
@@ -38,9 +39,9 @@
         });
 </script>
 <h2>KundeAdministrer</h2>
-<div class="adminStartMiniKnapp">
-    <span class="miniKnapp">@Html.ActionLink("MENY", "AdminStart")</span>
-    <span class="miniKnapp">@Html.ActionLink("LEGG TIL", "RegistrerKunde")</span>
+<div class="adminMiniMeny">
+    <span class="miniMenyKnapp">@Html.ActionLink("MENY", "AdminStart")</span>
+    <span class="miniMenyKnapp">@Html.ActionLink("LEGG TIL", "RegistrerKunde")</span>
 </div>
 
 <table class="table">
@@ -74,14 +75,16 @@
         <td>
             @Html.DisplayFor(modelItem => item.Kjonn)
         </td>
-        <td>
-            @Html.ActionLink("Endre", "EndreKunde", new { id=item.KundeID }, new { @class="tabKnapp"}) |
-            @Html.ActionLink("Se bestillinger", "KundeBestillinger", new { id=item.KundeID }, new { @class = "tabKnapp" }) |
-            <a href="#sletteModal" class="tabKnapp" id="sletteKnapp"
-               data-navn="<i>KundeId: @item.KundeID </i><br/>Fornavn: @item.Fornavn<br/>Etternavn: @item.Etternavn<br/>Epost: @item.Epost <br/>Kjønn: @item.Kjonn"
-               data-id="@item.KundeID" data-toggle="modal" data-sletteModal="true">Slett</a> | 
-            @Html.ActionLink("Lag ny bestilling", "NyKundeBestilling", new { id = item.KundeID }, new { @class = "tabKnapp" })
-        </td>
+        <td class="adminStartMiniKnapp">
+            <span class="miniKnapp">@Html.ActionLink("Endre", "EndreKunde", new { id = item.KundeID }, new { @class = "tabKnapp" })</span>
+            <span class="miniKnapp detaljer">@Html.ActionLink("Bestillinger", "KundeBestillinger", new { id = item.KundeID }, new { @class = "tabKnapp" })</span>
+            <span class="miniKnapp slett">
+                <a href="#sletteModal" class="tabKnapp" id="sletteKnapp" 
+                    data-navn="<i>KundeId: @item.KundeID </i><br/>Fornavn: @item.Fornavn<br/>Etternavn: @item.Etternavn<br/>Epost: @item.Epost <br/>Kjønn: @item.Kjonn"
+                    data-id="@item.KundeID" data-toggle="modal" data-sletteModal="true">Slett</a>
+            </span>
+            <span class="miniKnapp add">@Html.ActionLink("Ny bestilling", "NyKundeBestilling", new { id = item.KundeID }, new { @class = "tabKnapp" })</span>
+</td>
     </tr>
 }
 </table>
