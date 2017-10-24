@@ -8,7 +8,7 @@ using Tusimaka.Model;
 
 namespace Tusimaka.BLL
 {
-    public class KundeBLL
+    public class KundeBLL : BLL.IKundeLogikk
     {
         //lagrekunde
         public bool lagreKunde(Kunde innKunde)
@@ -23,3 +23,4 @@ namespace Tusimaka.BLL
         }
     }
 }
+   

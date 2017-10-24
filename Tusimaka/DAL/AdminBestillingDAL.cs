@@ -8,7 +8,7 @@ using Tusimaka.Model;
 
 namespace Tusimaka.DAL
 {
-    public class AdminBestillingDAL
+    public class AdminBestillingDAL : DAL.IAdminBestillingRepository
     {
         public List<KundeBestillinger> hentKundesFlyBestillinger(int id)
         {
@@ -66,6 +66,23 @@ namespace Tusimaka.DAL
                 {
                     return false;
                 }
+            }
+        }
+        public bool SlettKundeBestilling(int id)
+        {
+            var db = new DBContext();
+            try
+            {
+                FlyBestillingKunder slettFraHjelpetabell = db.FlyBestillingKunder.Find(id);
+                db.FlyBestillingKunder.Remove(slettFraHjelpetabell);
+                FlyBestilling slettKundeBestilling = db.FlyBestilling.Find(slettFraHjelpetabell.FlyBestillingsID);
+                db.FlyBestilling.Remove(slettKundeBestilling);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception feil)
+            {
+                return false;
             }
         }
     }

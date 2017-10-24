@@ -8,7 +8,7 @@ using Tusimaka.Model;
 
 namespace Tusimaka.BLL
 {
-    public class AdminFlyruterBLL
+    public class AdminFlyruterBLL : BLL.IAdminFlyruterLogikk
     {
         public List<Strekning> hentAlleFlyruter()
         {
