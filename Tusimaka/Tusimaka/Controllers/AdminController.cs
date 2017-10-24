@@ -68,8 +68,7 @@ namespace Tusimaka.Controllers
         [HttpPost]
         public ActionResult LoggInn(AdminBruker innAdminBruker)
         {
-            var adminBLL = new AdminBLL();
-            bool ok = adminBLL.Bruker_i_DB(innAdminBruker);
+            bool ok = _adminBLL.Bruker_i_DB(innAdminBruker);
             if (ok)
             {
                 Session["LoggetInn"] = true;
@@ -105,8 +104,7 @@ namespace Tusimaka.Controllers
                 bool loggetInn = (bool)Session["LoggetInn"];
                 if (loggetInn)
                 {
-                    var db = new AdminFlyruterBLL();
-                    List<Strekning> alleFlyruter = db.hentAlleFlyruter();
+                    List<Strekning> alleFlyruter = _adminFlyruterBLL.hentAlleFlyruter();
                     return View(alleFlyruter);
                 }
             }
@@ -120,8 +118,7 @@ namespace Tusimaka.Controllers
                 bool loggetInn = (bool)Session["LoggetInn"];
                 if (loggetInn)
                 {
-                    var db = new AdminKundeBLL();
-                    List<Kunde> alleKunder = db.hentAlleKunder();
+                    List<Kunde> alleKunder = _adminKundeBLL.hentAlleKunder();
                     return View(alleKunder);
                 }
             }
@@ -147,8 +144,7 @@ namespace Tusimaka.Controllers
         {
             if (ModelState.IsValid)
             {
-                var db = new AdminFlyruterBLL();
-                bool OK = db.lagreFlyrute(innFlyrute);
+                bool OK = _adminFlyruterBLL.lagreFlyrute(innFlyrute);
                 if (OK)
                 {
                     return RedirectToAction("FlyruterAdministrer");
@@ -175,8 +171,7 @@ namespace Tusimaka.Controllers
         {
             if (ModelState.IsValid)
             {
-                var db = new KundeBLL();
-                bool OK = db.lagreKunde(innKunde);
+                bool OK = _kundeBLL.lagreKunde(innKunde);
                 if (OK)
                 {
                     return RedirectToAction("KundeAdministrer");
@@ -191,8 +186,7 @@ namespace Tusimaka.Controllers
                 bool loggetInn = (bool)Session["LoggetInn"];
                 if (loggetInn)
                 {
-                    var adminKundeBLL = new AdminKundeBLL();
-                    Kunde hentSpesifikKunde = adminKundeBLL.hentDenneKunden(id);
+                    Kunde hentSpesifikKunde = _adminKundeBLL.hentDenneKunden(id);
                     return View(hentSpesifikKunde);
                 }
             }
@@ -204,8 +198,7 @@ namespace Tusimaka.Controllers
         {
             if (ModelState.IsValid)
             {
-                var adminKundeBLL = new AdminKundeBLL();
-                bool endreOK = adminKundeBLL.endreKunde(id, innKunde);
+                bool endreOK = _adminKundeBLL.endreKunde(id, innKunde);
                 if (endreOK)
                 {
                     return RedirectToAction("KundeAdministrer");
@@ -222,8 +215,7 @@ namespace Tusimaka.Controllers
                 bool loggetInn = (bool)Session["LoggetInn"];
                 if (loggetInn)
                 {
-                    var adminBestillingBLL = new AdminBestillingBLL();
-                    List<KundeBestillinger> hentKundesFlyruter = adminBestillingBLL.hentKundesFlyBestillinger(id);
+                    List<KundeBestillinger> hentKundesFlyruter = _adminBestillBLL.hentKundesFlyBestillinger(id);
                     return View(hentKundesFlyruter);
                 }
             }
@@ -237,8 +229,7 @@ namespace Tusimaka.Controllers
                 bool loggetInn = (bool)Session["LoggetInn"];
                 if (loggetInn)
                 {
-                    var adminFlyruteBLL = new AdminFlyruterBLL();
-                    Strekning hentSpesifikFlyrute = adminFlyruteBLL.hentDenneFlyruten(id);
+                    Strekning hentSpesifikFlyrute = _adminFlyruterBLL.hentDenneFlyruten(id);
                     return View(hentSpesifikFlyrute);
                 }
             }
@@ -250,8 +241,7 @@ namespace Tusimaka.Controllers
         {
             if (ModelState.IsValid)
             {
-                var adminFlyruterBLL = new AdminFlyruterBLL();
-                bool endreOK = adminFlyruterBLL.endreFlyrute(id, innFlyrute);
+                bool endreOK = _adminFlyruterBLL.endreFlyrute(id, innFlyrute);
                 if (endreOK)
                 {
                     return RedirectToAction("FlyruterAdministrer");
@@ -277,8 +267,7 @@ namespace Tusimaka.Controllers
         {
             if (ModelState.IsValid)
             {
-                var adminBestillBLL = new AdminBestillingBLL();
-                bool nyBestillingOK = adminBestillBLL.LagreAdminFlyBestilling(id, nyBestilling);
+                bool nyBestillingOK = _adminBestillBLL.LagreAdminFlyBestilling(id, nyBestilling);
                 if (nyBestillingOK)
                 {
                     return RedirectToAction("KundeAdministrer");
@@ -289,10 +278,9 @@ namespace Tusimaka.Controllers
 
         public void SlettBestilling(int id)
         {
-            var adminBestillBLL = new AdminBestillingBLL();
             try
             {
-                bool slettOK = adminBestillBLL.SlettKundeBestilling(id);
+                bool slettOK = _adminBestillBLL.SlettKundeBestilling(id);
             }
             catch(Exception feil)
             {
@@ -302,10 +290,9 @@ namespace Tusimaka.Controllers
 
         public void slettKunde(int id)
         {
-            var adminKundeBLL = new AdminKundeBLL();
             try
             {
-                bool slettOK = adminKundeBLL.slettKunde(id);
+                bool slettOK = _adminKundeBLL.slettKunde(id);
             }
             catch (Exception feil)
             {
@@ -315,10 +302,9 @@ namespace Tusimaka.Controllers
 
         public void slettFlyrute(int id)
         {
-            var adminFlyruteBLL = new AdminFlyruterBLL();
             try
             {
-                bool slettOK = adminFlyruteBLL.slettFlyrute(id);
+                bool slettOK = _adminFlyruterBLL.slettFlyrute(id);
             }
             catch (Exception feil)
             {
