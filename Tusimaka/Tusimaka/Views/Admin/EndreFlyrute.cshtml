@@ -93,16 +93,13 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="col-md-10">
-                <input type="submit" value="Lagre" id="lagreFlyrute" class="knapp" />
+            <div class="col-md-10 valg">
+                    <input type="submit" value="Lagre" id="lagreFlyrute" class="knapp" />
+                    <span class="knapp">@Html.ActionLink("Avbryt", "FlyruterAdministrer")</span>
             </div>
         </div>
  </div>
 }
-
-<div>
-    @Html.ActionLink("Tilbake til flyruter", "FlyruterAdministrer")
-</div>
 
 <script src="~/Scripts/jquery-1.8.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
