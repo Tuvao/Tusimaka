@@ -10,31 +10,37 @@ namespace Tusimaka.BLL
 {
     public class AdminFlyruterBLL : BLL.IAdminFlyruterLogikk
     {
+        private IAdminFlyruterRepository _repository;
+
+        public AdminFlyruterBLL()
+        {
+            _repository = new AdminFlyruterDAL();
+        }
+
+        public AdminFlyruterBLL(IAdminFlyruterRepository stub)
+        {
+            _repository = stub;
+        }
         public List<Strekning> hentAlleFlyruter()
         {
-            var flyruterDAL = new AdminFlyruterDAL();
-            List<Strekning> alleFlyruter = flyruterDAL.hentAlleFlyruter();
+            List<Strekning> alleFlyruter = _repository.hentAlleFlyruter();
             return alleFlyruter;
         }
         public bool lagreFlyrute(Strekning innFlyrute)
         {
-            var flyruteDAL = new AdminFlyruterDAL();
-            return flyruteDAL.lagreFlyrute(innFlyrute);
+            return _repository.lagreFlyrute(innFlyrute);
         }
         public bool endreFlyrute(int id, Strekning innFlytur)
         {
-            var adminFlyruteDAL = new AdminFlyruterDAL();
-            return adminFlyruteDAL.endreFlyrute(id, innFlytur);
+            return _repository.endreFlyrute(id, innFlytur);
         }
         public bool slettFlyrute(int slettFlyruteId)
         {
-            var adminFlyruteDAL = new AdminFlyruterDAL();
-            return adminFlyruteDAL.slettFlyrute(slettFlyruteId);
+            return _repository.slettFlyrute(slettFlyruteId);
         }
         public Strekning hentDenneFlyruten(int id)
         {
-            var adminFlyruteDAL = new AdminFlyruterDAL();
-            return adminFlyruteDAL.hentDenneFlyruten(id);
+            return _repository.hentDenneFlyruten(id);
         }
     }
 }
