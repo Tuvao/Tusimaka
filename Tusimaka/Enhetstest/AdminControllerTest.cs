@@ -474,25 +474,13 @@ namespace Tusimaka.Enhetstest
             SessionMock.InitializeController(controller);
             // setningen under må være etter InitializeController
             controller.Session["LoggetInn"] = true;
-            var nyBestilling = new KundeBestillinger()
-            {
-                KundeID = 1,
-                Fornavn = "Helene",
-                Etternavn = "Andersen",
-                StrekningsID = 1,
-                FraFlyplass = "Oslo",
-                TilFlyplass = "Bergen",
-                Dato = "2017-10-20",
-                Pris = 1234,
-                Tid = "12:30",
-                AntallPersoner = 4
-
-            };
+            var nyBestilling = new FlyBestillinger();
+            nyBestilling.FlyBestillingsID = 1; 
             // Act
             var result = (RedirectToRouteResult)controller.NyKundeBestilling(1, nyBestilling);
 
             // Assert
-            Assert.AreEqual(result.RouteValues.Values.First(), "FlyruterAdministrer");
+            Assert.AreEqual(result.RouteValues.Values.First(), "KundeAdministrer");
         }
     }
 }
