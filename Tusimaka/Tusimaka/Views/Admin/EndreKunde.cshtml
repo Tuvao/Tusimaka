@@ -17,32 +17,40 @@
         @Html.HiddenFor(model => model.KundeID)
 
         <div class="form-group">
-            @*@Html.LabelFor(model => model.Fornavn, htmlAttributes: new { @class = "control-label col-md-2" })*@
-            <div class="col-md-10">
+            <div class="col-md-1">
+                <p>FORNAVN:</p>
+            </div>
+            <div class="col-md-4">
                 @Html.EditorFor(model => model.Fornavn, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
                 @Html.ValidationMessageFor(model => model.Fornavn, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @*@Html.LabelFor(model => model.Etternavn, htmlAttributes: new { @class = "control-label col-md-2" })*@
-            <div class="col-md-10">
+            <div class="col-md-1">
+                <p>ETTERNAVN:</p>
+            </div>
+            <div class="col-md-4">
                 @Html.EditorFor(model => model.Etternavn, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
                 @Html.ValidationMessageFor(model => model.Etternavn, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @*@Html.LabelFor(model => model.Epost, htmlAttributes: new { @class = "control-label col-md-2" })*@
-            <div class="col-md-10">
+            <div class="col-md-1">
+                <p>EPOST:</p>
+            </div>
+            <div class="col-md-4">
                 @Html.EditorFor(model => model.Epost, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
                 @Html.ValidationMessageFor(model => model.Epost, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @*@Html.LabelFor(model => model.Kjonn, htmlAttributes: new { @class = "control-label col-md-2" })*@
-            <div class="col-md-10">
+            <div class="col-md-1">
+                <p>KJØNN:</p>
+            </div>
+            <div class="col-md-4">
                 @Html.EditorFor(model => model.Kjonn, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
                 @Html.ValidationMessageFor(model => model.Kjonn, "", new { @class = "text-danger" })
             </div>
@@ -59,3 +67,7 @@
 <div>
     @Html.ActionLink("Avbryt", "KundeAdministrer")
 </div>
+
+<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
