@@ -342,6 +342,7 @@ namespace Tusimaka.Enhetstest
             // Assert
             Assert.AreEqual(result.RouteValues.Values.First(), "FlyruterAdministrer");
         }
+
         [TestMethod]
         public void RegistrerFlyrute_Post_DB_feil()
         {
@@ -357,6 +358,87 @@ namespace Tusimaka.Enhetstest
             var actionResult = (ViewResult)controller.RegistrerFlyrute(innFlyrute);
 
             // Assert
+            Assert.AreEqual(actionResult.ViewName, "");
+        }
+
+        [TestMethod]
+        public void EndreFlyrute()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController(new AdminFlyruterBLL(new AdminFlyruterDALRepositoryStub()));
+            SessionMock.InitializeController(controller);
+            // setningen under må være etter InitializeController
+            controller.Session["LoggetInn"] = true;
+
+            // Act
+            var resultat = (ViewResult)controller.EndreFlyrute(1);
+            // Assert
+            Assert.AreEqual(resultat.ViewName, "");
+        }
+
+        [TestMethod]
+        public void EndreFlyrute_Post_OK()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController(new AdminFlyruterBLL(new AdminFlyruterDALRepositoryStub()));
+            SessionMock.InitializeController(controller);
+            // setningen under må være etter InitializeController
+            controller.Session["LoggetInn"] = true;
+
+            var innFlyrute = new Strekning()
+            {
+                StrekningsID = 1,
+                FraFlyplass = "Bergen",
+                TilFlyplass = "Oslo",
+                Dato = "2017-10-20",
+                Tid = "12:30",
+                Pris = 1234,
+                FlyTid = 45,
+                AntallLedigeSeter = 4
+            };
+            // Act
+            var result = (RedirectToRouteResult)controller.EndreFlyrute(1, innFlyrute);
+            // Assert
+            Assert.AreEqual(result.RouteValues.Values.First(), "FlyruterAdministrer");
+
+        }
+
+        [TestMethod]
+        public void EndreFlyrute_Post_DB_feil()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController(new AdminFlyruterBLL(new AdminFlyruterDALRepositoryStub()));
+            SessionMock.InitializeController(controller);
+            // setningen under må være etter InitializeController
+            controller.Session["LoggetInn"] = true;
+            var innFlyrute = new Strekning();
+             innFlyrute.FraFlyplass = "";
+
+
+            //act
+            var actionResult = (ViewResult)controller.EndreFlyrute(0, innFlyrute);
+
+            // Assert
+            Assert.AreEqual(actionResult.ViewName, "");
+        }
+
+        [TestMethod]
+        public void EndreFlyrute_feil_validering_ModelState()
+        {
+            // Arrange
+            var controller = new AdminController(new AdminFlyruterBLL(new AdminFlyruterDALRepositoryStub()));
+            var innFlyrute = new Strekning();
+            controller.ViewData.ModelState.AddModelError("feil", "StrekningsID = 0");
+
+            // Act
+            var actionResult = (ViewResult)controller.EndreFlyrute(0, innFlyrute);
+
+            // Assert
+            Assert.IsTrue(actionResult.ViewData.ModelState.Count == 1);
+            Assert.AreEqual(actionResult.ViewData.ModelState["feil"].Errors[0].ErrorMessage, "StrekningsID = 0");
             Assert.AreEqual(actionResult.ViewName, "");
         }
     }
