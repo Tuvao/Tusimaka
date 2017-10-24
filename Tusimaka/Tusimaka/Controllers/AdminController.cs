@@ -96,7 +96,7 @@ namespace Tusimaka.Controllers
             }
             return RedirectToAction("LoggInn");
         }
-
+            
         public ActionResult FlyruterAdministrer()
         {
             if (Session["LoggetInn"] != null)

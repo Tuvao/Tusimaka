@@ -45,7 +45,7 @@ namespace Tusimaka.Enhetstest
             Assert.AreEqual("", result.ViewName);
         }
         [TestMethod]
-        public void AdminStart_IkkeOK()
+        public void AdminStart_False_Session()
         {
             // Arrange
             var SessionMock = new TestControllerBuilder();
@@ -77,9 +77,7 @@ namespace Tusimaka.Enhetstest
             // Act
             var result = (RedirectToRouteResult)controller.LoggInn(innAdminBruker);
             // Assert
-            //Assert.AreEqual(result.RouteName, "Admin");
             Assert.AreEqual(result.RouteValues.Values.First(), "AdminStart");
-            //Assert.AreEqual("AdminStart", result.RouteValues["action"]);
         }
         [TestMethod]
         public void LoggInn_IkkeOK()
@@ -97,7 +95,7 @@ namespace Tusimaka.Enhetstest
             };
             // Act
             var result = (ViewResult)controller.LoggInn(innAdminBruker);
-            Assert.AreEqual("", result.ViewName);
+            Assert.AreEqual(result.ViewName, "");
         }
         [TestMethod]
         public void List_alle_flyruter_OK()
