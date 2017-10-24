@@ -114,6 +114,7 @@ td {
     background-color: lightgrey;
     color: black;
 }
+
 /*div#VisAntallPers{
     display: inline-block;
 }*/
@@ -309,3 +310,20 @@ div.logo {
         opacity: 0.7;
         border-radius: 0px 20px 20px 0px;
     }
+
+.valg .knapp {
+    padding: 0.1em 2em;
+    font-size: 1.3em;
+    min-height: 3em;
+    min-width: 9em;
+    max-width:9em;
+    border: none;
+    margin-top: 0.4em;
+    background-color: lightgrey;
+}
+
+    .valg .knapp a {
+        text-decoration: none;
+        color: black;
+    }
+
