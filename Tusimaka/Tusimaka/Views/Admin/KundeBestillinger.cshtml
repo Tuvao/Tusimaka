@@ -31,6 +31,7 @@
         });
 </script>
 @* Her må det endres til å bare gå ut en gang... *@
+@* Og vise noe når det ikke er noen bestillinger... *@
 @for (int index = 0; index < Model.Count(); index++)
 {
 <h2>Viser flybestillinger for 
@@ -44,8 +45,9 @@
 </h4>
 }
 
+
 <p>
-    @Html.ActionLink("Legg til ny bestilling", "NyKundeBestilling")
+    @Html.ActionLink("Tilbake", "KundeAdministrer")
 </p>
 <table class="table">
     <tr>
