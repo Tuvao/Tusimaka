@@ -186,5 +186,21 @@ namespace Tusimaka.Enhetstest
             // Assert
             Assert.AreEqual(resultat.RouteValues.Values.First(), "KundeAdministrer");
         }
+        [TestMethod]
+        public void EndreKunde_feil_validering_ModelState()
+        {
+            // Arrange
+            var controller = new AdminController(new AdminKundeBLL(new AdminKundeDALRepositoryStub()));
+            var innKunde = new Kunde();
+            controller.ViewData.ModelState.AddModelError("feil", "KundeID = 0");
+
+            // Act
+            var actionResult = (ViewResult)controller.EndreKunde(0, innKunde);
+
+            // Assert
+            Assert.IsTrue(actionResult.ViewData.ModelState.Count == 1);
+            Assert.AreEqual(actionResult.ViewData.ModelState["feil"].Errors[0].ErrorMessage, "KundeID = 0");
+            Assert.AreEqual(actionResult.ViewName, "");
+        }
     }
 }
