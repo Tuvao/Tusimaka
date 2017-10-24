@@ -243,6 +243,75 @@ namespace Tusimaka.Enhetstest
             Assert.AreEqual(actionResult.ViewName, "");
         }
 
+        [TestMethod]
+        public void RegistrerKunde()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController(new KundeBLL(new KundeRepositoryStub()));
+            SessionMock.InitializeController(controller);
+            // setningen under må være etter InitializeController
+            controller.Session["LoggetInn"] = true;
+
+            // Act
+            var actionResult = (ViewResult)controller.RegistrerKunde();
+
+            // Assert
+            Assert.AreEqual(actionResult.ViewName, "");
+        }
+
+        [TestMethod]
+        public void RegistrerKunde_Post_DB_feil()
+        {
+            // Arrange
+            var controller = new AdminController(new KundeBLL(new KundeRepositoryStub()));
+            var innKunde = new Kunde();
+            innKunde.Fornavn = "";
+
+            // Act
+            var actionResult = (ViewResult)controller.RegistrerKunde(innKunde);
+
+            // Assert
+            Assert.AreEqual(actionResult.ViewName, "");
+        }
+
+        public void Registrer_Post_Model_feil()
+        {
+            // Arrange
+            var controller = new AdminController(new KundeBLL(new KundeRepositoryStub()));
+            var innKunde = new Kunde();
+            controller.ViewData.ModelState.AddModelError("Fornavn", "Ikke oppgitt fornavn");
+
+            // Act
+            var actionResult = (ViewResult)controller.RegistrerKunde(innKunde);
+
+            // Assert
+            Assert.IsTrue(actionResult.ViewData.ModelState.Count == 1);
+            Assert.AreEqual(actionResult.ViewName, "");
+        }
+
+        [TestMethod]
+        public void RegistrerKunde_Post_OK()
+        {
+            // Arrange
+            var controller = new AdminController(new KundeBLL(new KundeRepositoryStub()));
+
+            var innKunde = new Kunde()
+            {
+                Fornavn = "Petra",
+                Etternavn = "Olsen",
+                Epost = "test@test.no",
+                Kjonn ="Kvinne"
+            };
+        // Act
+        var result = (RedirectToRouteResult)controller.RegistrerKunde(innKunde);
+
+        // Assert
+        Assert.AreEqual(result.RouteName, "");
+            Assert.AreEqual(result.RouteValues.Values.First(), "KundeAdministrer");
+}
+
+
     //    [TestMethod]
     //    public void SlettKunde()
     //    {
@@ -298,6 +367,6 @@ namespace Tusimaka.Enhetstest
     //        // Assert
     //        Assert.AreEqual(actionResult.ViewName, "");
     //    }
-    }
+}
 
 }
