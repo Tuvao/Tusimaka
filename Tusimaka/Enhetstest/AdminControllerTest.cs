@@ -342,6 +342,23 @@ namespace Tusimaka.Enhetstest
             // Assert
             Assert.AreEqual(result.RouteValues.Values.First(), "FlyruterAdministrer");
         }
+        [TestMethod]
+        public void RegistrerFlyrute_Post_DB_feil()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController(new AdminFlyruterBLL(new AdminFlyruterDALRepositoryStub()));
+            SessionMock.InitializeController(controller);
+            controller.Session["LoggetInn"] = true;
+            var innFlyrute = new Strekning();
+            innFlyrute.FraFlyplass = "";
+
+            // Act
+            var actionResult = (ViewResult)controller.RegistrerFlyrute(innFlyrute);
+
+            // Assert
+            Assert.AreEqual(actionResult.ViewName, "");
+        }
     }
 }
 
