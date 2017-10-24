@@ -482,6 +482,56 @@ namespace Tusimaka.Enhetstest
             // Assert
             Assert.AreEqual(result.RouteValues.Values.First(), "KundeAdministrer");
         }
+
+        [TestMethod]
+        public void List_alle_KundeBestillinger_OK()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController(new AdminBestillingBLL(new AdminBestillingDALRepositoryStub()));
+            SessionMock.InitializeController(controller);
+            // setningen under må være etter InitializeController
+            controller.Session["LoggetInn"] = true;
+            var skrivUtKundeBestilling = new List<KundeBestillinger>();
+            var bestilling = new KundeBestillinger
+            {
+                KundeID = 1,
+                Fornavn = "Helene",
+                Etternavn = "Andersen",
+                StrekningsID = 1,
+                FraFlyplass = "Oslo",
+                TilFlyplass = "Bergen",
+                Dato = "2017-10-20",
+                Pris = 1234,
+                Tid = "12:30",
+                AntallPersoner = 4
+
+            };
+
+            skrivUtKundeBestilling.Add(bestilling);
+            skrivUtKundeBestilling.Add(bestilling);
+            skrivUtKundeBestilling.Add(bestilling);
+            // Act
+            var actionResult = (ViewResult)controller.KundeBestillinger(1);
+            var resultat = (List<KundeBestillinger>)actionResult.Model;
+            // Assert
+            Assert.AreEqual(actionResult.ViewName, "");
+
+            for (var i = 0; i < resultat.Count; i++)
+            {
+                Assert.AreEqual(skrivUtKundeBestilling[i].KundeID, resultat[i].KundeID);
+                Assert.AreEqual(skrivUtKundeBestilling[i].Fornavn, resultat[i].Fornavn);
+                Assert.AreEqual(skrivUtKundeBestilling[i].Etternavn, resultat[i].Etternavn);
+                Assert.AreEqual(skrivUtKundeBestilling[i].StrekningsID, resultat[i].StrekningsID);
+                Assert.AreEqual(skrivUtKundeBestilling[i].FraFlyplass, resultat[i].FraFlyplass);
+                Assert.AreEqual(skrivUtKundeBestilling[i].TilFlyplass, resultat[i].TilFlyplass);
+                Assert.AreEqual(skrivUtKundeBestilling[i].Dato, resultat[i].Dato);
+                Assert.AreEqual(skrivUtKundeBestilling[i].Pris, resultat[i].Pris);
+                Assert.AreEqual(skrivUtKundeBestilling[i].Tid, resultat[i].Tid);
+                Assert.AreEqual(skrivUtKundeBestilling[i].AntallPersoner, resultat[i].AntallPersoner);
+            }
+
+        }
     }
 }
 
