@@ -26,60 +26,64 @@ namespace Tusimaka.DAL
         }
         public bool slettKunde(int id)
         {
-            var db = new DBContext();
-            try
+            using (var db = new DBContext())
             {
-                Kunder slettKunde = db.Kunder.Find(id);
-                db.Kunder.Remove(slettKunde);
-                db.SaveChanges();
-                return true;
-            }
-            catch (Exception feil)
-            {
-                return false;
+                try
+                {
+                    Kunder slettKunde = db.Kunder.Find(id);
+                    db.Kunder.Remove(slettKunde);
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception feil)
+                {
+                    return false;
+                }
             }
         }
         public bool endreKunde(int id, Kunde innKunde)
         {
-            var db = new DBContext();
-            try
+            using (var db = new DBContext())
             {
-                Kunder endreKunde = db.Kunder.Find(id);
-                endreKunde.fornavn = innKunde.Fornavn;
-                endreKunde.etternavn = innKunde.Etternavn;
-                endreKunde.epost = innKunde.Epost;
-                endreKunde.kjonn = innKunde.Kjonn;
-                db.SaveChanges();
-                return true;
-            }
-            catch
-            {
-                return false;
+                try
+                {
+                    Kunder endreKunde = db.Kunder.Find(id);
+                    endreKunde.fornavn = innKunde.Fornavn;
+                    endreKunde.etternavn = innKunde.Etternavn;
+                    endreKunde.epost = innKunde.Epost;
+                    endreKunde.kjonn = innKunde.Kjonn;
+                    db.SaveChanges();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
             }
         }
         public Kunde hentDenneKunden(int id)
         {
-            var db = new DBContext();
-
-            var denneKunden = db.Kunder.Find(id);
-
-            if (denneKunden == null)
+            using (var db = new DBContext())
             {
-                return null;
-            }
-            else
-            {
-                var utKunde = new Kunde()
+                var denneKunden = db.Kunder.Find(id);
+
+                if (denneKunden == null)
                 {
-                    KundeID = denneKunden.KundeID,
-                    Fornavn = denneKunden.fornavn,
-                    Etternavn = denneKunden.etternavn,
-                    Epost = denneKunden.epost,
-                    Kjonn = denneKunden.kjonn
-                };
-                return utKunde;
+                    return null;
+                }
+                else
+                {
+                    var utKunde = new Kunde()
+                    {
+                        KundeID = denneKunden.KundeID,
+                        Fornavn = denneKunden.fornavn,
+                        Etternavn = denneKunden.etternavn,
+                        Epost = denneKunden.epost,
+                        Kjonn = denneKunden.kjonn
+                    };
+                    return utKunde;
+                }
             }
         }
-
     }
 }

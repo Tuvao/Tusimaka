@@ -317,24 +317,20 @@ namespace Tusimaka.Enhetstest
             Assert.AreEqual(result.RouteName, "");
             Assert.AreEqual(result.RouteValues.Values.First(), "KundeAdministrer");
         }
-
         [TestMethod]
-        public void RegistrerKunde_Post_Model_feil()
+        public void RegistrerFlyrute()
         {
             // Arrange
-            //var SessionMock = new TestControllerBuilder();
+            var SessionMock = new TestControllerBuilder();
             var controller = new AdminController(new KundeBLL(new KundeRepositoryStub()));
-            //SessionMock.InitializeController(controller);
+            SessionMock.InitializeController(controller);
             // setningen under må være etter InitializeController
-            //controller.Session["LoggetInn"] = true;
-            var innKunde = new Kunde();
-            controller.ViewData.ModelState.AddModelError("Fornavn", "Ikke oppgitt fornavn");
+            controller.Session["LoggetInn"] = true;
 
             // Act
-            var actionResult = (ViewResult)controller.RegistrerKunde(innKunde);
+            var actionResult = (ViewResult)controller.RegistrerFlyrute();
 
             // Assert
-            Assert.IsTrue(actionResult.ViewData.ModelState.Count == 1);
             Assert.AreEqual(actionResult.ViewName, "");
         }
     }
