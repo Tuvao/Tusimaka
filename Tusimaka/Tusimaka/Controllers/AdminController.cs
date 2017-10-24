@@ -242,7 +242,7 @@ namespace Tusimaka.Controllers
             return View();
         }
 
-        public ActionResult NyKundeBestilling(int id)
+        public ActionResult NyKundeBestilling()
         {
             if (Session["LoggetInn"] != null)
             {
