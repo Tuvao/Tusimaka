@@ -278,22 +278,6 @@ namespace Tusimaka.Enhetstest
             // Assert
             Assert.AreEqual(actionResult.ViewName, "");
         }
-
-        public void Registrer_Post_Model_feil()
-        {
-            // Arrange
-            var controller = new AdminController(new KundeBLL(new KundeRepositoryStub()));
-            var innKunde = new Kunde();
-            controller.ViewData.ModelState.AddModelError("Fornavn", "Ikke oppgitt fornavn");
-
-            // Act
-            var actionResult = (ViewResult)controller.RegistrerKunde(innKunde);
-
-            // Assert
-            Assert.IsTrue(actionResult.ViewData.ModelState.Count == 1);
-            Assert.AreEqual(actionResult.ViewName, "");
-        }
-
         [TestMethod]
         public void RegistrerKunde_Post_OK()
         {
