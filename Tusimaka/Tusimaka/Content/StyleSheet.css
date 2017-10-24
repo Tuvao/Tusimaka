@@ -3,6 +3,45 @@
     font-family: "Arial", Helvetica, sans-serif;
 }
 
+#test {
+    background-color: aqua;
+}
+
+.logo {
+    width: 5em;
+    height: 4.5em;
+    -webkit-animation-name: tusimaka;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-duration: 4s;
+    animation-name: tusimaka;
+    animation-duration: 10s;
+    font-size: 10em;
+}
+
+
+@-webkit-keyframes tusimaka {
+    0% {
+        opacity: 1;
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    75% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
 .container, .row {
     width: 100%;
     background-color: #F4F5F5;
@@ -179,37 +218,7 @@ input[type=date]::-webkit-inner-spin-button {
     display: none;
 }
 
-image.logo {
-    -webkit-animation-name: tusimaka;
-    animation-timing-function: ease-in-out;
-    -webkit-animation-duration: 4s;
-    animation-name: tusimaka;
-    animation-duration: 10s;
-    font-size: 10em;
-}
 
-
-@-webkit-keyframes tusimaka {
-    0% {
-        opacity: 1;
-    }
-
-    25% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0;
-    }
-
-    75% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 0;
-    }
-}
 
 
 ul {
@@ -236,10 +245,10 @@ ul {
     background-color: #235945;
     border-radius: 0px 0px 40px 0px;
 }
-
-    .adminStartKnapp li:hover {
+    .adminStartKnapp .knapp:hover {
         border-radius: 0px 40px 40px 0px;
     }
+
 p.fyll_inn_skjema{
     display: inline-block;
     margin-right: 3%;
@@ -253,3 +262,59 @@ div.logo {
     width: 100px;
     height: auto;
 }
+.adminStartMiniKnapp .miniKnapp {
+    font-size: 1em;
+    color: white;
+    min-height: 1.5em;
+    min-width: 4em;
+    max-width: 12em;
+    padding: 0.5em 0.5em;
+    background-color: lightgrey;
+    color: black;
+    display: inline-block;
+    text-align: center;
+}
+    .adminStartMiniKnapp .miniKnapp:hover {
+        opacity:0.4;
+    }
+
+.adminStartMiniKnapp a {
+    text-decoration:none;
+    color:black;
+}
+.adminStartMiniKnapp .slett, .slett a {
+    background-color: #B62B32;
+    color: white;
+}
+
+.adminStartMiniKnapp .add, .add a {
+    background-color: #37775F;
+    color:white;
+}
+
+.adminStartMiniKnapp .detaljer, .detaljer a {
+    background-color: #224652;
+    color:white;
+}
+
+.adminMiniMeny .miniMenyKnapp {
+    font-size: 1em;
+    color: white;
+    min-height: 1.5em;
+    min-width: 9em;
+    max-width: 12em;
+    padding: 0.5em 0.5em;
+    background-color: #235945;
+    margin: 1em 1em 1em 0em;
+    display: inline-block;
+    text-align: center;
+    border-radius: 0px 0px 20px 0px;
+}
+.adminMiniMeny .miniMenyKnapp a {
+    color:white;
+    text-decoration:none;
+}
+    .adminMiniMeny .miniMenyKnapp:hover {
+        opacity: 0.7;
+        border-radius: 0px 20px 20px 0px;
+    }
