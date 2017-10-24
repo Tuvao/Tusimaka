@@ -140,46 +140,43 @@ namespace Tusimaka.Enhetstest
                 Assert.AreEqual(forventetResultat[i].AntallLedigeSeter, resultat[i].AntallLedigeSeter);
             }
         }
+        
         [TestMethod]
-        public void List_alle_flyruter_False_Session()
+        public void List_alle_Kunder_OK()
         {
             // Arrange
             var SessionMock = new TestControllerBuilder();
-            var controller = new AdminController(new AdminFlyruterBLL(new AdminFlyruterDALRepositoryStub()));
+            var controller = new AdminController(new AdminKundeBLL(new AdminKundeDALRepositoryStub()));
             SessionMock.InitializeController(controller);
             // setningen under må være etter InitializeController
-            controller.Session["LoggetInn"] = false;
-            var forventetResultat = new List<Strekning>();
-            var flyrute = new Strekning()
+            controller.Session["LoggetInn"] = true;
+            var forventetResultat = new List<Kunde>();
+            var kunde = new Kunde()
             {
-                StrekningsID = 1,
-                FraFlyplass = "Bergen",
-                TilFlyplass = "Oslo",
-                Dato = "2017-10-20",
-                Tid = "12:30",
-                Pris = 1234,
-                FlyTid = 45,
-                AntallLedigeSeter = 4
+                KundeID = 1,
+                Fornavn = "Helene",
+                Etternavn = "Andersen",
+                Epost = "helene@andersen.no",
+                Kjonn = "Kvinne"
+
             };
-            forventetResultat.Add(flyrute);
-            forventetResultat.Add(flyrute);
-            forventetResultat.Add(flyrute);
+
+            forventetResultat.Add(kunde);
+            forventetResultat.Add(kunde);
+            forventetResultat.Add(kunde);
             // Act
-            var actionResult = (ViewResult)controller.FlyruterAdministrer();
-            var resultat = (List<Strekning>)actionResult.Model;
+            var actionResult = (ViewResult)controller.KundeAdministrer();
+            var resultat = (List<Kunde>)actionResult.Model;
             // Assert
-            Assert.AreEqual(actionResult.ViewName, "LoggInn");
+            Assert.AreEqual(actionResult.ViewName, "");
 
             for (var i = 0; i < resultat.Count; i++)
             {
-                Assert.AreEqual(forventetResultat[i].StrekningsID, resultat[i].StrekningsID);
-                Assert.AreEqual(forventetResultat[i].FraFlyplass, resultat[i].FraFlyplass);
-                Assert.AreEqual(forventetResultat[i].TilFlyplass, resultat[i].TilFlyplass);
-                Assert.AreEqual(forventetResultat[i].Dato, resultat[i].Dato);
-                Assert.AreEqual(forventetResultat[i].Tid, resultat[i].Tid);
-                Assert.AreEqual(forventetResultat[i].Pris, resultat[i].Pris);
-                Assert.AreEqual(forventetResultat[i].FlyTid, resultat[i].FlyTid);
-                Assert.AreEqual(forventetResultat[i].AntallLedigeSeter, resultat[i].AntallLedigeSeter);
+                Assert.AreEqual(forventetResultat[i].KundeID, resultat[i].KundeID);
+                Assert.AreEqual(forventetResultat[i].Fornavn, resultat[i].Fornavn);
+                Assert.AreEqual(forventetResultat[i].Etternavn, resultat[i].Etternavn);
+                Assert.AreEqual(forventetResultat[i].Epost, resultat[i].Epost);
+                Assert.AreEqual(forventetResultat[i].Kjonn, resultat[i].Kjonn);
             }
         }
         [TestMethod]
@@ -245,6 +242,7 @@ namespace Tusimaka.Enhetstest
             Assert.AreEqual(actionResult.ViewData.ModelState["feil"].Errors[0].ErrorMessage, "KundeID = 0");
             Assert.AreEqual(actionResult.ViewName, "");
         }
+
     //    [TestMethod]
     //    public void SlettKunde()
     //    {
