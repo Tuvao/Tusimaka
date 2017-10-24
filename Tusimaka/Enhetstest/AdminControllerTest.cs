@@ -162,7 +162,6 @@ namespace Tusimaka.Enhetstest
             // Act
             var result = (RedirectToRouteResult)controller.RegistrerFlyrute(innFlyrute);
             // Assert
-            Assert.AreEqual(result.RouteName, "");
             Assert.AreEqual(result.RouteValues.Values.First(), "FlyruterAdministrer");
         }
         [TestMethod]

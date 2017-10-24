@@ -68,20 +68,19 @@ namespace Tusimaka.Controllers
         [HttpPost]
         public ActionResult LoggInn(AdminBruker innAdminBruker)
         {
-            bool ok = _adminBLL.Bruker_i_DB(innAdminBruker);
-            if (ok)
+            if(ModelState.IsValid)
             {
-                Session["LoggetInn"] = true;
-                ViewBag.Innlogget = true;
-                return RedirectToAction("AdminStart");
+                bool ok = _adminBLL.Bruker_i_DB(innAdminBruker);
+                if (ok)
+                {
+                    Session["LoggetInn"] = true;
+                    ViewBag.Innlogget = true;
+                    return RedirectToAction("AdminStart");
+                }
             }
-            else
-            {
-                Session["LoggetInn"] = false;
-                ViewBag.Innlogget = false;
-                return View();
-            }
-
+            Session["LoggetInn"] = false;
+            ViewBag.Innlogget = false;
+            return View();
         }
 
         public ActionResult AdminStart()
