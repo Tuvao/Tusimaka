@@ -24,9 +24,6 @@
                     data: { id: data_id },  // en parameter inn i slett(id)-metoden i kunde-kontrolleren (JSON-objekt)
                     success: function () {
                         // må kalle liste-metoden for å vise den nye listen av kunder
-
-
-
                         $.ajax({
                             url: '@Url.Action("KundeAdministrer", "Admin")',
                             success: function () {
