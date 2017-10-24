@@ -140,6 +140,32 @@ namespace Tusimaka.Enhetstest
             }
         }
         [TestMethod]
+        public void Registrer_Flyruter_Post_OK()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController(new AdminFlyruterBLL(new AdminFlyruterDALRepositoryStub()));
+            SessionMock.InitializeController(controller);
+            // setningen under må være etter InitializeController
+            controller.Session["LoggetInn"] = true;
+            var innFlyrute = new Strekning()
+            {
+                StrekningsID = 1,
+                FraFlyplass = "Bergen",
+                TilFlyplass = "Oslo",
+                Dato = "2017-10-20",
+                Tid = "12:30",
+                Pris = 1234,
+                FlyTid = 45,
+                AntallLedigeSeter = 4
+            };
+            // Act
+            var result = (RedirectToRouteResult)controller.RegistrerFlyrute(innFlyrute);
+            // Assert
+            Assert.AreEqual(result.RouteName, "");
+            Assert.AreEqual(result.RouteValues.Values.First(), "FlyruterAdministrer");
+        }
+        [TestMethod]
         public void EndreKunde_OK()
         {
             // Arrange
