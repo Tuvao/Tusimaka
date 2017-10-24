@@ -22,7 +22,21 @@ namespace Tusimaka.DAL
         }
         public bool lagreKundeIdMotFlyBestilling(Kunde innKunde, FlyBestillinger innFlyinfo)
         {
-
+            if(innKunde.KundeID == 0)
+            {
+                return false;
+            }
+            else
+            {
+                if (innFlyinfo.AntallPersoner == 0)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
         }
         public string hentAntallPersoner(int id)
         {
@@ -64,8 +78,23 @@ namespace Tusimaka.DAL
                 return bestilling.ToString();
             }
         }
-        public string hentReferanseNR()
+        public string hentReferanseNR(int id)
         {
-
-        }
+            if (id == 0)
+            {
+                var bestilling = new FlyBestillinger();
+                bestilling.FlyBestillingsID = 0;
+                return bestilling.FlyBestillingsID.ToString();
+            }
+            else
+            {
+                var bestilling = new FlyBestillinger()
+                {
+                    FlyBestillingsID = 1,
+                    StrekningsID = 1,
+                    AntallPersoner = 2,
+                    ReturID = 3,
+                };
+                return bestilling.FlyBestillingsID.ToString();
+            }
     }
