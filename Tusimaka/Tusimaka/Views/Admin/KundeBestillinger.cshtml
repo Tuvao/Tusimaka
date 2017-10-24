@@ -30,7 +30,8 @@
             })
         });
 </script>
-@for (int index = 0; index < 1; index++)
+@* Her må det endres til å bare gå ut en gang... *@
+@for (int index = 0; index < Model.Count(); index++)
 {
 <h2>Viser flybestillinger for 
     @Html.DisplayFor(model => model.ToArray()[index].Fornavn) 

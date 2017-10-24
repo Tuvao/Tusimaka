@@ -49,75 +49,84 @@
         });
 </script>
 <body>
-<h2>Administrer flyruter</h2>
+    <div class="container">
+        <div class="row">
+            <h2>Administrer flyruter</h2>
+        </div>
+        <div class="row">
+            <div class="adminMiniMeny">
+                <span class="miniMenyKnapp">@Html.ActionLink("TILBAKE", "AdminStart")</span>
+                <span class="miniMenyKnapp">@Html.ActionLink("LEGG TIL", "RegistrerFlyrute")</span>
+            </div>
+        </div>
+        <div class="row">
+            <table class="table">
+                <tr>
+                    <th>
+                        Fra
+                    </th>
+                    <th>
+                        Til
+                    </th>
+                    <th>
+                        Dato
+                    </th>
+                    <th>
+                        Tidspunkt
+                    </th>
+                    <th>
+                        Pris
+                    </th>
+                    <th>
+                        Reisetid
+                    </th>
+                    <th>
+                        Hva vil du gjøre?
+                    </th>
+                </tr>
 
-    <div class="adminMiniMeny">
-        <span class="miniMenyKnapp">@Html.ActionLink("TILBAKE", "AdminStart")</span>
-        <span class="miniMenyKnapp">@Html.ActionLink("LEGG TIL", "RegistrerFlyrute")</span>
-    </div>
-<table class="table">
-    <tr>
-        <th>
-            Fra
-        </th>
-        <th>
-            Til
-        </th>
-        <th>
-            Dato
-        </th>
-        <th>
-            Tidspunkt
-        </th>
-        <th>
-            Pris
-        </th>
-        <th>
-            Reisetid
-        </th>
-        <th>
-            Hva vil du gjøre?
-        </th>
-    </tr>
+                @foreach (var item in Model)
+            {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FraFlyplass)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TilFlyplass)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Dato)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Tid)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Pris)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FlyTid)
+                        </td>
+                        <td class="adminStartMiniKnapp">
+                            <span class="miniKnapp">@Html.ActionLink("Endre", "EndreFlyrute", new { id = item.StrekningsID }, new { @class = "tabKnapp" })</span>
+                            <span class="miniKnapp detaljer">
+                                <a href="#VisFlyruterModal" class="tabKnapp" id="visFlyruterKnapp"
+                                   data-navn="<i>Id: @item.StrekningsID</i><br/>Fra: @item.FraFlyplass <br/>Til: @item.TilFlyplass <br/>Den: @item.Dato <br/>Klokken: @item.Tid <br/>Pris: @item.Pris<br/>Flytid (i minutter): @item.FlyTid<br/>Antall ledige seter: @item.AntallLedigeSeter "
+                                   data-id="@item.StrekningsID" data-toggle="modal" data-visFlyruterModal="true">Detaljer</a>
+                            </span>
+                            <span class="miniKnapp slett">
+                                <a href="#sletteFlyruterModal" class="tabKnapp" id="sletteKnapp"
+                                   data-navn="<i>Id: @item.StrekningsID</i><br/>Fra: @item.FraFlyplass <br/>Til: @item.TilFlyplass <br/>Den: @item.Dato <br/>Klokken: @item.Tid" @*Fjernet at vi viste frem all data!*@
+                                   data-id="@item.StrekningsID" data-toggle="modal" data-sletteFlyruterModal="true">Slett</a>
+                            </span>
+                        </td>
+                    </tr>
+                }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FraFlyplass)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TilFlyplass)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Dato)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tid)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Pris)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FlyTid)
-        </td>
-        <td class="adminStartMiniKnapp">
-            <span class="miniKnapp">@Html.ActionLink("Endre", "EndreFlyrute", new { id = item.StrekningsID }, new { @class = "tabKnapp" })</span>
-            <span class="miniKnapp detaljer">
-                <a href="#VisFlyruterModal" class="tabKnapp" id="visFlyruterKnapp"
-                   data-navn="<i>Id: @item.StrekningsID</i><br/>Fra: @item.FraFlyplass <br/>Til: @item.TilFlyplass <br/>Den: @item.Dato <br/>Klokken: @item.Tid <br/>Pris: @item.Pris<br/>Flytid (i minutter): @item.FlyTid<br/>Antall ledige seter: @item.AntallLedigeSeter "
-                   data-id="@item.StrekningsID" data-toggle="modal" data-visFlyruterModal="true">Detaljer</a>
-            </span>
-            <span class="miniKnapp slett">
-                <a href="#sletteFlyruterModal" class="tabKnapp" id="sletteKnapp"
-                   data-navn="<i>Id: @item.StrekningsID</i><br/>Fra: @item.FraFlyplass <br/>Til: @item.TilFlyplass <br/>Den: @item.Dato <br/>Klokken: @item.Tid" @*Fjernet at vi viste frem all data!*@
-                   data-id="@item.StrekningsID" data-toggle="modal" data-sletteFlyruterModal="true">Slett</a>
-            </span>
-        </td>
-    </tr>
-}
-
-</table>
-@Html.Partial("SlettFlyruterModal")
-@Html.Partial("VisFlyruterModal")
-
+            </table>
+            </div>
+            <div class="row">
+                @Html.Partial("SlettFlyruterModal")
+                @Html.Partial("VisFlyruterModal")
+            </div>
+        </div>
 </body>
