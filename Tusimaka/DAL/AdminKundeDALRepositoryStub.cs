@@ -12,7 +12,7 @@ namespace Tusimaka.DAL
         public List<Kunde> hentAlleKunder()
         {
             var kundeListe = new List<Kunde>();
-            var kunde1 = new Kunde()
+            var kunde = new Kunde()
             {
                 KundeID = 1,
                 Fornavn = "Helene",
@@ -21,27 +21,10 @@ namespace Tusimaka.DAL
                 Kjonn = "Kvinne"
 
             };
-            var kunde2 = new Kunde()
-            {
-                KundeID = 2,
-                Fornavn = "Knut",
-                Etternavn = "Fredriksen",
-                Epost = "knut@fredriksen.no",
-                Kjonn = "Mann"
-
-            };
-            var kunde3 = new Kunde()
-            {
-                KundeID = 3,
-                Fornavn = "Linn",
-                Etternavn = "Pettersen",
-                Epost = "linn@pettersen.no",
-                Kjonn = "Kvinne"
-
-            };
-            kundeListe.Add(kunde1);
-            kundeListe.Add(kunde2);
-            kundeListe.Add(kunde3);
+            
+            kundeListe.Add(kunde);
+            kundeListe.Add(kunde);
+            kundeListe.Add(kunde);
             return kundeListe;
         }
         public bool slettKunde(int id)

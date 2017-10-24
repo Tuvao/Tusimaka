@@ -10,7 +10,6 @@ namespace Tusimaka.DAL
 {
     public interface IAdminBestillingRepository
     {
-        bool endreKunde(int id, Kunde innKunde);
         List<KundeBestillinger> hentKundesFlyBestillinger(int id);
         bool LagreAdminFlyBestilling(int id, FlyBestillinger nyBestilling);
         bool SlettKundeBestilling(int id);
