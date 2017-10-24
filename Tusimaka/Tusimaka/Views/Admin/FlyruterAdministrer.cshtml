@@ -51,11 +51,10 @@
 <body>
 <h2>Administrer flyruter</h2>
 
-<p>
-    @Html.ActionLink("Gå tilbake til meny", "AdminStart")
-    @Html.ActionLink("Legg til ny flyrute", "RegistrerFlyrute")
-    @*hvordan gjøre om button til actionlink?*@
-</p>
+<div class="adminStartMiniKnapp">
+    <span class="miniKnapp">@Html.ActionLink("MENY", "AdminStart")</span>
+    <span class="miniKnapp">@Html.ActionLink("LEGG TIL", "RegistrerFlyrute")</span>
+</div>
 <table class="table">
     <tr>
         <th>
