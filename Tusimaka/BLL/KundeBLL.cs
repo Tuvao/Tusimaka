@@ -10,17 +10,29 @@ namespace Tusimaka.BLL
 {
     public class KundeBLL : BLL.IKundeLogikk
     {
-        //lagrekunde
-        public bool lagreKunde(Kunde innKunde)
-        {
-            var kundeDAL = new KundeDAL();
-            return kundeDAL.lagreKunde(innKunde);
-        }
-        public Kunde hentEnKunde()
-        {
-            var kundeDAL = new KundeDAL();
-            return kundeDAL.hentEnKunde();
-        }
+            private IKundeRepository _repository;
+
+            public KundeBLL()
+            {
+                _repository = new KundeDAL();
+            }
+
+            public KundeBLL(IKundeRepository stub)
+            {
+                _repository = stub;
+            }
+
+            //lagrekunde
+            public bool lagreKunde(Kunde innKunde)
+            {
+                //var kundeDAL = new KundeDAL();
+                return _repository.lagreKunde(innKunde);
+            }
+            public Kunde hentEnKunde()
+            {
+                //var kundeDAL = new KundeDAL();
+                return _repository.hentEnKunde();
+            }
     }
 }
    
