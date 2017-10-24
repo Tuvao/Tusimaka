@@ -11,13 +11,13 @@ namespace Tusimaka.DAL
     {
         public bool Bruker_i_DB(AdminBruker innAdminBruker)
         {
-            if (innAdminBruker.Brukernavn == "")
+            if(innAdminBruker.Brukernavn == "Brukernavn" && innAdminBruker.Passord == "Passord")
             {
-                return false;
+                return true;
             }
             else
             {
-                return true;
+                return false;
             }
         }
     }

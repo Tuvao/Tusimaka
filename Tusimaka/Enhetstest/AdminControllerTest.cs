@@ -63,16 +63,40 @@ namespace Tusimaka.Enhetstest
         public void LoggInn_OK()
         {
             // Arrange
-            var SessionMock = new TestControllerBuilder();
-            var controller = new AdminController();
-            SessionMock.InitializeController(controller);
+            //var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController(new AdminBLL(new AdminRepositoryStub()));
+            //SessionMock.InitializeController(controller);
             // setningen under må være etter InitializeController
-            controller.Session["LoggetInn"] = true;
+            //controller.Session["LoggetInn"] = true;
+            var innAdminBruker = new AdminBruker()
+            {
+                Brukernavn = "Brukernavn",
+                Passord = "Passord"
+            };
             // Act
-            var result = (RedirectToRouteResult)controller.LoggInn();
+            var result = (RedirectToRouteResult)controller.LoggInn(innAdminBruker);
             // Assert
-            Assert.AreEqual(result.RouteName, "");
+            //Assert.AreEqual(result.RouteName, "Admin");
             Assert.AreEqual(result.RouteValues.Values.First(), "AdminStart");
+            //Assert.AreEqual("AdminStart", result.RouteValues["action"]);
+        }
+        [TestMethod]
+        public void LoggInn_IkkeOK()
+        {
+            // Arrange
+            //var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController(new AdminBLL(new AdminRepositoryStub()));
+            //SessionMock.InitializeController(controller);
+            // setningen under må være etter InitializeController
+            //controller.Session["LoggetInn"] = true;
+            var innAdminBruker = new AdminBruker()
+            {
+                Brukernavn = "Brukernavn",
+                Passord = "Passord"
+            };
+            // Act
+            var result = (RedirectToRouteResult)controller.LoggInn(innAdminBruker);
+            Assert.AreEqual("AdminStart", result.RouteValues["action"]);
         }
     }
 }

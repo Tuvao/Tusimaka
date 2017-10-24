@@ -3,6 +3,45 @@
     font-family: "Arial", Helvetica, sans-serif;
 }
 
+#test {
+    background-color: aqua;
+}
+
+.logo {
+    width: 5em;
+    height: 4.5em;
+    -webkit-animation-name: tusimaka;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-duration: 4s;
+    animation-name: tusimaka;
+    animation-duration: 10s;
+    font-size: 10em;
+}
+
+
+@-webkit-keyframes tusimaka {
+    0% {
+        opacity: 1;
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    75% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
 .container, .row {
     width: 100%;
     background-color: #F4F5F5;
@@ -180,37 +219,7 @@ input[type=date]::-webkit-inner-spin-button {
     display: none;
 }
 
-image.logo {
-    -webkit-animation-name: tusimaka;
-    animation-timing-function: ease-in-out;
-    -webkit-animation-duration: 4s;
-    animation-name: tusimaka;
-    animation-duration: 10s;
-    font-size: 10em;
-}
 
-
-@-webkit-keyframes tusimaka {
-    0% {
-        opacity: 1;
-    }
-
-    25% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0;
-    }
-
-    75% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 0;
-    }
-}
 
 
 ul {
