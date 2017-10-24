@@ -142,13 +142,10 @@ namespace Tusimaka.Controllers
         [HttpPost]
         public ActionResult RegistrerFlyrute(Strekning innFlyrute)
         {
-            if (ModelState.IsValid)
+            bool OK = _adminFlyruterBLL.lagreFlyrute(innFlyrute);
+            if (OK)
             {
-                bool OK = _adminFlyruterBLL.lagreFlyrute(innFlyrute);
-                if (OK)
-                {
-                    return RedirectToAction("FlyruterAdministrer");
-                }
+                return RedirectToAction("FlyruterAdministrer");
             }
             return View();
         }
@@ -169,13 +166,10 @@ namespace Tusimaka.Controllers
         [HttpPost]
         public ActionResult RegistrerKunde(Kunde innKunde)
         {
-            if (ModelState.IsValid)
+            bool OK = _kundeBLL.lagreKunde(innKunde);
+            if (OK)
             {
-                bool OK = _kundeBLL.lagreKunde(innKunde);
-                if (OK)
-                {
-                    return RedirectToAction("KundeAdministrer");
-                }
+                return RedirectToAction("KundeAdministrer");
             }
             return View();
         }
@@ -196,7 +190,7 @@ namespace Tusimaka.Controllers
         [HttpPost]
         public ActionResult EndreKunde(int id, Kunde innKunde)
         {
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 bool endreOK = _adminKundeBLL.endreKunde(id, innKunde);
                 if (endreOK)
@@ -205,7 +199,6 @@ namespace Tusimaka.Controllers
                 }
             }
             return View();
-
         }
 
         public ActionResult KundeBestillinger(int id)
@@ -265,13 +258,10 @@ namespace Tusimaka.Controllers
         [HttpPost]
         public ActionResult NyKundeBestilling(int id, FlyBestillinger nyBestilling)
         {
-            if (ModelState.IsValid)
+            bool nyBestillingOK = _adminBestillBLL.LagreAdminFlyBestilling(id, nyBestilling);
+            if (nyBestillingOK)
             {
-                bool nyBestillingOK = _adminBestillBLL.LagreAdminFlyBestilling(id, nyBestilling);
-                if (nyBestillingOK)
-                {
-                    return RedirectToAction("KundeAdministrer");
-                }
+                return RedirectToAction("KundeAdministrer");
             }
             return View();
         }
