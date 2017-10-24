@@ -202,5 +202,61 @@ namespace Tusimaka.Enhetstest
             Assert.AreEqual(actionResult.ViewData.ModelState["feil"].Errors[0].ErrorMessage, "KundeID = 0");
             Assert.AreEqual(actionResult.ViewName, "");
         }
+        [TestMethod]
+        public void SlettKunde()
+        {
+            // Arrange
+            var controller = new AdminController(new AdminKundeBLL(new AdminKundeDALRepositoryStub()));
+
+            // Act
+            var actionResult = (ViewResult)controller.SlettKunde(1);
+            var resultat = (Kunde)actionResult.Model;
+
+            // Assert
+            Assert.AreEqual(actionResult.ViewName, "");
+        }
+
+        [TestMethod]
+        public void SlettKunde_Ok()
+        {
+            // Arrange
+            var controller = new AdminController(new AdminKundeBLL(new AdminKundeDALRepositoryStub()));
+            var innKunde = new Kunde()
+            {
+                Fornavn = "Tuva",
+                Etternavn = "Olsen",
+                Epost = "epost@epost.no",
+                Kjonn = "Kvinne"
+            };
+
+            // Act
+            var actionResult = (RedirectToRouteResult)controller.SlettKunde(1, innKunde);
+
+            // Assert
+            Assert.AreEqual(actionResult.RouteName, "");
+            Assert.AreEqual(actionResult.RouteValues.Values.First(), "KundeAdministrer");
+
+        }
+
+        [TestMethod]
+        public void SlettKunde_IkkeOk()
+        {
+            // Arrange
+            var controller = new AdminController(new AdminKundeBLL(new AdminKundeDALRepositoryStub()));
+            var innKunde = new Kunde()
+            {
+                Fornavn = "Tuva",
+                Etternavn = "Olsen",
+                Epost = "epost@epost.no",
+                Kjonn = "Kvinne"
+            };
+
+            // Act
+            var actionResult = (ViewResult)controller.SlettKunde(0, innKunde);
+
+            // Assert
+            Assert.AreEqual(actionResult.ViewName, "");
+        }
     }
+
 }
