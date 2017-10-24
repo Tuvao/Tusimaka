@@ -5,8 +5,10 @@ using Tusimaka.BLL;
 using Tusimaka.DAL;
 using Tusimaka.Model;
 using System.Web;
-using System.Web.Mvc;//using Session.MockUnitTest.Controllers;
-using MvcContrib.TestHelper;
+using System.Web.Mvc;
+//using Session.MockUnitTest.Controllers;
+using MvcContrib.TestHelper;
+using System.Linq;
 
 namespace Tusimaka.Enhetstest
 {
@@ -17,14 +19,18 @@ namespace Tusimaka.Enhetstest
         public void LoggInn()
         {
             // Arrange
-            var controller = new AdminController(new AdminBLL(new AdminRepositoryStub()));
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController();
+            SessionMock.InitializeController(controller);
+            // setningen under må være etter InitializeController
+            controller.Session["LoggetInn"] = false;
             // Act
-            var resultat = (ViewResult)controller.LoggInn();
+            var result = (ViewResult)controller.LoggInn();
             // Assert
-            Assert.AreEqual(resultat.ViewName, "");
+            Assert.AreEqual("", result.ViewName);
         }
         [TestMethod]
-        public void LoggInnOK()
+        public void AdminStart()
         {
             // Arrange
             var SessionMock = new TestControllerBuilder();
@@ -35,7 +41,38 @@ namespace Tusimaka.Enhetstest
             // Act
             var result = (ViewResult)controller.AdminStart();
             // Assert
-            Assert.AreEqual(true, result.ViewName);
+            Assert.AreEqual("", result.ViewName);
+        }
+        [TestMethod]
+        public void AdminStart_IkkeOK()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController();
+            SessionMock.InitializeController(controller);
+            // setningen under må være etter InitializeController
+            controller.Session["LoggetInn"] = false;
+            // Act
+            var result = (RedirectToRouteResult)controller.AdminStart();
+            // Assert
+            Assert.AreEqual(result.RouteName, "");
+            Assert.AreEqual(result.RouteValues.Values.First(), "LoggInn");
+        }
+
+        [TestMethod]
+        public void LoggInn_OK()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController();
+            SessionMock.InitializeController(controller);
+            // setningen under må være etter InitializeController
+            controller.Session["LoggetInn"] = true;
+            // Act
+            var result = (RedirectToRouteResult)controller.LoggInn();
+            // Assert
+            Assert.AreEqual(result.RouteName, "");
+            Assert.AreEqual(result.RouteValues.Values.First(), "AdminStart");
         }
     }
 }

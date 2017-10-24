@@ -9,9 +9,32 @@ namespace Tusimaka.DAL
 {
     public class AdminBestillingDALRepositoryStub : DAL.IAdminBestillingRepository
     {
-        public bool lagreFlyBestilling(FlyBestillinger innFlyinfo)
+        public List<KundeBestillinger> hentKundesFlyBestillinger(int id)
         {
-            if (innFlyinfo.AntallPersoner == 0)
+            var kundeBestillingListe = new List<KundeBestillinger>();
+            var bestilling = new KundeBestillinger()
+            {
+                KundeID = 1,
+                Fornavn = "Helene",
+                Etternavn = "Andersen",
+                StrekningsID = 1,
+                FraFlyplass = "Oslo",
+                TilFlyplass = "Bergen",
+                Dato = "2017-10-20",
+                Pris = 1234,
+                Tid = "12:30",
+                AntallPersoner = 4
+
+            };
+            
+            kundeBestillingListe.Add(bestilling);
+            kundeBestillingListe.Add(bestilling);
+            kundeBestillingListe.Add(bestilling);
+            return kundeBestillingListe;
+        }
+        public bool LagreAdminFlyBestilling(int id, FlyBestillinger nyBestilling)
+        {
+            if (nyBestilling.FlyBestillingsID == 0)
             {
                 return false;
             }
@@ -20,82 +43,15 @@ namespace Tusimaka.DAL
                 return true;
             }
         }
-        public bool lagreKundeIdMotFlyBestilling(Kunde innKunde, FlyBestillinger innFlyinfo)
+        public bool SlettKundeBestilling(int id)
         {
-            if (innKunde.KundeID == 0)
+            if (id == 0)
             {
                 return false;
             }
             else
             {
-                if (innFlyinfo.AntallPersoner == 0)
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
-            }
-        }
-        public string hentAntallPersoner(int id)
-        {
-            if (id == 0)
-            {
-                var bestilling = new FlyBestillinger();
-                bestilling.AntallPersoner = 0;
-                return bestilling.AntallPersoner.ToString();
-            }
-            else
-            {
-                var bestilling = new FlyBestillinger()
-                {
-                    FlyBestillingsID = 1,
-                    StrekningsID = 1,
-                    AntallPersoner = 2,
-                    ReturID = 3,
-                };
-                return bestilling.AntallPersoner.ToString();
-            }
-        }
-        public string hentBestilling(int id)
-        {
-            if (id == 0)
-            {
-                var bestilling = new FlyBestillinger();
-                bestilling.FlyBestillingsID = 0;
-                return bestilling.ToString();
-            }
-            else
-            {
-                var bestilling = new FlyBestillinger()
-                {
-                    FlyBestillingsID = 1,
-                    StrekningsID = 1,
-                    AntallPersoner = 2,
-                    ReturID = 3,
-                };
-                return bestilling.ToString();
-            }
-        }
-        public string hentReferanseNR(int id)
-        {
-            if (id == 0)
-            {
-                var bestilling = new FlyBestillinger();
-                bestilling.FlyBestillingsID = 0;
-                return bestilling.FlyBestillingsID.ToString();
-            }
-            else
-            {
-                var bestilling = new FlyBestillinger()
-                {
-                    FlyBestillingsID = 1,
-                    StrekningsID = 1,
-                    AntallPersoner = 2,
-                    ReturID = 3,
-                };
-                return bestilling.FlyBestillingsID.ToString();
+                return true;
             }
         }
     }
