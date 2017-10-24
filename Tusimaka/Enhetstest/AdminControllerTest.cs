@@ -140,7 +140,7 @@ namespace Tusimaka.Enhetstest
                 Assert.AreEqual(forventetResultat[i].AntallLedigeSeter, resultat[i].AntallLedigeSeter);
             }
         }
-        
+
         [TestMethod]
         public void List_alle_Kunder_OK()
         {
@@ -264,7 +264,11 @@ namespace Tusimaka.Enhetstest
         public void RegistrerKunde_Post_DB_feil()
         {
             // Arrange
+            var SessionMock = new TestControllerBuilder();
             var controller = new AdminController(new KundeBLL(new KundeRepositoryStub()));
+            SessionMock.InitializeController(controller);
+            // setningen under må være etter InitializeController
+            controller.Session["LoggetInn"] = true;
             var innKunde = new Kunde();
             innKunde.Fornavn = "";
 
@@ -294,23 +298,47 @@ namespace Tusimaka.Enhetstest
         public void RegistrerKunde_Post_OK()
         {
             // Arrange
+            var SessionMock = new TestControllerBuilder();
             var controller = new AdminController(new KundeBLL(new KundeRepositoryStub()));
-
+            SessionMock.InitializeController(controller);
+            // setningen under må være etter InitializeController
+            controller.Session["LoggetInn"] = true;
             var innKunde = new Kunde()
             {
                 Fornavn = "Petra",
                 Etternavn = "Olsen",
                 Epost = "test@test.no",
-                Kjonn ="Kvinne"
+                Kjonn = "Kvinne"
             };
-        // Act
-        var result = (RedirectToRouteResult)controller.RegistrerKunde(innKunde);
+            // Act
+            var result = (RedirectToRouteResult)controller.RegistrerKunde(innKunde);
 
-        // Assert
-        Assert.AreEqual(result.RouteName, "");
+            // Assert
+            Assert.AreEqual(result.RouteName, "");
             Assert.AreEqual(result.RouteValues.Values.First(), "KundeAdministrer");
-}
+        }
 
+        [TestMethod]
+        public void RegistrerKunde_Post_Model_feil()
+        {
+            // Arrange
+            //var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController(new KundeBLL(new KundeRepositoryStub()));
+            //SessionMock.InitializeController(controller);
+            // setningen under må være etter InitializeController
+            //controller.Session["LoggetInn"] = true;
+            var innKunde = new Kunde();
+            controller.ViewData.ModelState.AddModelError("Fornavn", "Ikke oppgitt fornavn");
+
+            // Act
+            var actionResult = (ViewResult)controller.RegistrerKunde(innKunde);
+
+            // Assert
+            Assert.IsTrue(actionResult.ViewData.ModelState.Count == 1);
+            Assert.AreEqual(actionResult.ViewName, "");
+        }
+    }
+}
 
     //    [TestMethod]
     //    public void SlettKunde()
@@ -367,6 +395,6 @@ namespace Tusimaka.Enhetstest
     //        // Assert
     //        Assert.AreEqual(actionResult.ViewName, "");
     //    }
-}
 
-}
+
+
