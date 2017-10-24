@@ -12,7 +12,7 @@ namespace Tusimaka.DAL
         public List<KundeBestillinger> hentKundesFlyBestillinger(int id)
         {
             var kundeBestillingListe = new List<KundeBestillinger>();
-            var bestilling1 = new KundeBestillinger()
+            var bestilling = new KundeBestillinger()
             {
                 KundeID = 1,
                 Fornavn = "Helene",
@@ -27,9 +27,9 @@ namespace Tusimaka.DAL
 
             };
             
-            kundeBestillingListe.Add(bestilling1);
-            kundeBestillingListe.Add(bestilling1);
-            kundeBestillingListe.Add(bestilling1);
+            kundeBestillingListe.Add(bestilling);
+            kundeBestillingListe.Add(bestilling);
+            kundeBestillingListe.Add(bestilling);
             return kundeBestillingListe;
         }
         public bool LagreAdminFlyBestilling(int id, FlyBestillinger nyBestilling)
