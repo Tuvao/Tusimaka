@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,18 +14,28 @@ namespace Tusimaka.DAL
         {
             using (var db = new DBContext())
             {
-                List<Strekning> alleStrekninger = db.Strekninger.Select(s => new Strekning()
+                try
                 {
-                    StrekningsID = s.StrekningsID,
-                    TilFlyplass = s.tilFlyplass,
-                    FraFlyplass = s.fraFlyplass,
-                    Dato = s.dato,
-                    Tid = s.tid,
-                    Pris = s.pris,
-                    FlyTid = s.flyTid,
-                    AntallLedigeSeter = s.antallLedigeSeter
-                }).ToList();
-                return alleStrekninger;
+                    List<Strekning> alleStrekninger = db.Strekninger.Select(s => new Strekning()
+                    {
+                        StrekningsID = s.StrekningsID,
+                        TilFlyplass = s.tilFlyplass,
+                        FraFlyplass = s.fraFlyplass,
+                        Dato = s.dato,
+                        Tid = s.tid,
+                        Pris = s.pris,
+                        FlyTid = s.flyTid,
+                        AntallLedigeSeter = s.antallLedigeSeter
+                    }).ToList();
+                    return alleStrekninger;
+                }
+                catch (Exception feil)
+                {
+                    string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
+                    string text = feil.ToString();
+                    File.AppendAllText(path, text);
+                    return new List<Strekning>();
+                }
             }
         }
         public bool lagreFlyrute(Strekning innFlyrute)
@@ -48,6 +59,9 @@ namespace Tusimaka.DAL
                 }
                 catch (Exception feil)
                 {
+                    string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
+                    string text = feil.ToString();
+                    File.AppendAllText(path, text);
                     return false;
                 }
             }
@@ -65,6 +79,9 @@ namespace Tusimaka.DAL
             }
             catch (Exception feil)
             {
+                string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
+                string text = feil.ToString();
+                File.AppendAllText(path, text);
                 return false;
             }
         }
@@ -84,35 +101,46 @@ namespace Tusimaka.DAL
                 db.SaveChanges();
                 return true;
             }
-            catch
+            catch (Exception feil)
             {
+                string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
+                string text = feil.ToString();
+                File.AppendAllText(path, text);
                 return false;
             }
         }
         public Strekning hentDenneFlyruten(int id)
         {
             var db = new DBContext();
+            try { 
+                var denneFlyruten = db.Strekninger.Find(id);
 
-            var denneFlyruten = db.Strekninger.Find(id);
-
-            if (denneFlyruten == null)
-            {
-                return null;
-            }
-            else
-            {
-                var utFlyrute = new Strekning()
+                if (denneFlyruten == null)
                 {
-                    StrekningsID = denneFlyruten.StrekningsID,
-                    FraFlyplass = denneFlyruten.fraFlyplass,
-                    TilFlyplass = denneFlyruten.tilFlyplass,
-                    Dato = denneFlyruten.dato,
-                    Tid = denneFlyruten.tid,
-                    Pris = denneFlyruten.pris,
-                    FlyTid = denneFlyruten.flyTid,
-                    AntallLedigeSeter = denneFlyruten.antallLedigeSeter
-                };
-                return utFlyrute;
+                    return null;
+                }
+                else
+                {
+                    var utFlyrute = new Strekning()
+                    {
+                        StrekningsID = denneFlyruten.StrekningsID,
+                        FraFlyplass = denneFlyruten.fraFlyplass,
+                        TilFlyplass = denneFlyruten.tilFlyplass,
+                        Dato = denneFlyruten.dato,
+                        Tid = denneFlyruten.tid,
+                        Pris = denneFlyruten.pris,
+                        FlyTid = denneFlyruten.flyTid,
+                        AntallLedigeSeter = denneFlyruten.antallLedigeSeter
+                    };
+                    return utFlyrute;
+                }
+            }
+            catch (Exception feil)
+            {
+                string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
+                string text = feil.ToString();
+                File.AppendAllText(path, text);
+                return new Strekning();
             }
         }
     }

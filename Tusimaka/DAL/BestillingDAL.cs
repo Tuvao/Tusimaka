@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,6 +34,9 @@ namespace Tusimaka.DAL
                 }
                 catch (Exception feil)
                 {
+                    string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
+                    string text = feil.ToString();
+                    File.AppendAllText(path, text);
                     return false;
                 }
             }
@@ -59,6 +63,9 @@ namespace Tusimaka.DAL
                 }
                 catch (Exception feil)
                 {
+                    string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
+                    string text = feil.ToString();
+                    File.AppendAllText(path, text);
                     return false;
                 }
             }
@@ -67,35 +74,68 @@ namespace Tusimaka.DAL
         {
             using (var db = new DBContext())
             {
-                int flyBestillingsId = db.FlyBestilling.Max(f => f.FlyBestillingsID);
-                FlyBestilling finnAntallPers = db.FlyBestilling.FirstOrDefault(f => f.FlyBestillingsID == flyBestillingsId);
+                try
+                {
+                    int flyBestillingsId = db.FlyBestilling.Max(f => f.FlyBestillingsID);
+                    FlyBestilling finnAntallPers = db.FlyBestilling.FirstOrDefault(f => f.FlyBestillingsID == flyBestillingsId);
 
-                var jsonSerializer = new JavaScriptSerializer();
-                return jsonSerializer.Serialize(finnAntallPers);
+                    var jsonSerializer = new JavaScriptSerializer();
+                    return jsonSerializer.Serialize(finnAntallPers);
+                }
+                catch(Exception feil)
+                {
+                    string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
+                    string text = feil.ToString();
+                    File.AppendAllText(path, text);
+                    string empty = "";
+                    return empty;
+                }
             }
         }
         public string hentBestilling()
         {
             using (var db = new DBContext())
             {
-                int flyBestillingsId = db.FlyBestilling.Max(f => f.FlyBestillingsID);
-                FlyBestilling finnStrekning = db.FlyBestilling.FirstOrDefault(f => f.FlyBestillingsID == flyBestillingsId);
-                int strekningsId = finnStrekning.StrekningsID;
-                Strekninger finnStrekningList = db.Strekninger.FirstOrDefault(s => s.StrekningsID == strekningsId);
+                try
+                {
+                    int flyBestillingsId = db.FlyBestilling.Max(f => f.FlyBestillingsID);
+                    FlyBestilling finnStrekning = db.FlyBestilling.FirstOrDefault(f => f.FlyBestillingsID == flyBestillingsId);
+                    int strekningsId = finnStrekning.StrekningsID;
+                    Strekninger finnStrekningList = db.Strekninger.FirstOrDefault(s => s.StrekningsID == strekningsId);
 
-                var jsonSerializer = new JavaScriptSerializer();
-                return jsonSerializer.Serialize(finnStrekningList);
+                    var jsonSerializer = new JavaScriptSerializer();
+                    return jsonSerializer.Serialize(finnStrekningList);
+                }
+                catch (Exception feil)
+                {
+                    string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
+                    string text = feil.ToString();
+                    File.AppendAllText(path, text);
+                    string empty = "";
+                    return empty;
+                }
             }
         }
         public string hentReferanseNR()
         {
             using (var db = new DBContext())
             {
-                int flyBestillingsId = db.FlyBestilling.Max(f => f.FlyBestillingsID);
-                FlyBestilling finnRefNr = db.FlyBestilling.FirstOrDefault(f => f.FlyBestillingsID == flyBestillingsId);
+                try
+                {
+                    int flyBestillingsId = db.FlyBestilling.Max(f => f.FlyBestillingsID);
+                    FlyBestilling finnRefNr = db.FlyBestilling.FirstOrDefault(f => f.FlyBestillingsID == flyBestillingsId);
 
-                var jsonSerializer = new JavaScriptSerializer();
-                return jsonSerializer.Serialize(finnRefNr);
+                    var jsonSerializer = new JavaScriptSerializer();
+                    return jsonSerializer.Serialize(finnRefNr);
+                }
+                catch (Exception feil)
+                {
+                    string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
+                    string text = feil.ToString();
+                    File.AppendAllText(path, text);
+                    string empty = "";
+                    return empty;
+                }
             }
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,15 +14,25 @@ namespace Tusimaka.DAL
         {
             using (var db = new DBContext())
             {
-                List<Kunde> alleKunder = db.Kunder.Select(k => new Kunde()
+                try
                 {
-                    KundeID = k.KundeID,
-                    Fornavn = k.fornavn,
-                    Etternavn = k.etternavn,
-                    Epost = k.epost,
-                    Kjonn = k.kjonn
-                }).ToList();
-                return alleKunder;
+                    List<Kunde> alleKunder = db.Kunder.Select(k => new Kunde()
+                    {
+                        KundeID = k.KundeID,
+                        Fornavn = k.fornavn,
+                        Etternavn = k.etternavn,
+                        Epost = k.epost,
+                        Kjonn = k.kjonn
+                    }).ToList();
+                    return alleKunder;
+                }
+                catch (Exception feil)
+                {
+                    string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
+                    string text = feil.ToString();
+                    File.AppendAllText(path, text);
+                    return new List<Kunde>();
+                }
             }
         }
         public bool slettKunde(int id)
@@ -37,6 +48,9 @@ namespace Tusimaka.DAL
                 }
                 catch (Exception feil)
                 {
+                    string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
+                    string text = feil.ToString();
+                    File.AppendAllText(path, text);
                     return false;
                 }
             }
@@ -55,8 +69,11 @@ namespace Tusimaka.DAL
                     db.SaveChanges();
                     return true;
                 }
-                catch
+                catch (Exception feil)
                 {
+                    string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
+                    string text = feil.ToString();
+                    File.AppendAllText(path, text);
                     return false;
                 }
             }
@@ -65,24 +82,35 @@ namespace Tusimaka.DAL
         {
             using (var db = new DBContext())
             {
-                var denneKunden = db.Kunder.Find(id);
+                try
+                {
+                    var denneKunden = db.Kunder.Find(id);
 
-                if (denneKunden == null)
-                {
-                    return null;
-                }
-                else
-                {
-                    var utKunde = new Kunde()
+                    if (denneKunden == null)
                     {
-                        KundeID = denneKunden.KundeID,
-                        Fornavn = denneKunden.fornavn,
-                        Etternavn = denneKunden.etternavn,
-                        Epost = denneKunden.epost,
-                        Kjonn = denneKunden.kjonn
-                    };
-                    return utKunde;
+                        return null;
+                    }
+                    else
+                    {
+                        var utKunde = new Kunde()
+                        {
+                            KundeID = denneKunden.KundeID,
+                            Fornavn = denneKunden.fornavn,
+                            Etternavn = denneKunden.etternavn,
+                            Epost = denneKunden.epost,
+                            Kjonn = denneKunden.kjonn
+                        };
+                        return utKunde;
+                    }
                 }
+                catch (Exception feil)
+                {
+                    string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
+                    string text = feil.ToString();
+                    File.AppendAllText(path, text);
+                    return new Kunde();
+                }
+
             }
         }
     }

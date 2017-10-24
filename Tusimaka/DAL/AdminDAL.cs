@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,16 +14,26 @@ namespace Tusimaka.DAL
         {
             using (var db = new DBContext())
             {
-                byte[] passordDb = lagHash(innAdminBruker.Passord);
-                AdminBrukere funnetAdminBruker = db.AdminBrukere.FirstOrDefault
-                (b => b.passord == passordDb && b.brukernavn == innAdminBruker.Brukernavn);
-                if (funnetAdminBruker == null)
+                try
                 {
-                    return false;
+                    byte[] passordDb = lagHash(innAdminBruker.Passord);
+                    AdminBrukere funnetAdminBruker = db.AdminBrukere.FirstOrDefault
+                    (b => b.passord == passordDb && b.brukernavn == innAdminBruker.Brukernavn);
+                    if (funnetAdminBruker == null)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
                 }
-                else
+                catch (Exception feil)
                 {
-                    return true;
+                    string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
+                    string text = feil.ToString();
+                    File.AppendAllText(path, text);
+                    return false;
                 }
             }
         }
