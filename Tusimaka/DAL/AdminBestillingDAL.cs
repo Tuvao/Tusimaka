@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,24 +15,34 @@ namespace Tusimaka.DAL
         {
             using (var db = new DBContext())
             {
-                List<KundeBestillinger> listeKundesFlyBestillinger = new List<KundeBestillinger>();
-                List<FlyBestillingKunder> hjelpetabell = db.FlyBestillingKunder.Where(fbk => fbk.KundeID == id).ToList();
-                foreach(var i in hjelpetabell)
+                try
                 {
-                    KundeBestillinger ok = new KundeBestillinger();
-                    ok.KundeID = i.KundeID;
-                    ok.Fornavn = i.Kunder.fornavn;
-                    ok.Etternavn = i.Kunder.etternavn;
-                    ok.StrekningsID = i.FlyBestilling.StrekningsID;
-                    ok.FraFlyplass = i.FlyBestilling.Strekninger.fraFlyplass;
-                    ok.TilFlyplass = i.FlyBestilling.Strekninger.tilFlyplass;
-                    ok.Dato = i.FlyBestilling.Strekninger.dato;
-                    ok.Tid = i.FlyBestilling.Strekninger.tid;
-                    ok.Pris = i.FlyBestilling.Strekninger.pris;
-                    ok.AntallPersoner = i.FlyBestilling.antallPersoner;
-                    listeKundesFlyBestillinger.Add(ok);
+                    List<KundeBestillinger> listeKundesFlyBestillinger = new List<KundeBestillinger>();
+                    List<FlyBestillingKunder> hjelpetabell = db.FlyBestillingKunder.Where(fbk => fbk.KundeID == id).ToList();
+                    foreach (var i in hjelpetabell)
+                    {
+                        KundeBestillinger ok = new KundeBestillinger();
+                        ok.KundeID = i.KundeID;
+                        ok.Fornavn = i.Kunder.fornavn;
+                        ok.Etternavn = i.Kunder.etternavn;
+                        ok.StrekningsID = i.FlyBestilling.StrekningsID;
+                        ok.FraFlyplass = i.FlyBestilling.Strekninger.fraFlyplass;
+                        ok.TilFlyplass = i.FlyBestilling.Strekninger.tilFlyplass;
+                        ok.Dato = i.FlyBestilling.Strekninger.dato;
+                        ok.Tid = i.FlyBestilling.Strekninger.tid;
+                        ok.Pris = i.FlyBestilling.Strekninger.pris;
+                        ok.AntallPersoner = i.FlyBestilling.antallPersoner;
+                        listeKundesFlyBestillinger.Add(ok);
+                    }
+                    return listeKundesFlyBestillinger;
                 }
-                return listeKundesFlyBestillinger;
+                catch (Exception feil)
+                {
+                    string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
+                    string text = feil.ToString();
+                    File.AppendAllText(path, text);
+                    return new List<KundeBestillinger>();
+                }
             }
         }
         public bool LagreAdminFlyBestilling(int id, FlyBestillinger nyBestilling)
@@ -64,6 +75,9 @@ namespace Tusimaka.DAL
                 }
                 catch (Exception feil)
                 {
+                    string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
+                    string text = feil.ToString();
+                    File.AppendAllText(path, text);
                     return false;
                 }
             }
@@ -82,6 +96,9 @@ namespace Tusimaka.DAL
             }
             catch (Exception feil)
             {
+                string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
+                string text = feil.ToString();
+                File.AppendAllText(path, text);
                 return false;
             }
         }

@@ -41,17 +41,27 @@ namespace Tusimaka.DAL
         {
             using (var db = new DBContext())
             {
-                db.Database.Log = Console.Write;
-                //finner siste kunde registrert i kunde tabellen i DB
-                int kundeId = db.Kunder.Max(k => k.KundeID);
-                //henter ut registrert informasjon om ønsket kunde.
-                Kunder hentEnKunde = db.Kunder.FirstOrDefault(k => k.KundeID == kundeId);
-                Kunde sisteKunde = new Kunde();
-                sisteKunde.Fornavn = hentEnKunde.fornavn;
-                sisteKunde.Etternavn = hentEnKunde.etternavn;
-                sisteKunde.KundeID = hentEnKunde.KundeID;
-                sisteKunde.Epost = hentEnKunde.epost;
-                return sisteKunde;
+                try
+                {
+                    db.Database.Log = Console.Write;
+                    //finner siste kunde registrert i kunde tabellen i DB
+                    int kundeId = db.Kunder.Max(k => k.KundeID);
+                    //henter ut registrert informasjon om ønsket kunde.
+                    Kunder hentEnKunde = db.Kunder.FirstOrDefault(k => k.KundeID == kundeId);
+                    Kunde sisteKunde = new Kunde();
+                    sisteKunde.Fornavn = hentEnKunde.fornavn;
+                    sisteKunde.Etternavn = hentEnKunde.etternavn;
+                    sisteKunde.KundeID = hentEnKunde.KundeID;
+                    sisteKunde.Epost = hentEnKunde.epost;
+                    return sisteKunde;
+                }
+                catch (Exception feil)
+                {
+                    string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
+                    string text = feil.ToString();
+                    File.AppendAllText(path, text);
+                    return new Kunde();
+                }
             }
         }    
     }

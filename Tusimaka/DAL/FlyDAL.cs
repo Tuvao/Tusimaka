@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,21 +15,32 @@ namespace Tusimaka.DAL
         {
             using (var db = new DBContext())
             {
-                List<Strekninger> alleFly = db.Strekninger.ToList();
-
-                var alleFraFly = new List<string>();
-
-                foreach (Strekninger f in alleFly)
+                try
                 {
-                    string funnetStrekning = alleFraFly.FirstOrDefault(fl => fl.Contains(f.fraFlyplass));
-                    if (funnetStrekning == null)
+                    List<Strekninger> alleFly = db.Strekninger.ToList();
+
+                    var alleFraFly = new List<string>();
+
+                    foreach (Strekninger f in alleFly)
                     {
-                        // ikke funnet strekning i listen, legg den inn i listen
-                        alleFraFly.Add(f.fraFlyplass);
+                        string funnetStrekning = alleFraFly.FirstOrDefault(fl => fl.Contains(f.fraFlyplass));
+                        if (funnetStrekning == null)
+                        {
+                            // ikke funnet strekning i listen, legg den inn i listen
+                            alleFraFly.Add(f.fraFlyplass);
+                        }
                     }
+                    var jsonSerializer = new JavaScriptSerializer();
+                    return jsonSerializer.Serialize(alleFraFly);
                 }
-                var jsonSerializer = new JavaScriptSerializer();
-                return jsonSerializer.Serialize(alleFraFly);
+                catch (Exception feil)
+                {
+                    string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
+                    string text = feil.ToString();
+                    File.AppendAllText(path, text);
+                    string empty = "";
+                    return empty;
+                }
             }
         }
 
@@ -36,35 +48,57 @@ namespace Tusimaka.DAL
         {
             using (var db = new DBContext())
             {
-                List<Strekninger> alleFly = db.Strekninger.ToList();
-
-                var alleTilFly = new List<string>();
-
-                foreach (Strekninger f in alleFly)
+                try
                 {
-                    if (f.fraFlyplass == fraFlyPlass)
+                    List<Strekninger> alleFly = db.Strekninger.ToList();
+
+                    var alleTilFly = new List<string>();
+
+                    foreach (Strekninger f in alleFly)
                     {
-                        string funnetStrekning = alleTilFly.FirstOrDefault(fl => fl.Contains(f.tilFlyplass));
-                        if (funnetStrekning == null)
+                        if (f.fraFlyplass == fraFlyPlass)
                         {
-                            // ikke funnet strekning i listen, legg den inn i listen
-                            alleTilFly.Add(f.tilFlyplass);
+                            string funnetStrekning = alleTilFly.FirstOrDefault(fl => fl.Contains(f.tilFlyplass));
+                            if (funnetStrekning == null)
+                            {
+                                // ikke funnet strekning i listen, legg den inn i listen
+                                alleTilFly.Add(f.tilFlyplass);
+                            }
                         }
                     }
+                    var jsonSerializer = new JavaScriptSerializer();
+                    return jsonSerializer.Serialize(alleTilFly);
                 }
-                var jsonSerializer = new JavaScriptSerializer();
-                return jsonSerializer.Serialize(alleTilFly);
+                catch (Exception feil)
+                {
+                    string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
+                    string text = feil.ToString();
+                    File.AppendAllText(path, text);
+                    string empty = "";
+                    return empty;
+                }
             }
         }
         public string hentStrekning(string fraFlyplass, string tilFlyPlass, string dato, int antallLedigeSeter)
         {
             using (var db = new DBContext())
             {
-                List<Strekninger> alleFly = db.Strekninger.Where(
-                    f => f.tilFlyplass == tilFlyPlass && f.fraFlyplass == fraFlyplass && f.dato == dato && f.antallLedigeSeter >= antallLedigeSeter).ToList();
+                try
+                {
+                    List<Strekninger> alleFly = db.Strekninger.Where(
+                        f => f.tilFlyplass == tilFlyPlass && f.fraFlyplass == fraFlyplass && f.dato == dato && f.antallLedigeSeter >= antallLedigeSeter).ToList();
 
-                var jsonSerializer = new JavaScriptSerializer();
-                return jsonSerializer.Serialize(alleFly);
+                    var jsonSerializer = new JavaScriptSerializer();
+                    return jsonSerializer.Serialize(alleFly);
+                }
+                catch (Exception feil)
+                {
+                    string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
+                    string text = feil.ToString();
+                    File.AppendAllText(path, text);
+                    string empty = "";
+                    return empty;
+                }
             }
         }
 
@@ -72,17 +106,28 @@ namespace Tusimaka.DAL
         {
             using (var db = new DBContext())
             {
-                int flyBestillingsId = db.FlyBestilling.Max(f => f.FlyBestillingsID);
-                FlyBestilling finnRetur = db.FlyBestilling.FirstOrDefault(f => f.FlyBestillingsID == flyBestillingsId);
-                Strekninger finnReturList = new Strekninger();
-                if (finnRetur.ReturID != null)
+                try
                 {
-                    int? returId = finnRetur.ReturID;
-                    finnReturList = db.Strekninger.FirstOrDefault(r => r.StrekningsID == returId);
-                }
+                    int flyBestillingsId = db.FlyBestilling.Max(f => f.FlyBestillingsID);
+                    FlyBestilling finnRetur = db.FlyBestilling.FirstOrDefault(f => f.FlyBestillingsID == flyBestillingsId);
+                    Strekninger finnReturList = new Strekninger();
+                    if (finnRetur.ReturID != null)
+                    {
+                        int? returId = finnRetur.ReturID;
+                        finnReturList = db.Strekninger.FirstOrDefault(r => r.StrekningsID == returId);
+                    }
 
-                var jsonSerializer = new JavaScriptSerializer();
-                return jsonSerializer.Serialize(finnReturList);
+                    var jsonSerializer = new JavaScriptSerializer();
+                    return jsonSerializer.Serialize(finnReturList);
+                }
+                catch (Exception feil)
+                {
+                    string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
+                    string text = feil.ToString();
+                    File.AppendAllText(path, text);
+                    string empty = "";
+                    return empty;
+                }
             }
         }
     }
