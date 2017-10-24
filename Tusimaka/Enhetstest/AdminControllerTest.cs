@@ -30,35 +30,6 @@ namespace Tusimaka.Enhetstest
             // Assert
             Assert.AreEqual("", result.ViewName);
         }
-        [TestMethod]
-        public void AdminStart()
-        {
-            // Arrange
-            var SessionMock = new TestControllerBuilder();
-            var controller = new AdminController();
-            SessionMock.InitializeController(controller);
-            // setningen under må være etter InitializeController
-            controller.Session["LoggetInn"] = true;
-            // Act
-            var result = (ViewResult)controller.AdminStart();
-            // Assert
-            Assert.AreEqual("", result.ViewName);
-        }
-        [TestMethod]
-        public void AdminStart_False_Session()
-        {
-            // Arrange
-            var SessionMock = new TestControllerBuilder();
-            var controller = new AdminController();
-            SessionMock.InitializeController(controller);
-            // setningen under må være etter InitializeController
-            controller.Session["LoggetInn"] = false;
-            // Act
-            var result = (RedirectToRouteResult)controller.AdminStart();
-            // Assert
-            Assert.AreEqual(result.RouteName, "");
-            Assert.AreEqual(result.RouteValues.Values.First(), "LoggInn");
-        }
 
         [TestMethod]
         public void LoggInn_OK()
@@ -98,6 +69,36 @@ namespace Tusimaka.Enhetstest
             Assert.AreEqual(result.ViewName, "");
         }
         [TestMethod]
+        public void AdminStart()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController();
+            SessionMock.InitializeController(controller);
+            // setningen under må være etter InitializeController
+            controller.Session["LoggetInn"] = true;
+            // Act
+            var result = (ViewResult)controller.AdminStart();
+            // Assert
+            Assert.AreEqual("", result.ViewName);
+        }
+        [TestMethod]
+        public void AdminStart_False_Session()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController();
+            SessionMock.InitializeController(controller);
+            // setningen under må være etter InitializeController
+            controller.Session["LoggetInn"] = false;
+            // Act
+            var result = (RedirectToRouteResult)controller.AdminStart();
+            // Assert
+            Assert.AreEqual(result.RouteName, "");
+            Assert.AreEqual(result.RouteValues.Values.First(), "LoggInn");
+        }
+
+        [TestMethod]
         public void List_alle_flyruter_OK()
         {
             // Arrange
@@ -126,6 +127,48 @@ namespace Tusimaka.Enhetstest
             var resultat = (List<Strekning>)actionResult.Model;
             // Assert
             Assert.AreEqual(actionResult.ViewName, "");
+
+            for (var i = 0; i < resultat.Count; i++)
+            {
+                Assert.AreEqual(forventetResultat[i].StrekningsID, resultat[i].StrekningsID);
+                Assert.AreEqual(forventetResultat[i].FraFlyplass, resultat[i].FraFlyplass);
+                Assert.AreEqual(forventetResultat[i].TilFlyplass, resultat[i].TilFlyplass);
+                Assert.AreEqual(forventetResultat[i].Dato, resultat[i].Dato);
+                Assert.AreEqual(forventetResultat[i].Tid, resultat[i].Tid);
+                Assert.AreEqual(forventetResultat[i].Pris, resultat[i].Pris);
+                Assert.AreEqual(forventetResultat[i].FlyTid, resultat[i].FlyTid);
+                Assert.AreEqual(forventetResultat[i].AntallLedigeSeter, resultat[i].AntallLedigeSeter);
+            }
+        }
+        [TestMethod]
+        public void List_alle_flyruter_False_Session()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController(new AdminFlyruterBLL(new AdminFlyruterDALRepositoryStub()));
+            SessionMock.InitializeController(controller);
+            // setningen under må være etter InitializeController
+            controller.Session["LoggetInn"] = false;
+            var forventetResultat = new List<Strekning>();
+            var flyrute = new Strekning()
+            {
+                StrekningsID = 1,
+                FraFlyplass = "Bergen",
+                TilFlyplass = "Oslo",
+                Dato = "2017-10-20",
+                Tid = "12:30",
+                Pris = 1234,
+                FlyTid = 45,
+                AntallLedigeSeter = 4
+            };
+            forventetResultat.Add(flyrute);
+            forventetResultat.Add(flyrute);
+            forventetResultat.Add(flyrute);
+            // Act
+            var actionResult = (ViewResult)controller.FlyruterAdministrer();
+            var resultat = (List<Strekning>)actionResult.Model;
+            // Assert
+            Assert.AreEqual(actionResult.ViewName, "LoggInn");
 
             for (var i = 0; i < resultat.Count; i++)
             {
@@ -209,7 +252,7 @@ namespace Tusimaka.Enhetstest
             var controller = new AdminController(new AdminKundeBLL(new AdminKundeDALRepositoryStub()));
 
             // Act
-            var actionResult = (ViewResult)controller.SlettKunde(1);
+            var actionResult = (ViewResult)controller.slettKunde(1);
             var resultat = (Kunde)actionResult.Model;
 
             // Assert
@@ -230,7 +273,7 @@ namespace Tusimaka.Enhetstest
             };
 
             // Act
-            var actionResult = (RedirectToRouteResult)controller.SlettKunde(1, innKunde);
+            var actionResult = (RedirectToRouteResult)controller.slettKunde(1, innKunde);
 
             // Assert
             Assert.AreEqual(actionResult.RouteName, "");
@@ -252,7 +295,7 @@ namespace Tusimaka.Enhetstest
             };
 
             // Act
-            var actionResult = (ViewResult)controller.SlettKunde(0, innKunde);
+            var actionResult = (ViewResult)controller.slettKunde(0, innKunde);
 
             // Assert
             Assert.AreEqual(actionResult.ViewName, "");
