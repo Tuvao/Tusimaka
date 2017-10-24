@@ -99,7 +99,7 @@ namespace Tusimaka.Enhetstest
         }
 
         [TestMethod]
-        public void List_alle_flyruter_OK()
+        public void List_alle_Flyruter_OK()
         {
             // Arrange
             var SessionMock = new TestControllerBuilder();
@@ -179,31 +179,7 @@ namespace Tusimaka.Enhetstest
                 Assert.AreEqual(forventetResultat[i].Kjonn, resultat[i].Kjonn);
             }
         }
-        [TestMethod]
-        public void Registrer_Flyruter_Post_OK()
-        {
-            // Arrange
-            var SessionMock = new TestControllerBuilder();
-            var controller = new AdminController(new AdminFlyruterBLL(new AdminFlyruterDALRepositoryStub()));
-            SessionMock.InitializeController(controller);
-            // setningen under må være etter InitializeController
-            controller.Session["LoggetInn"] = true;
-            var innFlyrute = new Strekning()
-            {
-                StrekningsID = 1,
-                FraFlyplass = "Bergen",
-                TilFlyplass = "Oslo",
-                Dato = "2017-10-20",
-                Tid = "12:30",
-                Pris = 1234,
-                FlyTid = 45,
-                AntallLedigeSeter = 4
-            };
-            // Act
-            var result = (RedirectToRouteResult)controller.RegistrerFlyrute(innFlyrute);
-            // Assert
-            Assert.AreEqual(result.RouteValues.Values.First(), "FlyruterAdministrer");
-        }
+        
         [TestMethod]
         public void EndreKunde_OK()
         {
@@ -261,7 +237,7 @@ namespace Tusimaka.Enhetstest
         }
 
         [TestMethod]
-        public void RegistrerKunde_Post_DB_feil()
+        public void RegistrerKunde_feil_DB()
         {
             // Arrange
             var SessionMock = new TestControllerBuilder();
@@ -279,7 +255,7 @@ namespace Tusimaka.Enhetstest
             Assert.AreEqual(actionResult.ViewName, "");
         }
         [TestMethod]
-        public void RegistrerKunde_Post_OK()
+        public void RegistrerKunde_OK()
         {
             // Arrange
             var SessionMock = new TestControllerBuilder();
@@ -317,7 +293,7 @@ namespace Tusimaka.Enhetstest
             Assert.AreEqual(actionResult.ViewName, "");
         }
         [TestMethod]
-        public void RegistrerFlyrute_Post_OK()
+        public void RegistrerFlyrute_OK()
         {
             // Arrange
             var SessionMock = new TestControllerBuilder();
@@ -344,7 +320,7 @@ namespace Tusimaka.Enhetstest
         }
 
         [TestMethod]
-        public void RegistrerFlyrute_Post_DB_feil()
+        public void RegistrerFlyrute_feil_DB()
         {
             // Arrange
             var SessionMock = new TestControllerBuilder();
