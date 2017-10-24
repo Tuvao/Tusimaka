@@ -496,7 +496,7 @@ namespace Tusimaka.Enhetstest
         }
 
         [TestMethod]
-        public void KundeBestillinger_OK()
+        public void List_alle_KundeBestillinger_OK()
         {
             // Arrange
             var SessionMock = new TestControllerBuilder();
