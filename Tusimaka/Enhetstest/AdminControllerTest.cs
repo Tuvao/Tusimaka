@@ -179,7 +179,21 @@ namespace Tusimaka.Enhetstest
                 Assert.AreEqual(forventetResultat[i].Kjonn, resultat[i].Kjonn);
             }
         }
-        
+        [TestMethod]
+        public void EndreKunde()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController(new AdminKundeBLL(new AdminKundeDALRepositoryStub()));
+            SessionMock.InitializeController(controller);
+            // setningen under må være etter InitializeController
+            controller.Session["LoggetInn"] = true;
+
+            // Act
+            var resultat = (ViewResult)controller.EndreKunde(1);
+            // Assert
+            Assert.AreEqual(resultat.ViewName, "");
+        }
         [TestMethod]
         public void EndreKunde_OK()
         {
@@ -196,6 +210,24 @@ namespace Tusimaka.Enhetstest
                 Epost = "epost@epost.no",
                 Kjonn = "Kvinne"
             };
+            // Act
+            var resultat = (RedirectToRouteResult)controller.EndreKunde(1, innKunde);
+
+            // Assert
+            Assert.AreEqual(resultat.RouteValues.Values.First(), "KundeAdministrer");
+        }
+        [TestMethod]
+        public void EndreKunde_feil_DB()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController(new AdminKundeBLL(new AdminKundeDALRepositoryStub()));
+            SessionMock.InitializeController(controller);
+            // setningen under må være etter InitializeController
+            controller.Session["LoggetInn"] = true;
+            var innKunde = new Kunde();
+            innKunde.Fornavn = "";
+           
             // Act
             var resultat = (RedirectToRouteResult)controller.EndreKunde(1, innKunde);
 
