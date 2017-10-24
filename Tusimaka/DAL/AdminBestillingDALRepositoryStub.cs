@@ -22,7 +22,7 @@ namespace Tusimaka.DAL
         }
         public bool lagreKundeIdMotFlyBestilling(Kunde innKunde, FlyBestillinger innFlyinfo)
         {
-            if(innKunde.KundeID == 0)
+            if (innKunde.KundeID == 0)
             {
                 return false;
             }
@@ -97,4 +97,6 @@ namespace Tusimaka.DAL
                 };
                 return bestilling.FlyBestillingsID.ToString();
             }
+        }
     }
+}
