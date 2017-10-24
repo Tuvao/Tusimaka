@@ -92,12 +92,12 @@ namespace Tusimaka.Enhetstest
             //controller.Session["LoggetInn"] = true;
             var innAdminBruker = new AdminBruker()
             {
-                Brukernavn = "Brukernavn",
-                Passord = "Passord"
+                Brukernavn = "",
+                Passord = ""
             };
             // Act
-            var result = (RedirectToRouteResult)controller.LoggInn(innAdminBruker);
-            Assert.AreEqual("AdminStart", result.RouteValues["action"]);
+            var result = (ViewResult)controller.LoggInn(innAdminBruker);
+            Assert.AreEqual("", result.ViewName);
         }
         [TestMethod]
         public void List_alle_flyruter_OK()
