@@ -141,5 +141,27 @@ namespace Tusimaka.Enhetstest
                 Assert.AreEqual(forventetResultat[i].AntallLedigeSeter, resultat[i].AntallLedigeSeter);
             }
         }
+        [TestMethod]
+        public void EndreKunde_OK()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController(new AdminKundeBLL(new AdminKundeDALRepositoryStub()));
+            SessionMock.InitializeController(controller);
+            // setningen under må være etter InitializeController
+            controller.Session["LoggetInn"] = true;
+            var innKunde = new Kunde()
+            {
+                Fornavn = "Maria",
+                Etternavn = "Berg",
+                Epost = "epost@epost.no",
+                Kjonn = "Kvinne"
+            };
+            // Act
+            var resultat = (RedirectToRouteResult)controller.EndreKunde(1, innKunde);
+
+            // Assert
+            Assert.AreEqual(resultat.RouteValues.Values.First(), "KundeAdministrer");
+        }
     }
 }
