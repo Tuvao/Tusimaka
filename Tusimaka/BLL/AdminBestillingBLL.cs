@@ -37,6 +37,10 @@ namespace Tusimaka.BLL
                 //var adminBestillDAL = new AdminBestillingDAL();
                 return _repository.LagreAdminFlyBestilling(id, nyBestilling);
             }
+            public bool lagreBetalingsinformasjon(int id, BetalingsInformasjon innBetaling)
+            {
+                return _repository.lagreBetalingsinformasjon(id, innBetaling);
+            }
             public bool SlettKundeBestilling(int id)
             {
                 //var adminBestillDAL = new AdminBestillingDAL();

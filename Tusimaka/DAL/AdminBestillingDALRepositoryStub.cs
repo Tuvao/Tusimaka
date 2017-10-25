@@ -32,6 +32,17 @@ namespace Tusimaka.DAL
             kundeBestillingListe.Add(bestilling);
             return kundeBestillingListe;
         }
+        public bool lagreBetalingsinformasjon(int id, BetalingsInformasjon innBetaling)
+        {
+            if(innBetaling.BestillingsID == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
         public bool LagreAdminFlyBestilling(int id, FlyBestillinger nyBestilling)
         {
             if (nyBestilling.FlyBestillingsID == 0)

@@ -13,5 +13,6 @@ namespace Tusimaka.BLL
         List<KundeBestillinger> hentKundesFlyBestillinger(int id);
         bool LagreAdminFlyBestilling(int id, FlyBestillinger nyBestilling);
         bool SlettKundeBestilling(int id);
+        bool lagreBetalingsinformasjon(int id, BetalingsInformasjon innBetaling);
     }
 }
