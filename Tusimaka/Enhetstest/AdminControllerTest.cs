@@ -482,6 +482,23 @@ namespace Tusimaka.Enhetstest
             // Assert
             Assert.AreEqual(result.RouteValues.Values.First(), "KundeAdministrer");
         }
+        [TestMethod]
+        public void NyKundeBestilling_feil_DB()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController(new AdminBestillingBLL(new AdminBestillingDALRepositoryStub()));
+            SessionMock.InitializeController(controller);
+            // setningen under må være etter InitializeController
+            controller.Session["LoggetInn"] = true;
+            var nyBestilling = new FlyBestillinger();
+            nyBestilling.FlyBestillingsID = 0;
+            // Act
+            var result = (ViewResult)controller.NyKundeBestilling(0, nyBestilling);
+
+            // Assert
+            Assert.AreEqual(result.ViewName, "");
+        }
 
         [TestMethod]
         public void List_alle_KundeBestillinger_OK()
@@ -532,63 +549,143 @@ namespace Tusimaka.Enhetstest
             }
 
         }
+
+        [TestMethod]
+        public void SlettKunde_Bool_OK()
+        {
+            // Arrange
+            var controller = new AdminController(new AdminKundeBLL(new AdminKundeDALRepositoryStub()));
+            var innKunde = new Kunde()
+            {
+                Fornavn = "Tuva",
+                Etternavn = "Olsen",
+                Epost = "epost@epost.no",
+                Kjonn = "Kvinne"
+            };
+
+            // Act
+            var actionResult = controller.slettKunde(1);
+
+            // Assert
+            Assert.IsTrue(actionResult);
+        }
+
+        [TestMethod]
+        public void SlettKunde_Bool_feil_DB()
+        {
+            // Arrange
+            var controller = new AdminController(new AdminKundeBLL(new AdminKundeDALRepositoryStub()));
+            var innKunde = new Kunde()
+            {
+                Fornavn = "Tuva",
+                Etternavn = "Olsen",
+                Epost = "epost@epost.no",
+                Kjonn = "Kvinne"
+            };
+
+            // Act
+            var actionResult = controller.slettKunde(0);
+
+            // Assert
+            Assert.IsTrue(actionResult);
+        }
+        [TestMethod]
+        public void SlettFlyrute_Bool_OK()
+        {
+            // Arrange
+            var controller = new AdminController(new AdminFlyruterBLL(new AdminFlyruterDALRepositoryStub()));
+            var slettFlyrute = new Strekning()
+            {
+                FraFlyplass = "Bergen",
+                TilFlyplass = "Oslo",
+                Dato = "2017-10-20",
+                Tid = "12:30",
+                Pris = 1234,
+                FlyTid = 45,
+                AntallLedigeSeter = 4
+            };
+
+            // Act
+            var actionResult = controller.slettFlyrute(1);
+
+            // Assert
+            Assert.IsTrue(actionResult);
+        }
+
+        [TestMethod]
+        public void SlettFlyrute_Bool_feil_DB()
+        {
+            // Arrange
+            var controller = new AdminController(new AdminFlyruterBLL(new AdminFlyruterDALRepositoryStub()));
+            var slettFlyrute = new Strekning()
+            {
+                FraFlyplass = "Bergen",
+                TilFlyplass = "Oslo",
+                Dato = "2017-10-20",
+                Tid = "12:30",
+                Pris = 1234,
+                FlyTid = 45,
+                AntallLedigeSeter = 4
+            };
+
+            // Act
+            var actionResult = controller.slettFlyrute(0);
+
+            // Assert
+            Assert.IsTrue(actionResult);
+        }
+        [TestMethod]
+        public void SlettBestilling_Bool_OK()
+        {
+            // Arrange
+            var controller = new AdminController(new AdminBestillingBLL(new AdminBestillingDALRepositoryStub()));
+            var bestilling = new KundeBestillinger()
+            {
+                Fornavn = "Helene",
+                Etternavn = "Andersen",
+                StrekningsID = 1,
+                FraFlyplass = "Oslo",
+                TilFlyplass = "Bergen",
+                Dato = "2017-10-20",
+                Pris = 1234,
+                Tid = "12:30",
+                AntallPersoner = 4
+            };
+
+            // Act
+            var actionResult = controller.SlettBestilling(1);
+
+            // Assert
+            Assert.IsTrue(actionResult);
+        }
+
+        [TestMethod]
+        public void SlettBestilling_Bool_feil_DB()
+        {
+            // Arrange
+            var controller = new AdminController(new AdminBestillingBLL(new AdminBestillingDALRepositoryStub()));
+            var bestilling = new KundeBestillinger()
+            {
+                KundeID = 1,
+                Fornavn = "Helene",
+                Etternavn = "Andersen",
+                StrekningsID = 1,
+                FraFlyplass = "Oslo",
+                TilFlyplass = "Bergen",
+                Dato = "2017-10-20",
+                Pris = 1234,
+                Tid = "12:30",
+                AntallPersoner = 4
+
+            };
+            // Act
+            var actionResult = controller.SlettBestilling(0);
+            // Assert
+            Assert.IsTrue(actionResult);
+        }
+
     }
 }
-
-//    [TestMethod]
-//    public void SlettKunde()
-//    {
-//        // Arrange
-//        var controller = new AdminController(new AdminKundeBLL(new AdminKundeDALRepositoryStub()));
-
-//        // Act
-//        var actionResult = (ViewResult)controller.slettKunde(1);
-//        var resultat = (Kunde)actionResult.Model;
-
-//        // Assert
-//        Assert.AreEqual(actionResult.ViewName, "");
-//    }
-
-        //[TestMethod]
-        //public void SlettKunde_Ok()
-        //{
-        //    // Arrange
-        //    var controller = new AdminController(new AdminKundeBLL(new AdminKundeDALRepositoryStub()));
-        //    var innKunde = new Kunde()
-        //    {
-        //        Fornavn = "Tuva",
-        //        Etternavn = "Olsen",
-        //        Epost = "epost@epost.no",
-        //        Kjonn = "Kvinne"
-        //    };
-
-        //    // Act
-        //    var actionResult = (bool)controller.slettKunde(1);
-
-        //    // Assert
-        //    Assert.AreEqual(actionResult.RouteName, "");
-        //    Assert.IsTrue(actionResult);
-        //}
-
-//    [TestMethod]
-//    public void SlettKunde_IkkeOk()
-//    {
-//        // Arrange
-//        var controller = new AdminController(new AdminKundeBLL(new AdminKundeDALRepositoryStub()));
-//        var innKunde = new Kunde()
-//        {
-//            Fornavn = "Tuva",
-//            Etternavn = "Olsen",
-//            Epost = "epost@epost.no",
-//            Kjonn = "Kvinne"
-//        };
-
-//        // Act
-//        var actionResult = (ViewResult)controller.slettKunde(0, innKunde);
-
-//        // Assert
-//        Assert.AreEqual(actionResult.ViewName, "");
-//    }
 
 
 
