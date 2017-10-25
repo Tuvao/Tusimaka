@@ -24,10 +24,17 @@ namespace Tusimaka.DAL
                         Epost = k.epost,
                         Kjonn = k.kjonn
                     }).ToList();
+                    //string filnavn = "logg.txt";
+                    //string fullPath = Path.GetFullPath(@"logg.txt");
+                    string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
+                    File.AppendAllText(path, "text");
                     return alleKunder;
                 }
                 catch (Exception feil)
                 {
+                    //string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
+                    //string fullPath = Path.GetFullPath(@"logg.txt");
+                    //string fullPath = Path.Combine(Directory.GetCurrentDirectory(), "logg.txt");
                     string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
                     string text = feil.ToString();
                     File.AppendAllText(path, text);

@@ -94,7 +94,7 @@ namespace Tusimaka.DAL
         {
             Database.CreateIfNotExists();
             
-            Database.SetInitializer(new DBInit());
+            //Database.SetInitializer(new DBInit());
         }
         //metode kopiert fra link, se readme.txt
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
