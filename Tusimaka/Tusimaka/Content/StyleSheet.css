@@ -7,34 +7,17 @@
     background-color: aqua;
 }
 
-.logo {
-    width: 5em;
-    height: 4.5em;
-    /*-webkit-animation-name: tusimaka;
-    animation-timing-function: ease-out;
-    -webkit-animation-duration: 4s;
-    animation-name: tusimaka;*/
-    animation-duration: 10s;
-    font-size: 10em;
-    animation-name: tusimaka;
-    animation-iteration-count: 1;
-    animation-timing-function: ease-in;
-    opacity:1;
+.logoTusimaka {
+    opacity: 0;
 }
 
-
-@keyframes tusimaka {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
+.logoTusimaka:target {
+        -webkit-transition: opacity 2.0s ease-in;
+        -moz-transition: opacity 2.0s ease-in;
+        -o-transition: opacity 2.0s ease-in;
         opacity: 1;
     }
-}
-
-
-.container, .row {
+    .container, .row {
     width: 100%;
     background-color: #F4F5F5;
 }
@@ -251,7 +234,7 @@ p.fyll_inn_skjema{
     margin:0.3em;
 }
 
-div.logo {
+div.logoTusimaka {
     width: 100px;
     height: auto;
 }
