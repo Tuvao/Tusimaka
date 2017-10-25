@@ -448,7 +448,7 @@ namespace Tusimaka.Enhetstest
         }
 
         [TestMethod]
-        public void EndreFlyrute_feil_DB()
+        public void EndreFlyrute_feil_TomStreng_DB()
         {
             // Arrange
             var SessionMock = new TestControllerBuilder();
@@ -461,7 +461,7 @@ namespace Tusimaka.Enhetstest
 
 
             //act
-            var actionResult = (ViewResult)controller.EndreFlyrute(0, innFlyrute);
+            var actionResult = (ViewResult)controller.EndreFlyrute(1, innFlyrute);
 
             // Assert
             Assert.AreEqual(actionResult.ViewName, "");
