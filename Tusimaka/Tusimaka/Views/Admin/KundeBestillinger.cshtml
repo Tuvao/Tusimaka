@@ -72,6 +72,12 @@
         <th>
             Antall personer
         </th>
+        <th>
+            Kortnummer
+        </th>
+        <th>
+            Korttype
+        </th>
         <th></th>
     </tr>
 
@@ -97,6 +103,13 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.AntallPersoner)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Kortnummer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Korttype)
         </td>
         <td class="adminStartMiniKnapp">
             <span class="miniKnapp">@Html.ActionLink("Edit", "EndreKundeBestilling", new { id = item.KundeID }, new { @class = "tabKnapp" }) </span>

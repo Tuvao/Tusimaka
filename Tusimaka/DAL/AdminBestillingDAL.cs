@@ -32,6 +32,29 @@ namespace Tusimaka.DAL
                         ok.Tid = i.FlyBestilling.Strekninger.tid;
                         ok.Pris = i.FlyBestilling.Strekninger.pris;
                         ok.AntallPersoner = i.FlyBestilling.antallPersoner;
+                        List<BetalingsInfo> betalingsinfo = db.BetalingsInfo.Where(bi => bi.FlyBestillingsID == i.FlyBestillingsID).ToList();
+                        foreach (var b in betalingsinfo)
+                        {
+                            string kontonrString = b.Kortnummer.ToString();
+                            string skjultKontonr = "";
+                            for (var bokstavI = 0; bokstavI< kontonrString.Length; bokstavI++)
+                            {
+                                if (bokstavI % 4 == 0)
+                                {
+                                    skjultKontonr += " ";
+                                }
+                                if(bokstavI < kontonrString.Length - 4)
+                                {
+                                    skjultKontonr += "x";
+                                }
+                                else
+                                {
+                                    skjultKontonr += kontonrString[bokstavI];
+                                }
+                            }
+                            ok.Kortnummer = skjultKontonr;
+                            ok.Korttype = b.Korttype;
+                        }
                         
                         listeKundesFlyBestillinger.Add(ok);
                     }
