@@ -6,6 +6,7 @@
 <link href="@Url.Content("~/Content/StyleSheet.css")" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
     $(document).ready(function () {
+
         $('a[data-sletteKundeBestillingModal=true]').click(function () {
             
             var data_navn = $(this).data('navn');
@@ -30,84 +31,85 @@
             })
         });
 </script>
-@* Her må det endres til å bare gå ut en gang... *@
-@* Og vise noe når det ikke er noen bestillinger... *@
-@for (int index = 0; index < Model.Count(); index++)
+@for (int index = 0; index < 1; index++)
 {
-<h2>Viser flybestillinger for 
-    @Html.DisplayFor(model => model.ToArray()[index].Fornavn) 
+    <h2>
+        Viser flybestillinger for
+        @Html.DisplayFor(model => model.ToArray()[index].Fornavn)
 
-    @Html.DisplayFor(model => model.ToArray()[index].Etternavn)
-</h2>
+        @Html.DisplayFor(model => model.ToArray()[index].Etternavn)
+    </h2>
 
-<h4>Kundeid: 
-    @Html.DisplayFor(model => model.ToArray()[index].KundeID)
-</h4>
+    <h4>
+        Kundeid:
+        @Html.DisplayFor(model => model.ToArray()[index].KundeID)
+    </h4>
 }
+<div class="BekreftelseKundeInfoDiv">
+</div>
+    <p>
+        @Html.ActionLink("Tilbake", "KundeAdministrer")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                Flight Nr
+            </th>
+            <th>
+                Fra flyplass
+            </th>
+            <th>
+                Til flyplass
+            </th>
+            <th>
+                Dato
+            </th>
+            <th>
+                Tidspunkt
+            </th>
+            <th>
+                Pris
+            </th>
+            <th>
+                Antall personer
+            </th>
+            <th></th>
+        </tr>
 
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StrekningsID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FraFlyplass)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TilFlyplass)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Dato)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pris)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AntallPersoner)
+                </td>
+                <td class="adminStartMiniKnapp">
+                    <span class="miniKnapp">@Html.ActionLink("Edit", "EndreKundeBestilling", new { id = item.KundeID }, new { @class = "tabKnapp" }) </span>
+                    <span class="miniKnapp slett">
+                        <a href="#sletteKundeBestillingModal" class="tabKnapp" id="sletteKnapp"
+                           data-navn="Kunde: id - @item.KundeID  Fornavn - @item.Fornavn Etternavn - @item.Etternavn<br/>FlightNR: @item.StrekningsID <br/>Fra flyplass: @item.FraFlyplass<br/>Til flyplass @item.TilFlyplass <br/>Dato: @item.Dato  <br/> Tidspunkt: @item.Tid"
+                           data-id="@item.KundeID" data-toggle="modal" data-sletteKundeBestillingModal="true">Slett</a>
+                    </span>
+                </td>
+            </tr>
+        }
 
-<p>
-    @Html.ActionLink("Tilbake", "KundeAdministrer")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            Flight Nr
-        </th>
-        <th>
-            Fra flyplass
-        </th>
-        <th>
-            Til flyplass
-        </th>
-        <th>
-            Dato
-        </th>
-        <th>
-            Tidspunkt
-        </th>
-        <th>
-            Pris
-        </th>
-        <th>
-            Antall personer
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.StrekningsID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FraFlyplass)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TilFlyplass)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Dato)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tid)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Pris)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AntallPersoner)
-        </td>
-        <td class="adminStartMiniKnapp">
-            <span class="miniKnapp">@Html.ActionLink("Edit", "EndreKundeBestilling", new { id = item.KundeID }, new { @class = "tabKnapp" }) </span>
-            <span class="miniKnapp slett">
-                <a href="#sletteKundeBestillingModal" class="tabKnapp" id="sletteKnapp"
-                   data-navn="Kunde: id - @item.KundeID  Fornavn - @item.Fornavn Etternavn - @item.Etternavn<br/>FlightNR: @item.StrekningsID <br/>Fra flyplass: @item.FraFlyplass<br/>Til flyplass @item.TilFlyplass <br/>Dato: @item.Dato  <br/> Tidspunkt: @item.Tid"
-                   data-id="@item.KundeID" data-toggle="modal" data-sletteKundeBestillingModal="true">Slett</a>
-            </span>
-        </td>
-    </tr>
-}
-
-</table>
-@Html.Partial("SlettKundeBestillingModal")
+    </table>
+    @Html.Partial("SlettKundeBestillingModal")
