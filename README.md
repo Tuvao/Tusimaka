@@ -1,8 +1,10 @@
 # Tusimaka
 Kjøres i Chrome og Microsoft Edge. (Evt. nettlesere som støtter HTML5)
 Vi har lagt inn begrenset antall strekninger. 
-Tur kan bestilles med dato 20.10.17, retur med dato 21.10.17. 
+Tur kan bestilles med dato 23.11.17, retur med dato 24.11.17. 
 Å reise fra Trondheim går kun 21.10.17.
 Link til Azure: http://tusimaka20171007113648.azurewebsites.net
 Azure brukernavn: karianne.kristiansen.92@gmail.com
 Azure passord: Tusimaka1234
+
+All kode er laget av deg eller oss, med unntak av logging av endringer til database. Kommentert i koden hva som er stjålet. Hentet herifra: https://www.exceptionnotfound.net/entity-change-tracking-using-dbcontext-in-entity-framework-6/ 
