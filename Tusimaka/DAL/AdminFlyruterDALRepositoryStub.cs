@@ -52,7 +52,7 @@ namespace Tusimaka.DAL
         }
         public bool endreFlyrute(int id, Strekning innFlyrute)
         {
-            if (id == 0)
+            if (id == 0 || innFlyrute.FraFlyplass == "")
             {
                 return false;
             }

@@ -17,7 +17,7 @@ namespace Tusimaka.Enhetstest
     public class AdminControllerTest
     {
         [TestMethod]
-        public void LoggInn()
+        public void LoggInn_View_OK()
         {
             // Arrange
             var SessionMock = new TestControllerBuilder();
@@ -51,7 +51,7 @@ namespace Tusimaka.Enhetstest
             Assert.AreEqual(session, true);
         }
         [TestMethod]
-        public void LoggInn_IkkeOK()
+        public void LoggInn_Feil_DB()
         {
             // Arrange
             var SessionMock = new TestControllerBuilder();
@@ -69,7 +69,26 @@ namespace Tusimaka.Enhetstest
             Assert.AreEqual(session,false);
         }
         [TestMethod]
-        public void AdminStart()
+        public void LoggInn_feil_validering_ModelState()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController(new AdminBLL(new AdminRepositoryStub()));
+            SessionMock.InitializeController(controller);
+            var session = controller.Session["LoggetInn"] = false;
+            var innAdminBruker = new AdminBruker();
+            controller.ViewData.ModelState.AddModelError("Brukernavn", "Brukernavn må oppgis");
+
+            // Act
+            var actionResult = (ViewResult)controller.LoggInn(innAdminBruker);
+
+            // Assert
+            Assert.IsTrue(actionResult.ViewData.ModelState.Count == 1);
+            Assert.AreEqual(actionResult.ViewName, "");
+            Assert.AreEqual(session, false);
+        }
+        [TestMethod]
+        public void AdminStart_View_OK()
         {
             // Arrange
             var SessionMock = new TestControllerBuilder();
@@ -83,7 +102,7 @@ namespace Tusimaka.Enhetstest
             Assert.AreEqual("", result.ViewName);
         }
         [TestMethod]
-        public void AdminStart_False_Session()
+        public void AdminStart_View_False_Session()
         {
             // Arrange
             var SessionMock = new TestControllerBuilder();
@@ -180,7 +199,7 @@ namespace Tusimaka.Enhetstest
             }
         }
         [TestMethod]
-        public void EndreKunde()
+        public void EndreKunde_View_OK()
         {
             // Arrange
             var SessionMock = new TestControllerBuilder();
@@ -252,7 +271,7 @@ namespace Tusimaka.Enhetstest
         }
 
         [TestMethod]
-        public void RegistrerKunde()
+        public void RegistrerKunde_View_OK()
         {
             // Arrange
             var SessionMock = new TestControllerBuilder();
@@ -370,7 +389,7 @@ namespace Tusimaka.Enhetstest
         }
 
         [TestMethod]
-        public void EndreFlyrute()
+        public void EndreFlyrute_View_OK()
         {
             // Arrange
             var SessionMock = new TestControllerBuilder();
@@ -383,6 +402,22 @@ namespace Tusimaka.Enhetstest
             var resultat = (ViewResult)controller.EndreFlyrute(1);
             // Assert
             Assert.AreEqual(resultat.ViewName, "");
+        }
+        [TestMethod]
+        public void EndreFlyrute_View_False_Session()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController(new AdminFlyruterBLL(new AdminFlyruterDALRepositoryStub()));
+            SessionMock.InitializeController(controller);
+            // setningen under må være etter InitializeController
+            controller.Session["LoggetInn"] = false;
+
+            // Act
+            var result = (RedirectToRouteResult)controller.EndreFlyrute(1);
+            // Assert
+            Assert.AreEqual(result.RouteName, "");
+            Assert.AreEqual(result.RouteValues.Values.First(), "LoggInn");
         }
 
         [TestMethod]
@@ -450,7 +485,7 @@ namespace Tusimaka.Enhetstest
             Assert.AreEqual(actionResult.ViewName, "");
         }
         [TestMethod]
-        public void NyKundeBestilling()
+        public void NyKundeBestilling_View_OK()
         {
             // Arrange
             var SessionMock = new TestControllerBuilder();
