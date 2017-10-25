@@ -18,6 +18,8 @@ namespace Tusimaka.Model
         public string Tid { get; set; }
         public int Pris { get; set; }
         public int AntallPersoner { get; set; }
+        public string Kortnummer { get; set; }
+        public string Korttype { get; set; }
 
     }
 }

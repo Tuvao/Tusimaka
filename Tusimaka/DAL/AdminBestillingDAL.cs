@@ -32,6 +32,7 @@ namespace Tusimaka.DAL
                         ok.Tid = i.FlyBestilling.Strekninger.tid;
                         ok.Pris = i.FlyBestilling.Strekninger.pris;
                         ok.AntallPersoner = i.FlyBestilling.antallPersoner;
+                        
                         listeKundesFlyBestillinger.Add(ok);
                     }
                     return listeKundesFlyBestillinger;
@@ -41,7 +42,7 @@ namespace Tusimaka.DAL
                     string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
                     string text = feil.ToString();
                     File.AppendAllText(path, text);
-                    return new List<KundeBestillinger>();
+                    return null;
                 }
             }
         }
