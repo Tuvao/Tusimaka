@@ -3,7 +3,11 @@
     ViewBag.Title = "AdminStart";
 }
 <link href="~/Content/StyleSheet.css" rel="stylesheet" />
-<h2>Velkommen, admin!</h2>
+
+<div class="row">
+    <h2>Velkommen, admin!</h2>
+    <button class="loggUt">LOGG UT</button>
+</div>
 <hr/>
 <div class="adminStartKnapp">
     <span class="knapp">@Html.ActionLink("Administrer Kunder", "KundeAdministrer")</span>

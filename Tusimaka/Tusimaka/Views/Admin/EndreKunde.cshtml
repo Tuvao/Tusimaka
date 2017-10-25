@@ -4,8 +4,11 @@
     ViewBag.Title = "EndreKunde";
 }
 <link href="~/Content/StyleSheet.css" rel="stylesheet" />
-<h2>Endre kunde</h2>
 
+<div class="row">
+    <h2>Endre Kunde</h2>
+    <button class="loggUt">LOGG UT</button>
+</div>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -57,8 +60,8 @@
 
         <div class="form-group">
             <div class="col-md-10 valg">
-                <input type="submit" value="Lagre" id="lagreKunde" class="knapp" />
                 <span class="knapp">@Html.ActionLink("Avbryt", "KundeAdministrer")</span>
+                <input type="submit" value="Lagre" id="lagreKunde" class="knapp" />
             </div>
         </div>
     </div>

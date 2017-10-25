@@ -154,9 +154,10 @@ td {
     display: block;
     font-size: 1.3em;
 }
-.BekreftelseKundeInfoDiv td{
-    padding-left: 0em;
-}
+    .BekreftelseKundeInfoDiv td{
+        padding-left: 0em;
+    }
+        
 .BekreftelsesDivBoks {
     display: inline-block;
     max-width: 40%;
@@ -171,15 +172,14 @@ td {
         padding: 1em;
         font-size: 1.3em;
     }
-.BekreftelsesDivBoks th {
-    padding: 4%;
-    padding-right: 3em;
-}
+    .BekreftelsesDivBoks th {
+        padding: 4%;
+        padding-right: 3em;
+    }
     .BekreftelsesDivBoks h4 {
         border-bottom: 1px solid white;
         padding-bottom: 1%;
     }
-
 
 input[type=radio] {
     width: 30px;
@@ -191,14 +191,6 @@ input[type=date]::-webkit-inner-spin-button {
     display: none;
 }
 
-
-
-
-ul {
-    list-style-type: none;
-    margin-top: 4em;
-    margin-bottom:4em;
-}
 .adminStartKnapp a,
 .adminStartKnapp a:hover, .adminStartKnapp a:focus {
     color: white;
@@ -225,6 +217,7 @@ p.fyll_inn_skjema{
     display: inline-block;
     margin-right: 3%;
 }
+
 .tabKnapp{
     font-size: 1.1em;
     margin:0.3em;
@@ -247,11 +240,12 @@ p.fyll_inn_skjema{
         opacity:0.4;
     }
 
-    .adminStartMiniKnapp a {
+.adminStartMiniKnapp a {
         text-decoration:none;
         color:black;
     }
-.adminStartMiniKnapp .slett, .slett a {
+
+.adminStartMiniKnapp .slett, .slett a, #sletteFlyruteModalKnapp, #sletteKundeBestillingModalKnapp, #sletteModalKnapp {
     background-color: #B62B32;
     color: white;
 }
@@ -304,5 +298,21 @@ p.fyll_inn_skjema{
     }
 
 .loggUt {
-    float:right;
+    float: right;
+    clear: left;
+    margin-top: 2em;
+    font-size: 1em;
+    color: white;
+    min-height: 1.5em;
+    min-width: 9em;
+    max-width: 12em;
+    padding: 0.5em 0.5em;
+    background-color: black;
+    border:none;
+    margin: 1em 1em 1em 0em;
+    text-align: center;
+}
+
+h2 {
+    display: inline-block;
 }
