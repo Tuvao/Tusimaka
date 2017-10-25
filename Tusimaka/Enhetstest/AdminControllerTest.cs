@@ -483,6 +483,33 @@ namespace Tusimaka.Enhetstest
             // Assert
             Assert.AreEqual(actionResult.ViewName, "");
         }
+        [TestMethod]
+        public void EndreFlyrute_feil_ID_DB()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController(new AdminFlyruterBLL(new AdminFlyruterDALRepositoryStub()));
+            SessionMock.InitializeController(controller);
+            // setningen under må være etter InitializeController
+            controller.Session["LoggetInn"] = true;
+            var innFlyrute = new Strekning()
+            {
+                FraFlyplass = "Bergen",
+                TilFlyplass = "Oslo",
+                Dato = "2017-10-20",
+                Tid = "12:30",
+                Pris = 1234,
+                FlyTid = 45,
+                AntallLedigeSeter = 4
+            };
+
+
+            //act
+            var actionResult = (ViewResult)controller.EndreFlyrute(0, innFlyrute);
+
+            // Assert
+            Assert.AreEqual(actionResult.ViewName, "");
+        }
 
         [TestMethod]
         public void EndreFlyrute_feil_validering_ModelState()
