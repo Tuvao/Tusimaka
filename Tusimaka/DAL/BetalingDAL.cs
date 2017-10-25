@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using Tusimaka.DAL;
 using Tusimaka.Model;
 
@@ -34,8 +35,7 @@ namespace Tusimaka.DAL
                 }
                 catch (Exception feil)
                 {
-                    
-
+                    string path = HttpContext.Current.Server.MapPath("~/logg.txt");
                     string text = feil.ToString();
                     File.AppendAllText(path, text);
                     return false;
