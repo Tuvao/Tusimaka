@@ -3,11 +3,7 @@
     font-family: "Arial", Helvetica, sans-serif;
 }
 
-#test {
-    background-color: aqua;
-}
-
-.logoTusimaka {
+/*.logoTusimaka {
     opacity: 0;
 }
 
@@ -16,8 +12,8 @@
         -moz-transition: opacity 2.0s ease-in;
         -o-transition: opacity 2.0s ease-in;
         opacity: 1;
-    }
-    .container, .row {
+    }*/
+.container, .row {
     width: 100%;
     background-color: #F4F5F5;
 }
@@ -234,10 +230,7 @@ p.fyll_inn_skjema{
     margin:0.3em;
 }
 
-div.logoTusimaka {
-    width: 100px;
-    height: auto;
-}
+
 .adminStartMiniKnapp .miniKnapp {
     font-size: 1em;
     color: white;
@@ -310,4 +303,12 @@ div.logoTusimaka {
         text-decoration: none;
         color: black;
     }
-
+.bilde {
+    opacity: 0.3;
+}
+.logoTusimaka {
+    
+    /*background-image:url("tusimakaLogo.png");*/
+    width:6em;
+    height:4em;
+}
