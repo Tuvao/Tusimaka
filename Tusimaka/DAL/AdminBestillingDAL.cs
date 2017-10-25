@@ -32,6 +32,7 @@ namespace Tusimaka.DAL
                         ok.Tid = i.FlyBestilling.Strekninger.tid;
                         ok.Pris = i.FlyBestilling.Strekninger.pris;
                         ok.AntallPersoner = i.FlyBestilling.antallPersoner;
+                        
                         listeKundesFlyBestillinger.Add(ok);
                     }
                     return listeKundesFlyBestillinger;

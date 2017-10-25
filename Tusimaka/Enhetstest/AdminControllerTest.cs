@@ -432,7 +432,7 @@ namespace Tusimaka.Enhetstest
         }
 
         [TestMethod]
-        public void RegistrerFlyrute()
+        public void RegistrerFlyrute_View_OK()
         {
             // Arrange
             var SessionMock = new TestControllerBuilder();
