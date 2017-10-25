@@ -432,7 +432,6 @@ namespace Tusimaka.Enhetstest
 
             var innFlyrute = new Strekning()
             {
-                StrekningsID = 1,
                 FraFlyplass = "Bergen",
                 TilFlyplass = "Oslo",
                 Dato = "2017-10-20",
