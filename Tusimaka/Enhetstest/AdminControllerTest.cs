@@ -286,7 +286,7 @@ namespace Tusimaka.Enhetstest
         }
 
         [TestMethod]
-        public void EndreKunde_feil_DB()
+        public void EndreKunde_feil_TomStreng_DB()
         {
             // Arrange
             var SessionMock = new TestControllerBuilder();
@@ -302,6 +302,28 @@ namespace Tusimaka.Enhetstest
 
             // Assert
             Assert.AreEqual(resultat.RouteValues.Values.First(), "KundeAdministrer");
+        }
+        [TestMethod]
+        public void EndreKunde_feil_ID_DB()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController(new AdminKundeBLL(new AdminKundeDALRepositoryStub()));
+            SessionMock.InitializeController(controller);
+            // setningen under må være etter InitializeController
+            controller.Session["LoggetInn"] = true;
+            var innKunde = new Kunde()
+            {
+                Fornavn = "Maria",
+                Etternavn = "Berg",
+                Epost = "epost@epost.no",
+                Kjonn = "Kvinne"
+            };
+            //act
+            var actionResult = (ViewResult)controller.EndreKunde(0, innKunde);
+
+            // Assert
+            Assert.AreEqual(actionResult.ViewName, "");
         }
         [TestMethod]
         public void EndreKunde_feil_validering_ModelState()
