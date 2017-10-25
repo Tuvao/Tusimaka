@@ -43,17 +43,15 @@
                 @Html.ValidationMessageFor(model => model.Kjonn, "", new { @class = "text-danger" })
             </div>
         </div>
+
         <div class="form-group">
-            <div class="col-md-10">
+            <div class="col-md-10 valg">
                 <input type="submit" value="Registrer" id="create" class="knapp" />
+                <span class="knapp">@Html.ActionLink("Avbryt", "KundeAdministrer")</span>
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Avbryt", "KundeAdministrer")
-</div>
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>

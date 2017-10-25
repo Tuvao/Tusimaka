@@ -287,11 +287,14 @@ p.fyll_inn_skjema{
     }
 
 .valg .knapp {
-    padding: 0.1em 2em;
+    font-size: 1em;
+    display: inline-block;
+    text-align: center;
+    padding: 1em 2em;
     font-size: 1.3em;
     min-height: 3em;
     min-width: 9em;
-    max-width:9em;
+    max-width: 9em;
     border: none;
     margin-top: 0.4em;
     background-color: lightgrey;
@@ -301,6 +304,7 @@ p.fyll_inn_skjema{
         text-decoration: none;
         color: black;
     }
+
 .bilde {
     opacity: 0.07;
     display:inline-block;
@@ -313,7 +317,7 @@ p.fyll_inn_skjema{
 }
 
 /*div .logoBagrunn {
-    /*background-image:url('tusimakaLogooo.png');*/
+    background-image:url('tusimakaLogooo.png');
     display:inline-block;
     width:300px;
 }*/
