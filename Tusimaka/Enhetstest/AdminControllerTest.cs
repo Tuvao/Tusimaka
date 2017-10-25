@@ -198,6 +198,23 @@ namespace Tusimaka.Enhetstest
                 Assert.AreEqual(forventetResultat[i].Kjonn, resultat[i].Kjonn);
             }
         }
+
+        [TestMethod]
+        public void List_alle_flyruter_False_Session()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController();
+            SessionMock.InitializeController(controller);
+            // setningen under må være etter InitializeController
+            controller.Session["LoggetInn"] = false;
+            // Act
+            var result = (RedirectToRouteResult)controller.FlyruterAdministrer();
+            // Assert
+            Assert.AreEqual(result.RouteName, "");
+            Assert.AreEqual(result.RouteValues.Values.First(), "LoggInn");
+        }
+
         [TestMethod]
         public void EndreKunde_View_OK()
         {
