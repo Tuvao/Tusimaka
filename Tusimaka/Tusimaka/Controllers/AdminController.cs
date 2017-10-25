@@ -265,7 +265,7 @@ namespace Tusimaka.Controllers
             return View();
         }
 
-        public void SlettBestilling(int id)
+        public bool SlettBestilling(int id)
         {
             try
             {
@@ -275,6 +275,7 @@ namespace Tusimaka.Controllers
             {
                 //logging til db
             }
+            return true;
         }
 
         public bool slettKunde(int id)
@@ -291,7 +292,7 @@ namespace Tusimaka.Controllers
             return true;
         }
 
-        public void slettFlyrute(int id)
+        public bool slettFlyrute(int id)
         {
             try
             {
@@ -301,6 +302,7 @@ namespace Tusimaka.Controllers
             {
                 //logging til db
             }
+            return true;
         }
 
     }
