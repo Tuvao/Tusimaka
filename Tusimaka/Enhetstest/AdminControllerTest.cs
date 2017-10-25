@@ -161,6 +161,22 @@ namespace Tusimaka.Enhetstest
         }
 
         [TestMethod]
+        public void List_alle_flyruter_False_Session()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController();
+            SessionMock.InitializeController(controller);
+            // setningen under må være etter InitializeController
+            controller.Session["LoggetInn"] = false;
+            // Act
+            var result = (RedirectToRouteResult)controller.FlyruterAdministrer();
+            // Assert
+            Assert.AreEqual(result.RouteName, "");
+            Assert.AreEqual(result.RouteValues.Values.First(), "LoggInn");
+        }
+
+        [TestMethod]
         public void List_alle_Kunder_OK()
         {
             // Arrange
@@ -200,7 +216,7 @@ namespace Tusimaka.Enhetstest
         }
 
         [TestMethod]
-        public void List_alle_flyruter_False_Session()
+        public void List_alle_kunder_False_Session()
         {
             // Arrange
             var SessionMock = new TestControllerBuilder();
@@ -209,7 +225,7 @@ namespace Tusimaka.Enhetstest
             // setningen under må være etter InitializeController
             controller.Session["LoggetInn"] = false;
             // Act
-            var result = (RedirectToRouteResult)controller.FlyruterAdministrer();
+            var result = (RedirectToRouteResult)controller.KundeAdministrer();
             // Assert
             Assert.AreEqual(result.RouteName, "");
             Assert.AreEqual(result.RouteValues.Values.First(), "LoggInn");
@@ -252,6 +268,23 @@ namespace Tusimaka.Enhetstest
             // Assert
             Assert.AreEqual(resultat.RouteValues.Values.First(), "KundeAdministrer");
         }
+
+        [TestMethod]
+        public void EndreKunde_False_Session()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController();
+            SessionMock.InitializeController(controller);
+            // setningen under må være etter InitializeController
+            controller.Session["LoggetInn"] = false;
+            // Act
+            var result = (RedirectToRouteResult)controller.EndreKunde(1);
+            // Assert
+            Assert.AreEqual(result.RouteName, "");
+            Assert.AreEqual(result.RouteValues.Values.First(), "LoggInn");
+        }
+
         [TestMethod]
         public void EndreKunde_feil_DB()
         {
@@ -344,6 +377,23 @@ namespace Tusimaka.Enhetstest
             // Assert
             Assert.AreEqual(result.RouteValues.Values.First(), "KundeAdministrer");
         }
+
+        [TestMethod]
+        public void RegistrerKunde_False_Session()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController();
+            SessionMock.InitializeController(controller);
+            // setningen under må være etter InitializeController
+            controller.Session["LoggetInn"] = false;
+            // Act
+            var result = (RedirectToRouteResult)controller.RegistrerKunde();
+            // Assert
+            Assert.AreEqual(result.RouteName, "");
+            Assert.AreEqual(result.RouteValues.Values.First(), "LoggInn");
+        }
+
         [TestMethod]
         public void RegistrerFlyrute()
         {
@@ -385,6 +435,22 @@ namespace Tusimaka.Enhetstest
 
             // Assert
             Assert.AreEqual(result.RouteValues.Values.First(), "FlyruterAdministrer");
+        }
+
+        [TestMethod]
+        public void RegistrerFlyrute_False_Session()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController();
+            SessionMock.InitializeController(controller);
+            // setningen under må være etter InitializeController
+            controller.Session["LoggetInn"] = false;
+            // Act
+            var result = (RedirectToRouteResult)controller.RegistrerFlyrute();
+            // Assert
+            Assert.AreEqual(result.RouteName, "");
+            Assert.AreEqual(result.RouteValues.Values.First(), "LoggInn");
         }
 
         [TestMethod]
@@ -559,6 +625,36 @@ namespace Tusimaka.Enhetstest
 
             // Assert
             Assert.AreEqual(result.RouteValues.Values.First(), "KundeAdministrer");
+        }
+        [TestMethod]
+        public void KundeBestillinger_False_Session()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController();
+            SessionMock.InitializeController(controller);
+            // setningen under må være etter InitializeController
+            controller.Session["LoggetInn"] = false;
+            // Act
+            var result = (RedirectToRouteResult)controller.KundeBestillinger(1);
+            // Assert
+            Assert.AreEqual(result.RouteName, "");
+            Assert.AreEqual(result.RouteValues.Values.First(), "LoggInn");
+        }
+        [TestMethod]
+        public void NyKundeBestilling_False_Session()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController();
+            SessionMock.InitializeController(controller);
+            // setningen under må være etter InitializeController
+            controller.Session["LoggetInn"] = false;
+            // Act
+            var result = (RedirectToRouteResult)controller.NyKundeBestilling();
+            // Assert
+            Assert.AreEqual(result.RouteName, "");
+            Assert.AreEqual(result.RouteValues.Values.First(), "LoggInn");
         }
         [TestMethod]
         public void NyKundeBestilling_feil_DB()
