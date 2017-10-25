@@ -75,6 +75,7 @@ namespace Tusimaka.DAL
         public byte[] passord { get; set; }
     }
 
+    //kopiert fra link, se readme.txt
     public class ChangeLog
     {
         public int Id { get; set; }
@@ -95,6 +96,7 @@ namespace Tusimaka.DAL
             
             Database.SetInitializer(new DBInit());
         }
+        //metode kopiert fra link, se readme.txt
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
@@ -119,11 +121,12 @@ namespace Tusimaka.DAL
             {
                 var entityName = change.Entity.GetType().Name;
                 var primaryKey = GetPrimaryKeyValue(change);
-
+                
                 foreach (var prop in change.OriginalValues.PropertyNames)
                 {
                     var originalValue = change.OriginalValues[prop].ToString();
                     var currentValue = change.CurrentValues[prop].ToString();
+                    //Sjekker om det har vært endringer
                     if (originalValue != currentValue)
                     {
                         ChangeLog log = new ChangeLog()
