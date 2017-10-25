@@ -47,32 +47,11 @@ span {
     color: black;
 }
 
-.selectUtseendeAdmin {
-    padding: 0.3em;
-    font-size: 1.2em;
-    height: 3em;
-    width: 100%;
-    border: 2px solid #235945;
-    position: relative;
-    background-color: white;
-    color: black;
-}
-
 .tekstFelt {
     padding: 0.3em;
     font-size: 1.2em;
     height: 2.5em;
     border: 2px solid #224652;
-    position: relative;
-    background-color: white;
-    color: black;
-}
-
-.tekstFeltAdmin {
-    padding: 0.3em;
-    font-size: 1.2em;
-    height: 2.5em;
-    border: 2px solid #235945;
     position: relative;
     background-color: white;
     color: black;
@@ -139,13 +118,8 @@ td {
 .maxWidth58 {
     max-width: 58%;
 }
-#bekreft, #registrer, #sok, #bekreftBetaling {
+#bekreft, #registrer, #sok, #bekreftBetaling, #loggInn, #create, #lagreFlyrute, #lagreKunde {
     background-color: #224652;
-    color: white;
-}
-
-#loggInn, #create, #lagreFlyrute, #lagreKunde{
-    background-color: #235945;
     color: white;
 }
 
@@ -198,19 +172,23 @@ input[type=date]::-webkit-inner-spin-button {
     padding: 1.5em 0em;
     width:100%;
 }
-.adminStartKnapp .knapp{
+.adminStartKnapp .knapp {
     font-size: 1.3em;
     margin-top: 1em;
-    margin-bottom:1em;
-    color: white;
+    margin-bottom: 1em;
     min-height: 3em;
     min-width: 9em;
     max-width: 17em;
     padding: 1em 2em;
-    background-color: #235945;
+    background-color: #224652;
+    color: white;
 }
     .adminStartKnapp .knapp:hover {
         opacity:0.7;
+    }
+    .adminStartKnapp .knapp a {
+        color: white;
+        text-decoration:none;
     }
 
 p.fyll_inn_skjema{
@@ -223,15 +201,13 @@ p.fyll_inn_skjema{
     margin:0.3em;
 }
 
-
-.miniKnapp {
+.miniKnapp, .loggUt {
     font-size: 1em;
     color: white;
     min-height: 1.5em;
     min-width: 4em;
     max-width: 12em;
     padding: 0.5em 0.5em;
-    background-color: lightgrey;
     color: black;
     display: inline-block;
     text-align: center;
@@ -240,10 +216,13 @@ p.fyll_inn_skjema{
         opacity:0.4;
     }
 
-.adminStartMiniKnapp a {
+.miniKnapp a {
         text-decoration:none;
-        color:black;
     }
+.endre, .endre a {
+    color: black;
+    background-color: #A8B8BD;
+}
 
 .slett, .slett a, #sletteFlyruteModalKnapp, #sletteKundeBestillingModalKnapp, #sletteModalKnapp {
     background-color: #B62B32;
@@ -251,23 +230,23 @@ p.fyll_inn_skjema{
 }
 
 .add, .add a {
-    background-color: #37775F;
-    color:white;
+    background-color: #224A57;
+    color: white;
 }
 
 .detaljer, .detaljer a {
-    background-color: #224652;
-    color:white;
+    background-color: #05222C;
+    color: white;
 }
 
 .miniMenyKnapp {
     font-size: 1em;
     color: white;
     min-height: 1.5em;
-    min-width: 9em;
+    min-width: 7em;
     max-width: 12em;
-    padding: 0.5em 0.5em;
-    background-color: #235945;
+    padding: 0.8em 0.5em;
+    background-color: #224652;
     margin: 1em 1em 1em 0em;
     display: inline-block;
     text-align: center;
@@ -301,21 +280,15 @@ p.fyll_inn_skjema{
     float: right;
     clear: left;
     margin-top: 2em;
-    font-size: 1em;
-    min-height: 1.5em;
-    min-width: 9em;
-    max-width: 12em;
-    padding: 0.5em 0.5em;
-    background-color: black;
+    background-color: #DBE2E4;
     border: none;
     margin: 1em 1em 1em 0em;
-    text-align: center;
-    color: white;
     text-decoration: none;
+    min-width: 8em;
 }
     .loggUt a {
-        color: white;
-        text-decoration:none;
+        color: black;
+        text-decoration: none;
     }
     .loggUt:hover {
         opacity:0.4;

@@ -29,58 +29,61 @@
             })
         });
 </script>
-<div class="row">
-    <h2>Administrer Kunder</h2>
-    <span class="loggUt">@Html.ActionLink("LOGG UT", "LoggUt")</span>
-</div>
+<div class="container">
+    <div class="row">
+        <h2>Administrer Kunder</h2>
+        <span class="loggUt">@Html.ActionLink("LOGG UT", "LoggUt")</span>
+    </div>
 
-<div class="adminMiniMeny">
-    <span class="miniMenyKnapp">@Html.ActionLink("TILBAKE", "AdminStart")</span>
-    <span class="miniMenyKnapp">@Html.ActionLink("LEGG TIL", "RegistrerKunde")</span>
-</div>
+    <div class="row">
+        <span class="miniMenyKnapp">@Html.ActionLink("TILBAKE", "AdminStart")</span>
+        <span class="miniMenyKnapp">@Html.ActionLink("LEGG TIL", "RegistrerKunde")</span>
+    </div>
 
-<table class="table">
-    <tr>
-        <th>
-            Fornavn
-        </th>
-        <th>
-            Etternavn
-        </th>
-        <th>
-            Epost
-        </th>
-        <th>
-            Kjønn
-        </th>
-        <th></th>
-    </tr>
+    <table class="table">
+        <tr>
+            <th>
+                Fornavn
+            </th>
+            <th>
+                Etternavn
+            </th>
+            <th>
+                Epost
+            </th>
+            <th>
+                Kjønn
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fornavn)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Etternavn)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Epost)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Kjonn)
-        </td>
-        <td class="adminStartMiniKnapp">
-            <span class="miniKnapp">@Html.ActionLink("Endre", "EndreKunde", new { id = item.KundeID }, new { @class = "tabKnapp" })</span>
-            <span class="miniKnapp detaljer">@Html.ActionLink("Bestillinger", "KundeBestillinger", new { id = item.KundeID }, new { @class = "tabKnapp" })</span>
-            <span class="miniKnapp slett">
-                <a href="#sletteModal" class="tabKnapp" id="sletteKnapp" 
-                    data-navn="<i>KundeId: @item.KundeID </i><br/>Fornavn: @item.Fornavn<br/>Etternavn: @item.Etternavn<br/>Epost: @item.Epost <br/>Kjønn: @item.Kjonn"
-                    data-id="@item.KundeID" data-toggle="modal" data-sletteModal="true">Slett</a>
-            </span>
-            <span class="miniKnapp add">@Html.ActionLink("Ny bestilling", "NyKundeBestilling", new { id = item.KundeID }, new { @class = "tabKnapp" })</span>
-</td>
-    </tr>
-}
-</table>
-@Html.Partial("SlettKundeModal")
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fornavn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Etternavn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Epost)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kjonn)
+                </td>
+                <td>
+                    <span class="miniKnapp endre">@Html.ActionLink("Endre", "EndreKunde", new { id = item.KundeID }, new { @class = "tabKnapp" })</span>
+                    <span class="miniKnapp detaljer">@Html.ActionLink("Bestillinger", "KundeBestillinger", new { id = item.KundeID }, new { @class = "tabKnapp" })</span>
+                    <span class="miniKnapp add">@Html.ActionLink("Ny bestilling", "NyKundeBestilling", new { id = item.KundeID }, new { @class = "tabKnapp" })</span>
+                    <span class="miniKnapp slett">
+                        <a href="#sletteModal" class="tabKnapp" id="sletteKnapp"
+                           data-navn="<i>KundeId: @item.KundeID </i><br/>Fornavn: @item.Fornavn<br/>Etternavn: @item.Etternavn<br/>Epost: @item.Epost <br/>Kjønn: @item.Kjonn"
+                           data-id="@item.KundeID" data-toggle="modal" data-sletteModal="true">Slett</a>
+                    </span>
+                </td>
+            </tr>
+        }
+    </table>
+    @Html.Partial("SlettKundeModal")
+    </div>

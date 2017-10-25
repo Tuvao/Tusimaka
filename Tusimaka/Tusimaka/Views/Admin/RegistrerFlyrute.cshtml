@@ -3,86 +3,86 @@
 @{
     ViewBag.Title = "RegistrerFlyrute";
 }
-
-
 <link href="~/Content/StyleSheet.css" rel="stylesheet" />
 
-<div class="row">
-    <h2>Registrer Flyrute</h2>
-    <span class="loggUt">@Html.ActionLink("LOGG UT", "LoggUt")</span>
-</div>
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    <div class="form-horizontal">
-        <hr/>
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.StrekningsID)
-        <div class="form-group">
-            <div class="col-md-10">
-                @*<p>FRA FLYPLASS</p>*@
-                @Html.EditorFor(model => model.FraFlyplass, new { htmlAttributes = new { placeholder = "Fra flyplass", @class = "tekstFeltAdmin fullStrl" } })
-                @Html.ValidationMessageFor(model => model.FraFlyplass, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-10">
-                @*<p>TIL FLYPLASS</p>*@
-                @Html.EditorFor(model => model.TilFlyplass, new { htmlAttributes = new { placeholder = "Til flyplass", @class = "tekstFeltAdmin fullStrl" } })
-                @Html.ValidationMessageFor(model => model.TilFlyplass, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-10">
-                @*<p>DATO</p>*@
-                @Html.EditorFor(model => model.Dato, new { htmlAttributes = new { placeholder = "Dato", @class = "tekstFeltAdmin fullStrl" } })
-                @Html.ValidationMessageFor(model => model.Dato, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-10">
-                @*<p>TID</p>*@
-                @Html.EditorFor(model => model.Tid, new { htmlAttributes = new { placeholder = "Tidspunkt", @class = "tekstFeltAdmin fullStrl" } })
-                @Html.ValidationMessageFor(model => model.Tid, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-10">
-                @*<p>PRIS</p>*@
-                @Html.EditorFor(model => model.Pris, new { htmlAttributes = new { placeholder = "Pris", @class = "tekstFeltAdmin fullStrl" } })
-                @Html.ValidationMessageFor(model => model.Pris, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-10">
-                @*<p>FLYTID</p>*@
-                @Html.EditorFor(model => model.FlyTid, new { htmlAttributes = new { placeholder = "Reisetid", @class = "tekstFeltAdmin fullStrl" } })
-                @Html.ValidationMessageFor(model => model.FlyTid, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-10">
-                @*<p>LEDIGE SETER</p>*@
-                @Html.EditorFor(model => model.AntallLedigeSeter, new { htmlAttributes = new { placeholder = "Antall ledige seter", @class = "tekstFeltAdmin fullStrl" } })
-                @Html.ValidationMessageFor(model => model.AntallLedigeSeter, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-10 valg">
-                <span class="knapp">@Html.ActionLink("Avbryt", "FlyruterAdministrer")</span>
-                <input type="submit" value="Registrer" id="create" class="knapp" />
-            </div>
-        </div>
+<div class="container">
+    <div class="row">
+        <h2>Registrer Flyrute</h2>
+        <span class="loggUt">@Html.ActionLink("LOGG UT", "LoggUt")</span>
     </div>
-}
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.StrekningsID)
+            <div class="form-group">
+                <div class="col-md-10">
+                    @*<p>FRA FLYPLASS</p>*@
+                    @Html.EditorFor(model => model.FraFlyplass, new { htmlAttributes = new { placeholder = "Fra flyplass", @class = "tekstFelt fullStrl" } })
+                    @Html.ValidationMessageFor(model => model.FraFlyplass, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+            <div class="form-group">
+                <div class="col-md-10">
+                    @*<p>TIL FLYPLASS</p>*@
+                    @Html.EditorFor(model => model.TilFlyplass, new { htmlAttributes = new { placeholder = "Til flyplass", @class = "tekstFelt fullStrl" } })
+                    @Html.ValidationMessageFor(model => model.TilFlyplass, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    @*<p>DATO</p>*@
+                    @Html.EditorFor(model => model.Dato, new { htmlAttributes = new { placeholder = "Dato", @class = "tekstFelt fullStrl" } })
+                    @Html.ValidationMessageFor(model => model.Dato, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    @*<p>TID</p>*@
+                    @Html.EditorFor(model => model.Tid, new { htmlAttributes = new { placeholder = "Tidspunkt", @class = "tekstFelt fullStrl" } })
+                    @Html.ValidationMessageFor(model => model.Tid, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    @*<p>PRIS</p>*@
+                    @Html.EditorFor(model => model.Pris, new { htmlAttributes = new { placeholder = "Pris", @class = "tekstFelt fullStrl" } })
+                    @Html.ValidationMessageFor(model => model.Pris, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    @*<p>FLYTID</p>*@
+                    @Html.EditorFor(model => model.FlyTid, new { htmlAttributes = new { placeholder = "Reisetid", @class = "tekstFelt fullStrl" } })
+                    @Html.ValidationMessageFor(model => model.FlyTid, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    @*<p>LEDIGE SETER</p>*@
+                    @Html.EditorFor(model => model.AntallLedigeSeter, new { htmlAttributes = new { placeholder = "Antall ledige seter", @class = "tekstFelt fullStrl" } })
+                    @Html.ValidationMessageFor(model => model.AntallLedigeSeter, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10 valg">
+                    <span class="knapp">@Html.ActionLink("Avbryt", "FlyruterAdministrer")</span>
+                    <input type="submit" value="Registrer" id="create" class="knapp" />
+                </div>
+            </div>
+        </div>
+    }
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

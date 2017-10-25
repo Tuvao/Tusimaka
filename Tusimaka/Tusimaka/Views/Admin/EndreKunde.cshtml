@@ -5,68 +5,69 @@
 }
 <link href="~/Content/StyleSheet.css" rel="stylesheet" />
 
-<div class="row">
-    <h2>Endre Kunde</h2>
-    <span class="loggUt">@Html.ActionLink("LOGG UT", "LoggUt")</span>
-</div>
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.KundeID)
-
-        <div class="form-group">
-            <div class="col-md-1">
-                <p>FORNAVN:</p>
-            </div>
-            <div class="col-md-4">
-                @Html.EditorFor(model => model.Fornavn, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
-                @Html.ValidationMessageFor(model => model.Fornavn, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-1">
-                <p>ETTERNAVN:</p>
-            </div>
-            <div class="col-md-4">
-                @Html.EditorFor(model => model.Etternavn, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
-                @Html.ValidationMessageFor(model => model.Etternavn, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-1">
-                <p>EPOST:</p>
-            </div>
-            <div class="col-md-4">
-                @Html.EditorFor(model => model.Epost, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
-                @Html.ValidationMessageFor(model => model.Epost, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-1">
-                <p>KJØNN:</p>
-            </div>
-            <div class="col-md-4">
-                @Html.EditorFor(model => model.Kjonn, new { htmlAttributes = new { @class = "tekstFeltAdmin fullStrl" } })
-                @Html.ValidationMessageFor(model => model.Kjonn, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-10 valg">
-                <span class="knapp">@Html.ActionLink("Avbryt", "KundeAdministrer")</span>
-                <input type="submit" value="Lagre" id="lagreKunde" class="knapp" />
-            </div>
-        </div>
+<div class="container">
+    <div class="row">
+        <h2>Endre Kunde</h2>
+        <span class="loggUt">@Html.ActionLink("LOGG UT", "LoggUt")</span>
     </div>
-}
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.KundeID)
+
+            <div class="form-group">
+                <div class="col-md-1">
+                    <p>FORNAVN:</p>
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Fornavn, new { htmlAttributes = new { @class = "tekstFelt fullStrl" } })
+                    @Html.ValidationMessageFor(model => model.Fornavn, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-1">
+                    <p>ETTERNAVN:</p>
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Etternavn, new { htmlAttributes = new { @class = "tekstFelt fullStrl" } })
+                    @Html.ValidationMessageFor(model => model.Etternavn, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-1">
+                    <p>EPOST:</p>
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Epost, new { htmlAttributes = new { @class = "tekstFelt fullStrl" } })
+                    @Html.ValidationMessageFor(model => model.Epost, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-1">
+                    <p>KJØNN:</p>
+                </div>
+                <div class="col-md-4">
+                    @Html.EditorFor(model => model.Kjonn, new { htmlAttributes = new { @class = "tekstFelt fullStrl" } })
+                    @Html.ValidationMessageFor(model => model.Kjonn, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10 valg">
+                    <span class="knapp">@Html.ActionLink("Avbryt", "KundeAdministrer")</span>
+                    <input type="submit" value="Lagre" id="lagreKunde" class="knapp" />
+                </div>
+            </div>
+        </div>
+    }
+    </div>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
