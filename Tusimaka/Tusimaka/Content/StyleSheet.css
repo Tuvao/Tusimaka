@@ -14,6 +14,7 @@
         -o-transition: opacity 2.0s ease-in;
         opacity: 1;
     }*/
+
 .container, .row {
     width: 100%;
     background-color: #F4F5F5;
@@ -25,6 +26,10 @@
 
 h1, p {
     margin: 1em 0;
+}
+
+h2 {
+    display: inline-block;
 }
 
 span {
@@ -69,13 +74,14 @@ select::-ms-expand {
 tr {
     margin:3em;
 }
-th {
-    font-size: 1.1em;
-}
+    th {
+        font-size: 1.1em;
+    }
 
-td {
-    padding: 2em;
-}
+    td {
+        padding: 2em;
+    }
+
 .knapp {
     padding: 0.1em 2em;
     font-size: 1.3em;
@@ -89,7 +95,6 @@ td {
         opacity: 0.8;
     }
 
-
 #sok {
     padding: 0.3em;
     font-size: 1.2em;
@@ -97,9 +102,11 @@ td {
     width: 100%;
     border: none;
 }
+
 .usynlig {
     color: white;
 }
+
 #retur, #tilbake {
     background-color: lightgrey;
     color: black;
@@ -108,16 +115,19 @@ td {
 /*div#VisAntallPers{
     display: inline-block;
 }*/
+
 #utlopscvc td{
     padding: 0;
     padding-right: 1.2em;
 }
+
 .maxWidth100 {
     max-width: 100%
 }
 .maxWidth58 {
     max-width: 58%;
 }
+
 #bekreft, #registrer, #sok, #bekreftBetaling, #loggInn, #create, #lagreFlyrute, #lagreKunde {
     background-color: #224652;
     color: white;
@@ -219,6 +229,7 @@ p.fyll_inn_skjema{
 .miniKnapp a {
         text-decoration:none;
     }
+
 .endre, .endre a {
     color: black;
     background-color: #A8B8BD;
@@ -293,7 +304,3 @@ p.fyll_inn_skjema{
     .loggUt:hover {
         opacity:0.4;
     }
-
-h2 {
-    display: inline-block;
-}
