@@ -43,9 +43,11 @@
                 @Html.ValidationMessageFor(model => model.Kjonn, "", new { @class = "text-danger" })
             </div>
         </div>
+
         <div class="form-group">
-            <div class="col-md-10">
+            <div class="col-md-10 valg">
                 <input type="submit" value="Registrer" id="create" class="knapp" />
+                <span class="knapp">@Html.ActionLink("Avbryt", "KundeAdministrer")</span>
             </div>
         </div>
     </div>
