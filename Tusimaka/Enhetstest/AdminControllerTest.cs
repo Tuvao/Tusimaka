@@ -482,6 +482,23 @@ namespace Tusimaka.Enhetstest
             // Assert
             Assert.AreEqual(result.RouteValues.Values.First(), "KundeAdministrer");
         }
+        [TestMethod]
+        public void NyKundeBestilling_feil_DB()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController(new AdminBestillingBLL(new AdminBestillingDALRepositoryStub()));
+            SessionMock.InitializeController(controller);
+            // setningen under må være etter InitializeController
+            controller.Session["LoggetInn"] = true;
+            var nyBestilling = new FlyBestillinger();
+            nyBestilling.FlyBestillingsID = 0;
+            // Act
+            var result = (ViewResult)controller.NyKundeBestilling(0, nyBestilling);
+
+            // Assert
+            Assert.AreEqual(result.ViewName, "");
+        }
 
         [TestMethod]
         public void List_alle_KundeBestillinger_OK()
