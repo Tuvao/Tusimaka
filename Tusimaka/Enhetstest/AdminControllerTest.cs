@@ -35,11 +35,10 @@ namespace Tusimaka.Enhetstest
         public void LoggInn_OK()
         {
             // Arrange
-            //var SessionMock = new TestControllerBuilder();
+            var SessionMock = new TestControllerBuilder();
             var controller = new AdminController(new AdminBLL(new AdminRepositoryStub()));
-            //SessionMock.InitializeController(controller);
-            // setningen under må være etter InitializeController
-            //controller.Session["LoggetInn"] = true;
+            SessionMock.InitializeController(controller);
+            var session = controller.Session["LoggetInn"] = true;
             var innAdminBruker = new AdminBruker()
             {
                 Brukernavn = "Brukernavn",
@@ -49,16 +48,16 @@ namespace Tusimaka.Enhetstest
             var result = (RedirectToRouteResult)controller.LoggInn(innAdminBruker);
             // Assert
             Assert.AreEqual(result.RouteValues.Values.First(), "AdminStart");
+            Assert.AreEqual(session, true);
         }
         [TestMethod]
         public void LoggInn_IkkeOK()
         {
             // Arrange
-            //var SessionMock = new TestControllerBuilder();
+            var SessionMock = new TestControllerBuilder();
             var controller = new AdminController(new AdminBLL(new AdminRepositoryStub()));
-            //SessionMock.InitializeController(controller);
-            // setningen under må være etter InitializeController
-            //controller.Session["LoggetInn"] = true;
+            SessionMock.InitializeController(controller);
+            var session = controller.Session["LoggetInn"] = false;
             var innAdminBruker = new AdminBruker()
             {
                 Brukernavn = "",
@@ -67,6 +66,7 @@ namespace Tusimaka.Enhetstest
             // Act
             var result = (ViewResult)controller.LoggInn(innAdminBruker);
             Assert.AreEqual(result.ViewName, "");
+            Assert.AreEqual(session,false);
         }
         [TestMethod]
         public void AdminStart()
@@ -535,61 +535,60 @@ namespace Tusimaka.Enhetstest
     }
 }
 
-    //    [TestMethod]
-    //    public void SlettKunde()
-    //    {
-    //        // Arrange
-    //        var controller = new AdminController(new AdminKundeBLL(new AdminKundeDALRepositoryStub()));
+//    [TestMethod]
+//    public void SlettKunde()
+//    {
+//        // Arrange
+//        var controller = new AdminController(new AdminKundeBLL(new AdminKundeDALRepositoryStub()));
 
-    //        // Act
-    //        var actionResult = (ViewResult)controller.slettKunde(1);
-    //        var resultat = (Kunde)actionResult.Model;
+//        // Act
+//        var actionResult = (ViewResult)controller.slettKunde(1);
+//        var resultat = (Kunde)actionResult.Model;
 
-    //        // Assert
-    //        Assert.AreEqual(actionResult.ViewName, "");
-    //    }
+//        // Assert
+//        Assert.AreEqual(actionResult.ViewName, "");
+//    }
 
-    //    [TestMethod]
-    //    public void SlettKunde_Ok()
-    //    {
-    //        // Arrange
-    //        var controller = new AdminController(new AdminKundeBLL(new AdminKundeDALRepositoryStub()));
-    //        var innKunde = new Kunde()
-    //        {
-    //            Fornavn = "Tuva",
-    //            Etternavn = "Olsen",
-    //            Epost = "epost@epost.no",
-    //            Kjonn = "Kvinne"
-    //        };
+        //[TestMethod]
+        //public void SlettKunde_Ok()
+        //{
+        //    // Arrange
+        //    var controller = new AdminController(new AdminKundeBLL(new AdminKundeDALRepositoryStub()));
+        //    var innKunde = new Kunde()
+        //    {
+        //        Fornavn = "Tuva",
+        //        Etternavn = "Olsen",
+        //        Epost = "epost@epost.no",
+        //        Kjonn = "Kvinne"
+        //    };
 
-    //        // Act
-    //        var actionResult = (RedirectToRouteResult)controller.slettKunde(1, innKunde);
+        //    // Act
+        //    var actionResult = (bool)controller.slettKunde(1);
 
-    //        // Assert
-    //        Assert.AreEqual(actionResult.RouteName, "");
-    //        Assert.AreEqual(actionResult.RouteValues.Values.First(), "KundeAdministrer");
+        //    // Assert
+        //    Assert.AreEqual(actionResult.RouteName, "");
+        //    Assert.IsTrue(actionResult);
+        //}
 
-    //    }
+//    [TestMethod]
+//    public void SlettKunde_IkkeOk()
+//    {
+//        // Arrange
+//        var controller = new AdminController(new AdminKundeBLL(new AdminKundeDALRepositoryStub()));
+//        var innKunde = new Kunde()
+//        {
+//            Fornavn = "Tuva",
+//            Etternavn = "Olsen",
+//            Epost = "epost@epost.no",
+//            Kjonn = "Kvinne"
+//        };
 
-    //    [TestMethod]
-    //    public void SlettKunde_IkkeOk()
-    //    {
-    //        // Arrange
-    //        var controller = new AdminController(new AdminKundeBLL(new AdminKundeDALRepositoryStub()));
-    //        var innKunde = new Kunde()
-    //        {
-    //            Fornavn = "Tuva",
-    //            Etternavn = "Olsen",
-    //            Epost = "epost@epost.no",
-    //            Kjonn = "Kvinne"
-    //        };
+//        // Act
+//        var actionResult = (ViewResult)controller.slettKunde(0, innKunde);
 
-    //        // Act
-    //        var actionResult = (ViewResult)controller.slettKunde(0, innKunde);
-
-    //        // Assert
-    //        Assert.AreEqual(actionResult.ViewName, "");
-    //    }
+//        // Assert
+//        Assert.AreEqual(actionResult.ViewName, "");
+//    }
 
 
 

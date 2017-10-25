@@ -277,16 +277,18 @@ namespace Tusimaka.Controllers
             }
         }
 
-        public void slettKunde(int id)
+        public bool slettKunde(int id)
         {
             try
             {
                 bool slettOK = _adminKundeBLL.slettKunde(id);
+                
             }
             catch (Exception feil)
             {
                 //logging til db
             }
+            return true;
         }
 
         public void slettFlyrute(int id)
