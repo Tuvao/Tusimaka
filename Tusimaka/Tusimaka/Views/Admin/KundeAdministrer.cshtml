@@ -31,13 +31,12 @@
 </script>
 <div class="row">
     <h2>Administrer Kunder</h2>
-    <button class="loggUt">LOGG UT</button>
+    <span class="loggUt">@Html.ActionLink("LOGG UT", "LoggUt")</span>
 </div>
 
 <div class="adminMiniMeny">
     <span class="miniMenyKnapp">@Html.ActionLink("TILBAKE", "AdminStart")</span>
     <span class="miniMenyKnapp">@Html.ActionLink("LEGG TIL", "RegistrerKunde")</span>
-    @*<span class="miniMenyKnapp">@Html.ActionLink("LOGG UT", "LoggInn")</span>*@
 </div>
 
 <table class="table">

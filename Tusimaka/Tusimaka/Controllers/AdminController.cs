@@ -82,7 +82,15 @@ namespace Tusimaka.Controllers
             ViewBag.Innlogget = false;
             return View();
         }
-
+        
+        public ActionResult LoggUt()
+        {
+            Session["LoggetInn"] = false;
+            ViewBag.Innlogget = false;
+            Response.Redirect("LoggInn");
+            return View();
+        }
+        
         public ActionResult AdminStart()
         {
             if (Session["LoggetInn"] != null)

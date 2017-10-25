@@ -224,7 +224,7 @@ p.fyll_inn_skjema{
 }
 
 
-.adminStartMiniKnapp .miniKnapp {
+.miniKnapp {
     font-size: 1em;
     color: white;
     min-height: 1.5em;
@@ -236,7 +236,7 @@ p.fyll_inn_skjema{
     display: inline-block;
     text-align: center;
 }
-    .adminStartMiniKnapp .miniKnapp:hover {
+    .miniKnapp:hover {
         opacity:0.4;
     }
 
@@ -245,22 +245,22 @@ p.fyll_inn_skjema{
         color:black;
     }
 
-.adminStartMiniKnapp .slett, .slett a, #sletteFlyruteModalKnapp, #sletteKundeBestillingModalKnapp, #sletteModalKnapp {
+.slett, .slett a, #sletteFlyruteModalKnapp, #sletteKundeBestillingModalKnapp, #sletteModalKnapp {
     background-color: #B62B32;
     color: white;
 }
 
-.adminStartMiniKnapp .add, .add a {
+.add, .add a {
     background-color: #37775F;
     color:white;
 }
 
-.adminStartMiniKnapp .detaljer, .detaljer a {
+.detaljer, .detaljer a {
     background-color: #224652;
     color:white;
 }
 
-.adminMiniMeny .miniMenyKnapp {
+.miniMenyKnapp {
     font-size: 1em;
     color: white;
     min-height: 1.5em;
@@ -272,11 +272,11 @@ p.fyll_inn_skjema{
     display: inline-block;
     text-align: center;
 }
-    .adminMiniMeny .miniMenyKnapp a {
+    .miniMenyKnapp a {
         color:white;
         text-decoration:none;
     }
-        .adminMiniMeny .miniMenyKnapp:hover {
+        .miniMenyKnapp:hover {
             opacity: 0.7;
         }
 
@@ -292,7 +292,7 @@ p.fyll_inn_skjema{
     border: none;
     background-color: lightgrey;
 }
-    .valg .knapp a {
+    .knapp a {
         text-decoration: none;
         color: black;
     }
@@ -302,16 +302,24 @@ p.fyll_inn_skjema{
     clear: left;
     margin-top: 2em;
     font-size: 1em;
-    color: white;
     min-height: 1.5em;
     min-width: 9em;
     max-width: 12em;
     padding: 0.5em 0.5em;
     background-color: black;
-    border:none;
+    border: none;
     margin: 1em 1em 1em 0em;
     text-align: center;
+    color: white;
+    text-decoration: none;
 }
+    .loggUt a {
+        color: white;
+        text-decoration:none;
+    }
+    .loggUt:hover {
+        opacity:0.4;
+    }
 
 h2 {
     display: inline-block;

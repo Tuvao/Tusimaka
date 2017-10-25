@@ -4,14 +4,14 @@
 }
 <link href="~/Content/StyleSheet.css" rel="stylesheet" />
 
-<div class="row">
+<div class="row loggUtKnapp">
     <h2>Velkommen, admin!</h2>
-    <button class="loggUt">LOGG UT</button>
+    <span class="loggUt">@Html.ActionLink("LOGG UT", "LoggUt")</span>
 </div>
 <hr/>
 <div class="adminStartKnapp">
     <span class="knapp">@Html.ActionLink("Administrer Kunder", "KundeAdministrer")</span>
-    <span class="knapp">@Html.ActionLink("Administrer flyruter", "FlyruterAdministrer")</span>
+    <span class="knapp">@Html.ActionLink("Administrer Flyruter", "FlyruterAdministrer")</span>
     <span class="knapp">Se databaselogg</span>
 </div>
     <p style="color:blue">Logget inn</p>
