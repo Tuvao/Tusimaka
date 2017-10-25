@@ -260,6 +260,28 @@ namespace Tusimaka.Controllers
             bool nyBestillingOK = _adminBestillBLL.LagreAdminFlyBestilling(id, nyBestilling);
             if (nyBestillingOK)
             {
+                return RedirectToAction("AdminBetalingNyBestilling");
+            }
+            return View();
+        }
+        public ActionResult AdminBetalingNyBestilling()
+        {
+            if (Session["LoggetInn"] != null)
+            {
+                bool loggetInn = (bool)Session["LoggetInn"];
+                if (loggetInn)
+                {
+                    return View();
+                }
+            }
+            return RedirectToAction("LoggInn");
+        }
+        [HttpPost]
+        public ActionResult AdminBetalingNyBestilling(int id, BetalingsInformasjon nyBetaling)
+        {
+            bool nyBetalingOK = _adminBestillBLL.lagreBetalingsinformasjon(id, nyBetaling);
+            if (nyBetalingOK)
+            {
                 return RedirectToAction("KundeAdministrer");
             }
             return View();

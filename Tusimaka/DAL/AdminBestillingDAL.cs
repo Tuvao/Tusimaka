@@ -103,5 +103,35 @@ namespace Tusimaka.DAL
                 return false;
             }
         }
+        public bool lagreBetalingsinformasjon(int id, BetalingsInformasjon innBetaling)
+        {
+            using (var db = new DBContext())
+            {
+                try
+                {
+                    FlyBestilling flyBestilling = db.FlyBestilling.Find(id);
+
+                    var nyBetaling = new BetalingsInfo();
+                    nyBetaling.FlyBestillingsID = flyBestilling.FlyBestillingsID;
+                    nyBetaling.Kortnummer = innBetaling.Kortnummer;
+                    nyBetaling.Utlopsmnd = innBetaling.Utlopsmnd;
+                    nyBetaling.Utlopsaar = innBetaling.Utlopsaar;
+                    nyBetaling.Utlopsmnd = innBetaling.Utlopsmnd;
+                    nyBetaling.CVC = innBetaling.CVC;
+                    nyBetaling.Korttype = innBetaling.Korttype;
+
+                    db.BetalingsInfo.Add(nyBetaling);
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception feil)
+                {
+                    string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
+                    string text = feil.ToString();
+                    File.AppendAllText(path, text);
+                    return false;
+                }
+            }
+        }
     }
 }

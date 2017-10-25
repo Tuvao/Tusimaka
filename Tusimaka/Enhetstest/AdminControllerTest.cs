@@ -6,7 +6,6 @@ using Tusimaka.DAL;
 using Tusimaka.Model;
 using System.Web;
 using System.Web.Mvc;
-//using Session.MockUnitTest.Controllers;
 using MvcContrib.TestHelper;
 using System.Linq;
 using System.Collections.Generic;
@@ -23,7 +22,6 @@ namespace Tusimaka.Enhetstest
             var SessionMock = new TestControllerBuilder();
             var controller = new AdminController();
             SessionMock.InitializeController(controller);
-            // setningen under må være etter InitializeController
             controller.Session["LoggetInn"] = false;
             // Act
             var result = (ViewResult)controller.LoggInn();
@@ -94,7 +92,6 @@ namespace Tusimaka.Enhetstest
             var SessionMock = new TestControllerBuilder();
             var controller = new AdminController();
             SessionMock.InitializeController(controller);
-            // setningen under må være etter InitializeController
             controller.Session["LoggetInn"] = true;
             // Act
             var result = (ViewResult)controller.AdminStart();
@@ -108,7 +105,6 @@ namespace Tusimaka.Enhetstest
             var SessionMock = new TestControllerBuilder();
             var controller = new AdminController();
             SessionMock.InitializeController(controller);
-            // setningen under må være etter InitializeController
             controller.Session["LoggetInn"] = false;
             // Act
             var result = (RedirectToRouteResult)controller.AdminStart();
@@ -124,7 +120,6 @@ namespace Tusimaka.Enhetstest
             var SessionMock = new TestControllerBuilder();
             var controller = new AdminController(new AdminFlyruterBLL(new AdminFlyruterDALRepositoryStub()));
             SessionMock.InitializeController(controller);
-            // setningen under må være etter InitializeController
             controller.Session["LoggetInn"] = true;
             var forventetResultat = new List<Strekning>();
             var flyrute = new Strekning()
@@ -167,7 +162,6 @@ namespace Tusimaka.Enhetstest
             var SessionMock = new TestControllerBuilder();
             var controller = new AdminController();
             SessionMock.InitializeController(controller);
-            // setningen under må være etter InitializeController
             controller.Session["LoggetInn"] = false;
             // Act
             var result = (RedirectToRouteResult)controller.FlyruterAdministrer();
@@ -183,7 +177,6 @@ namespace Tusimaka.Enhetstest
             var SessionMock = new TestControllerBuilder();
             var controller = new AdminController(new AdminKundeBLL(new AdminKundeDALRepositoryStub()));
             SessionMock.InitializeController(controller);
-            // setningen under må være etter InitializeController
             controller.Session["LoggetInn"] = true;
             var forventetResultat = new List<Kunde>();
             var kunde = new Kunde()
@@ -222,7 +215,6 @@ namespace Tusimaka.Enhetstest
             var SessionMock = new TestControllerBuilder();
             var controller = new AdminController();
             SessionMock.InitializeController(controller);
-            // setningen under må være etter InitializeController
             controller.Session["LoggetInn"] = false;
             // Act
             var result = (RedirectToRouteResult)controller.KundeAdministrer();
@@ -238,7 +230,6 @@ namespace Tusimaka.Enhetstest
             var SessionMock = new TestControllerBuilder();
             var controller = new AdminController(new AdminKundeBLL(new AdminKundeDALRepositoryStub()));
             SessionMock.InitializeController(controller);
-            // setningen under må være etter InitializeController
             controller.Session["LoggetInn"] = true;
 
             // Act
@@ -253,7 +244,6 @@ namespace Tusimaka.Enhetstest
             var SessionMock = new TestControllerBuilder();
             var controller = new AdminController(new AdminKundeBLL(new AdminKundeDALRepositoryStub()));
             SessionMock.InitializeController(controller);
-            // setningen under må være etter InitializeController
             controller.Session["LoggetInn"] = true;
 
             // Act
@@ -268,7 +258,6 @@ namespace Tusimaka.Enhetstest
             var SessionMock = new TestControllerBuilder();
             var controller = new AdminController(new AdminKundeBLL(new AdminKundeDALRepositoryStub()));
             SessionMock.InitializeController(controller);
-            // setningen under må være etter InitializeController
             controller.Session["LoggetInn"] = true;
             var innKunde = new Kunde()
             {
@@ -291,7 +280,6 @@ namespace Tusimaka.Enhetstest
             var SessionMock = new TestControllerBuilder();
             var controller = new AdminController();
             SessionMock.InitializeController(controller);
-            // setningen under må være etter InitializeController
             controller.Session["LoggetInn"] = false;
             // Act
             var result = (RedirectToRouteResult)controller.EndreKunde(1);
@@ -307,7 +295,6 @@ namespace Tusimaka.Enhetstest
             var SessionMock = new TestControllerBuilder();
             var controller = new AdminController(new AdminKundeBLL(new AdminKundeDALRepositoryStub()));
             SessionMock.InitializeController(controller);
-            // setningen under må være etter InitializeController
             controller.Session["LoggetInn"] = true;
             var innKunde = new Kunde();
             innKunde.Fornavn = "";
@@ -325,7 +312,6 @@ namespace Tusimaka.Enhetstest
             var SessionMock = new TestControllerBuilder();
             var controller = new AdminController(new AdminKundeBLL(new AdminKundeDALRepositoryStub()));
             SessionMock.InitializeController(controller);
-            // setningen under må være etter InitializeController
             controller.Session["LoggetInn"] = true;
             var innKunde = new Kunde()
             {
@@ -364,7 +350,6 @@ namespace Tusimaka.Enhetstest
             var SessionMock = new TestControllerBuilder();
             var controller = new AdminController(new KundeBLL(new KundeRepositoryStub()));
             SessionMock.InitializeController(controller);
-            // setningen under må være etter InitializeController
             controller.Session["LoggetInn"] = true;
 
             // Act
@@ -381,7 +366,6 @@ namespace Tusimaka.Enhetstest
             var SessionMock = new TestControllerBuilder();
             var controller = new AdminController(new KundeBLL(new KundeRepositoryStub()));
             SessionMock.InitializeController(controller);
-            // setningen under må være etter InitializeController
             controller.Session["LoggetInn"] = true;
             var innKunde = new Kunde();
             innKunde.Fornavn = "";
@@ -399,7 +383,6 @@ namespace Tusimaka.Enhetstest
             var SessionMock = new TestControllerBuilder();
             var controller = new AdminController(new KundeBLL(new KundeRepositoryStub()));
             SessionMock.InitializeController(controller);
-            // setningen under må være etter InitializeController
             controller.Session["LoggetInn"] = true;
             var innKunde = new Kunde()
             {
@@ -422,7 +405,6 @@ namespace Tusimaka.Enhetstest
             var SessionMock = new TestControllerBuilder();
             var controller = new AdminController();
             SessionMock.InitializeController(controller);
-            // setningen under må være etter InitializeController
             controller.Session["LoggetInn"] = false;
             // Act
             var result = (RedirectToRouteResult)controller.RegistrerKunde();
@@ -438,7 +420,6 @@ namespace Tusimaka.Enhetstest
             var SessionMock = new TestControllerBuilder();
             var controller = new AdminController(new KundeBLL(new KundeRepositoryStub()));
             SessionMock.InitializeController(controller);
-            // setningen under må være etter InitializeController
             controller.Session["LoggetInn"] = true;
 
             // Act
@@ -454,7 +435,6 @@ namespace Tusimaka.Enhetstest
             var SessionMock = new TestControllerBuilder();
             var controller = new AdminController(new AdminFlyruterBLL(new AdminFlyruterDALRepositoryStub()));
             SessionMock.InitializeController(controller);
-            // setningen under må være etter InitializeController
             controller.Session["LoggetInn"] = true;
             var innFlyrute = new Strekning()
             {
@@ -481,7 +461,6 @@ namespace Tusimaka.Enhetstest
             var SessionMock = new TestControllerBuilder();
             var controller = new AdminController();
             SessionMock.InitializeController(controller);
-            // setningen under må være etter InitializeController
             controller.Session["LoggetInn"] = false;
             // Act
             var result = (RedirectToRouteResult)controller.RegistrerFlyrute();
@@ -515,7 +494,6 @@ namespace Tusimaka.Enhetstest
             var SessionMock = new TestControllerBuilder();
             var controller = new AdminController(new AdminFlyruterBLL(new AdminFlyruterDALRepositoryStub()));
             SessionMock.InitializeController(controller);
-            // setningen under må være etter InitializeController
             controller.Session["LoggetInn"] = true;
 
             // Act
@@ -530,7 +508,6 @@ namespace Tusimaka.Enhetstest
             var SessionMock = new TestControllerBuilder();
             var controller = new AdminController(new AdminFlyruterBLL(new AdminFlyruterDALRepositoryStub()));
             SessionMock.InitializeController(controller);
-            // setningen under må være etter InitializeController
             controller.Session["LoggetInn"] = false;
 
             // Act
@@ -546,7 +523,6 @@ namespace Tusimaka.Enhetstest
             var SessionMock = new TestControllerBuilder();
             var controller = new AdminController(new AdminFlyruterBLL(new AdminFlyruterDALRepositoryStub()));
             SessionMock.InitializeController(controller);
-            // setningen under må være etter InitializeController
             controller.Session["LoggetInn"] = true;
             var innFlyrute = new Strekning();
             innFlyrute.FraFlyplass = "";
@@ -566,7 +542,6 @@ namespace Tusimaka.Enhetstest
             var SessionMock = new TestControllerBuilder();
             var controller = new AdminController(new AdminFlyruterBLL(new AdminFlyruterDALRepositoryStub()));
             SessionMock.InitializeController(controller);
-            // setningen under må være etter InitializeController
             controller.Session["LoggetInn"] = true;
 
             var innFlyrute = new Strekning()
@@ -593,7 +568,6 @@ namespace Tusimaka.Enhetstest
             var SessionMock = new TestControllerBuilder();
             var controller = new AdminController(new AdminFlyruterBLL(new AdminFlyruterDALRepositoryStub()));
             SessionMock.InitializeController(controller);
-            // setningen under må være etter InitializeController
             controller.Session["LoggetInn"] = true;
             var innFlyrute = new Strekning();
              innFlyrute.FraFlyplass = "";
@@ -612,7 +586,6 @@ namespace Tusimaka.Enhetstest
             var SessionMock = new TestControllerBuilder();
             var controller = new AdminController(new AdminFlyruterBLL(new AdminFlyruterDALRepositoryStub()));
             SessionMock.InitializeController(controller);
-            // setningen under må være etter InitializeController
             controller.Session["LoggetInn"] = true;
             var innFlyrute = new Strekning()
             {
@@ -656,7 +629,6 @@ namespace Tusimaka.Enhetstest
             var SessionMock = new TestControllerBuilder();
             var controller = new AdminController(new AdminBestillingBLL(new AdminBestillingDALRepositoryStub()));
             SessionMock.InitializeController(controller);
-            // setningen under må være etter InitializeController
             controller.Session["LoggetInn"] = true;
 
             // Act
@@ -672,7 +644,6 @@ namespace Tusimaka.Enhetstest
             var SessionMock = new TestControllerBuilder();
             var controller = new AdminController(new AdminBestillingBLL(new AdminBestillingDALRepositoryStub()));
             SessionMock.InitializeController(controller);
-            // setningen under må være etter InitializeController
             controller.Session["LoggetInn"] = true;
             var nyBestilling = new FlyBestillinger();
             nyBestilling.FlyBestillingsID = 1; 
@@ -680,7 +651,7 @@ namespace Tusimaka.Enhetstest
             var result = (RedirectToRouteResult)controller.NyKundeBestilling(1, nyBestilling);
 
             // Assert
-            Assert.AreEqual(result.RouteValues.Values.First(), "KundeAdministrer");
+            Assert.AreEqual(result.RouteValues.Values.First(), "AdminBetalingNyBestilling");
         }
         [TestMethod]
         public void KundeBestillinger_False_Session()
@@ -689,7 +660,6 @@ namespace Tusimaka.Enhetstest
             var SessionMock = new TestControllerBuilder();
             var controller = new AdminController();
             SessionMock.InitializeController(controller);
-            // setningen under må være etter InitializeController
             controller.Session["LoggetInn"] = false;
             // Act
             var result = (RedirectToRouteResult)controller.KundeBestillinger(1);
@@ -704,7 +674,6 @@ namespace Tusimaka.Enhetstest
             var SessionMock = new TestControllerBuilder();
             var controller = new AdminController();
             SessionMock.InitializeController(controller);
-            // setningen under må være etter InitializeController
             controller.Session["LoggetInn"] = false;
             // Act
             var result = (RedirectToRouteResult)controller.NyKundeBestilling();
@@ -719,12 +688,27 @@ namespace Tusimaka.Enhetstest
             var SessionMock = new TestControllerBuilder();
             var controller = new AdminController(new AdminBestillingBLL(new AdminBestillingDALRepositoryStub()));
             SessionMock.InitializeController(controller);
-            // setningen under må være etter InitializeController
             controller.Session["LoggetInn"] = true;
             var nyBestilling = new FlyBestillinger();
             nyBestilling.FlyBestillingsID = 0;
             // Act
             var result = (ViewResult)controller.NyKundeBestilling(0, nyBestilling);
+
+            // Assert
+            Assert.AreEqual(result.ViewName, "");
+        }
+        [TestMethod]
+        public void NyKundeBestilling_feil_Forventet_ID_DB()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController(new AdminBestillingBLL(new AdminBestillingDALRepositoryStub()));
+            SessionMock.InitializeController(controller);
+            controller.Session["LoggetInn"] = true;
+            var nyBestilling = new FlyBestillinger();
+            nyBestilling.FlyBestillingsID = 0;
+            // Act
+            var result = (ViewResult)controller.NyKundeBestilling(1, nyBestilling);
 
             // Assert
             Assert.AreEqual(result.ViewName, "");
@@ -737,7 +721,6 @@ namespace Tusimaka.Enhetstest
             var SessionMock = new TestControllerBuilder();
             var controller = new AdminController(new AdminBestillingBLL(new AdminBestillingDALRepositoryStub()));
             SessionMock.InitializeController(controller);
-            // setningen under må være etter InitializeController
             controller.Session["LoggetInn"] = true;
             var skrivUtKundeBestilling = new List<KundeBestillinger>();
             var bestilling = new KundeBestillinger
@@ -778,6 +761,95 @@ namespace Tusimaka.Enhetstest
                 Assert.AreEqual(skrivUtKundeBestilling[i].AntallPersoner, resultat[i].AntallPersoner);
             }
 
+        }
+        [TestMethod]
+        public void AdminBetalingNyBestilling_View_OK()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController();
+            SessionMock.InitializeController(controller);
+            controller.Session["LoggetInn"] = true;
+            // Act
+            var result = (ViewResult)controller.AdminBetalingNyBestilling();
+            // Assert
+            Assert.AreEqual("", result.ViewName);
+        }
+        [TestMethod]
+        public void AdminBetalingNyBestilling_View_False_Session()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController();
+            SessionMock.InitializeController(controller);
+            controller.Session["LoggetInn"] = false;
+            // Act
+            var result = (RedirectToRouteResult)controller.AdminBetalingNyBestilling();
+            // Assert
+            Assert.AreEqual(result.RouteName, "");
+            Assert.AreEqual(result.RouteValues.Values.First(), "LoggInn");
+        }
+        [TestMethod]
+        public void AdminBetalingNyBestilling_OK()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController(new AdminBestillingBLL(new AdminBestillingDALRepositoryStub()));
+            SessionMock.InitializeController(controller);
+            controller.Session["LoggetInn"] = true;
+            var nyBetaling = new BetalingsInformasjon();
+            nyBetaling.BestillingsID = 1;
+            // Act
+            var result = (RedirectToRouteResult)controller.AdminBetalingNyBestilling(1, nyBetaling);
+
+            // Assert
+            Assert.AreEqual(result.RouteValues.Values.First(), "KundeAdministrer");
+        }
+        [TestMethod]
+        public void AdminBetalingNyBestilling_False_Session()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController();
+            SessionMock.InitializeController(controller);
+            controller.Session["LoggetInn"] = false;
+            // Act
+            var result = (RedirectToRouteResult)controller.AdminBetalingNyBestilling();
+            // Assert
+            Assert.AreEqual(result.RouteName, "");
+            Assert.AreEqual(result.RouteValues.Values.First(), "LoggInn");
+        }
+        [TestMethod]
+        public void AdminBetalingNyBestilling_feil_DB()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController(new AdminBestillingBLL(new AdminBestillingDALRepositoryStub()));
+            SessionMock.InitializeController(controller);
+            controller.Session["LoggetInn"] = true;
+            var nyBetaling = new BetalingsInformasjon();
+            nyBetaling.BestillingsID = 0;
+            // Act
+            var result = (ViewResult)controller.AdminBetalingNyBestilling(0, nyBetaling);
+
+            // Assert
+            Assert.AreEqual(result.ViewName, "");
+        }
+        [TestMethod]
+        public void AdminBetalingNyBestilling_feil_Forventet_ID_DB()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController(new AdminBestillingBLL(new AdminBestillingDALRepositoryStub()));
+            SessionMock.InitializeController(controller);
+            controller.Session["LoggetInn"] = true;
+            var nyBetaling = new BetalingsInformasjon();
+            nyBetaling.BestillingsID = 0;
+            // Act
+            var result = (ViewResult)controller.AdminBetalingNyBestilling(1, nyBetaling);
+
+            // Assert
+            Assert.AreEqual(result.ViewName, "");
         }
 
         [TestMethod]
