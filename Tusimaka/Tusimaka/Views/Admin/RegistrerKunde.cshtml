@@ -4,7 +4,10 @@
     ViewBag.Title = "RegistrerKunde";
 }
 <link href="~/Content/StyleSheet.css" rel="stylesheet" />
-<h2>Registrer Kunde</h2>
+<div class="row">
+    <h2>Registrer Kunde</h2>
+    <button class="loggUt">LOGG UT</button>
+</div>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
