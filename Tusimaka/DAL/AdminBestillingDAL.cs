@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Script.Serialization;
 using Tusimaka.Model;
 
@@ -32,6 +33,29 @@ namespace Tusimaka.DAL
                         ok.Tid = i.FlyBestilling.Strekninger.tid;
                         ok.Pris = i.FlyBestilling.Strekninger.pris;
                         ok.AntallPersoner = i.FlyBestilling.antallPersoner;
+                        List<BetalingsInfo> betalingsinfo = db.BetalingsInfo.Where(bi => bi.FlyBestillingsID == i.FlyBestillingsID).ToList();
+                        foreach (var b in betalingsinfo)
+                        {
+                            string kontonrString = b.Kortnummer.ToString();
+                            string skjultKontonr = "";
+                            for (var bokstavI = 0; bokstavI< kontonrString.Length; bokstavI++)
+                            {
+                                if (bokstavI % 4 == 0)
+                                {
+                                    skjultKontonr += " ";
+                                }
+                                if(bokstavI < kontonrString.Length - 4)
+                                {
+                                    skjultKontonr += "x";
+                                }
+                                else
+                                {
+                                    skjultKontonr += kontonrString[bokstavI];
+                                }
+                            }
+                            ok.Kortnummer = skjultKontonr;
+                            ok.Korttype = b.Korttype;
+                        }
                         
                         listeKundesFlyBestillinger.Add(ok);
                     }
@@ -39,7 +63,7 @@ namespace Tusimaka.DAL
                 }
                 catch (Exception feil)
                 {
-                    string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
+                    string path = HttpContext.Current.Server.MapPath("~/logg.txt");
                     string text = feil.ToString();
                     File.AppendAllText(path, text);
                     return null;
@@ -76,7 +100,7 @@ namespace Tusimaka.DAL
                 }
                 catch (Exception feil)
                 {
-                    string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
+                    string path = HttpContext.Current.Server.MapPath("~/logg.txt");
                     string text = feil.ToString();
                     File.AppendAllText(path, text);
                     return false;
@@ -97,7 +121,7 @@ namespace Tusimaka.DAL
             }
             catch (Exception feil)
             {
-                string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
+                string path = HttpContext.Current.Server.MapPath("~/logg.txt");
                 string text = feil.ToString();
                 File.AppendAllText(path, text);
                 return false;
@@ -126,7 +150,7 @@ namespace Tusimaka.DAL
                 }
                 catch (Exception feil)
                 {
-                    string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
+                    string path = HttpContext.Current.Server.MapPath("~/logg.txt");
                     string text = feil.ToString();
                     File.AppendAllText(path, text);
                     return false;

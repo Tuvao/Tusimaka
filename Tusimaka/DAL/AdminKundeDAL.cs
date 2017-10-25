@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using Tusimaka.Model;
 
 namespace Tusimaka.DAL
@@ -28,7 +29,7 @@ namespace Tusimaka.DAL
                 }
                 catch (Exception feil)
                 {
-                    string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
+                    string path = HttpContext.Current.Server.MapPath("~/logg.txt");
                     string text = feil.ToString();
                     File.AppendAllText(path, text);
                     return null;
@@ -48,7 +49,7 @@ namespace Tusimaka.DAL
                 }
                 catch (Exception feil)
                 {
-                    string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
+                    string path = HttpContext.Current.Server.MapPath("~/logg.txt");
                     string text = feil.ToString();
                     File.AppendAllText(path, text);
                     return false;
@@ -71,7 +72,7 @@ namespace Tusimaka.DAL
                 }
                 catch (Exception feil)
                 {
-                    string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
+                    string path = HttpContext.Current.Server.MapPath("~/logg.txt");
                     string text = feil.ToString();
                     File.AppendAllText(path, text);
                     return false;
@@ -105,7 +106,7 @@ namespace Tusimaka.DAL
                 }
                 catch (Exception feil)
                 {
-                    string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
+                    string path = HttpContext.Current.Server.MapPath("~/logg.txt");
                     string text = feil.ToString();
                     File.AppendAllText(path, text);
                     return null;

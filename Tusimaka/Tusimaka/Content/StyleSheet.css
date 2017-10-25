@@ -154,9 +154,10 @@ td {
     display: block;
     font-size: 1.3em;
 }
-.BekreftelseKundeInfoDiv td{
-    padding-left: 0em;
-}
+    .BekreftelseKundeInfoDiv td{
+        padding-left: 0em;
+    }
+        
 .BekreftelsesDivBoks {
     display: inline-block;
     max-width: 40%;
@@ -171,15 +172,14 @@ td {
         padding: 1em;
         font-size: 1.3em;
     }
-.BekreftelsesDivBoks th {
-    padding: 4%;
-    padding-right: 3em;
-}
+    .BekreftelsesDivBoks th {
+        padding: 4%;
+        padding-right: 3em;
+    }
     .BekreftelsesDivBoks h4 {
         border-bottom: 1px solid white;
         padding-bottom: 1%;
     }
-
 
 input[type=radio] {
     width: 30px;
@@ -191,14 +191,6 @@ input[type=date]::-webkit-inner-spin-button {
     display: none;
 }
 
-
-
-
-ul {
-    list-style-type: none;
-    margin-top: 4em;
-    margin-bottom:4em;
-}
 .adminStartKnapp a,
 .adminStartKnapp a:hover, .adminStartKnapp a:focus {
     color: white;
@@ -225,6 +217,7 @@ p.fyll_inn_skjema{
     display: inline-block;
     margin-right: 3%;
 }
+
 .tabKnapp{
     font-size: 1.1em;
     margin:0.3em;
@@ -248,10 +241,11 @@ p.fyll_inn_skjema{
     }
 
 .adminStartMiniKnapp a {
-    text-decoration:none;
-    color:black;
-}
-.adminStartMiniKnapp .slett, .slett a {
+        text-decoration:none;
+        color:black;
+    }
+
+.adminStartMiniKnapp .slett, .slett a, #sletteFlyruteModalKnapp, #sletteKundeBestillingModalKnapp, #sletteModalKnapp {
     background-color: #B62B32;
     color: white;
 }
@@ -278,46 +272,47 @@ p.fyll_inn_skjema{
     display: inline-block;
     text-align: center;
 }
-.adminMiniMeny .miniMenyKnapp a {
-    color:white;
-    text-decoration:none;
-}
-    .adminMiniMeny .miniMenyKnapp:hover {
-        opacity: 0.7;
+    .adminMiniMeny .miniMenyKnapp a {
+        color:white;
+        text-decoration:none;
     }
+        .adminMiniMeny .miniMenyKnapp:hover {
+            opacity: 0.7;
+        }
 
 .valg .knapp {
     font-size: 1em;
     display: inline-block;
     text-align: center;
-    padding: 1em 2em;
+    padding: 0.7em 2em;
     font-size: 1.3em;
     min-height: 3em;
     min-width: 9em;
     max-width: 9em;
     border: none;
-    margin-top: 0.4em;
     background-color: lightgrey;
 }
-
     .valg .knapp a {
         text-decoration: none;
         color: black;
     }
 
-.bilde {
-    opacity: 0.07;
-    display:inline-block;
-    margin-right:6em;
-
+.loggUt {
+    float: right;
+    clear: left;
+    margin-top: 2em;
+    font-size: 1em;
+    color: white;
+    min-height: 1.5em;
+    min-width: 9em;
+    max-width: 12em;
+    padding: 0.5em 0.5em;
+    background-color: black;
+    border:none;
+    margin: 1em 1em 1em 0em;
+    text-align: center;
 }
 
-#loggInnUtKnapp {
-    float:right;
+h2 {
+    display: inline-block;
 }
-
-/*div .logoBagrunn {
-    background-image:url('tusimakaLogooo.png');
-    display:inline-block;
-    width:300px;
-}*/

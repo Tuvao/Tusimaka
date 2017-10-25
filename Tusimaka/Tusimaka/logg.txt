@@ -1,0 +1,10 @@
+System.IO.DirectoryNotFoundException: Finner ikke en del av banen C:\Users\Bruker\source\repos\Tusimaka\Tusimaka\Tusimaka\Admin\logg.txt.
+   ved System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   ved System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   ved System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   ved System.IO.StreamWriter.CreateFile(String path, Boolean append, Boolean checkHost)
+   ved System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize, Boolean checkHost)
+   ved System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding)
+   ved System.IO.File.InternalAppendAllText(String path, String contents, Encoding encoding)
+   ved System.IO.File.AppendAllText(String path, String contents)
+   ved Tusimaka.DAL.AdminKundeDAL.hentAlleKunder() i C:\Users\Bruker\source\repos\Tusimaka\Tusimaka\DAL\AdminKundeDAL.cs:linje 31

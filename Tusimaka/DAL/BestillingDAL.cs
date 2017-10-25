@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Script.Serialization;
 using Tusimaka.DAL;
 using Tusimaka.Model;
@@ -34,7 +35,7 @@ namespace Tusimaka.DAL
                 }
                 catch (Exception feil)
                 {
-                    string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
+                    string path = HttpContext.Current.Server.MapPath("~/logg.txt");
                     string text = feil.ToString();
                     File.AppendAllText(path, text);
                     return false;
@@ -63,7 +64,7 @@ namespace Tusimaka.DAL
                 }
                 catch (Exception feil)
                 {
-                    string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
+                    string path = HttpContext.Current.Server.MapPath("~/logg.txt");
                     string text = feil.ToString();
                     File.AppendAllText(path, text);
                     return false;
@@ -84,7 +85,7 @@ namespace Tusimaka.DAL
                 }
                 catch(Exception feil)
                 {
-                    string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
+                    string path = HttpContext.Current.Server.MapPath("~/logg.txt");
                     string text = feil.ToString();
                     File.AppendAllText(path, text);
                     return null;
@@ -107,17 +108,7 @@ namespace Tusimaka.DAL
                 }
                 catch (Exception feil)
                 {
-                    //Vi må google system path ett eller annet
-                    //denne koden er hentet fra en nettside
-                    string path = "C:\\logg.txt";
-
-                    string extension = Path.GetExtension(path);
-                    string filnavn = Path.GetFileName(path);
-                    string filnavnNoExtension = Path.GetFileNameWithoutExtension(path);
-                    string root = Path.GetPathRoot(path);
-
-                    //Vi må lagre slik at den skal være tilgjengelig hvis man flyyer mappen
-                    //string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
+                    string path = HttpContext.Current.Server.MapPath("~/logg.txt");
                     string text = feil.ToString();
                     File.AppendAllText(path, text);
                     return null;
@@ -138,7 +129,7 @@ namespace Tusimaka.DAL
                 }
                 catch (Exception feil)
                 {
-                    string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
+                    string path = HttpContext.Current.Server.MapPath("~/logg.txt");
                     string text = feil.ToString();
                     File.AppendAllText(path, text);
                     return null;
