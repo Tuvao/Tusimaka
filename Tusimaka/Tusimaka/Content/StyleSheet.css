@@ -10,34 +10,26 @@
 .logo {
     width: 5em;
     height: 4.5em;
-    -webkit-animation-name: tusimaka;
-    animation-timing-function: ease-in-out;
+    /*-webkit-animation-name: tusimaka;
+    animation-timing-function: ease-out;
     -webkit-animation-duration: 4s;
-    animation-name: tusimaka;
+    animation-name: tusimaka;*/
     animation-duration: 10s;
     font-size: 10em;
+    animation-name: tusimaka;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    opacity:1;
 }
 
 
-@-webkit-keyframes tusimaka {
+@keyframes tusimaka {
     0% {
-        opacity: 1;
-    }
-
-    25% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0;
-    }
-
-    75% {
         opacity: 0;
     }
 
     100% {
-        opacity: 0;
+        opacity: 1;
     }
 }
 
