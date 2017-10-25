@@ -247,6 +247,21 @@ namespace Tusimaka.Enhetstest
             Assert.AreEqual(resultat.ViewName, "");
         }
         [TestMethod]
+        public void EndreKunde_View_Feil_Henting_ID_DB()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController(new AdminKundeBLL(new AdminKundeDALRepositoryStub()));
+            SessionMock.InitializeController(controller);
+            // setningen under må være etter InitializeController
+            controller.Session["LoggetInn"] = true;
+
+            // Act
+            var resultat = (ViewResult)controller.EndreKunde(0);
+            // Assert
+            Assert.AreEqual(resultat.ViewName, "");
+        }
+        [TestMethod]
         public void EndreKunde_OK()
         {
             // Arrange

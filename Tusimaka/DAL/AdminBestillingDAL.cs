@@ -41,7 +41,7 @@ namespace Tusimaka.DAL
                     string path = @"C:\Users\Bruker\source\repos\Tusimaka\logg.txt";
                     string text = feil.ToString();
                     File.AppendAllText(path, text);
-                    return new List<KundeBestillinger>();
+                    return null;
                 }
             }
         }
