@@ -75,16 +75,16 @@ namespace Tusimaka.DAL
         public byte[] passord { get; set; }
     }
 
-    //public class ChangeLog
-    //{
-    //    public int Id { get; set; }
-    //    public string EntityName { get; set; }
-    //    public string PropertyName { get; set; }
-    //    public string PrimaryKeyValue { get; set; }
-    //    public string OldValue { get; set; }
-    //    public string NewValue { get; set; }
-    //    public DateTime DateChanged { get; set; }
-    //}
+    public class ChangeLog
+    {
+        public int Id { get; set; }
+        public string EntityName { get; set; }
+        public string PropertyName { get; set; }
+        public string PrimaryKeyValue { get; set; }
+        public string OldValue { get; set; }
+        public string NewValue { get; set; }
+        public DateTime DateChanged { get; set; }
+    }
 
     public class DBContext : DbContext
     {
@@ -95,56 +95,59 @@ namespace Tusimaka.DAL
             
             Database.SetInitializer(new DBInit());
         }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        }
         public virtual DbSet<Strekninger> Strekninger { get; set; }
         public virtual DbSet<Kunder> Kunder { get; set; }
         public virtual DbSet<FlyBestilling> FlyBestilling { get; set; }
         public virtual DbSet<BetalingsInfo> BetalingsInfo{ get; set; }
         public virtual DbSet<FlyBestillingKunder> FlyBestillingKunder { get; set; }
         public virtual DbSet<AdminBrukere> AdminBrukere { get; set; }
-        //public virtual DbSet<ChangeLog> ChangeLogger { get; set; }
+        public virtual DbSet<ChangeLog> ChangeLogs { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+
+        //kode kopiert fra link, se readme.txt   
+        public override int SaveChanges()
         {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            var modifiedEntities = ChangeTracker.Entries()
+                .Where(p => p.State == EntityState.Modified).ToList();
+            var now = DateTime.UtcNow;
+
+            foreach (var change in modifiedEntities)
+            {
+                var entityName = change.Entity.GetType().Name;
+                var primaryKey = GetPrimaryKeyValue(change);
+
+                foreach (var prop in change.OriginalValues.PropertyNames)
+                {
+                    var originalValue = change.OriginalValues[prop].ToString();
+                    var currentValue = change.CurrentValues[prop].ToString();
+                    if (originalValue != currentValue)
+                    {
+                        ChangeLog log = new ChangeLog()
+                        {
+                            EntityName = entityName,
+                            PrimaryKeyValue = primaryKey.ToString(),
+                            PropertyName = prop,
+                            OldValue = originalValue,
+                            NewValue = currentValue,
+                            DateChanged = now
+                        };
+                        ChangeLogs.Add(log);
+                    }
+                }
+            }
+            return base.SaveChanges();
         }
+        
 
-        //Kode kopiert fra link, se readme.txt
-        //public override int SaveChanges()
-        //{
-        //    var modifiedEntities = ChangeTracker.Entries()
-        //        .Where(p => p.State == EntityState.Modified).ToList();
-        //    var now = DateTime.UtcNow;
 
-        //    foreach (var change in modifiedEntities)
-        //    {
-        //        var entityName = change.Entity.GetType().Name;
-        //        var primaryKey = GetPrimaryKeyValue(change);
-
-        //        foreach (var prop in change.OriginalValues.PropertyNames)
-        //        {
-        //            var originalValue = change.OriginalValues[prop].ToString();
-        //            var currentValue = change.CurrentValues[prop].ToString();
-        //            if (originalValue != currentValue)
-        //            {
-        //                ChangeLog log = new ChangeLog()
-        //                {
-        //                    EntityName = entityName,
-        //                    PrimaryKeyValue = primaryKey.ToString(),
-        //                    PropertyName = prop,
-        //                    OldValue = originalValue,
-        //                    NewValue = currentValue,
-        //                    DateChanged = now
-        //                };
-        //                ChangeLogger.Add(log);
-        //            }
-        //        }
-        //    }
-        //    return base.SaveChanges();
-        //}
-
-        private object GetPrimaryKeyValue(DbEntityEntry change)
+        object GetPrimaryKeyValue(DbEntityEntry entry)
         {
-            throw new NotImplementedException();
+            var objectStateEntry = ((IObjectContextAdapter)this).ObjectContext.ObjectStateManager.GetObjectStateEntry(entry.Entity);
+            return objectStateEntry.EntityKey.EntityKeyValues[0].Value;
         }
     }
 }
