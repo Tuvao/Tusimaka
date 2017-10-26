@@ -33,13 +33,26 @@
 </script>
 <div class="container">
     <div class="row">
-        <h2>Kundebestillinger</h2>
-        <span class="loggUt">@Html.ActionLink("LOGG UT", "LoggUt")</span>
+        <div class="col-lg-12">
+            <h2>Kundebestillinger</h2>
+        </div>
     </div>
-    @* Her må det endres til å bare gå ut en gang... *@
-    @* Og vise noe når det ikke er noen bestillinger... *@
-    @* Funker ikke når kunde ikke har bestillinger *@
-    @for (int index = 0; index < 1; index++)
+
+    @if (Model.Count() == 0)
+    {
+        <h3>Det er ingen bestillinger å vise for denne kunden!</h3>
+    }
+    else
+    {
+        <h3> Viser flybestillinger for 
+            @Html.DisplayFor(model => model.First().Fornavn)
+            @Html.DisplayFor(model => model.First().Etternavn)
+        </h3>
+
+
+
+        @*@Html.DisplayFor(model => model.First().Fornavn)*@
+    @*@for (int index = 0; index < 1; index++)
     {
         <h2>
             Viser flybestillinger for
@@ -52,7 +65,7 @@
             Kundeid:
             @Html.DisplayFor(model => model.ToArray()[index].KundeID)
         </h4>
-    }
+    }*@
 
 
     <p>
@@ -122,7 +135,7 @@
                     @Html.DisplayFor(modelItem => item.Korttype)
                 </td>
                 <td class="adminStartMiniKnapp">
-                    <span class="miniKnapp">@Html.ActionLink("Edit", "EndreKundeBestilling", new { id = item.KundeID }, new { @class = "tabKnapp" }) </span>
+                    <span class="miniKnapp">@Html.ActionLink("Edit", "EndreKundeBestillinger", new { id = item.KundeID }, new { @class = "tabKnapp" }) </span>
                     <span class="miniKnapp slett">
                         <a href="#sletteKundeBestillingModal" class="tabKnapp" id="sletteKnapp"
                            data-navn="Kunde: id - @item.KundeID  Fornavn - @item.Fornavn Etternavn - @item.Etternavn<br/>FlightNR: @item.StrekningsID <br/>Fra flyplass: @item.FraFlyplass<br/>Til flyplass @item.TilFlyplass <br/>Dato: @item.Dato  <br/> Tidspunkt: @item.Tid"
@@ -134,4 +147,5 @@
 
     </table>
     @Html.Partial("SlettKundeBestillingModal")
+    }
 </div>

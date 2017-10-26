@@ -664,6 +664,128 @@ namespace Tusimaka.Enhetstest
             // Assert
             Assert.AreEqual(result.ViewName, "");
         }
+        [TestMethod]
+        public void EndreKundeBestilling_View_OK()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController(new AdminBestillingBLL(new AdminBestillingDALRepositoryStub()));
+            SessionMock.InitializeController(controller);
+            controller.Session["LoggetInn"] = true;
+            // Act
+            var resultat = (ViewResult)controller.EndreKundeBestillinger(1);
+            // Assert
+            Assert.AreEqual(resultat.ViewName, "");
+        }
+        [TestMethod]
+        public void EndreKundeBestillinger_View_Feil_Henting_ID_DB()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController(new AdminBestillingBLL(new AdminBestillingDALRepositoryStub()));
+            SessionMock.InitializeController(controller);
+            controller.Session["LoggetInn"] = true;
+            // Act
+            var resultat = (ViewResult)controller.EndreKundeBestillinger(0);
+            // Assert
+            Assert.AreEqual(resultat.ViewName, "");
+        }
+        [TestMethod]
+        public void EndreKundeBestilling_OK()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController(new AdminBestillingBLL(new AdminBestillingDALRepositoryStub()));
+            SessionMock.InitializeController(controller);
+            controller.Session["LoggetInn"] = true;
+            var innKundeBestilling = new KundeBestillinger()
+            {
+                KundeID = 1,
+                Fornavn = "Helene",
+                Etternavn = "Andersen",
+                StrekningsID = 1,
+                FraFlyplass = "Oslo",
+                TilFlyplass = "Bergen",
+                Dato = "2017-10-20",
+                Pris = 1234,
+                Tid = "12:30",
+                AntallPersoner = 4
+            };
+            // Act
+            var resultat = (RedirectToRouteResult)controller.EndreKundeBestillinger(1, innKundeBestilling);
+            // Assert
+            Assert.AreEqual(resultat.RouteValues.Values.First(), "KundeBestillinger");
+        }
+
+        [TestMethod]
+        public void EndreKundeBestillinger_False_Session()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController();
+            SessionMock.InitializeController(controller);
+            controller.Session["LoggetInn"] = false;
+            // Act
+            var result = (RedirectToRouteResult)controller.EndreKundeBestillinger(1);
+            // Assert
+            Assert.AreEqual(result.RouteValues.Values.First(), "LoggInn");
+        }
+
+        [TestMethod]
+        public void EndreKundeBestilling_feil_TomStreng_DB()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController(new AdminBestillingBLL(new AdminBestillingDALRepositoryStub()));
+            SessionMock.InitializeController(controller);
+            controller.Session["LoggetInn"] = true;
+            var innKundeBestilling = new KundeBestillinger()
+            {FraFlyplass = ""};
+            // Act
+            var resultat = (ViewResult)controller.EndreKundeBestillinger(1, innKundeBestilling);
+            // Assert
+            Assert.AreEqual(resultat.ViewName, "");
+        }
+        [TestMethod]
+        public void EndreKundeBestilling_feil_ID_DB()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController(new AdminBestillingBLL(new AdminBestillingDALRepositoryStub()));
+            SessionMock.InitializeController(controller);
+            controller.Session["LoggetInn"] = true;
+            var innKundeBestilling = new KundeBestillinger()
+            {
+                KundeID = 1,
+                Fornavn = "Helene",
+                Etternavn = "Andersen",
+                StrekningsID = 1,
+                FraFlyplass = "Oslo",
+                TilFlyplass = "Bergen",
+                Dato = "2017-10-20",
+                Pris = 1234,
+                Tid = "12:30",
+                AntallPersoner = 4
+            };
+            //act
+            var actionResult = (ViewResult)controller.EndreKundeBestillinger(0, innKundeBestilling);
+            // Assert
+            Assert.AreEqual(actionResult.ViewName, "");
+        }
+        [TestMethod]
+        public void EndreKundeBestilling_feil_validering_ModelState()
+        {
+            // Arrange
+            var controller = new AdminController(new AdminBestillingBLL(new AdminBestillingDALRepositoryStub()));
+            var innKundeBestilling = new KundeBestillinger();
+            controller.ViewData.ModelState.AddModelError("fornavn", "Fornavn må oppgis");
+            // Act
+            var actionResult = (ViewResult)controller.EndreKundeBestillinger(0, innKundeBestilling);
+            // Assert
+            Assert.IsTrue(actionResult.ViewData.ModelState.Count == 1);
+            Assert.AreEqual(actionResult.ViewData.ModelState["fornavn"].Errors[0].ErrorMessage, "Fornavn må oppgis");
+            Assert.AreEqual(actionResult.ViewName, "");
+        }
 
         [TestMethod]
         public void KundeBestillinger_List_alle_KundeBestillinger_OK()
@@ -821,10 +943,10 @@ namespace Tusimaka.Enhetstest
             var controller = new AdminController();
             SessionMock.InitializeController(controller);
             controller.Session["LoggetInn"] = true;
-            // Act
+            // Act;
             var result = (ViewResult)controller.LoggUt();
             // Assert
-            Assert.AreEqual("", result.ViewName);
+            Assert.AreEqual(result.ViewName, "");
         }
         [TestMethod]
         public void SlettKunde_Bool_OK()
