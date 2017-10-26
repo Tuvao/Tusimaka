@@ -63,4 +63,8 @@ System.IO.DirectoryNotFoundException: Finner ikke en del av banen C:\Users\Bruke
    ved System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
    ved System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()
    ved System.Linq.Queryable.FirstOrDefault[TSource](IQueryable`1 source, Expression`1 predicate)
-   ved Tusimaka.DAL.AdminDAL.Bruker_i_DB(AdminBruker innAdminBruker) i C:\Users\maria\source\repos\Tusimaka\Tusimaka\DAL\AdminDAL.cs:linje 21
+   ved Tusimaka.DAL.AdminDAL.Bruker_i_DB(AdminBruker innAdminBruker) i C:\Users\maria\source\repos\Tusimaka\Tusimaka\DAL\AdminDAL.cs:linje 21System.ArgumentNullException: Verdien kan ikke være null.
+Parameternavn: entity
+   ved System.Data.Entity.Utilities.Check.NotNull[T](T value, String parameterName)
+   ved System.Data.Entity.DbSet`1.Remove(TEntity entity)
+   ved Tusimaka.DAL.AdminBestillingDAL.SlettKundeBestilling(Int32 id) i C:\Users\Bruker\source\repos\Tusimaka\Tusimaka\DAL\AdminBestillingDAL.cs:linje 116
