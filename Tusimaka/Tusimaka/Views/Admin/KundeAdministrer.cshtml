@@ -7,9 +7,8 @@
 <script src="~/Scripts/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        
+            $(".navbar").find(".active").removeClass("active");
             $(".kundeAdministrer").addClass("active");
-        
         
         $('a[data-sletteModal=true]').click(function () {
             var data_navn = $(this).data('navn');
@@ -36,14 +35,16 @@
 </script>
 <div class="container">
     <div class="row">
-        <h2>Administrer Kunder</h2>
-        <span class="loggUt">@Html.ActionLink("LOGG UT", "LoggUt")</span>
+        <div class="col-lg-12">
+            <h2>Administrer Kunder</h2>
+        </div>
     </div>
 
     <div class="row">
-        <span class="miniMenyKnapp">@Html.ActionLink("TILBAKE", "AdminStart")</span>
-        <span class="miniMenyKnapp">@Html.ActionLink("LEGG TIL", "RegistrerKunde")</span>
-    </div>
+        <div class="col-lg-12">
+            <span class="miniMenyKnapp">@Html.ActionLink("TILBAKE", "AdminStart")</span>
+            <span class="miniMenyKnapp">@Html.ActionLink("LEGG TIL", "RegistrerKunde")</span>
+        </div>
 
     <table class="table">
         <tr>
@@ -91,4 +92,5 @@
         }
     </table>
     @Html.Partial("SlettKundeModal")
+    </div>
     </div>

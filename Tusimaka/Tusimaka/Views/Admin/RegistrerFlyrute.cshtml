@@ -4,6 +4,15 @@
     ViewBag.Title = "RegistrerFlyrute";
 }
 <link href="~/Content/StyleSheet.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+    //henter antall personer fra flyBestilling tabellen i DB
+    $(document).ready(function () {
+
+        $(".navbar").find(".active").removeClass("active");
+        $(".flyruterAdministrer").addClass("active");
+    });
+</script>
 
 <div class="container">
     <div class="row">

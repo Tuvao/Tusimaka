@@ -7,6 +7,10 @@
 <script type="text/javascript">
     //henter antall personer fra flyBestilling tabellen i DB
     $(document).ready(function () {
+
+        $(".navbar").find(".active").removeClass("active");
+        $(".kundeAdministrer").addClass("active");
+
         $.ajax({
             url: '/Home/hentAntallPersoner',
             type: 'GET',
