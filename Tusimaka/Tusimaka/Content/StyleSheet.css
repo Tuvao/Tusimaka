@@ -9,24 +9,19 @@
     /*background-color: #224652;*/
     border-bottom: solid 2px #224652;
 }
-.navbar a{
-    color: black;
-    font-size: 1.2em;
-}
+    .navbar a {
+        color: #224652;
+        font-size: 1.2em;
+    }
 .navbar-brand {
     font-size: 1em;
     background-color: #224652;
-    letter-spacing: 2.5px;
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
 }
 .navbar-header a{
     color: white;
 }
-
-.active a {
+.active a, .active a:focus, .active a:active {
     background-color: #F4F5F5;
-    color: black;
-    border-bottom: #F4F5F5;
 }
 
 /*.logoTusimaka {

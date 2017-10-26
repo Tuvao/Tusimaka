@@ -107,6 +107,32 @@ namespace Tusimaka.DAL
                 }
             }
         }
+        public bool endreKundeBestilling(int id, KundeBestillinger innBestillling)
+        {
+            var db = new DBContext();
+            try
+            {
+                FlyBestillingKunder hjelpetabell = db.FlyBestillingKunder.Find(id);
+                hjelpetabell.KundeID = innBestillling.KundeID;
+                hjelpetabell.Kunder.fornavn = innBestillling.Fornavn;
+                hjelpetabell.Kunder.etternavn = innBestillling.Etternavn;
+                hjelpetabell.FlyBestilling.Strekninger.fraFlyplass = innBestillling.FraFlyplass;
+                hjelpetabell.FlyBestilling.Strekninger.tilFlyplass = innBestillling.TilFlyplass;
+                hjelpetabell.FlyBestilling.Strekninger.dato = innBestillling.Dato;
+                hjelpetabell.FlyBestilling.Strekninger.tid = innBestillling.Tid;
+                hjelpetabell.FlyBestilling.Strekninger.pris = innBestillling.Pris;
+                hjelpetabell.FlyBestilling.antallPersoner = innBestillling.AntallPersoner;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception feil)
+            {
+                string path = HttpContext.Current.Server.MapPath("~/logg.txt");
+                string text = feil.ToString();
+                File.AppendAllText(path, text);
+                return false;
+            }
+        }
         public bool SlettKundeBestilling(int id)
         {
             var db = new DBContext();
@@ -127,6 +153,7 @@ namespace Tusimaka.DAL
                 return false;
             }
         }
+        
         public bool lagreBetalingsinformasjon(int id, BetalingsInformasjon innBetaling)
         {
             using (var db = new DBContext())
