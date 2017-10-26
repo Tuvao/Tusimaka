@@ -39,7 +39,7 @@ namespace Tusimaka.DAL
         public string dato { get; set; }
         public string tid { get; set; }
         public int pris { get; set; }
-        public int flyTid { get; set; }
+        public double flyTid { get; set; }
         public int antallLedigeSeter { get; set; }
     }
 
@@ -94,7 +94,7 @@ namespace Tusimaka.DAL
         {
             Database.CreateIfNotExists();
             
-            //Database.SetInitializer(new DBInit());
+            Database.SetInitializer(new DBInit());
         }
         //metode kopiert fra link, se readme.txt
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

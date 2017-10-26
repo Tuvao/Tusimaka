@@ -53,15 +53,14 @@ namespace Tusimaka.Controllers
 
         public ActionResult LoggInn()
         {
-            if (Session["LoggetInn"] == null)
-            {
-                Session["LoggetInn"] = false;
-                ViewBag.Innlogget = false;
-            }
-            else
-            {
-                ViewBag.Innlogget = (bool)Session["LoggetInn"];
-            }
+            //if (Session["LoggetInn"] == null)
+            //{
+            //    Session["LoggetInn"] = false;
+            //}
+            //else
+            //{
+            //    ViewBag.Innlogget = (bool)Session["LoggetInn"];
+            //}
             return View();
         }
 
@@ -82,15 +81,6 @@ namespace Tusimaka.Controllers
             ViewBag.Innlogget = false;
             return View();
         }
-        
-        public ActionResult LoggUt()
-        {
-            Session["LoggetInn"] = false;
-            ViewBag.Innlogget = false;
-            Response.Redirect("LoggInn");
-            return View();
-        }
-        
         public ActionResult AdminStart()
         {
             if (Session["LoggetInn"] != null)
@@ -292,6 +282,13 @@ namespace Tusimaka.Controllers
             {
                 return RedirectToAction("KundeAdministrer");
             }
+            return View();
+        }
+        public ActionResult LoggUt()
+        {
+            Session["LoggetInn"] = false;
+            ViewBag.Innlogget = false;
+            Response.Redirect("LoggInn");
             return View();
         }
 

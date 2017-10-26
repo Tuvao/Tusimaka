@@ -39,6 +39,8 @@ namespace Tusimaka.DAL
             var Strekning27 = new Strekninger { fraFlyplass = "København", tilFlyplass = "Stockholm", dato = "2017-11-23", tid = "09:55", pris = 950, flyTid = 60, antallLedigeSeter = 100 };
             var Strekning28 = new Strekninger { fraFlyplass = "Stockholm", tilFlyplass = "København", dato = "2017-11-24", tid = "10:05", pris = 1100, flyTid = 60, antallLedigeSeter = 100 };
             var Strekning29 = new Strekninger { fraFlyplass = "København", tilFlyplass = "Stockholm", dato = "2017-11-24", tid = "21:20", pris = 1250, flyTid = 60, antallLedigeSeter = 100 };
+            var Strekning30 = new Strekninger { fraFlyplass = "Dubai", tilFlyplass = "New York", dato = "2017-11-24", tid = "14:00", pris = 5450, flyTid = 1580, antallLedigeSeter = 500 };
+            var Strekning31 = new Strekninger { fraFlyplass = "New York", tilFlyplass = "Dubai", dato = "2017-11-23", tid = "17:00", pris = 5250, flyTid = 1720, antallLedigeSeter = 500 };
             context.Strekninger.Add(Strekning1);
             context.Strekninger.Add(Strekning2);
             context.Strekninger.Add(Strekning3);
@@ -68,6 +70,8 @@ namespace Tusimaka.DAL
             context.Strekninger.Add(Strekning27);
             context.Strekninger.Add(Strekning28);
             context.Strekninger.Add(Strekning29);
+            context.Strekninger.Add(Strekning30);
+            context.Strekninger.Add(Strekning31);
 
             byte[] hashetPassord = lagHash("Bord321");
             var AdminBruker1 = new AdminBrukere { brukernavn = "Admin", passord = hashetPassord};

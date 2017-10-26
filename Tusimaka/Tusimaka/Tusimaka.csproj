@@ -175,7 +175,6 @@
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
     <Content Include="Views\Admin\AdminBetalingNyBestilling.cshtml" />
-    <Content Include="Views\Admin\LoggUt.cshtml" />
     <None Include="Views\Home\Bestill.cshtml" />
     <Content Include="Views\Home\RegistrerBetaling.cshtml" />
     <Content Include="Views\Home\Bekreftelse.cshtml" />

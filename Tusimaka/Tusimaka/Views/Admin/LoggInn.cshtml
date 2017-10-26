@@ -34,13 +34,9 @@
                 </div>
 
                 <input type="submit" value="Logg inn" id="loggInn" class="knapp" />
-                @if (ViewBag.Innlogget)
+                @if (ViewBag.Innlogget == false)
                 {
-                    <p style="color:blue">Logget inn</p>
-                }
-                else
-                {
-                    <p style="color:red">Ikke logget inn</p>
+                    <p style="color:red">Brukernavn/Passord er feil, vennligst prøv igjen.</p>
                 }
             </div>
         }
