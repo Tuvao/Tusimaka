@@ -20,9 +20,10 @@
 .navbar-header a{
     color: white;
 }
-.active {
-    background-color: #DBDCDC;
-    color:red;
+.active a {
+    background-color: #F4F5F5;
+    color: black;
+    border-bottom: #F4F5F5;
 }
 
 /*.logoTusimaka {
@@ -306,22 +307,4 @@ p.fyll_inn_skjema{
     .knapp a {
         text-decoration: none;
         color: black;
-    }
-
-.loggUt {
-    float: right;
-    clear: left;
-    margin-top: 2em;
-    background-color: #DBE2E4;
-    border: none;
-    margin: 1em 1em 1em 0em;
-    text-decoration: none;
-    min-width: 8em;
-}
-    .loggUt a {
-        color: black;
-        text-decoration: none;
-    }
-    .loggUt:hover {
-        opacity:0.4;
     }

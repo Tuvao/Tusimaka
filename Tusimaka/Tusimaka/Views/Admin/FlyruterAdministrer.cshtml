@@ -7,6 +7,10 @@
 <script src="~/Scripts/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
+
+        $(".navbar").find(".active").removeClass("active");
+        $(".flyruterAdministrer").addClass("active");
+
         $('a[data-sletteFlyruterModal=true]').click(function () {
             var data_navn = $(this).data('navn');
             var data_id = $(this).data('id');

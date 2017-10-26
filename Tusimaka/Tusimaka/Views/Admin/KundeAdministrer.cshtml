@@ -7,9 +7,8 @@
 <script src="~/Scripts/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        
+            $(".navbar").find(".active").removeClass("active");
             $(".kundeAdministrer").addClass("active");
-        
         
         $('a[data-sletteModal=true]').click(function () {
             var data_navn = $(this).data('navn');

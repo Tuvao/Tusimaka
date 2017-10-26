@@ -4,7 +4,17 @@
 <html>
     <head>
         <link href="~/Content/StyleSheet.css" rel="stylesheet" />
+        <script src="~/Scripts/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript">
+            
+            $(document).ready(function () {
+
+                $(".navbar").find(".active").removeClass("active");
+                $(".hjem").addClass("active");
+            });
+        </script>
     </head>
+
     <body>
         <div class="container">
             <div class="row loggUtKnapp">
@@ -17,6 +27,6 @@
                 <span class="knapp">@Html.ActionLink("Administrer Flyruter", "FlyruterAdministrer")</span>
             </div>
         </div>
-        
+
     </body>
 </html>
