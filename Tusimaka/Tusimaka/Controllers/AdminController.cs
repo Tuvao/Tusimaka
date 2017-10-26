@@ -317,7 +317,7 @@ namespace Tusimaka.Controllers
             bool loggetinn = (bool)Session["LoggetInn"];
             if (loggetinn)
             {
-                return RedirectToAction("AdminStart");
+                return View();
             }
             return RedirectToAction("LoggInn");
         }
