@@ -11,26 +11,53 @@
 </head>
 <body>
     <div class="navbar navbar-default navbar-fixed-top">
-        
-            <div class="navbar-header">
-                @Html.ActionLink("Tusimaka Airlines", "Bestill", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    @Html.ActionLink("Tusimaka Airlines", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
                 <ul class="nav navbar-nav">
-                    @*@Html.ActionLink("Admin Logg inn", "LoggInn", "Admin", new { area = "" }, new { @class = "navbar-brand" })*@
+                    <li class="active"><a href="../Admin/AdminStart">Hjem</a></li>
+                    <li><a href="../Admin/KundeAdministrer">Administrer kunder</a></li>
+                    <li><a href="../Admin/FlyruterAdministrer">Administrer flyruter</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                 </ul>
             </div>
-        
-    </div>
+        </div>
+        @*<div class="navbar navbar-default navbar-fixed-top">
 
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Copyright Tusimaka Airlines</p>
-        </footer>
+            <div class="navbar-header">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li>
+                            @Html.ActionLink("Tusimaka Airlines", "Bestill", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                        </li>
+                    </ul>
 
-    </div>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+
+                        </li>
+                    </ul>
+                    <span class="loggUt navbar-right">@Html.ActionLink("LOGG UT", "LoggUt")</span>
+
+                </div>*@
+
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                @Html.ActionLink("Admin Logg inn", "LoggInn", "Admin", new { area = "" }, new { @class = "navbar-brand" })
+            </ul>
+        </div>
+
+
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Copyright Tusimaka Airlines</p>
+            </footer>
+
+        </div>
+        <script src="~/Scripts/bootstrap.min.js"></script>
 </body>
 </html>

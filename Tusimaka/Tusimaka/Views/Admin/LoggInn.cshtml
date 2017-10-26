@@ -12,34 +12,38 @@
     <title>Index</title>
 </head>
 <body>
-
-    <h2>Logg Inn</h2>
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
-            <div class="blokker form-horizontal">
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Brukernavn, new { htmlAttributes = new { placeholder = "Brukernavn", @class = "selectUtseende fullStrl" } })
-                        @Html.ValidationMessageFor(model => model.Brukernavn, "", new { @class = "text-danger" })
+    <div class="container">
+        <div class="row">
+            <h2>Logg Inn</h2>
+        </div>
+        <div class="row">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="blokker form-horizontal">
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Brukernavn, new { htmlAttributes = new { placeholder = "Brukernavn", @class = "selectUtseende fullStrl" } })
+                            @Html.ValidationMessageFor(model => model.Brukernavn, "", new { @class = "text-danger" })
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Passord, new { htmlAttributes = new { placeholder = "Passord", @class = "selectUtseende fullStrl" } })
-                        @Html.ValidationMessageFor(model => model.Passord, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Passord, new { htmlAttributes = new { placeholder = "Passord", @class = "selectUtseende fullStrl" } })
+                            @Html.ValidationMessageFor(model => model.Passord, "", new { @class = "text-danger" })
+                        </div>
                     </div>
-                </div>
 
-                <input type="submit" value="Logg inn" id="loggInn" class="knapp" />
-                @if (ViewBag.Innlogget == false)
-                {
-                    <p style="color:red">Brukernavn/Passord er feil, vennligst prøv igjen.</p>
-                }
-            </div>
-        }
+                    <input type="submit" value="Logg inn" id="loggInn" class="knapp" />
+                    @if (ViewBag.Innlogget == false)
+                    {
+                        <p style="color:red">Brukernavn/Passord er feil, vennligst prøv igjen.</p>
+                    }
+                </div>
+             }
+         </div>
     
 
     @*<div class="bilde col-md-2 col-lg-6 col-sm-8">
@@ -49,5 +53,6 @@
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    </div>
 </body>
 </html>
