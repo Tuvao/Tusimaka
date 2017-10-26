@@ -93,7 +93,7 @@ namespace Tusimaka.DAL
             : base("name=Fly")
         {
             Database.CreateIfNotExists();
-            
+
             Database.SetInitializer(new DBInit());
         }
         //metode kopiert fra link, se readme.txt
