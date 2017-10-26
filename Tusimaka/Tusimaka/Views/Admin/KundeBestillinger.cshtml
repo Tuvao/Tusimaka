@@ -122,7 +122,7 @@
                     @Html.DisplayFor(modelItem => item.Korttype)
                 </td>
                 <td class="adminStartMiniKnapp">
-                    <span class="miniKnapp">@Html.ActionLink("Edit", "EndreKundeBestilling", new { id = item.KundeID }, new { @class = "tabKnapp" }) </span>
+                    <span class="miniKnapp">@Html.ActionLink("Edit", "EndreKundeBestillinger", new { id = item.KundeID }, new { @class = "tabKnapp" }) </span>
                     <span class="miniKnapp slett">
                         <a href="#sletteKundeBestillingModal" class="tabKnapp" id="sletteKnapp"
                            data-navn="Kunde: id - @item.KundeID  Fornavn - @item.Fornavn Etternavn - @item.Etternavn<br/>FlightNR: @item.StrekningsID <br/>Fra flyplass: @item.FraFlyplass<br/>Til flyplass @item.TilFlyplass <br/>Dato: @item.Dato  <br/> Tidspunkt: @item.Tid"
