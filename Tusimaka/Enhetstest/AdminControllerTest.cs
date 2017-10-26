@@ -76,10 +76,8 @@ namespace Tusimaka.Enhetstest
             var session = controller.Session["LoggetInn"] = false;
             var innAdminBruker = new AdminBruker();
             controller.ViewData.ModelState.AddModelError("Brukernavn", "Brukernavn må oppgis");
-
             // Act
             var actionResult = (ViewResult)controller.LoggInn(innAdminBruker);
-
             // Assert
             Assert.IsTrue(actionResult.ViewData.ModelState.Count == 1);
             Assert.AreEqual(actionResult.ViewName, "");
@@ -109,7 +107,6 @@ namespace Tusimaka.Enhetstest
             // Act
             var result = (RedirectToRouteResult)controller.AdminStart();
             // Assert
-            Assert.AreEqual(result.RouteName, "");
             Assert.AreEqual(result.RouteValues.Values.First(), "LoggInn");
         }
 
@@ -166,7 +163,6 @@ namespace Tusimaka.Enhetstest
             // Act
             var result = (RedirectToRouteResult)controller.FlyruterAdministrer();
             // Assert
-            Assert.AreEqual(result.RouteName, "");
             Assert.AreEqual(result.RouteValues.Values.First(), "LoggInn");
         }
 
@@ -188,7 +184,6 @@ namespace Tusimaka.Enhetstest
                 Kjonn = "Kvinne"
 
             };
-
             forventetResultat.Add(kunde);
             forventetResultat.Add(kunde);
             forventetResultat.Add(kunde);
@@ -219,7 +214,6 @@ namespace Tusimaka.Enhetstest
             // Act
             var result = (RedirectToRouteResult)controller.KundeAdministrer();
             // Assert
-            Assert.AreEqual(result.RouteName, "");
             Assert.AreEqual(result.RouteValues.Values.First(), "LoggInn");
         }
 
@@ -231,7 +225,6 @@ namespace Tusimaka.Enhetstest
             var controller = new AdminController(new AdminKundeBLL(new AdminKundeDALRepositoryStub()));
             SessionMock.InitializeController(controller);
             controller.Session["LoggetInn"] = true;
-
             // Act
             var resultat = (ViewResult)controller.EndreKunde(1);
             // Assert
@@ -245,7 +238,6 @@ namespace Tusimaka.Enhetstest
             var controller = new AdminController(new AdminKundeBLL(new AdminKundeDALRepositoryStub()));
             SessionMock.InitializeController(controller);
             controller.Session["LoggetInn"] = true;
-
             // Act
             var resultat = (ViewResult)controller.EndreKunde(0);
             // Assert
@@ -268,7 +260,6 @@ namespace Tusimaka.Enhetstest
             };
             // Act
             var resultat = (RedirectToRouteResult)controller.EndreKunde(1, innKunde);
-
             // Assert
             Assert.AreEqual(resultat.RouteValues.Values.First(), "KundeAdministrer");
         }
@@ -284,7 +275,6 @@ namespace Tusimaka.Enhetstest
             // Act
             var result = (RedirectToRouteResult)controller.EndreKunde(1);
             // Assert
-            Assert.AreEqual(result.RouteName, "");
             Assert.AreEqual(result.RouteValues.Values.First(), "LoggInn");
         }
 
@@ -298,10 +288,8 @@ namespace Tusimaka.Enhetstest
             controller.Session["LoggetInn"] = true;
             var innKunde = new Kunde();
             innKunde.Fornavn = "";
-           
             // Act
             var resultat = (RedirectToRouteResult)controller.EndreKunde(1, innKunde);
-
             // Assert
             Assert.AreEqual(resultat.RouteValues.Values.First(), "KundeAdministrer");
         }
@@ -322,7 +310,6 @@ namespace Tusimaka.Enhetstest
             };
             //act
             var actionResult = (ViewResult)controller.EndreKunde(0, innKunde);
-
             // Assert
             Assert.AreEqual(actionResult.ViewName, "");
         }
@@ -333,10 +320,8 @@ namespace Tusimaka.Enhetstest
             var controller = new AdminController(new AdminKundeBLL(new AdminKundeDALRepositoryStub()));
             var innKunde = new Kunde();
             controller.ViewData.ModelState.AddModelError("feil", "KundeID = 0");
-
             // Act
             var actionResult = (ViewResult)controller.EndreKunde(0, innKunde);
-
             // Assert
             Assert.IsTrue(actionResult.ViewData.ModelState.Count == 1);
             Assert.AreEqual(actionResult.ViewData.ModelState["feil"].Errors[0].ErrorMessage, "KundeID = 0");
@@ -351,10 +336,8 @@ namespace Tusimaka.Enhetstest
             var controller = new AdminController(new KundeBLL(new KundeRepositoryStub()));
             SessionMock.InitializeController(controller);
             controller.Session["LoggetInn"] = true;
-
             // Act
             var actionResult = (ViewResult)controller.RegistrerKunde();
-
             // Assert
             Assert.AreEqual(actionResult.ViewName, "");
         }
@@ -369,10 +352,8 @@ namespace Tusimaka.Enhetstest
             controller.Session["LoggetInn"] = true;
             var innKunde = new Kunde();
             innKunde.Fornavn = "";
-
             // Act
             var actionResult = (ViewResult)controller.RegistrerKunde(innKunde);
-
             // Assert
             Assert.AreEqual(actionResult.ViewName, "");
         }
@@ -393,7 +374,6 @@ namespace Tusimaka.Enhetstest
             };
             // Act
             var result = (RedirectToRouteResult)controller.RegistrerKunde(innKunde);
-
             // Assert
             Assert.AreEqual(result.RouteValues.Values.First(), "KundeAdministrer");
         }
@@ -409,7 +389,6 @@ namespace Tusimaka.Enhetstest
             // Act
             var result = (RedirectToRouteResult)controller.RegistrerKunde();
             // Assert
-            Assert.AreEqual(result.RouteName, "");
             Assert.AreEqual(result.RouteValues.Values.First(), "LoggInn");
         }
 
@@ -421,10 +400,8 @@ namespace Tusimaka.Enhetstest
             var controller = new AdminController(new KundeBLL(new KundeRepositoryStub()));
             SessionMock.InitializeController(controller);
             controller.Session["LoggetInn"] = true;
-
             // Act
             var actionResult = (ViewResult)controller.RegistrerFlyrute();
-
             // Assert
             Assert.AreEqual(actionResult.ViewName, "");
         }
@@ -449,7 +426,6 @@ namespace Tusimaka.Enhetstest
             };
             // Act
             var result = (RedirectToRouteResult)controller.RegistrerFlyrute(innFlyrute);
-
             // Assert
             Assert.AreEqual(result.RouteValues.Values.First(), "FlyruterAdministrer");
         }
@@ -465,7 +441,6 @@ namespace Tusimaka.Enhetstest
             // Act
             var result = (RedirectToRouteResult)controller.RegistrerFlyrute();
             // Assert
-            Assert.AreEqual(result.RouteName, "");
             Assert.AreEqual(result.RouteValues.Values.First(), "LoggInn");
         }
 
@@ -479,10 +454,8 @@ namespace Tusimaka.Enhetstest
             controller.Session["LoggetInn"] = true;
             var innFlyrute = new Strekning();
             innFlyrute.FraFlyplass = "";
-
             // Act
             var actionResult = (ViewResult)controller.RegistrerFlyrute(innFlyrute);
-
             // Assert
             Assert.AreEqual(actionResult.ViewName, "");
         }
@@ -495,7 +468,6 @@ namespace Tusimaka.Enhetstest
             var controller = new AdminController(new AdminFlyruterBLL(new AdminFlyruterDALRepositoryStub()));
             SessionMock.InitializeController(controller);
             controller.Session["LoggetInn"] = true;
-
             // Act
             var resultat = (ViewResult)controller.EndreFlyrute(1);
             // Assert
@@ -509,11 +481,9 @@ namespace Tusimaka.Enhetstest
             var controller = new AdminController(new AdminFlyruterBLL(new AdminFlyruterDALRepositoryStub()));
             SessionMock.InitializeController(controller);
             controller.Session["LoggetInn"] = false;
-
             // Act
             var result = (RedirectToRouteResult)controller.EndreFlyrute(1);
             // Assert
-            Assert.AreEqual(result.RouteName, "");
             Assert.AreEqual(result.RouteValues.Values.First(), "LoggInn");
         }
         [TestMethod]
@@ -526,11 +496,8 @@ namespace Tusimaka.Enhetstest
             controller.Session["LoggetInn"] = true;
             var innFlyrute = new Strekning();
             innFlyrute.FraFlyplass = "";
-
-
             //act
             var actionResult = (ViewResult)controller.EndreFlyrute(1);
-
             // Assert
             Assert.AreEqual(actionResult.ViewName, "");
         }
@@ -543,7 +510,6 @@ namespace Tusimaka.Enhetstest
             var controller = new AdminController(new AdminFlyruterBLL(new AdminFlyruterDALRepositoryStub()));
             SessionMock.InitializeController(controller);
             controller.Session["LoggetInn"] = true;
-
             var innFlyrute = new Strekning()
             {
                 FraFlyplass = "Bergen",
@@ -558,7 +524,6 @@ namespace Tusimaka.Enhetstest
             var result = (RedirectToRouteResult)controller.EndreFlyrute(1, innFlyrute);
             // Assert
             Assert.AreEqual(result.RouteValues.Values.First(), "FlyruterAdministrer");
-
         }
 
         [TestMethod]
@@ -570,12 +535,9 @@ namespace Tusimaka.Enhetstest
             SessionMock.InitializeController(controller);
             controller.Session["LoggetInn"] = true;
             var innFlyrute = new Strekning();
-             innFlyrute.FraFlyplass = "";
-
-
+            innFlyrute.FraFlyplass = "";
             //act
             var actionResult = (ViewResult)controller.EndreFlyrute(1, innFlyrute);
-
             // Assert
             Assert.AreEqual(actionResult.ViewName, "");
         }
@@ -597,11 +559,8 @@ namespace Tusimaka.Enhetstest
                 FlyTid = 45,
                 AntallLedigeSeter = 4
             };
-
-
             //act
             var actionResult = (ViewResult)controller.EndreFlyrute(0, innFlyrute);
-
             // Assert
             Assert.AreEqual(actionResult.ViewName, "");
         }
@@ -613,10 +572,8 @@ namespace Tusimaka.Enhetstest
             var controller = new AdminController(new AdminFlyruterBLL(new AdminFlyruterDALRepositoryStub()));
             var innFlyrute = new Strekning();
             controller.ViewData.ModelState.AddModelError("feil", "StrekningsID = 0");
-
             // Act
             var actionResult = (ViewResult)controller.EndreFlyrute(0, innFlyrute);
-
             // Assert
             Assert.IsTrue(actionResult.ViewData.ModelState.Count == 1);
             Assert.AreEqual(actionResult.ViewData.ModelState["feil"].Errors[0].ErrorMessage, "StrekningsID = 0");
@@ -630,10 +587,8 @@ namespace Tusimaka.Enhetstest
             var controller = new AdminController(new AdminBestillingBLL(new AdminBestillingDALRepositoryStub()));
             SessionMock.InitializeController(controller);
             controller.Session["LoggetInn"] = true;
-
             // Act
             var actionResult = (ViewResult)controller.NyKundeBestilling();
-
             // Assert
             Assert.AreEqual(actionResult.ViewName, "");
         }
@@ -649,7 +604,6 @@ namespace Tusimaka.Enhetstest
             nyBestilling.FlyBestillingsID = 1; 
             // Act
             var result = (RedirectToRouteResult)controller.NyKundeBestilling(1, nyBestilling);
-
             // Assert
             Assert.AreEqual(result.RouteValues.Values.First(), "AdminBetalingNyBestilling");
         }
@@ -664,7 +618,6 @@ namespace Tusimaka.Enhetstest
             // Act
             var result = (RedirectToRouteResult)controller.KundeBestillinger(1);
             // Assert
-            Assert.AreEqual(result.RouteName, "");
             Assert.AreEqual(result.RouteValues.Values.First(), "LoggInn");
         }
         [TestMethod]
@@ -678,7 +631,7 @@ namespace Tusimaka.Enhetstest
             // Act
             var result = (RedirectToRouteResult)controller.NyKundeBestilling();
             // Assert
-            Assert.AreEqual(result.RouteName, "");
+             
             Assert.AreEqual(result.RouteValues.Values.First(), "LoggInn");
         }
         [TestMethod]
@@ -693,7 +646,6 @@ namespace Tusimaka.Enhetstest
             nyBestilling.FlyBestillingsID = 0;
             // Act
             var result = (ViewResult)controller.NyKundeBestilling(0, nyBestilling);
-
             // Assert
             Assert.AreEqual(result.ViewName, "");
         }
@@ -709,7 +661,6 @@ namespace Tusimaka.Enhetstest
             nyBestilling.FlyBestillingsID = 0;
             // Act
             var result = (ViewResult)controller.NyKundeBestilling(1, nyBestilling);
-
             // Assert
             Assert.AreEqual(result.ViewName, "");
         }
@@ -786,7 +737,6 @@ namespace Tusimaka.Enhetstest
             // Act
             var result = (RedirectToRouteResult)controller.AdminBetalingNyBestilling();
             // Assert
-            Assert.AreEqual(result.RouteName, "");
             Assert.AreEqual(result.RouteValues.Values.First(), "LoggInn");
         }
         [TestMethod]
@@ -816,7 +766,6 @@ namespace Tusimaka.Enhetstest
             // Act
             var result = (RedirectToRouteResult)controller.AdminBetalingNyBestilling();
             // Assert
-            Assert.AreEqual(result.RouteName, "");
             Assert.AreEqual(result.RouteValues.Values.First(), "LoggInn");
         }
         [TestMethod]
@@ -851,7 +800,32 @@ namespace Tusimaka.Enhetstest
             // Assert
             Assert.AreEqual(result.ViewName, "");
         }
-
+        [TestMethod]
+        public void LoggUT_View_OK()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController();
+            SessionMock.InitializeController(controller);
+            controller.Session["LoggetInn"] = false;
+            // Act
+            var result = (RedirectToRouteResult)controller.LoggUt();
+            // Assert
+            Assert.AreEqual(result.RouteValues.Values.First(), "LoggInn");
+        }
+        [TestMethod]
+        public void LoggUT_View_Session_Ikke_Endret_Feil_View()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController();
+            SessionMock.InitializeController(controller);
+            controller.Session["LoggetInn"] = true;
+            // Act
+            var result = (ViewResult)controller.LoggUt();
+            // Assert
+            Assert.AreEqual("", result.ViewName);
+        }
         [TestMethod]
         public void SlettKunde_Bool_OK()
         {

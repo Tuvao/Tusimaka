@@ -287,9 +287,12 @@ namespace Tusimaka.Controllers
         public ActionResult LoggUt()
         {
             Session["LoggetInn"] = false;
-            ViewBag.Innlogget = false;
-            Response.Redirect("LoggInn");
-            return View();
+            bool loggetinn = (bool)Session["LoggetInn"];
+            if (loggetinn)
+            {
+                return View();
+            }
+            return RedirectToAction("LoggInn");
         }
 
         public bool SlettBestilling(int id)
@@ -300,7 +303,7 @@ namespace Tusimaka.Controllers
             }
             catch(Exception feil)
             {
-                //logging til db
+                //logging til db skjer direkte i DAL
             }
             return true;
         }
@@ -314,7 +317,7 @@ namespace Tusimaka.Controllers
             }
             catch (Exception feil)
             {
-                //logging til db
+                //logging til db skjer direkte i DAL
             }
             return true;
         }
@@ -327,7 +330,7 @@ namespace Tusimaka.Controllers
             }
             catch (Exception feil)
             {
-                //logging til db
+                //logging til db skjer direkte i DAL
             }
             return true;
         }
