@@ -1,15 +1,22 @@
 ﻿@{
     ViewBag.Title = "AdminStart";
 }
-<link href="~/Content/StyleSheet.css" rel="stylesheet" />
-<div class="container">
-    <div class="row loggUtKnapp">
-        <h2>Velkommen, admin!</h2>
-        <span class="loggUt">@Html.ActionLink("LOGG UT", "LoggUt")</span>
-    </div>
-    <hr />
-    <div class="adminStartKnapp">
-        <span class="knapp">@Html.ActionLink("Administrer Kunder", "KundeAdministrer")</span>
-        <span class="knapp">@Html.ActionLink("Administrer Flyruter", "FlyruterAdministrer")</span>
-    </div>
-</div>
+<html>
+    <head>
+        <link href="~/Content/StyleSheet.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="row loggUtKnapp">
+                <h2>Velkommen, admin!</h2>
+                <span class="loggUt">@Html.ActionLink("LOGG UT", "LoggUt")</span>
+            </div>
+            <hr />
+            <div class="adminStartKnapp">
+                <span class="knapp">@Html.ActionLink("Administrer Kunder", "KundeAdministrer")</span>
+                <span class="knapp">@Html.ActionLink("Administrer Flyruter", "FlyruterAdministrer")</span>
+            </div>
+        </div>
+        
+    </body>
+</html>
