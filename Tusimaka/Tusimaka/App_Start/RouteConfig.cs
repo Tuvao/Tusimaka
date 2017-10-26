@@ -14,17 +14,17 @@ namespace Tusimaka
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "Admin",
+                url: "LoggInn/{id}",
+                defaults: new { controller = "Admin", action = "LoggInn", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Bestill", id = UrlParameter.Optional }
             );
 
-            routes.MapRoute(
-                name: "Admin",
-                url: "LoggInn/{id}",
-                defaults: new { controller = "Admin", action = "LoggInn", id = UrlParameter.Optional }
-            );
-            
+
         }
     }
 }
