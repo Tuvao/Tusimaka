@@ -4,9 +4,13 @@
     ViewBag.Title = "KundeAdministrer";
 }
 <link href="~/Content/StyleSheet.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        $(".kundeAdministrer").addClass("active");
+        
+            $(".kundeAdministrer").addClass("active");
+        
+        
         $('a[data-sletteModal=true]').click(function () {
             var data_navn = $(this).data('navn');
             var data_id = $(this).data('id');

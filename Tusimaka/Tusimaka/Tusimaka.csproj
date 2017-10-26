@@ -125,7 +125,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <None Include="Properties\PublishProfiles\Tusimaka20171007113648 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\Tusimaka20171026013905 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
@@ -175,7 +175,7 @@
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
     <Content Include="Views\Admin\AdminBetalingNyBestilling.cshtml" />
-    <None Include="Views\Home\Bestill.cshtml" />
+    <Content Include="Views\Home\Bestill.cshtml" />
     <Content Include="Views\Home\RegistrerBetaling.cshtml" />
     <Content Include="Views\Home\Bekreftelse.cshtml" />
     <Content Include="Views\Home\KundeRegistrering.cshtml" />
