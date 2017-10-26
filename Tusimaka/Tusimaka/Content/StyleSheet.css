@@ -16,10 +16,13 @@
 .navbar-brand {
     font-size: 1em;
     background-color: #224652;
+    letter-spacing: 2.5px;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
 }
 .navbar-header a{
     color: white;
 }
+
 .active a {
     background-color: #F4F5F5;
     color: black;
