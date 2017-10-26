@@ -14,9 +14,12 @@
 <body>
     <div class="container">
         <div class="row">
-            <h2>Logg Inn</h2>
+            <div class="col-lg-12">
+                <h2>Logg Inn</h2>
+            </div>
         </div>
         <div class="row">
+            <div class="col-lg-12">
             @using (Html.BeginForm())
             {
                 @Html.AntiForgeryToken()
@@ -39,10 +42,11 @@
                     <input type="submit" value="Logg inn" id="loggInn" class="knapp" />
                     @if (ViewBag.Innlogget == false)
                     {
-                        <p style="color:red">Brukernavn/Passord er feil, vennligst prøv igjen.</p>
+                        <p style="color:#a94442">Brukernavn/Passord er feil, vennligst prøv igjen.</p>
                     }
                 </div>
              }
+            </div>
          </div>
     
 

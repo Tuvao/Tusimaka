@@ -5,10 +5,24 @@
 }
 .navbar {
     color: #FFFFFF;
-    background-color: #224652;
+    background-color: #DBDCDC;
+    /*background-color: #224652;*/
+    border-bottom: solid 2px #224652;
 }
 .navbar a{
+    color: black;
+    font-size: 1.2em;
+}
+.navbar-brand {
+    font-size: 1em;
+    background-color: #224652;
+}
+.navbar-header a{
     color: white;
+}
+.active {
+    background-color: #DBDCDC;
+    color:red;
 }
 
 /*.logoTusimaka {
