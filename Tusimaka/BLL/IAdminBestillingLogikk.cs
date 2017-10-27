@@ -14,6 +14,5 @@ namespace Tusimaka.BLL
         bool LagreAdminFlyBestilling(int id, FlyBestillinger nyBestilling);
         bool SlettKundeBestilling(int id);
         bool lagreBetalingsinformasjon(int id, BetalingsInformasjon innBetaling);
-        bool endreKundeBestilling(int id, KundeBestillinger innBestillling);
     }
 }

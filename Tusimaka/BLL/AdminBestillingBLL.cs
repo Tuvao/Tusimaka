@@ -40,9 +40,5 @@ namespace Tusimaka.BLL
             {
                 return _repository.SlettKundeBestilling(id);
             }
-            public bool endreKundeBestilling(int id, KundeBestillinger innBestillling)
-            {
-                return _repository.endreKundeBestilling(id, innBestillling);
-            }
     }
 }
