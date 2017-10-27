@@ -8,7 +8,8 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $(".navbar-nav").removeAttr("hidden");
-        //$(".loggUt").removeAttr("hidden");
+        $(".loggInnUt").attr("href", "/Admin/LoggUt");
+        $(".loggInnUt").text("LOGG UT");
         $(".navbar").find(".active").removeClass("active");
         $(".flyruterAdministrer").addClass("active");
 
