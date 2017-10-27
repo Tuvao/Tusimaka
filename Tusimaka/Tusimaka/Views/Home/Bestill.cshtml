@@ -12,9 +12,7 @@
     <script src="~/Scripts/jquery-3.2.1.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-
-            $(".loggInn").removeAttr("hidden");
-
+            
             // hent alle fraFlyplass, bygg opp dropdown1 når siden lastes
             $.ajax({
                 url: '/Home/hentAlleFraFlyplasser',

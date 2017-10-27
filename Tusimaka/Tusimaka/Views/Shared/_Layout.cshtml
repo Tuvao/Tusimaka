@@ -11,15 +11,7 @@
     <script src="~/Scripts/jquery-3.2.1.min.js"></script>
     
     <script type="text/javascript">
-        @*if (@ViewBag.Innlogget ==true)
-        {
-                $(document).ready(function () {
-                    $(".navbar-nav").removeAttr("hidden");
-                    $(".loggUt").removeAttr("hidden");
-                    $(".navbar").find(".active").removeClass("active");
-                    $(".hjem").addClass("active");
-            });
-        }*@
+                
     </script>
     
 </head>
@@ -29,13 +21,13 @@
                 <div class="navbar-header navbar-left" >
                     @Html.ActionLink("TUSIMAKA AIRLINES", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 </div>
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav" hidden>
                     <li class="hjem">@Html.ActionLink("Hjem", "AdminStart", "Admin")</li>
                     <li class="kundeAdministrer"><a href="../Admin/KundeAdministrer">Administrer kunder</a></li>
                     <li class="flyruterAdministrer"><a href="../Admin/FlyruterAdministrer">Administrer flyruter</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li>@Html.ActionLink("LOGG UT", "LoggUt", "Admin")</li>
+                    <li><a class="loggInnUt" href="../Admin/loggInn">LOGG INN</a>@*@Html.ActionLink("LOGG INN", "LoggInn", "Admin", new { @class = "loggInnUt" })*@</li>
                 </ul>
             </div>
         </div>

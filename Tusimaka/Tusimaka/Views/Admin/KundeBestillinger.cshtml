@@ -7,6 +7,12 @@
 <script src="~/Scripts/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
+        $(".navbar-nav").removeAttr("hidden");
+        $(".loggInnUt").attr("href", "/Admin/LoggUt");
+        $(".loggInnUt").text("LOGG UT");
+        $(".navbar").find(".active").removeClass("active");
+        $(".kundeAdministrer").addClass("active");
+
         $('a[data-sletteKundeBestillingModal=true]').click(function () {
             
             var data_navn = $(this).data('navn');

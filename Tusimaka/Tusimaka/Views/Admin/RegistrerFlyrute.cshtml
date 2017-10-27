@@ -4,11 +4,12 @@
     ViewBag.Title = "RegistrerFlyrute";
 }
 <link href="~/Content/StyleSheet.css" rel="stylesheet" />
-<script src="~/Scripts/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
     //henter antall personer fra flyBestilling tabellen i DB
     $(document).ready(function () {
-
+        $(".navbar-nav").removeAttr("hidden");
+        $(".loggInnUt").attr("href", "/Admin/LoggUt");
+        $(".loggInnUt").text("LOGG UT");
         $(".navbar").find(".active").removeClass("active");
         $(".flyruterAdministrer").addClass("active");
     });
@@ -16,8 +17,9 @@
 
 <div class="container">
     <div class="row">
-        <h2>Registrer Flyrute</h2>
-        <span class="loggUt">@Html.ActionLink("LOGG UT", "LoggUt")</span>
+        <div class="col-lg-12">
+            <h2>Registrer Flyrute</h2>
+        </div>
     </div>
     @using (Html.BeginForm())
     {

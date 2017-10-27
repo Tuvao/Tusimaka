@@ -6,12 +6,23 @@
 <html>
 <head>
     <link href="~/Content/StyleSheet.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".navbar-nav").removeAttr("hidden");
+            $(".loggInnUt").attr("href", "/Admin/LoggUt");
+            $(".loggInnUt").text("LOGG UT");
+            $(".navbar").find(".active").removeClass("active");
+            $(".kundeAdministrer").addClass("active");
+        });
+    </script>
+
 </head>
 <body>
     <div class="container">
         <div class="row">
-            <h2>Betaling</h2>
-            <span class="loggUt">@Html.ActionLink("LOGG UT", "LoggUt")</span>
+            <div class="col-lg-12">
+                <h2>Betaling</h2>
+            </div>
         </div>
         <div class="row">
             @using (Html.BeginForm())

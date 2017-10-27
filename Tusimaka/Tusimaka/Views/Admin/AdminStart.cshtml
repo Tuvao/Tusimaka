@@ -6,15 +6,13 @@
         <link href="~/Content/StyleSheet.css" rel="stylesheet" />
         <script src="~/Scripts/jquery-3.2.1.min.js"></script>
         <script type="text/javascript">
-            @*if (@ViewBag.Innlogget) 
-            {*@
                 $(document).ready(function () {
-                    //$(".navbar-nav").removeAttr("hidden");
-                    //$(".loggUt").removeAttr("hidden");
+                    $(".navbar-nav").removeAttr("hidden");
+                    $(".loggInnUt").attr("href", "/Admin/LoggUt");
+                    $(".loggInnUt").text("LOGG UT");
                     $(".navbar").find(".active").removeClass("active");
                     $(".hjem").addClass("active");
                 });
-            //}
         </script>
     </head>
 

@@ -26,7 +26,14 @@ namespace Tusimaka.DAL
                         ok.KundeID = i.KundeID;
                         ok.Fornavn = i.Kunder.fornavn;
                         ok.Etternavn = i.Kunder.etternavn;
-                        ok.StrekningsID = i.FlyBestilling.StrekningsID;
+                        if (i.FlyBestilling.ReturID != null)
+                        {
+                            ok.StrekningsID= i.FlyBestilling.ReturID.Value;
+                        }
+                        else
+                        {
+                            ok.StrekningsID = i.FlyBestilling.StrekningsID;
+                        }
                         ok.FraFlyplass = i.FlyBestilling.Strekninger.fraFlyplass;
                         ok.TilFlyplass = i.FlyBestilling.Strekninger.tilFlyplass;
                         ok.Dato = i.FlyBestilling.Strekninger.dato;

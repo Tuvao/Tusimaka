@@ -8,8 +8,8 @@
     //henter antall personer fra flyBestilling tabellen i DB
     $(document).ready(function () {
 
-        $(".navbar").find(".active").removeClass("active");
-        $(".kundeAdministrer").addClass("active");
+        $(".navbar-nav").attr("hidden");
+        $(".loggUt").attr("hidden");
 
         $.ajax({
             url: '/Home/hentAntallPersoner',
