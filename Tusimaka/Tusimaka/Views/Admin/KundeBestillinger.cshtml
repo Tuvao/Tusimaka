@@ -49,25 +49,6 @@
             @Html.DisplayFor(model => model.First().Etternavn)
         </h3>
 
-
-
-        @*@Html.DisplayFor(model => model.First().Fornavn)*@
-    @*@for (int index = 0; index < 1; index++)
-    {
-        <h2>
-            Viser flybestillinger for
-            @Html.DisplayFor(model => model.ToArray()[index].Fornavn)
-
-            @Html.DisplayFor(model => model.ToArray()[index].Etternavn)
-        </h2>
-
-        <h4>
-            Kundeid:
-            @Html.DisplayFor(model => model.ToArray()[index].KundeID)
-        </h4>
-    }*@
-
-
     <p>
         @Html.ActionLink("Tilbake", "KundeAdministrer")
     </p>
