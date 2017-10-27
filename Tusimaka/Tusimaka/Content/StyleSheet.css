@@ -274,7 +274,7 @@ p.fyll_inn_skjema{
 }
 
     .MenyKnapp:hover {
-        box-shadow: 5px 5px 2px #888888;
+        opacity:0.7;
         color: white;
         text-decoration: none;
     }
@@ -315,3 +315,20 @@ p.fyll_inn_skjema{
         text-decoration: none;
         color: black;
     }
+
+.loggInnFelt {
+    display: inline-block;
+    width: 300px;
+}
+
+.logoTusimaka {
+    height: 100%;
+    width: 100%;
+}
+
+.bilde {
+    float: right;
+    margin-right: 6em;
+    display: inline-block;
+    width: 500px;
+}
