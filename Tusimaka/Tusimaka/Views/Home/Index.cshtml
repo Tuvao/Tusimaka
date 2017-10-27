@@ -10,19 +10,30 @@
     <title>Index</title>
     <link href="~/Content/StyleSheet.css" rel="stylesheet" />
     <style>
-
         .logoTusimaka {
-            margin:  5% 10% 5% 10%;
+            margin-left: 10%;
             font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
             color: #224652;
         }
 
         #velkommen {
+            font-size: 400%;
+            line-height: 16px;
+            letter-spacing: 2px;
+            font-weight: lighter;
+            margin-top: 10%;
+            margin-bottom: 2%;
+            color: #4b9ab4;
+        }
+
+        #airlines {
             font-size: 600%;
-            letter-spacing: 2.5px;
+            letter-spacing:5px;
+            font-weight:lighter;
         }
 
         #bekreft {
+            margin-top: 5%;
             margin-left:10%;
             margin-bottom: 10%;
         }
@@ -31,7 +42,8 @@
 </head>
 <body>
     <div class="">
-        <p class="logoTusimaka" id="velkommen">Velkommen til <br/>TUSIMAKA ARILINES</p>
+        <div class="logoTusimaka" id="velkommen">Velkommen til </div>
+        <div class="logoTusimaka" id="airlines">TUSIMAKA AIRLINES</div>
     </div>
     <div>
         <form action="/Home/Bestill">
