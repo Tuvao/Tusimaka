@@ -26,14 +26,7 @@ namespace Tusimaka.DAL
                         ok.KundeID = i.KundeID;
                         ok.Fornavn = i.Kunder.fornavn;
                         ok.Etternavn = i.Kunder.etternavn;
-                        if (i.FlyBestilling.ReturID != null)
-                        {
-                            ok.StrekningsID= i.FlyBestilling.ReturID.Value;
-                        }
-                        else
-                        {
-                            ok.StrekningsID = i.FlyBestilling.StrekningsID;
-                        }
+                        ok.StrekningsID = i.FlyBestilling.StrekningsID;
                         ok.FraFlyplass = i.FlyBestilling.Strekninger.fraFlyplass;
                         ok.TilFlyplass = i.FlyBestilling.Strekninger.tilFlyplass;
                         ok.Dato = i.FlyBestilling.Strekninger.dato;
@@ -45,13 +38,13 @@ namespace Tusimaka.DAL
                         {
                             string kontonrString = b.Kortnummer.ToString();
                             string skjultKontonr = "";
-                            for (var bokstavI = 0; bokstavI< kontonrString.Length; bokstavI++)
+                            for (var bokstavI = 0; bokstavI < kontonrString.Length; bokstavI++)
                             {
                                 if (bokstavI % 4 == 0)
                                 {
                                     skjultKontonr += " ";
                                 }
-                                if(bokstavI < kontonrString.Length - 4)
+                                if (bokstavI < kontonrString.Length - 4)
                                 {
                                     skjultKontonr += "x";
                                 }
@@ -63,8 +56,50 @@ namespace Tusimaka.DAL
                             ok.Kortnummer = skjultKontonr;
                             ok.Korttype = b.Korttype;
                         }
-                        
+
                         listeKundesFlyBestillinger.Add(ok);
+                        foreach (var h in hjelpetabell)
+                        {
+                            if(h.FlyBestilling.ReturID != null)
+                            {
+                                Strekninger strekning = db.Strekninger.Find(h.FlyBestilling.ReturID);
+                                KundeBestillinger ok1 = new KundeBestillinger();
+                                ok1.KundeID = h.KundeID;
+                                ok1.Fornavn = h.Kunder.fornavn;
+                                ok1.Etternavn = h.Kunder.etternavn;
+                                ok1.StrekningsID = h.FlyBestilling.ReturID.Value;
+                                ok1.FraFlyplass = strekning.fraFlyplass;
+                                ok1.TilFlyplass = strekning.tilFlyplass;
+                                ok1.Dato = strekning.dato;
+                                ok1.Tid = strekning.tid;
+                                ok1.Pris = strekning.pris;
+                                ok1.AntallPersoner = h.FlyBestilling.antallPersoner;
+                                List<BetalingsInfo> betalingsinfo1 = db.BetalingsInfo.Where(bi => bi.FlyBestillingsID == h.FlyBestillingsID).ToList();
+                                foreach (var b in betalingsinfo)
+                                {
+                                    string kontonrString = b.Kortnummer.ToString();
+                                    string skjultKontonr = "";
+                                    for (var bokstavI = 0; bokstavI < kontonrString.Length; bokstavI++)
+                                    {
+                                        if (bokstavI % 4 == 0)
+                                        {
+                                            skjultKontonr += " ";
+                                        }
+                                        if (bokstavI < kontonrString.Length - 4)
+                                        {
+                                            skjultKontonr += "x";
+                                        }
+                                        else
+                                        {
+                                            skjultKontonr += kontonrString[bokstavI];
+                                        }
+                                    }
+                                    ok1.Kortnummer = skjultKontonr;
+                                    ok1.Korttype = b.Korttype;
+                                }
+                                listeKundesFlyBestillinger.Add(ok1);
+                            }
+                        }
                     }
                     return listeKundesFlyBestillinger;
                 }
