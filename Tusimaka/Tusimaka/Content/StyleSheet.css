@@ -350,10 +350,25 @@ p.fyll_inn_skjema{
 
 .bilde {
     float: right;
-    margin-right: 6em;
+    margin-right: 20%;
     display: inline-block;
     width: 500px;
+    opacity: 1;
+    -webkit-animation-name: fly;
+    -webkit-animation-duration: 5s;
 }
+
+@-webkit-keyframes fly {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
 
 .logoTusimaka {
     margin-left: 10%;
@@ -377,8 +392,6 @@ p.fyll_inn_skjema{
     font-weight: lighter;
     -webkit-animation-name: tusimaka; 
     -webkit-animation-duration: 5s; 
-    animation-name: tusimaka;
-    animation-duration: 5s;
 }
 
 @-webkit-keyframes tusimaka {
