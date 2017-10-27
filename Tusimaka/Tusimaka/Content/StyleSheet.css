@@ -354,3 +354,40 @@ p.fyll_inn_skjema{
     display: inline-block;
     width: 500px;
 }
+
+.logoTusimaka {
+    margin-left: 10%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #224652;
+}
+
+#velkommen {
+    font-size: 400%;
+    line-height: 16px;
+    letter-spacing: 2px;
+    font-weight: lighter;
+    margin-top: 10%;
+    margin-bottom: 2%;
+    color: #4b9ab4;
+}
+
+#airlines {
+    font-size: 600%;
+    letter-spacing: 5px;
+    font-weight: lighter;
+    -webkit-animation-name: tusimaka; 
+    -webkit-animation-duration: 5s; 
+    animation-name: tusimaka;
+    animation-duration: 5s;
+}
+
+@-webkit-keyframes tusimaka {
+    from {
+        color: #F4F5F5;
+    }
+
+    to {
+        color: #224652;
+    }
+}
+
