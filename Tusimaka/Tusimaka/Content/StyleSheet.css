@@ -161,7 +161,7 @@ tr {
     max-width: 58%;
 }
 
-#bekreft, #registrer, #sok, #bekreftBetaling, #loggInn, #create, #lagreFlyrute, #lagreKunde {
+#bekreft, #registrer, #sok, #bekreftBetaling, #loggInn, #create, #lagreFlyrute, #lagreKundem, #bekreftindex {
     background-color: #224652;
     color: white;
 }
@@ -389,5 +389,11 @@ p.fyll_inn_skjema{
     to {
         color: #224652;
     }
+}
+
+#bekreftindex {
+    margin-top: 5%;
+    margin-left: 10%;
+    margin-bottom: 10%;
 }
 
