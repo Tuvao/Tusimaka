@@ -4,10 +4,21 @@
     ViewBag.Title = "RegistrerKunde";
 }
 <link href="~/Content/StyleSheet.css" rel="stylesheet" />
-
+<script type="text/javascript">
+    //henter antall personer fra flyBestilling tabellen i DB
+    $(document).ready(function () {
+        $(".navbar-nav").removeAttr("hidden");
+        $(".loggInnUt").attr("href", "/Admin/LoggUt");
+        $(".loggInnUt").text("LOGG UT");
+        $(".navbar").find(".active").removeClass("active");
+        $(".kundeAdministrer").addClass("active");
+    });
+</script>
 <div class="container">
     <div class="row">
-        <h2>Registrer Kunde</h2>
+        <div class="col-lg-12">
+            <h2>Registrer Kunde</h2>
+        </div>
     </div>
     @using (Html.BeginForm())
     {
