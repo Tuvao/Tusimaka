@@ -30,7 +30,7 @@ namespace Tusimaka.DAL
         }
         public bool lagreFlyrute(Strekning innFlyrute)
         {
-            if(innFlyrute.FraFlyplass == "")
+            if(innFlyrute.FraFlyplass == "" || innFlyrute.TilFlyplass == "" || innFlyrute.Dato == "" || innFlyrute.Tid == "" || innFlyrute.Pris <= 0 || innFlyrute.FlyTid <= 0 || innFlyrute.AntallLedigeSeter < 0)
             {
                 return false;
             }
@@ -52,7 +52,7 @@ namespace Tusimaka.DAL
         }
         public bool endreFlyrute(int id, Strekning innFlyrute)
         {
-            if (id == 0 || innFlyrute.FraFlyplass == "")
+            if (id == 0 || innFlyrute.FraFlyplass == "" || innFlyrute.TilFlyplass == "" || innFlyrute.Dato == "" || innFlyrute.Tid == "" || innFlyrute.Pris <= 0 || innFlyrute.FlyTid <= 0 || innFlyrute.AntallLedigeSeter < 0)
             {
                 return false;
             }

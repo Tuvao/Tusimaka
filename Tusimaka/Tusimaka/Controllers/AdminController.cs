@@ -246,8 +246,8 @@ namespace Tusimaka.Controllers
             bool nyBestillingOK = _adminBestillBLL.LagreAdminFlyBestilling(id, nyBestilling);
             if (nyBestillingOK)
             {
-
-                Session["id"] = id;
+                //lagrer id som session for å kunne koble betaling og flybestilling
+                Session["id1"] = id;
                 return RedirectToAction("AdminBetalingNyBestilling");
             }
             return View();
@@ -259,7 +259,6 @@ namespace Tusimaka.Controllers
                 bool loggetInn = (bool)Session["LoggetInn"];
                 if (loggetInn)
                 {
-                    int id = (int)Session["id"];
                     return View();
                 }
             }
@@ -268,13 +267,25 @@ namespace Tusimaka.Controllers
         [HttpPost]
         public ActionResult AdminBetalingNyBestilling(BetalingsInformasjon nyBetaling)
         {
-            int id = (int)Session["id"];
-            bool nyBetalingOK = _adminBestillBLL.lagreBetalingsinformasjon(id, nyBetaling);
-            if (nyBetalingOK)
+            if (Session["id1"] != null)
             {
-                return RedirectToAction("KundeBestillinger");
+                //session id er flybestillingsid lagret fra forrige view. 
+                int id1 = (int)Session["id1"];
+                bool nyBetalingOK = _adminBestillBLL.lagreBetalingsinformasjon(id1, nyBetaling);
+                if (nyBetalingOK)
+                {
+                    return RedirectToAction("KundeAdministrer");
+                }
             }
-            return View();
+            if (Session["id1"] == null)
+            {
+                //hvis det skjer noe "rart" med id session.
+                TempData["error"] = "<script>alert('Det har skjedd en feil, betalingen gikk ikke igjennom. Bestillingen må slettes i og utføres på nytt.');</script>";
+                return RedirectToAction("KundeAdministrer");
+            }
+            //f.eks. hvis selve betalingen ikke går igjennom. 
+            //da lurt med en feilmelding, som f.eks. TempDate i if'en ovenfor.  
+            return RedirectToAction("AdminStart");
         }
         public ActionResult LoggUt()
         {

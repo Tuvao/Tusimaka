@@ -40,7 +40,7 @@ namespace Tusimaka.DAL
         }
         public bool endreKunde(int id, Kunde innKunde)
         {
-            if (id == 0)
+            if (id == 0 || innKunde.Fornavn == "" || innKunde.Etternavn == "" || innKunde.Epost == "" || innKunde.Kjonn == "")
             {
                 return false;
             }

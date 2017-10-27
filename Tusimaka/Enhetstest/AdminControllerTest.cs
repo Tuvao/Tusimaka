@@ -36,7 +36,6 @@ namespace Tusimaka.Enhetstest
             var SessionMock = new TestControllerBuilder();
             var controller = new AdminController(new AdminBLL(new AdminRepositoryStub()));
             SessionMock.InitializeController(controller);
-            var session = controller.Session["LoggetInn"] = true;
             var innAdminBruker = new AdminBruker()
             {
                 Brukernavn = "Brukernavn",
@@ -46,7 +45,7 @@ namespace Tusimaka.Enhetstest
             var result = (RedirectToRouteResult)controller.LoggInn(innAdminBruker);
             // Assert
             Assert.AreEqual(result.RouteValues.Values.First(), "AdminStart");
-            Assert.AreEqual(session, true);
+            Assert.AreEqual(controller.Session["LoggetInn"], true);
         }
         [TestMethod]
         public void LoggInn_Feil_DB()
@@ -55,7 +54,6 @@ namespace Tusimaka.Enhetstest
             var SessionMock = new TestControllerBuilder();
             var controller = new AdminController(new AdminBLL(new AdminRepositoryStub()));
             SessionMock.InitializeController(controller);
-            var session = controller.Session["LoggetInn"] = false;
             var innAdminBruker = new AdminBruker()
             {
                 Brukernavn = "",
@@ -63,8 +61,9 @@ namespace Tusimaka.Enhetstest
             };
             // Act
             var result = (ViewResult)controller.LoggInn(innAdminBruker);
+            // Assert
             Assert.AreEqual(result.ViewName, "");
-            Assert.AreEqual(session,false);
+            Assert.AreEqual(false, controller.Session["LoggetInn"]);
         }
         [TestMethod]
         public void LoggInn_feil_validering_ModelState()
@@ -73,7 +72,6 @@ namespace Tusimaka.Enhetstest
             var SessionMock = new TestControllerBuilder();
             var controller = new AdminController(new AdminBLL(new AdminRepositoryStub()));
             SessionMock.InitializeController(controller);
-            var session = controller.Session["LoggetInn"] = false;
             var innAdminBruker = new AdminBruker();
             controller.ViewData.ModelState.AddModelError("Brukernavn", "Brukernavn må oppgis");
             // Act
@@ -81,7 +79,7 @@ namespace Tusimaka.Enhetstest
             // Assert
             Assert.IsTrue(actionResult.ViewData.ModelState.Count == 1);
             Assert.AreEqual(actionResult.ViewName, "");
-            Assert.AreEqual(session, false);
+            Assert.AreEqual(controller.Session["LoggetInn"], false);
         }
         [TestMethod]
         public void AdminStart_View_OK()
@@ -108,6 +106,33 @@ namespace Tusimaka.Enhetstest
             var result = (RedirectToRouteResult)controller.AdminStart();
             // Assert
             Assert.AreEqual(result.RouteValues.Values.First(), "LoggInn");
+        }
+
+        [TestMethod]
+        public void FlyruterAdministrer_False_Session()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController();
+            SessionMock.InitializeController(controller);
+            controller.Session["LoggetInn"] = false;
+            // Act
+            var result = (RedirectToRouteResult)controller.FlyruterAdministrer();
+            // Assert
+            Assert.AreEqual(result.RouteValues.Values.First(), "LoggInn");
+        }
+        [TestMethod]
+        public void FlyruterAdministrer_View_OK()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController(new AdminFlyruterBLL(new AdminFlyruterDALRepositoryStub()));
+            SessionMock.InitializeController(controller);
+            controller.Session["LoggetInn"] = true;
+            // Act
+            var result = (ViewResult)controller.FlyruterAdministrer();
+            // Assert
+            Assert.AreEqual(result.ViewName, "");
         }
 
         [TestMethod]
@@ -151,21 +176,47 @@ namespace Tusimaka.Enhetstest
                 Assert.AreEqual(forventetResultat[i].AntallLedigeSeter, resultat[i].AntallLedigeSeter);
             }
         }
-
         [TestMethod]
-        public void FlyruterAdministrer_List_alle_flyruter_False_Session()
+        public void FlyruterAdministrer_List_alle_Flyruter_Feil_DB()
         {
             // Arrange
             var SessionMock = new TestControllerBuilder();
-            var controller = new AdminController();
+            var controller = new AdminController(new AdminFlyruterBLL(new AdminFlyruterDALRepositoryStub()));
             SessionMock.InitializeController(controller);
-            controller.Session["LoggetInn"] = false;
+            controller.Session["LoggetInn"] = true;
+            var forventetResultat = new List<Strekning>();
+            var flyrute = new Strekning()
+            {
+                StrekningsID = 1,
+                FraFlyplass = "Bergen",
+                TilFlyplass = "Trondheim",//forskjellig fra stub
+                Dato = "2017-10-20",
+                Tid = "12:30",
+                Pris = 1234,
+                FlyTid = 45,
+                AntallLedigeSeter = 5 //forskjellig fra stub
+            };
+            forventetResultat.Add(flyrute);
+            forventetResultat.Add(flyrute);
+            forventetResultat.Add(flyrute);
             // Act
-            var result = (RedirectToRouteResult)controller.FlyruterAdministrer();
+            var actionResult = (ViewResult)controller.FlyruterAdministrer();
+            var resultat = (List<Strekning>)actionResult.Model;
             // Assert
-            Assert.AreEqual(result.RouteValues.Values.First(), "LoggInn");
-        }
+            Assert.AreEqual(actionResult.ViewName, "");
 
+            for (var i = 0; i < resultat.Count; i++)
+            {
+                Assert.AreEqual(forventetResultat[i].StrekningsID, resultat[i].StrekningsID);
+                Assert.AreEqual(forventetResultat[i].FraFlyplass, resultat[i].FraFlyplass);
+                Assert.AreNotEqual(forventetResultat[i].TilFlyplass, resultat[i].TilFlyplass);
+                Assert.AreEqual(forventetResultat[i].Dato, resultat[i].Dato);
+                Assert.AreEqual(forventetResultat[i].Tid, resultat[i].Tid);
+                Assert.AreEqual(forventetResultat[i].Pris, resultat[i].Pris);
+                Assert.AreEqual(forventetResultat[i].FlyTid, resultat[i].FlyTid);
+                Assert.AreNotEqual(forventetResultat[i].AntallLedigeSeter, resultat[i].AntallLedigeSeter);
+            }
+        }
         [TestMethod]
         public void KundeAdministrer_List_Alle_Kunder_OK()
         {
@@ -202,6 +253,42 @@ namespace Tusimaka.Enhetstest
                 Assert.AreEqual(forventetResultat[i].Kjonn, resultat[i].Kjonn);
             }
         }
+        [TestMethod]
+        public void KundeAdministrer_List_Alle_Kunder_Feil_DB()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController(new AdminKundeBLL(new AdminKundeDALRepositoryStub()));
+            SessionMock.InitializeController(controller);
+            controller.Session["LoggetInn"] = true;
+            var forventetResultat = new List<Kunde>();
+            var kunde = new Kunde()
+            {
+                KundeID = 1,
+                Fornavn = "Helene",
+                Etternavn = "Fredriksen",//forskjellig fra stuben
+                Epost = "helene@fredriksen.no",//forskjellig fra stuben
+                Kjonn = "Kvinne"
+
+            };
+            forventetResultat.Add(kunde);
+            forventetResultat.Add(kunde);
+            forventetResultat.Add(kunde);
+            // Act
+            var actionResult = (ViewResult)controller.KundeAdministrer();
+            var resultat = (List<Kunde>)actionResult.Model;
+            // Assert
+            Assert.AreEqual(actionResult.ViewName, "");
+
+            for (var i = 0; i < resultat.Count; i++)
+            {
+                Assert.AreEqual(forventetResultat[i].KundeID, resultat[i].KundeID);
+                Assert.AreEqual(forventetResultat[i].Fornavn, resultat[i].Fornavn);
+                Assert.AreNotEqual(forventetResultat[i].Etternavn, resultat[i].Etternavn);
+                Assert.AreNotEqual(forventetResultat[i].Epost, resultat[i].Epost);
+                Assert.AreEqual(forventetResultat[i].Kjonn, resultat[i].Kjonn);
+            }
+        }
 
         [TestMethod]
         public void KundeAdministrer_False_Session()
@@ -215,6 +302,19 @@ namespace Tusimaka.Enhetstest
             var result = (RedirectToRouteResult)controller.KundeAdministrer();
             // Assert
             Assert.AreEqual(result.RouteValues.Values.First(), "LoggInn");
+        }
+        [TestMethod]
+        public void KundeAdministrer_View_OK()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController(new AdminKundeBLL(new AdminKundeDALRepositoryStub()));
+            SessionMock.InitializeController(controller);
+            controller.Session["LoggetInn"] = true;
+            // Act
+            var result = (ViewResult)controller.KundeAdministrer();
+            // Assert
+            Assert.AreEqual(result.ViewName, "");
         }
 
         [TestMethod]
@@ -230,8 +330,9 @@ namespace Tusimaka.Enhetstest
             // Assert
             Assert.AreEqual(resultat.ViewName, "");
         }
+        //sjekker at returnerer view og at id'en som forventes er lik som ligger i stuben(tom kunde)
         [TestMethod]
-        public void EndreKunde_View_Feil_Henting_ID_DB()
+        public void EndreKunde_feil_henting_av_id_fra_db_til_view()
         {
             // Arrange
             var SessionMock = new TestControllerBuilder();
@@ -240,8 +341,10 @@ namespace Tusimaka.Enhetstest
             controller.Session["LoggetInn"] = true;
             // Act
             var resultat = (ViewResult)controller.EndreKunde(0);
+            var KundeResultat = (Kunde)resultat.Model;
             // Assert
             Assert.AreEqual(resultat.ViewName, "");
+            Assert.AreEqual(KundeResultat.KundeID, 0);
         }
         [TestMethod]
         public void EndreKunde_OK()
@@ -286,12 +389,17 @@ namespace Tusimaka.Enhetstest
             var controller = new AdminController(new AdminKundeBLL(new AdminKundeDALRepositoryStub()));
             SessionMock.InitializeController(controller);
             controller.Session["LoggetInn"] = true;
-            var innKunde = new Kunde();
-            innKunde.Fornavn = "";
+            var innKunde = new Kunde()
+            {
+                Fornavn = "Maria",
+                Etternavn = "",
+                Epost = "epost@epost.no",
+                Kjonn = "Kvinne"
+            };
             // Act
-            var resultat = (RedirectToRouteResult)controller.EndreKunde(1, innKunde);
+            var resultat = (ViewResult)controller.EndreKunde(1, innKunde);
             // Assert
-            Assert.AreEqual(resultat.RouteValues.Values.First(), "KundeAdministrer");
+            Assert.AreEqual(resultat.ViewName, "");
         }
         [TestMethod]
         public void EndreKunde_feil_ID_DB()
@@ -470,6 +578,7 @@ namespace Tusimaka.Enhetstest
             controller.Session["LoggetInn"] = true;
             // Act
             var resultat = (ViewResult)controller.EndreFlyrute(1);
+            
             // Assert
             Assert.AreEqual(resultat.ViewName, "");
         }
@@ -483,23 +592,25 @@ namespace Tusimaka.Enhetstest
             controller.Session["LoggetInn"] = false;
             // Act
             var result = (RedirectToRouteResult)controller.EndreFlyrute(1);
+
             // Assert
             Assert.AreEqual(result.RouteValues.Values.First(), "LoggInn");
         }
+        //sjekker at returnerer view og at id'en som forventes er lik som ligger i stuben(tomflyrute)
         [TestMethod]
-        public void EndreFlyrute_feil_Henting_ID_DB()
+        public void EndreFlyrute_feil_henting_av_id_fra_db_til_view()
         {
             // Arrange
             var SessionMock = new TestControllerBuilder();
             var controller = new AdminController(new AdminFlyruterBLL(new AdminFlyruterDALRepositoryStub()));
             SessionMock.InitializeController(controller);
             controller.Session["LoggetInn"] = true;
-            var innFlyrute = new Strekning();
-            innFlyrute.FraFlyplass = "";
             //act
-            var actionResult = (ViewResult)controller.EndreFlyrute(1);
+            var actionResult = (ViewResult)controller.EndreFlyrute(0);
+            var strekningsResultat = (Strekning)actionResult.Model;
             // Assert
             Assert.AreEqual(actionResult.ViewName, "");
+            Assert.AreEqual(strekningsResultat.StrekningsID, 0);
         }
 
         [TestMethod]
@@ -534,8 +645,16 @@ namespace Tusimaka.Enhetstest
             var controller = new AdminController(new AdminFlyruterBLL(new AdminFlyruterDALRepositoryStub()));
             SessionMock.InitializeController(controller);
             controller.Session["LoggetInn"] = true;
-            var innFlyrute = new Strekning();
-            innFlyrute.FraFlyplass = "";
+            var innFlyrute = new Strekning()
+            {
+                FraFlyplass = "Bergen",
+                TilFlyplass = "",
+                Dato = "2017-10-20",
+                Tid = "",
+                Pris = 1234,
+                FlyTid = 45,
+                AntallLedigeSeter = 4
+            };
             //act
             var actionResult = (ViewResult)controller.EndreFlyrute(1, innFlyrute);
             // Assert
@@ -600,8 +719,12 @@ namespace Tusimaka.Enhetstest
             var controller = new AdminController(new AdminBestillingBLL(new AdminBestillingDALRepositoryStub()));
             SessionMock.InitializeController(controller);
             controller.Session["LoggetInn"] = true;
-            var nyBestilling = new FlyBestillinger();
-            nyBestilling.FlyBestillingsID = 1; 
+            var nyBestilling = new FlyBestillinger()
+            {
+                StrekningsID = 2,
+                ReturID = 0, //er int?(int - spørsmålstegn) så kan være null i db - ikke satt i stub at ikke kan være null
+                AntallPersoner = 2
+            };
             // Act
             var result = (RedirectToRouteResult)controller.NyKundeBestilling(1, nyBestilling);
             // Assert
@@ -612,7 +735,7 @@ namespace Tusimaka.Enhetstest
         {
             // Arrange
             var SessionMock = new TestControllerBuilder();
-            var controller = new AdminController();
+            var controller = new AdminController(new AdminBestillingBLL(new AdminBestillingDALRepositoryStub()));
             SessionMock.InitializeController(controller);
             controller.Session["LoggetInn"] = false;
             // Act
@@ -621,48 +744,17 @@ namespace Tusimaka.Enhetstest
             Assert.AreEqual(result.RouteValues.Values.First(), "LoggInn");
         }
         [TestMethod]
-        public void NyKundeBestilling_False_Session()
+        public void KundeBestillinger_View_OK()
         {
             // Arrange
             var SessionMock = new TestControllerBuilder();
-            var controller = new AdminController();
+            var controller = new AdminController(new AdminBestillingBLL(new AdminBestillingDALRepositoryStub()));
             SessionMock.InitializeController(controller);
             controller.Session["LoggetInn"] = false;
             // Act
-            var result = (RedirectToRouteResult)controller.NyKundeBestilling();
+            var result = (RedirectToRouteResult)controller.KundeBestillinger(1);
             // Assert
-             
             Assert.AreEqual(result.RouteValues.Values.First(), "LoggInn");
-        }
-        [TestMethod]
-        public void NyKundeBestilling_feil_DB()
-        {
-            // Arrange
-            var SessionMock = new TestControllerBuilder();
-            var controller = new AdminController(new AdminBestillingBLL(new AdminBestillingDALRepositoryStub()));
-            SessionMock.InitializeController(controller);
-            controller.Session["LoggetInn"] = true;
-            var nyBestilling = new FlyBestillinger();
-            nyBestilling.FlyBestillingsID = 0;
-            // Act
-            var result = (ViewResult)controller.NyKundeBestilling(0, nyBestilling);
-            // Assert
-            Assert.AreEqual(result.ViewName, "");
-        }
-        [TestMethod]
-        public void NyKundeBestilling_feil_Forventet_ID_DB()
-        {
-            // Arrange
-            var SessionMock = new TestControllerBuilder();
-            var controller = new AdminController(new AdminBestillingBLL(new AdminBestillingDALRepositoryStub()));
-            SessionMock.InitializeController(controller);
-            controller.Session["LoggetInn"] = true;
-            var nyBestilling = new FlyBestillinger();
-            nyBestilling.FlyBestillingsID = 0;
-            // Act
-            var result = (ViewResult)controller.NyKundeBestilling(1, nyBestilling);
-            // Assert
-            Assert.AreEqual(result.ViewName, "");
         }
         [TestMethod]
         public void KundeBestillinger_List_alle_KundeBestillinger_OK()
@@ -713,6 +805,88 @@ namespace Tusimaka.Enhetstest
 
         }
         [TestMethod]
+        public void KundeBestillinger_List_alle_KundeBestillinger_Feil_DB()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController(new AdminBestillingBLL(new AdminBestillingDALRepositoryStub()));
+            SessionMock.InitializeController(controller);
+            controller.Session["LoggetInn"] = true;
+            var skrivUtKundeBestilling = new List<KundeBestillinger>();
+            var bestilling = new KundeBestillinger
+            {
+                KundeID = 1,
+                Fornavn = "Helene",
+                Etternavn = "Andersen",
+                StrekningsID = 1,
+                FraFlyplass = "Trondheim", //forskjellig fra stuben
+                TilFlyplass = "Bergen",
+                Dato = "2017-10-20",
+                Pris = 1234,
+                Tid = "15:30", //forskjellig fra stuben
+                AntallPersoner = 4
+
+            };
+
+            skrivUtKundeBestilling.Add(bestilling);
+            skrivUtKundeBestilling.Add(bestilling);
+            skrivUtKundeBestilling.Add(bestilling);
+            // Act
+            var actionResult = (ViewResult)controller.KundeBestillinger(1);
+            var resultat = (List<KundeBestillinger>)actionResult.Model;
+            // Assert
+            Assert.AreEqual(actionResult.ViewName, "");
+
+            for (var i = 0; i < resultat.Count; i++)
+            {
+                Assert.AreEqual(skrivUtKundeBestilling[i].KundeID, resultat[i].KundeID);
+                Assert.AreEqual(skrivUtKundeBestilling[i].Fornavn, resultat[i].Fornavn);
+                Assert.AreEqual(skrivUtKundeBestilling[i].Etternavn, resultat[i].Etternavn);
+                Assert.AreEqual(skrivUtKundeBestilling[i].StrekningsID, resultat[i].StrekningsID);
+                Assert.AreNotEqual(skrivUtKundeBestilling[i].FraFlyplass, resultat[i].FraFlyplass);
+                Assert.AreEqual(skrivUtKundeBestilling[i].TilFlyplass, resultat[i].TilFlyplass);
+                Assert.AreEqual(skrivUtKundeBestilling[i].Dato, resultat[i].Dato);
+                Assert.AreEqual(skrivUtKundeBestilling[i].Pris, resultat[i].Pris);
+                Assert.AreNotEqual(skrivUtKundeBestilling[i].Tid, resultat[i].Tid);
+                Assert.AreEqual(skrivUtKundeBestilling[i].AntallPersoner, resultat[i].AntallPersoner);
+            }
+
+        }
+        [TestMethod]
+        public void NyKundeBestilling_False_Session()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController();
+            SessionMock.InitializeController(controller);
+            controller.Session["LoggetInn"] = false;
+            // Act
+            var result = (RedirectToRouteResult)controller.NyKundeBestilling();
+            // Assert
+             
+            Assert.AreEqual(result.RouteValues.Values.First(), "LoggInn");
+        }
+        [TestMethod]
+        public void NyKundeBestilling_feil_DB()
+        {
+            // Arrange
+            var SessionMock = new TestControllerBuilder();
+            var controller = new AdminController(new AdminBestillingBLL(new AdminBestillingDALRepositoryStub()));
+            SessionMock.InitializeController(controller);
+            controller.Session["LoggetInn"] = true;
+            var nyBestilling = new FlyBestillinger()
+            {
+                StrekningsID = 3,
+                ReturID = 0, 
+                AntallPersoner = 0
+            };
+            // Act
+            var result = (ViewResult)controller.NyKundeBestilling(1, nyBestilling);
+            // Assert
+            Assert.AreEqual(result.ViewName, "");
+        }
+       
+        [TestMethod]
         public void AdminBetalingNyBestilling_View_OK()
         {
             // Arrange
@@ -733,14 +907,22 @@ namespace Tusimaka.Enhetstest
             var controller = new AdminController(new AdminBestillingBLL(new AdminBestillingDALRepositoryStub()));
             SessionMock.InitializeController(controller);
             controller.Session["LoggetInn"] = true;
-            var nyBetaling = new BetalingsInformasjon();
-            nyBetaling.BestillingsID = 1;
+            controller.Session["id1"] = 1;
+            var nyBetaling = new BetalingsInformasjon()
+            {
+                FlyBestillingsID = 1,//flybestillingsid er id'en som er i session ovenfor. 
+                Kortnummer = "1234567812345678",
+                Utlopsmnd = "12",
+                Utlopsaar = "20",
+                CVC = "123",
+                Korttype = "Visa"
+            };
             // Act
             var result = (RedirectToRouteResult)controller.AdminBetalingNyBestilling(nyBetaling);
-
             // Assert
             Assert.AreEqual(result.RouteValues.Values.First(), "KundeAdministrer");
         }
+
         [TestMethod]
         public void AdminBetalingNyBestilling_False_Session()
         {
@@ -754,37 +936,53 @@ namespace Tusimaka.Enhetstest
             // Assert
             Assert.AreEqual(result.RouteValues.Values.First(), "LoggInn");
         }
+        //tester på at hvis session id er null (flybestillingsid) så går testen til kundeadministrer.
+        //selv om alt i var nybetaling er korrekt fylt ut. 
         [TestMethod]
-        public void AdminBetalingNyBestilling_feil_DB()
+        public void AdminBetalingNyBestilling_False_Session_På_Id()
         {
             // Arrange
             var SessionMock = new TestControllerBuilder();
             var controller = new AdminController(new AdminBestillingBLL(new AdminBestillingDALRepositoryStub()));
             SessionMock.InitializeController(controller);
             controller.Session["LoggetInn"] = true;
-            var nyBetaling = new BetalingsInformasjon();
-            nyBetaling.BestillingsID = 0;
+            controller.Session["id1"] = 0;
+            var nyBetaling = new BetalingsInformasjon()
+            {
+                FlyBestillingsID = 1,
+                Kortnummer = "1234567812345678",
+                Utlopsmnd = "12",
+                Utlopsaar = "20",
+                CVC = "123",
+                Korttype = "Visa"
+            };
             // Act
-            var result = (ViewResult)controller.AdminBetalingNyBestilling(nyBetaling);
-
+            var result = (RedirectToRouteResult)controller.AdminBetalingNyBestilling(nyBetaling);
             // Assert
-            Assert.AreEqual(result.ViewName, "");
+            Assert.AreEqual(result.RouteValues.Values.First(), "KundeAdministrer");
         }
         [TestMethod]
-        public void AdminBetalingNyBestilling_feil_Forventet_ID_DB()
+        public void AdminBetalingNyBestilling_feil_TomStreng_DB()
         {
             // Arrange
             var SessionMock = new TestControllerBuilder();
             var controller = new AdminController(new AdminBestillingBLL(new AdminBestillingDALRepositoryStub()));
             SessionMock.InitializeController(controller);
             controller.Session["LoggetInn"] = true;
-            var nyBetaling = new BetalingsInformasjon();
-            nyBetaling.BestillingsID = 0;
+            controller.Session["id1"] = 1;
+            var nyBetaling = new BetalingsInformasjon()
+            {
+                FlyBestillingsID = 0,
+                Kortnummer = "1234567812345678",
+                Utlopsmnd = "",
+                Utlopsaar = "20",
+                CVC = "123",
+                Korttype = "Visa"
+            };
             // Act
-            var result = (ViewResult)controller.AdminBetalingNyBestilling(nyBetaling);
-
+            var result = (RedirectToRouteResult)controller.AdminBetalingNyBestilling(nyBetaling);
             // Assert
-            Assert.AreEqual(result.ViewName, "");
+            Assert.AreEqual(result.RouteValues.Values.First(), "AdminStart");
         }
         [TestMethod]
         public void LoggUT_View_OK()
@@ -806,11 +1004,11 @@ namespace Tusimaka.Enhetstest
             var SessionMock = new TestControllerBuilder();
             var controller = new AdminController();
             SessionMock.InitializeController(controller);
-            controller.Session["LoggetInn"] = true;
             // Act;
-            var result = (ViewResult)controller.LoggUt();
+            var result = (RedirectToRouteResult)controller.LoggUt();
             // Assert
-            Assert.AreEqual(result.ViewName, "");
+            Assert.AreEqual(result.RouteValues.Values.First(), "LoggInn");
+            Assert.AreEqual(controller.Session["LoggetInn"], false);
         }
         [TestMethod]
         public void SlettKunde_Bool_OK()

@@ -34,7 +34,7 @@ namespace Tusimaka.DAL
         }
         public bool lagreBetalingsinformasjon(int id, BetalingsInformasjon innBetaling)
         {
-            if(innBetaling.BestillingsID == 0)
+            if(innBetaling.FlyBestillingsID == 0 || innBetaling.Kortnummer == "" || innBetaling.Utlopsmnd == "" || innBetaling.Utlopsaar == "" || innBetaling.CVC == "" || innBetaling.Korttype == "")
             {
                 return false;
             }
@@ -45,7 +45,7 @@ namespace Tusimaka.DAL
         }
         public bool LagreAdminFlyBestilling(int id, FlyBestillinger nyBestilling)
         {
-            if (nyBestilling.FlyBestillingsID == 0)
+            if (nyBestilling.StrekningsID == 0|| nyBestilling.AntallPersoner == 0)
             {
                 return false;
             }

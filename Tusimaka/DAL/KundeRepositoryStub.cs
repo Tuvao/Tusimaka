@@ -12,7 +12,7 @@ namespace Tusimaka.DAL
     {
         public bool lagreKunde(Kunde innKunde)
         {
-            if (innKunde.Fornavn == "")
+            if (innKunde.Fornavn == "" || innKunde.Etternavn == "" || innKunde.Epost == "" || innKunde.Kjonn == "")
             {
                 return false;
             }
