@@ -45,15 +45,18 @@ namespace Tusimaka.Model
         [Required(ErrorMessage = "Antall ledige seter må oppgis")]
         [RegularExpression(@"[0-9]{1,4}", ErrorMessage = "Antall ledige seter må bestå av tall")]
         public int AntallLedigeSeter { get; set; }
-
         public override string ToString()
         {
-            //return String.Format(
-            //    "{0:00}:{1:00}:{2:00}",
-            //    this.Hours, this.Minutes, this.Seconds);
-            var t = Math.Floor(FlyTid / 60);
-            var m = FlyTid % 60;
-            return t + "t " + m + "m";
+            if(FlyTid > 60)
+            {
+                var t = Math.Floor(FlyTid / 60);
+                var m = FlyTid % 60;
+                return t + "t " + m + "m";
+            }
+            else
+            {
+                return FlyTid + "m";
+            }
         }
     }
 }

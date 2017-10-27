@@ -180,7 +180,7 @@
                     for (var i in strekninger) {
                         utStreng += "<tr><td>" + strekninger[i].fraFlyplass + "</td><td>" + strekninger[i].tilFlyplass +
                             "</td><td>" + strekninger[i].dato + "</td><td>" + strekninger[i].tid + "</td><td>" + strekninger[i].pris +
-                            "</td><td>" + strekninger[i].flyTid + " min</td><td><input type='radio' name='StrekningsId' onChange='VisBekreft()' value='" + strekninger[i].StrekningsID + "' class=''/></td><tr/>";
+                            "</td><td>" + KonverterMinTilTimerOgMin(strekninger[i].flyTid) + " min</td><td><input type='radio' name='StrekningsId' onChange='VisBekreft()' value='" + strekninger[i].StrekningsID + "' class=''/></td><tr/>";
                     }
                 }
                 utStreng += "</table>"
@@ -199,7 +199,7 @@
                     for (var i in retur) {
                         utStreng += "<tr><td>" + retur[i].fraFlyplass + "</td><td>" + retur[i].tilFlyplass +
                             "</td><td>" + retur[i].dato + "</td><td>" + retur[i].tid + "</td><td>" + retur[i].pris +
-                            "</td><td>" + retur[i].flyTid + " min</td><td><input type='radio' name='ReturId' onChange='VisBekreftRetur()' value='" + retur[i].StrekningsID + "' class=''/></td><tr/>";
+                            "</td><td>" + KonverterMinTilTimerOgMin(retur[i].flyTid) + " min</td><td><input type='radio' name='ReturId' onChange='VisBekreftRetur()' value='" + retur[i].StrekningsID + "' class=''/></td><tr/>";
                     }
 
                     $("#bekreft").show();
@@ -213,11 +213,16 @@
 
             }
             
-           //function KonverterMinTilTimerOgMin(flyTid) {
-           //    var t = Math.floor(flyTid / 60);
-           //    var m = flyTid % 60;
-           //    return t + 't ' + m +'m';
-           // }
+            function KonverterMinTilTimerOgMin(flyTid) {
+                if (flyTid > 60) {
+                   var t = Math.floor(flyTid / 60);
+                   var m = flyTid % 60;
+                   return t + 't ' + m +'m';
+                }
+                else {
+                    return flyTid + "m";
+                }
+            }
             //Finner dagens dato og legger til
             var tilDato = document.getElementById("tilDato");
 
@@ -228,13 +233,12 @@
             var aar = idag.getFullYear();
 
             if (dag.length < 2) { dag = "0" + dag; }
-            if (maned.length < 2) { maned = "0" + maned; }
+            if (maaned.length < 2) { maaned = "0" + maaned; }
 
-            var dato = new String(dag + '.' + maaned + '.' + aar);
+            var dato = new String(aar + '-' + maaned + '-' + dag);
 
             tilDato.disabled = false;
             tilDato.setAttribute('min', dato);
-
 
             });
     </script>

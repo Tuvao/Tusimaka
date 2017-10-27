@@ -231,13 +231,13 @@
             var idag = new Date();
 
             var dag = new String(idag.getDate());
-            var maned = new String(idag.getMonth() + 1);
+            var maaned = new String(idag.getMonth() + 1);
             var aar = idag.getFullYear();
 
             if (dag.length < 2) { dag = "0" + dag; }
-            if (maned.length < 2) { maned = "0" + maned; }
+            if (maaned.length < 2) { maaned = "0" + maaned; }
 
-            var dato = new String(aar + '-' + maned + '-' + dag);
+            var dato = new String(aar + '-' + maaned + '-' + dag);
 
             tilDato.disabled = false;
             tilDato.setAttribute('min', dato);
