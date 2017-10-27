@@ -280,38 +280,40 @@
     {
         <div class="container">
             <div class="row no-gutters">
-                <h1 class="header">Velg din flyreise</h1>
-                <div class="col col-lg-2 col-md-3 col-sm-6 col-xs-12" id="dropDown1">
-                    <p>FRA</p>
-                    <select id="drop1" class="selectUtseende"></select>
+                <div class="col-lg-12">
+                    <h1 class="header">Velg din flyreise</h1>
                 </div>
-                <div class="col col-lg-2 col-md-3 col-sm-6 col-xs-12" id="dropDown2">
-                    <p>TIL</p>
-                    <select id="drop2" class="selectUtseende"></select>
+                    <div class="col col-lg-2 col-md-3 col-sm-6 col-xs-12" id="dropDown1">
+                        <p>FRA</p>
+                        <select id="drop1" class="selectUtseende"></select>
+                    </div>
+                    <div class="col col-lg-2 col-md-3 col-sm-6 col-xs-12" id="dropDown2">
+                        <p>TIL</p>
+                        <select id="drop2" class="selectUtseende"></select>
+                    </div>
+                    <div id="turDato" class="col col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <p>DATO</p>
+                        <input id="tilDato" type="date" onkeydown="return false" class="selectUtseende">
+                    </div>
+                    <div id="personValg" class="col col-lg-2 col-md-3 col-sm-6 col-xs-12">
+                        <p>ANTALL PERSONER</p>
+                        <select id="AntallPersoner" name="AntallPersoner" class="selectUtseende">
+                            <option name="velg" disabled selected>Velg</option>
+                            <option name="en" value="1">1</option>
+                            <option name="to" value="2">2</option>
+                            <option name="tre" value="3">3</option>
+                            <option name="fire" value="4">4</option>
+                            <option name="fem" value="5">5</option>
+                            <option name="seks" value="6">6</option>
+                            <option name="syv" value="7">7</option>
+                            <option name="atte" value="8">8</option>
+                        </select>
+                    </div>
+                    <div id="sokReise" class="col col-lg-2 col-md-2 col-sm-3 col-xs-6" hidden="hidden">
+                        <p class="usynlig">.</p>
+                        <button type="button" id="sok" disabled="disabled">Søk</button>
+                    </div>
                 </div>
-                <div id="turDato" class="col col-lg-2 col-md-3 col-sm-6 col-xs-12">
-                    <p>DATO</p>
-                    <input id="tilDato" type="date" onkeydown="return false" class="selectUtseende">
-                </div>
-                <div id="personValg" class="col col-lg-2 col-md-3 col-sm-6 col-xs-12">
-                    <p>ANTALL PERSONER</p>
-                    <select id="AntallPersoner" name="AntallPersoner" class="selectUtseende">
-                        <option name="velg" disabled selected>Velg</option>
-                        <option name="en" value="1">1</option>
-                        <option name="to" value="2">2</option>
-                        <option name="tre" value="3">3</option>
-                        <option name="fire" value="4">4</option>
-                        <option name="fem" value="5">5</option>
-                        <option name="seks" value="6">6</option>
-                        <option name="syv" value="7">7</option>
-                        <option name="atte" value="8">8</option>
-                    </select>
-                </div>
-                <div id="sokReise" class="col col-lg-2 col-md-2 col-sm-3 col-xs-6" hidden="hidden">
-                    <p class="usynlig">.</p>
-                    <button type="button" id="sok" disabled="disabled">Søk</button>
-                </div>
-            </div>
             <div class="row">
                 <div hidden="hidden" id="bekreftetTilFraSted">
                     <h3>Når ønsker du å reise?</h3>
