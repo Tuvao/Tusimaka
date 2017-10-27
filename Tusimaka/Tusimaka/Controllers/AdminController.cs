@@ -46,21 +46,9 @@ namespace Tusimaka.Controllers
         {
             _adminBLL = stub;
         }
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
 
         public ActionResult LoggInn()
         {
-            //if (Session["LoggetInn"] == null)
-            //{
-            //    Session["LoggetInn"] = false;
-            //}
-            //else
-            //{
-            //    ViewBag.Innlogget = (bool)Session["LoggetInn"];
-            //}
             return View();
         }
 
@@ -258,6 +246,8 @@ namespace Tusimaka.Controllers
             bool nyBestillingOK = _adminBestillBLL.LagreAdminFlyBestilling(id, nyBestilling);
             if (nyBestillingOK)
             {
+
+                Session["id"] = id;
                 return RedirectToAction("AdminBetalingNyBestilling");
             }
             return View();
@@ -296,14 +286,16 @@ namespace Tusimaka.Controllers
                 bool loggetInn = (bool)Session["LoggetInn"];
                 if (loggetInn)
                 {
+                    int id = (int)Session["id"];
                     return View();
                 }
             }
             return RedirectToAction("LoggInn");
         }
         [HttpPost]
-        public ActionResult AdminBetalingNyBestilling(int id, BetalingsInformasjon nyBetaling)
+        public ActionResult AdminBetalingNyBestilling(BetalingsInformasjon nyBetaling)
         {
+            int id = (int)Session["id"];
             bool nyBetalingOK = _adminBestillBLL.lagreBetalingsinformasjon(id, nyBetaling);
             if (nyBetalingOK)
             {

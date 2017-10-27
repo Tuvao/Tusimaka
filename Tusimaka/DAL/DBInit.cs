@@ -75,9 +75,13 @@ namespace Tusimaka.DAL
             context.Strekninger.Add(Strekning31);
             context.Strekninger.Add(Strekning32);
 
+            var kunder1 = new Kunder(){KundeID = 1, fornavn = "Knut", etternavn = "Fredriksen", epost = "knut@fredriksen.no", kjonn = "Mann"};
+            context.Kunder.Add(kunder1);
+
             byte[] hashetPassord = lagHash("Bord321");
             var AdminBruker1 = new AdminBrukere { brukernavn = "Admin", passord = hashetPassord};
             context.AdminBrukere.Add(AdminBruker1);
+
             base.Seed(context);
         }
         private static byte[] lagHash(string innPassord)
