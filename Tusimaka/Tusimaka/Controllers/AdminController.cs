@@ -252,33 +252,6 @@ namespace Tusimaka.Controllers
             }
             return View();
         }
-        
-        public ActionResult EndreKundeBestillinger(int id)
-        {
-            if (Session["LoggetInn"] != null)
-            {
-                bool loggetInn = (bool)Session["LoggetInn"];
-                if (loggetInn)
-                {
-                    List<KundeBestillinger> hentSpesifikKundeBestilling = _adminBestillBLL.hentKundesFlyBestillinger(id);
-                    return View(hentSpesifikKundeBestilling);
-                }
-            }
-            return RedirectToAction("LoggInn");
-        }
-        [HttpPost]
-        public ActionResult EndreKundeBestillinger(int id, KundeBestillinger endreBestilling)
-        {
-            if (ModelState.IsValid)
-            {
-                bool endreOK = _adminBestillBLL.endreKundeBestilling(id, endreBestilling);
-                if (endreOK)
-                {
-                    return RedirectToAction("KundeBestillinger");
-                }
-            }
-            return View();
-        }
         public ActionResult AdminBetalingNyBestilling()
         {
             if (Session["LoggetInn"] != null)
@@ -299,7 +272,7 @@ namespace Tusimaka.Controllers
             bool nyBetalingOK = _adminBestillBLL.lagreBetalingsinformasjon(id, nyBetaling);
             if (nyBetalingOK)
             {
-                return RedirectToAction("KundeAdministrer");
+                return RedirectToAction("KundeBestillinger");
             }
             return View();
         }

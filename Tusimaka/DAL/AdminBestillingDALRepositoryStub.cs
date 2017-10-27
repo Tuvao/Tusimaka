@@ -65,16 +65,5 @@ namespace Tusimaka.DAL
                 return true;
             }
         }
-        public bool endreKundeBestilling(int id, KundeBestillinger innBestilling)
-        {
-            if (id == 0 || innBestilling.FraFlyplass == "")
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
     }
 }
