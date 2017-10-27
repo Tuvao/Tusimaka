@@ -4,31 +4,42 @@
     width:100%;
 }
 .navbar {
-    color: #FFFFFF;
-    background-color: #DBDCDC;
-    /*background-color: #224652;*/
-    border-bottom: solid 2px #224652;
+    color: white;
+    /*background-color: #DBDCDC;*/
+    background-color: #224652;
+    /*border-bottom: solid 2px #224652;*/
 }
     .navbar a {
-        color: #224652;
+        color: white;
         font-size: 1.2em;
     }
+.navbar-nav a:hover {
+    color: #224652;
+}
 .navbar-brand {
     font-size: 1em;
     background-color: #224652;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     letter-spacing:2.5px;
+    margin-right:4em;
 }
+
 .navbar-header a{
     color: white;
 }
+
+.navbar-fixed-top {
+    border-width:0 0 0 0;
+}
 .active a, .active a:focus, .active a:active {
     background-color: #F4F5F5;
+    color: #224652;
 }
 
-.container, .row {
-    width: 100%;
+.container {
+    width: 98%;
     background-color: #F4F5F5;
+    margin:1em;
 }
 
 .row {
@@ -86,8 +97,19 @@ tr {
     margin:3em;
 }
     th {
-        font-size: 1.1em;
+        font-size: 1.2em;
+        text-transform:uppercase;
+        font-weight:normal;
     }
+
+.table > tbody > tr > th {
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+}
+.table > tbody > tr > th, .table > tbody > tr > td {
+    max-width:9em;
+    min-width:1em;
+}
 
     td {
         padding: 2em;

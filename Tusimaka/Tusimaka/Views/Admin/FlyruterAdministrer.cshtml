@@ -50,15 +50,20 @@
             <div class="col-lg-12">
                 <h2>Administrer Flyruter</h2>
             </div>
-            <div class="col-lg-12">
-                <span class="miniMenyKnapp">@Html.ActionLink("TILBAKE", "AdminStart")</span>
-                <span class="miniMenyKnapp">@Html.ActionLink("LEGG TIL", "RegistrerFlyrute")</span>
-            </div>
         </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <span class="miniMenyKnapp">@Html.ActionLink("TILBAKE", "AdminStart")</span>
+                    <span class="miniMenyKnapp">@Html.ActionLink("LEGG TIL", "RegistrerFlyrute")</span>
+                </div>
+            </div>
         <div class="row">
             <div class="col-lg-12">
                 <table class="table">
                     <tr>
+                        <th>
+                            ID
+                        </th>
                         <th>
                             Fra
                         </th>
@@ -69,13 +74,16 @@
                             Dato
                         </th>
                         <th>
-                            Tidspunkt
+                            KL
                         </th>
                         <th>
                             Pris
                         </th>
                         <th>
                             Reisetid
+                        </th>
+                        <th>
+                            Ledige seter
                         </th>
                         <th>
                             Hva vil du gjøre?
@@ -85,6 +93,9 @@
                     @foreach (var item in Model)
             {
                         <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.StrekningsID)
+                            </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.FraFlyplass)
                             </td>
@@ -102,6 +113,9 @@
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.FlyTid)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AntallLedigeSeter)
                             </td>
                             <td>
                                 <span class="miniKnapp endre">@Html.ActionLink("Endre", "EndreFlyrute", new { id = item.StrekningsID }, new { @class = "tabKnapp" })</span>
