@@ -21,7 +21,7 @@
                 <div class="navbar-header navbar-left" >
                     @Html.ActionLink("TUSIMAKA AIRLINES", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 </div>
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav" hidden>
                     <li class="hjem">@Html.ActionLink("Hjem", "AdminStart", "Admin")</li>
                     <li class="kundeAdministrer"><a href="../Admin/KundeAdministrer">Administrer kunder</a></li>
                     <li class="flyruterAdministrer"><a href="../Admin/FlyruterAdministrer">Administrer flyruter</a></li>

@@ -4,6 +4,15 @@
     ViewBag.Title = "EndreFlyrute";
 }
 <link href="~/Content/StyleSheet.css" rel="stylesheet" />
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".navbar-nav").removeAttr("hidden");
+        //$(".loggUt").removeAttr("hidden");
+        $(".navbar").find(".active").removeClass("active");
+        $(".flyruterAdministrer").addClass("active");
+    });
+</script>
+
 <div class="container">
     <div class="row">
         <h2>Endre flyrute</h2>
