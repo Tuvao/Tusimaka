@@ -263,20 +263,22 @@ p.fyll_inn_skjema{
     padding: 1em 0.5em;
     font-size: 1.3em;
     min-height: 3.5em;
-    min-width: 9em;
+    min-width: 11em;
     max-width: 17em;
     margin: 1em;
     background-color: #224652;
     text-align: center;
+    color: white;
+    text-decoration: none;
+    display:block;
 }
-    .MenyKnapp a {
+
+    .MenyKnapp:hover {
+        box-shadow: 5px 5px 2px #888888;
         color: white;
         text-decoration: none;
     }
 
-    .MenyKnapp:hover {
-        box-shadow: 5px 5px 2px #888888;
-    }
 .miniMenyKnapp {
     font-size: 1em;
     color: white;
