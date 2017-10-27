@@ -112,7 +112,8 @@
                                 @Html.DisplayFor(modelItem => item.Pris)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.FlyTid)
+                                @{string ok = item.ToString();}
+                                @Html.DisplayFor(modelItem =>ok)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.AntallLedigeSeter)
