@@ -26,17 +26,6 @@
     background-color: #F4F5F5;
 }
 
-/*.logoTusimaka {
-    opacity: 0;
-}
-
-.logoTusimaka:target {
-        -webkit-transition: opacity 2.0s ease-in;
-        -moz-transition: opacity 2.0s ease-in;
-        -o-transition: opacity 2.0s ease-in;
-        opacity: 1;
-    }*/
-
 .container, .row {
     width: 100%;
     background-color: #F4F5F5;
@@ -204,7 +193,7 @@ input[type=date]::-webkit-inner-spin-button {
     padding: 1.5em 0em;
     width:100%;
 }
-.adminStartKnapp .knapp {
+/*.adminStartKnapp .knapp {
     font-size: 1.3em;
     margin-top: 1em;
     margin-bottom: 1em;
@@ -221,7 +210,7 @@ input[type=date]::-webkit-inner-spin-button {
     .adminStartKnapp .knapp a {
         color: white;
         text-decoration:none;
-    }
+    }*/
 
 p.fyll_inn_skjema{
     display: inline-block;
@@ -233,14 +222,13 @@ p.fyll_inn_skjema{
     margin:0.3em;
 }
 
-.miniKnapp, .loggUt {
+.miniKnapp {
     font-size: 1em;
     color: white;
     min-height: 1.5em;
     min-width: 4em;
     max-width: 12em;
     padding: 0.5em 0.5em;
-    color: black;
     display: inline-block;
     text-align: center;
 }
@@ -271,6 +259,25 @@ p.fyll_inn_skjema{
     background-color: #05222C;
     color: white;
 }
+.MenyKnapp {
+    padding: 1em 0.5em;
+    font-size: 1.3em;
+    min-height: 3.5em;
+    min-width: 11em;
+    max-width: 17em;
+    margin: 1em;
+    background-color: #224652;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    display:block;
+}
+
+    .MenyKnapp:hover {
+        opacity:0.7;
+        color: white;
+        text-decoration: none;
+    }
 
 .miniMenyKnapp {
     font-size: 1em;
@@ -308,3 +315,20 @@ p.fyll_inn_skjema{
         text-decoration: none;
         color: black;
     }
+
+.loggInnFelt {
+    display: inline-block;
+    width: 300px;
+}
+
+.logoTusimaka {
+    height: 100%;
+    width: 100%;
+}
+
+.bilde {
+    float: right;
+    margin-right: 6em;
+    display: inline-block;
+    width: 500px;
+}
