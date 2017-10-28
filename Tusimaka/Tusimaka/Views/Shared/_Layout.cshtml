@@ -22,8 +22,8 @@
                 </div>
                 <ul class="nav navbar-nav" hidden>
                     <li class="hjem"><span class="glyphicon glyphicon-home" /></span>@Html.ActionLink("Hjem", "AdminStart", "Admin")</li>
-                    <li class="kundeAdministrer"><span class="glyphicon glyphicon-user" /></span><a href="../Admin/KundeAdministrer">Administrer kunder</a></li>
-                    <li class="flyruterAdministrer"><span class="glyphicon glyphicon-plane" /></span><a href="../Admin/FlyruterAdministrer">Administrer flyruter</a></li>
+                    <li class="kundeAdministrer"><span class="glyphicon glyphicon-user" /></span>@Html.ActionLink("Administrer kunder", "KundeAdministrer", "Admin")</li>
+                    <li class="flyruterAdministrer"><span class="glyphicon glyphicon-plane" /></span>@Html.ActionLink("Administrer flyruter", "FlyruterAdministrer", "Admin")</li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a class="loggInnUt" href="../Admin/loggInn">LOGG INN</a>@*@Html.ActionLink("LOGG INN", "LoggInn", "Admin", new { @class = "loggInnUt" })*@</li>
