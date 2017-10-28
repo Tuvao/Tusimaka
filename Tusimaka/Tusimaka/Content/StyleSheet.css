@@ -217,18 +217,16 @@ p.fyll_inn_skjema{
     display: inline-block;
     margin-right: 3%;
 }
-
-/*.tabKnapp{
-    font-size: 1.1em;
-    margin:0.3em;
-}*/
 .overskrift{
     display: inline-block;
     float: left;
 }
-.utenforKnapp{
-    display:inline-block;
-    float:right;
+.utenforKnapp {
+    display: inline-block;
+    float: right;
+    width: 5em;
+    height: 5em;
+    margin: 3em;
 }
 .rundKnapp {
     width: 4em;
@@ -337,9 +335,10 @@ p.fyll_inn_skjema{
     text-align: center;
     float:left;
     padding: 0.7em 1em;
+    margin-right: 0.3em;
     font-size: 1.3em;
     height: 3em;
-    width: 8em;
+    width: 7.6em;
     border: none;
     background-color: lightgrey;
 }
