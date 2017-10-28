@@ -86,13 +86,24 @@
 
     
 </script>
-    <div class="BekreftelseKundeInfoDiv">
-        <h2>Bekreftelse</h2>
-        <p>Takk for din bestilling @Model.Fornavn  @Model.Etternavn</p>
-        <div id="VisBekreftelsesNR"></div>
+<div class="container">
+    <div class="row">
+        <div class="BekreftelseKundeInfoDiv">
+            <div class="overskrift">
+                <h2>Bekreftelse</h2>
+                <p>Takk for din bestilling @Model.Fornavn  @Model.Etternavn</p>
+                <div id="VisBekreftelsesNR"></div>
+            </div>
+            <div class="left-spacing">
+                <div class="rundknapp-spacing">
+                    <div class="rundKnapp">
+                        <div class="miniKnapp add" title="Bestill ny flytur">@Html.ActionLink("Ny tur", "Bestill", "Home", new { @class = "" })</div>
+                    </div>
+                </div>
+            </div>
     </div>
-    <div id="VisTur" class="BekreftelsesDivBoks"></div>
-    <div id="VisRetur" class="BekreftelsesDivBoks"></div>
-    <form action="/Home/Bestill">
-        <input type="submit" value="Bestill ny flytur her" class="knapp" id="bekreft" />
-    </form>
+    <div class="row clear">
+        <div id="VisTur" class="BekreftelsesDivBoks"></div>
+        <div id="VisRetur" class="BekreftelsesDivBoks"></div>
+    </div>
+</div>

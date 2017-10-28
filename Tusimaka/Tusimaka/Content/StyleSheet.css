@@ -68,7 +68,9 @@ span {
     margin-top: 1em;
     margin-bottom: 1em;
 }
-
+.header-spacing {
+    margin-top: 2em;
+}
 .selectUtseende {
     padding: 0.3em;
     font-size: 1.2em;
@@ -103,37 +105,29 @@ tr {
     margin:3em;
 }
     th {
-        font-size: 1.2em;
+        font-size: 1em;
         text-transform:uppercase;
-        font-weight:normal;
+        font-weight:bold;
     }
 
 .table > tbody > tr > th {
     padding-bottom: 1.5em;
     border-top: none;
     padding-top: 2.5em;
+    max-width: 4em;
+    min-width: 2.5em;
 }
 
 .table > tbody > tr > td {
     padding-top: 2%;
     padding-bottom: 2%;
+    max-width: 4em;
+    min-width: 2.5em;
 }
     td {
         padding: 2em;
     }
 
-.knapp {
-    padding: 0.1em 2em;
-    font-size: 1.3em;
-    min-height: 3em;
-    min-width: 9em;
-    border: none;
-    margin-top: 0.4em;
-}
-    
-    .knapp:hover {
-        opacity: 0.8;
-    }
 
 #sok {
     padding: 0.3em;
@@ -228,15 +222,22 @@ p.fyll_inn_skjema{
     font-size: 1.1em;
     margin:0.3em;
 }*/
-
+.overskrift{
+    display: inline-block;
+    float: left;
+}
+.utenforKnapp{
+    display:inline-block;
+    float:right;
+}
 .rundKnapp {
     width: 4em;
     height: 4em;
     display: inline-block;
 }
-td.rundknapp-spacing {
-    max-width: 2.5em;
-    height:auto;
+.table > tbody > tr > td.rundknapp-spacing {
+    max-width: 2.9em;
+    height: auto;
 }
 .miniKnapp {
     width: 100%;
@@ -331,15 +332,14 @@ td.rundknapp-spacing {
             opacity: 0.7;
         }
 
-.valg .knapp {
+.knapp {
     font-size: 1em;
-    display: inline-block;
     text-align: center;
-    padding: 0.7em 2em;
+    float:left;
+    padding: 0.7em 1em;
     font-size: 1.3em;
-    min-height: 3em;
-    min-width: 9em;
-    max-width: 9em;
+    height: 3em;
+    width: 8em;
     border: none;
     background-color: lightgrey;
 }
@@ -347,13 +347,18 @@ td.rundknapp-spacing {
         text-decoration: none;
         color: black;
     }
+    .knapp:hover {
+        opacity: 0.8;
+    }
 
+.clear{
+    clear: both;
+}
 .loggInnFelt {
     display: inline-block;
     width: 300px;
     position:relative;
     z-index:100;
-    margin-top: 2em;
 }
 
 .logoTusimaka {
@@ -375,6 +380,9 @@ td.rundknapp-spacing {
     bottom: 0;
     right: 0;
     height: auto;
+}
+left-spacing{
+    margin-left: 15%;
 }
 
 @-webkit-keyframes fly {

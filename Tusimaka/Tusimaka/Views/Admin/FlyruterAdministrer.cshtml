@@ -51,7 +51,7 @@
                 <h2>Administrer Flyruter</h2>
             </div>
         </div>
-            <div class="row">
+            <div class="row header-spacing">
                 <div class="col-lg-12">
                     <span class="miniMenyKnapp">@Html.ActionLink("TILBAKE", "AdminStart")</span>
                     <span class="miniMenyKnapp">@Html.ActionLink("LEGG TIL", "RegistrerFlyrute")</span>
@@ -115,25 +115,25 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.AntallLedigeSeter)
                             </td>
-                            <td class="rundknapp-spacing">
+                            @*<td class="rundknapp-spacing">
                                 <div class="rundKnapp">
-                                    <div class="miniKnapp detaljer">
+                                    <div class="miniKnapp detaljer" title="Se detaljer om strkeningen">
                                         <a href="#VisFlyruterModal" class="tabKnapp" id="visFlyruterKnapp"
                                            data-navn="<i>Id: @item.StrekningsID</i><br/>Fra: @item.FraFlyplass <br/>Til: @item.TilFlyplass <br/>Den: @item.Dato <br/>Klokken: @item.Tid <br/>Pris: @item.Pris<br/>Flytid (i minutter): @item.FlyTid<br/>Antall ledige seter: @item.AntallLedigeSeter "
                                            data-id="@item.StrekningsID" data-toggle="modal" data-visFlyruterModal="true">Detaljer</a>
                                     </div>
                                 </div>
-                            </td>
+                            </td>*@
                             <td class="rundknapp-spacing">
                                 <div class="rundKnapp">
-                                    <div class="miniKnapp endre">
+                                    <div class="miniKnapp endre" title="Endre flyruten">
                                         @Html.ActionLink("Endre", "EndreFlyrute", new { id = item.StrekningsID }, new { @class = "tabKnapp" })
                                     </div>
                                 </div>
                             </td>
                             <td class="rundknapp-spacing">
                                 <div class="rundKnapp">
-                                    <div class="miniKnapp slett">
+                                    <div class="miniKnapp slett" title="Slett flyruten">
                                         <a href="#sletteFlyruterModal" class="tabKnapp" id="sletteKnapp"
                                            data-navn="<i>Id: @item.StrekningsID</i><br/>Fra: @item.FraFlyplass <br/>Til: @item.TilFlyplass <br/>Den: @item.Dato <br/>Klokken: @item.Tid" @*Fjernet at vi viste frem all data!*@
                                            data-id="@item.StrekningsID" data-toggle="modal" data-sletteFlyruterModal="true">Slett</a>

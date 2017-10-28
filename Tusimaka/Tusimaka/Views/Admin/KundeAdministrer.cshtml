@@ -44,13 +44,16 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row header-spacing">
         <div class="col-lg-12">
             <span class="miniMenyKnapp">@Html.ActionLink("TILBAKE", "AdminStart")</span>
             <span class="miniMenyKnapp">@Html.ActionLink("LEGG TIL", "RegistrerKunde")</span>
 
     <table class="table">
         <tr>
+            <th>
+                Kunde ID
+            </th>
             <th>
                 Fornavn
             </th>
@@ -70,6 +73,9 @@
         {
             <tr>
                 <td>
+                    @Html.DisplayFor(modelItem => item.KundeID)
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.Fornavn)
                 </td>
                 <td>
@@ -88,17 +94,17 @@
                 </td>
                 <td class="rundknapp-spacing">
                     <div class="rundKnapp">
-                        <div class="miniKnapp add">@Html.ActionLink("Ny", "NyKundeBestilling", new { id = item.KundeID }, new { @class = "tabKnapp" })</div>
+                        <div class="miniKnapp add" title="Legg til ny bestilling">@Html.ActionLink("Ny", "NyKundeBestilling", new { id = item.KundeID }, new { @class = "tabKnapp" })</div>
                     </div>
                 </td>
                 <td class="rundknapp-spacing">
                     <div class="rundKnapp">
-                        <div class="miniKnapp endre">@Html.ActionLink("Endre", "EndreKunde", new { id = item.KundeID }, new { @class = "tabKnapp" })</div>
+                        <div class="miniKnapp endre" title="Endre kundeinformasjon">@Html.ActionLink("Endre", "EndreKunde", new { id = item.KundeID }, new { @class = "tabKnapp" })</div>
                     </div>
                 </td>
                 <td class="rundknapp-spacing">
                     <div class="rundKnapp">
-                        <div class="miniKnapp slett">
+                        <div class="miniKnapp slett" title="Slett kunden">
                             <a href="#sletteModal" class="tabKnapp" id="sletteKnapp"
                                data-navn="<i>KundeId: @item.KundeID </i><br/>Fornavn: @item.Fornavn<br/>Etternavn: @item.Etternavn<br/>Epost: @item.Epost <br/>Kjønn: @item.Kjonn"
                                data-id="@item.KundeID" data-toggle="modal" data-sletteModal="true">Slett</a>
