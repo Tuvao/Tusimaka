@@ -33,16 +33,7 @@
                 });
             });
         });
-
-            // lag en hendelse som utføres når en a-href med "data-SletteModal = true" trykkes.
-            $('a[data-visFlyruterModal=true]').click(function () {
-
-                var data_navn = $(this).data('navn');
-                var data_id = $(this).data('id');
-
-                $('#visFlyrute').html(data_navn);
-            });
-        });
+    });
 </script>
 <body>
     <div class="container">
@@ -115,15 +106,6 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.AntallLedigeSeter)
                             </td>
-                            @*<td class="rundknapp-spacing">
-                                <div class="rundKnapp">
-                                    <div class="miniKnapp detaljer" title="Se detaljer om strkeningen">
-                                        <a href="#VisFlyruterModal" class="tabKnapp" id="visFlyruterKnapp"
-                                           data-navn="<i>Id: @item.StrekningsID</i><br/>Fra: @item.FraFlyplass <br/>Til: @item.TilFlyplass <br/>Den: @item.Dato <br/>Klokken: @item.Tid <br/>Pris: @item.Pris<br/>Flytid (i minutter): @item.FlyTid<br/>Antall ledige seter: @item.AntallLedigeSeter "
-                                           data-id="@item.StrekningsID" data-toggle="modal" data-visFlyruterModal="true">Detaljer</a>
-                                    </div>
-                                </div>
-                            </td>*@
                             <td class="rundknapp-spacing">
                                 <div class="rundKnapp">
                                     <div class="miniKnapp endre" title="Endre flyruten">
@@ -148,7 +130,6 @@
             </div>
             <div class="row">
                 @Html.Partial("SlettFlyruterModal")
-                @Html.Partial("VisFlyruterModal")
             </div>
         </div>
 </body>

@@ -170,7 +170,6 @@
     <Content Include="Views\Admin\SlettFlyruterModal.cshtml" />
     <Content Include="Views\Admin\EndreFlyrute.cshtml" />
     <Content Include="Views\Admin\KundeBestillinger.cshtml" />
-    <Content Include="Views\Admin\VisFlyruterModal.cshtml" />
     <Content Include="Views\Admin\NyKundeBestilling.cshtml" />
     <Content Include="Views\Admin\SlettKundeBestillingModal.cshtml" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
