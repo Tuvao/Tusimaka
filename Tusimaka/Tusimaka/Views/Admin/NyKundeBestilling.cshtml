@@ -199,7 +199,7 @@
                     for (var i in retur) {
                         utStreng += "<tr><td>" + retur[i].fraFlyplass + "</td><td>" + retur[i].tilFlyplass +
                             "</td><td>" + retur[i].dato + "</td><td>" + retur[i].tid + "</td><td>" + retur[i].pris +
-                            "</td><td>" + KonverterMinTilTimerOgMin(retur[i].flyTid) + " min</td><td><input type='radio' name='ReturId' onChange='VisBekreftRetur()' value='" + retur[i].StrekningsID + "' class=''/></td><tr/>";
+                            "</td><td>" + KonverterMinTilTimerOgMin(retur[i].flyTid) + "</td><td><input type='radio' name='ReturId' onChange='VisBekreftRetur()' value='" + retur[i].StrekningsID + "' class=''/></td><tr/>";
                     }
 
                     $("#bekreft").show();
