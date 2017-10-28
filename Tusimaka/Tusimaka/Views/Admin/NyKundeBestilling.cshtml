@@ -180,7 +180,7 @@
                     for (var i in strekninger) {
                         utStreng += "<tr><td>" + strekninger[i].fraFlyplass + "</td><td>" + strekninger[i].tilFlyplass +
                             "</td><td>" + strekninger[i].dato + "</td><td>" + strekninger[i].tid + "</td><td>" + strekninger[i].pris +
-                            "</td><td>" + KonverterMinTilTimerOgMin(strekninger[i].flyTid) + " min</td><td><input type='radio' name='StrekningsId' onChange='VisBekreft()' value='" + strekninger[i].StrekningsID + "' class=''/></td><tr/>";
+                            "</td><td>" + KonverterMinTilTimerOgMin(strekninger[i].flyTid) + "</td><td><input type='radio' name='StrekningsId' onChange='VisBekreft()' value='" + strekninger[i].StrekningsID + "' class=''/></td><tr/>";
                     }
                 }
                 utStreng += "</table>"
@@ -287,6 +287,9 @@
                 <div class="col-lg-12">
                     <h1 class="header">Velg din flyreise</h1>
                 </div>
+                    <div class="col-lg-12">
+                        <span class="miniMenyKnapp">@Html.ActionLink("TILBAKE", "KundeAdministrer")</span>
+                    </div>
                     <div class="col col-lg-2 col-md-3 col-sm-6 col-xs-12" id="dropDown1">
                         <p>FRA</p>
                         <select id="drop1" class="selectUtseende"></select>

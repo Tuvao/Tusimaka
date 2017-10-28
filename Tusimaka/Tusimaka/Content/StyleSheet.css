@@ -160,7 +160,7 @@ tr {
     max-width: 58%;
 }
 
-#bekreft, #registrer, #sok, #bekreftBetaling, #loggInn, #create, #lagreFlyrute, #lagreKundem, #bekreftindex {
+#bekreft, #registrer, #sok, #bekreftBetaling, #loggInn, #create, #lagreFlyrute, #lagreKunde, #bekreftindex {
     background-color: #224652;
     color: white;
 }
@@ -214,24 +214,6 @@ input[type=date]::-webkit-inner-spin-button {
     padding: 1.5em 0em;
     width:100%;
 }
-/*.adminStartKnapp .knapp {
-    font-size: 1.3em;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    min-height: 3em;
-    min-width: 9em;
-    max-width: 17em;
-    padding: 1em 2em;
-    background-color: #224652;
-    color: white;
-}
-    .adminStartKnapp .knapp:hover {
-        opacity:0.7;
-    }
-    .adminStartKnapp .knapp a {
-        color: white;
-        text-decoration:none;
-    }*/
 
 p.fyll_inn_skjema{
     display: inline-block;
