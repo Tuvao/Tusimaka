@@ -11,9 +11,10 @@
         color: white;
         font-size: 1.2em;
     }
-.navbar-nav a:hover, .navbar>li:hover {
+.navbar-nav a:hover, .navbar-nav li:hover {
     color: #224652;
 }
+
 .hjem {
     min-width:120px;
 }
@@ -39,7 +40,9 @@
     background-color: #F4F5F5;
     color: #224652;
 }
-
+.active .glyphicon, .active .glyphicon:focus, .active .glyphicon:active {
+    color: #224652;
+}
 .container {
     width: 98%;
     background-color: #F4F5F5;
@@ -110,10 +113,6 @@ tr {
     padding-top: 1.5em;
     padding-bottom: 1.5em;
 }
-/*.table > tbody > tr > th, .table > tbody > tr > td {
-    max-width:9em;
-    min-width:1em;
-}*/
 
     td {
         padding: 2em;
@@ -148,10 +147,6 @@ tr {
     background-color: lightgrey;
     color: black;
 }
-
-/*div#VisAntallPers{
-    display: inline-block;
-}*/
 
 #utlopscvc td{
     padding: 0;
@@ -444,4 +439,5 @@ p.fyll_inn_skjema{
     float: left;
     margin:12px;
     display: inline-block;
+    z-index:1;
 }
