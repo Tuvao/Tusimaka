@@ -158,6 +158,8 @@ namespace Tusimaka.DAL
                 db.FlyBestillingKunder.Remove(slettFraHjelpetabell);
                 FlyBestilling slettKundeBestilling = db.FlyBestilling.Find(slettFraHjelpetabell.FlyBestillingsID);
                 db.FlyBestilling.Remove(slettKundeBestilling);
+                BetalingsInfo slettBetalingsinfo = db.BetalingsInfo.Find(slettKundeBestilling.FlyBestillingsID);
+                db.BetalingsInfo.Remove(slettBetalingsinfo);
                 db.SaveChanges();
                 return true;
             }
