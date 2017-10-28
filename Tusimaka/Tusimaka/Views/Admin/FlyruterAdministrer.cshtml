@@ -85,9 +85,6 @@
                         <th>
                             Ledige seter
                         </th>
-                        <th>
-                            Hva vil du gjøre?
-                        </th>
                     </tr>
 
                     @foreach (var item in Model)
@@ -118,19 +115,31 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.AntallLedigeSeter)
                             </td>
-                            <td>
-                                <span class="miniKnapp endre">@Html.ActionLink("Endre", "EndreFlyrute", new { id = item.StrekningsID }, new { @class = "tabKnapp" })</span>
-                                <span class="miniKnapp detaljer">
-                                    <a href="#VisFlyruterModal" class="tabKnapp" id="visFlyruterKnapp"
-                                       data-navn="<i>Id: @item.StrekningsID</i><br/>Fra: @item.FraFlyplass <br/>Til: @item.TilFlyplass <br/>Den: @item.Dato <br/>Klokken: @item.Tid <br/>Pris: @item.Pris<br/>Flytid (i minutter): @item.FlyTid<br/>Antall ledige seter: @item.AntallLedigeSeter "
-                                       data-id="@item.StrekningsID" data-toggle="modal" data-visFlyruterModal="true">Detaljer</a>
-                                </span>
-                                <span class="miniKnapp slett">
-                                    <a href="#sletteFlyruterModal" class="tabKnapp" id="sletteKnapp"
-                                       data-navn="<i>Id: @item.StrekningsID</i><br/>Fra: @item.FraFlyplass <br/>Til: @item.TilFlyplass <br/>Den: @item.Dato <br/>Klokken: @item.Tid" @*Fjernet at vi viste frem all data!*@
-                                       data-id="@item.StrekningsID" data-toggle="modal" data-sletteFlyruterModal="true">Slett</a>
-                                </span>
+                            <td class="rundknapp-spacing">
+                                <div class="rundKnapp">
+                                    <div class="miniKnapp detaljer">
+                                        <a href="#VisFlyruterModal" class="tabKnapp" id="visFlyruterKnapp"
+                                           data-navn="<i>Id: @item.StrekningsID</i><br/>Fra: @item.FraFlyplass <br/>Til: @item.TilFlyplass <br/>Den: @item.Dato <br/>Klokken: @item.Tid <br/>Pris: @item.Pris<br/>Flytid (i minutter): @item.FlyTid<br/>Antall ledige seter: @item.AntallLedigeSeter "
+                                           data-id="@item.StrekningsID" data-toggle="modal" data-visFlyruterModal="true">Detaljer</a>
+                                    </div>
+                                </div>
                             </td>
+                            <td class="rundknapp-spacing">
+                                <div class="rundKnapp">
+                                    <div class="miniKnapp endre">
+                                        @Html.ActionLink("Endre", "EndreFlyrute", new { id = item.StrekningsID }, new { @class = "tabKnapp" })
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="rundknapp-spacing">
+                                <div class="rundKnapp">
+                                    <div class="miniKnapp slett">
+                                        <a href="#sletteFlyruterModal" class="tabKnapp" id="sletteKnapp"
+                                           data-navn="<i>Id: @item.StrekningsID</i><br/>Fra: @item.FraFlyplass <br/>Til: @item.TilFlyplass <br/>Den: @item.Dato <br/>Klokken: @item.Tid" @*Fjernet at vi viste frem all data!*@
+                                           data-id="@item.StrekningsID" data-toggle="modal" data-sletteFlyruterModal="true">Slett</a>
+                                    </div>
+                                </div>
+</td>
                         </tr>
                     }
 

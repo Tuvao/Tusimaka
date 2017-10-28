@@ -64,7 +64,6 @@ h2 {
 span {
     display: block;
 }
-
 .Option {
     margin-top: 1em;
     margin-bottom: 1em;
@@ -110,10 +109,15 @@ tr {
     }
 
 .table > tbody > tr > th {
-    padding-top: 1.5em;
     padding-bottom: 1.5em;
+    border-top: none;
+    padding-top: 2.5em;
 }
 
+.table > tbody > tr > td {
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
     td {
         padding: 2em;
     }
@@ -220,60 +224,72 @@ p.fyll_inn_skjema{
     margin-right: 3%;
 }
 
-.tabKnapp{
+/*.tabKnapp{
     font-size: 1.1em;
     margin:0.3em;
-}
+}*/
 
-.miniKnapp {
-    font-size: 1em;
-    color: white;
-    min-height: 1.5em;
-    min-width: 4em;
-    max-width: 12em;
-    padding: 0.5em 0.5em;
+.rundKnapp {
+    width: 4em;
+    height: 4em;
     display: inline-block;
-    text-align: center;
+}
+td.rundknapp-spacing {
+    max-width: 2.5em;
+    height:auto;
+}
+.miniKnapp {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #4679BD;
 }
     .miniKnapp:hover {
-        opacity:0.4;
+        opacity:0.9;
     }
 
 .miniKnapp a {
-        text-decoration:none;
-    }
+    display: block;
+    float: left;
+    width: 100%;
+    padding-top: 50%;
+    padding-bottom: 50%;
+    line-height: 1.2em;
+    margin-top: -0.5em;
+    text-align: center;
+    color: #e2eaf3;
+    font-size: 1em;
+    text-decoration: none;
+    
+}
 
 .endre, .endre a {
-    color: black;
-    background-color: #A8B8BD;
+    background-color: #224A57;
+    color: white;
 }
 
 .slett, .slett a, #sletteFlyruteModalKnapp, #sletteKundeBestillingModalKnapp, #sletteModalKnapp {
     background-color: #B62B32;
     color: white;
 }
-
 .add, .add a {
-    background-color: #224A57;
+    background-color: #336170;
     color: white;
 }
-
 .detaljer, .detaljer a {
-    background-color: #05222C;
+    background-color: #7C98A2;
     color: white;
 }
 .MenyKnapp a, .MenyKnapp img {
-    /*padding: 1em 0.5em;*/
     font-size: 1.3em;
-    
-    /*margin: 1em;*/
     background-color: #224652;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     color: white;
     text-decoration: none;
-    /*padding: 2em;*/
 }
 .MenyKnapp {
     display: block;
@@ -335,6 +351,9 @@ p.fyll_inn_skjema{
 .loggInnFelt {
     display: inline-block;
     width: 300px;
+    position:relative;
+    z-index:100;
+    margin-top: 2em;
 }
 
 .logoTusimaka {
@@ -344,12 +363,18 @@ p.fyll_inn_skjema{
 
 .bilde {
     float: right;
-    margin-right: 20%;
+    margin-right: 15%;
+    margin-bottom: 1%;
     display: inline-block;
-    width: 500px;
-    opacity: 1;
+    max-width: 500px;
     -webkit-animation-name: fly;
     -webkit-animation-duration: 5s;
+    opacity: 1;
+    z-index: 0;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    height: auto;
 }
 
 @-webkit-keyframes fly {
@@ -425,4 +450,11 @@ p.fyll_inn_skjema{
     margin:12px;
     display: inline-block;
     z-index:1;
+}
+footer {
+    position: relative;
+    margin-top: -0.7em;
+    height: 0.7em;
+    clear: both;
+    bottom:0;
 }
