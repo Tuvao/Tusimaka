@@ -5,15 +5,13 @@
 }
 .navbar {
     color: white;
-    /*background-color: #DBDCDC;*/
     background-color: #224652;
-    /*border-bottom: solid 2px #224652;*/
 }
     .navbar a {
         color: white;
         font-size: 1.2em;
     }
-.navbar-nav a:hover {
+.navbar-nav a:hover, .navbar>li:hover {
     color: #224652;
 }
 .hjem {
@@ -287,22 +285,31 @@ p.fyll_inn_skjema{
     background-color: #05222C;
     color: white;
 }
-.MenyKnapp {
-    padding: 1em 0.5em;
+.MenyKnapp a, .MenyKnapp img {
+    /*padding: 1em 0.5em;*/
     font-size: 1.3em;
-    min-height: 3.5em;
-    min-width: 11em;
-    max-width: 17em;
-    margin: 1em;
+    
+    /*margin: 1em;*/
     background-color: #224652;
     text-align: center;
+    text-decoration: none;
+    display: inline-block;
     color: white;
     text-decoration: none;
-    display:block;
+    /*padding: 2em;*/
+}
+.MenyKnapp {
+    display: block;
+    padding-bottom: 2em;
+    min-height: 3.5em;
+    min-width: 17em;
+    max-width: 17em;
 }
     .MenyKnapp a {
-        color: white;
-        text-decoration: none;
+        display: block;
+        padding: 1em 0.5em;
+        min-width: 17em;
+        max-width: 17em;
     }
 
     .MenyKnapp:hover {
@@ -420,21 +427,21 @@ p.fyll_inn_skjema{
     margin-bottom: 10%;
 }
 
-.ikon {
-    width:27px;
-    height:30px;
-    float:left;
-    margin-left:2em;
-    display:inline-block;
-}
-.hjem .ikonNav {
-    width: 30px;
-    height: 25px;
-}
-.ikonNav {
-    width: 23px;
-    height: 25px;
+.glyphicon {
+    font-size:2em;
     float: left;
-    margin:10px;
+    margin: 0.5em 0 0.8em 1em;
+    display: inline-block;
+    color:white;
+}
+
+.hjem .glyphicon {
+    font-size:2em;
+}
+
+.nav .glyphicon {
+    font-size:1.5em;
+    float: left;
+    margin:12px;
     display: inline-block;
 }

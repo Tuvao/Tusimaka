@@ -54,10 +54,8 @@
             @Html.DisplayFor(model => model.First().Fornavn)
             @Html.DisplayFor(model => model.First().Etternavn)
         </h3>
-
-    <p>
-        @Html.ActionLink("Tilbake", "KundeAdministrer")
-    </p>
+        
+        <span class="miniMenyKnapp">@Html.ActionLink("Tilbake", "KundeAdministrer")</span>
     <table class="table">
         <tr>
             <th>
