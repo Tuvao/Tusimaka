@@ -16,6 +16,12 @@
 .navbar-nav a:hover {
     color: #224652;
 }
+.hjem {
+    min-width:120px;
+}
+.kundeAdministrer, .flyruterAdministrer {
+    min-width: 220px;
+}
 .navbar-brand {
     font-size: 1em;
     background-color: #224652;
@@ -106,10 +112,10 @@ tr {
     padding-top: 1.5em;
     padding-bottom: 1.5em;
 }
-.table > tbody > tr > th, .table > tbody > tr > td {
+/*.table > tbody > tr > th, .table > tbody > tr > td {
     max-width:9em;
     min-width:1em;
-}
+}*/
 
     td {
         padding: 2em;
@@ -294,6 +300,10 @@ p.fyll_inn_skjema{
     text-decoration: none;
     display:block;
 }
+    .MenyKnapp a {
+        color: white;
+        text-decoration: none;
+    }
 
     .MenyKnapp:hover {
         opacity:0.7;
@@ -410,3 +420,21 @@ p.fyll_inn_skjema{
     margin-bottom: 10%;
 }
 
+.ikon {
+    width:27px;
+    height:30px;
+    float:left;
+    margin-left:2em;
+    display:inline-block;
+}
+.hjem .ikonNav {
+    width: 30px;
+    height: 25px;
+}
+.ikonNav {
+    width: 23px;
+    height: 25px;
+    float: left;
+    margin:10px;
+    display: inline-block;
+}
