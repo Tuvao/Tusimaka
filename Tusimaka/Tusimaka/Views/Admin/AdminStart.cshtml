@@ -6,18 +6,18 @@
         <link href="~/Content/StyleSheet.css" rel="stylesheet" />
         <script src="~/Scripts/jquery-3.2.1.min.js"></script>
         <script type="text/javascript">
-                $(document).ready(function () {
-                    // Viser navbar-knappene kun når Admin er logget inn.
-                    $(".navbar-nav").removeAttr("hidden");
+            $(document).ready(function () {
+                // Viser navbar-knappene kun når Admin er logget inn.
+                $(".navbar-nav").removeAttr("hidden");
 
-                    // Gjør om logginn-knapp til loggut-knapp.
-                    $(".loggInnUt").attr("href", "/Admin/LoggUt");
-                    $(".loggInnUt").text("LOGG UT");
+                // Gjør om logginn-knapp til loggut-knapp.
+                $(".loggInnUt").attr("href", "/Admin/LoggUt");
+                $(".loggInnUt").text("LOGG UT");
 
-                    // Gir den aktive siden en active-klasse med styling som markerer.
-                    $(".navbar").find(".active").removeClass("active");
-                    $(".hjem").addClass("active");
-                });
+                // Gir den aktive siden en active-klasse med styling som markerer.
+                $(".navbar").find(".active").removeClass("active");
+                $(".hjem").addClass("active");
+            });
         </script>
     </head>
 

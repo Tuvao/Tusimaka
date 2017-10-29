@@ -18,7 +18,8 @@
         // Gir den aktive siden en active-klasse med styling som markerer.
         $(".navbar").find(".active").removeClass("active");
         $(".kundeAdministrer").addClass("active");
-        
+
+        // Sletter kunder
         $('a[data-sletteModal=true]').click(function () {
             var data_navn = $(this).data('navn');
             var data_id = $(this).data('id');

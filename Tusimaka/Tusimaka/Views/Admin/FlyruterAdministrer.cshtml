@@ -18,6 +18,7 @@
         $(".navbar").find(".active").removeClass("active");
         $(".flyruterAdministrer").addClass("active");
 
+        // Sletter flyruter
         $('a[data-sletteFlyruterModal=true]').click(function () {
             var data_navn = $(this).data('navn');
             var data_id = $(this).data('id');
