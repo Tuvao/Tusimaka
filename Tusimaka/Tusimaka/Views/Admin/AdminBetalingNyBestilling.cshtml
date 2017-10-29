@@ -26,17 +26,17 @@
                 </div>
             </div>
             <div class="row header-spacing">
+                <div class="col-md-10">
+                
                 @Html.AntiForgeryToken()
                     <h2>Registrer kundens betaling</h2>
                     <h4>Fyll inn betalingsinformasjon</h4>
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     @Html.HiddenFor(model => model.BestillingsID)
-                    <div class="row header-spacing">
-                        <div class="col-md-10">
                             @Html.EditorFor(model => model.Kortnummer, new { htmlAttributes = new { placeholder = "Kortnummer", @class = "tekstFelt fullStrl" } })
                             @Html.ValidationMessageFor(model => model.Kortnummer, "", new { @class = "text-danger" })
-                        </div>
                     </div>
+                </div>
                     <div class="row">
                         <div class="col col-lg-1 col-md-1 col-sm-5 col-xs-10 sidestill" id="utlopscvc">
                             <table>
@@ -101,7 +101,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
             }
         <script src="~/Scripts/jquery-3.2.1.min.js"></script>
         <script src="~/Scripts/jquery.validate.min.js"></script>
