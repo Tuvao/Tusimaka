@@ -109,25 +109,15 @@ tr {
         text-transform:uppercase;
         font-weight:bold;
     }
-
+    td {
+        padding: 2em;
+    }
+    
 .table > tbody > tr > th {
     padding-bottom: 1.5em;
     border-top: none;
     padding-top: 2.5em;
-    max-width: 4em;
-    min-width: 2.5em;
-}
-
-.table > tbody > tr > td {
-    padding-top: 2%;
-    padding-bottom: 2%;
-    max-width: 4em;
-    min-width: 2.5em;
-}
-    td {
-        padding: 2em;
-    }
-
+}    
 
 #sok {
     padding: 0.3em;
@@ -249,20 +239,19 @@ p.fyll_inn_skjema{
         opacity:0.9;
     }
 
-.miniKnapp a {
-    display: block;
-    float: left;
-    width: 100%;
-    padding-top: 50%;
-    padding-bottom: 50%;
-    line-height: 1.2em;
-    margin-top: -0.5em;
-    text-align: center;
-    color: #e2eaf3;
-    font-size: 1em;
-    text-decoration: none;
-    
-}
+    .miniKnapp a {
+        display: inline-block;
+        float: left;
+        width: 100%;
+        padding-top: 50%;
+        padding-bottom: 50%;
+        line-height: 1.2em;
+        margin-top: -0.5em;
+        text-align: center;
+        color: #e2eaf3;
+        font-size: 1em;
+        text-decoration: none;
+    }
 
 .endre, .endre a {
     background-color: #224A57;
