@@ -327,7 +327,8 @@ p.fyll_inn_skjema{
     margin-right: 0.3em;
     font-size: 1.3em;
     height: 3em;
-    width: 7.6em;
+    min-width: 8em;
+    max-width:13em;
     border: none;
     background-color: lightgrey;
 }
