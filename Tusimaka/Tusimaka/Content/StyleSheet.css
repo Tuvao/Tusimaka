@@ -202,11 +202,11 @@ tr {
     background-color: #3C6C7C;
     color: white;
     padding: 3.4em;
-    margin-top: 2%;
+    margin-top: 0.5em;
 }
     .BekreftelsesDivBoks td {
         padding: 1em;
-        font-size: 1.3em;
+        font-size: 1.2em;
     }
     .BekreftelsesDivBoks th {
         padding: 4%;

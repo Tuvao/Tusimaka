@@ -99,4 +99,16 @@ Parameternavn: entity
    at System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[TResult](Expression expression)
    at System.Data.Entity.Internal.Linq.DbQueryProvider.Execute[TResult](Expression expression)
    at System.Linq.Queryable.Last[TSource](IQueryable`1 source)
-   at Tusimaka.DAL.AdminBestillingDAL.lagreBetalingsinformasjon(Int32 id, BetalingsInformasjon innBetaling) in C:\Users\Silje\source\repos\Tusimaka\Tusimaka\DAL\AdminBestillingDAL.cs:line 201
+   at Tusimaka.DAL.AdminBestillingDAL.lagreBetalingsinformasjon(Int32 id, BetalingsInformasjon innBetaling) in C:\Users\Silje\source\repos\Tusimaka\Tusimaka\DAL\AdminBestillingDAL.cs:line 201System.InvalidOperationException: The cast to value type 'System.Int32' failed because the materialized value is null. Either the result type's generic parameter or the query must use a nullable type.
+   ved System.Data.Entity.Core.Common.Internal.Materialization.Shaper.ErrorHandlingValueReader`1.GetValue(DbDataReader reader, Int32 ordinal)
+   ved lambda_method(Closure , Shaper )
+   ved System.Data.Entity.Core.Common.Internal.Materialization.Coordinator`1.ReadNextElement(Shaper shaper)
+   ved System.Data.Entity.Core.Common.Internal.Materialization.Shaper`1.SimpleEnumerator.MoveNext()
+   ved System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   ved System.Linq.Enumerable.Single[TSource](IEnumerable`1 source)
+   ved System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.<GetElementFunction>b__3[TResult](IEnumerable`1 sequence)
+   ved System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.ExecuteSingle[TResult](IEnumerable`1 query, Expression queryRoot)
+   ved System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[TResult](Expression expression)
+   ved System.Data.Entity.Internal.Linq.DbQueryProvider.Execute[TResult](Expression expression)
+   ved System.Linq.Queryable.Max[TSource,TResult](IQueryable`1 source, Expression`1 selector)
+   ved Tusimaka.DAL.BestillingDAL.hentReferanseNR() i C:\Users\maria\source\repos\Tusimaka\Tusimaka\DAL\BestillingDAL.cs:linje 124
