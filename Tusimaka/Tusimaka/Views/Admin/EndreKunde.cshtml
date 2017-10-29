@@ -64,9 +64,24 @@
                 </div>
                 <div class="col-md-4" id="kjonn">
                     <select id="velgKjonn" class="tekstFelt fullStrl" name="kjonn" placeholder="Kjønn" required>
-                        <option name="velg" disabled selected>Velg kjønn</option>
-                        <option name="mann" value="Mann">Mann</option>
-                        <option name="kvinne" value="Kvinne">Kvinne</option>
+                        <option name="velg" disabled>Velg kjønn</option>
+                        @if(Model.Kjonn == "Mann")
+                        {
+                            <option name="mann" value="Mann" selected>Mann</option>
+                        }
+                        else
+                        {
+                            <option name="mann" value="Mann">Mann</option>
+                        }
+                        @if(Model.Kjonn == "Kvinne")
+                        {
+                            <option name="kvinne" value="Kvinne" selected>Kvinne</option>
+                        }
+                        else
+                        {
+                            <option name="kvinne" value="Kvinne">Kvinne</option>
+                        }
+
                     </select>
                     @Html.ValidationMessageFor(model => model.Kjonn, "", new { @class = "text-danger" })
                 </div>
