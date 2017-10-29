@@ -56,49 +56,25 @@ namespace Tusimaka.DAL
                             ok.Kortnummer = skjultKontonr;
                             ok.Korttype = b.Korttype;
                         }
-
                         listeKundesFlyBestillinger.Add(ok);
-                        foreach (var h in hjelpetabell)
+                        if (i.FlyBestilling.ReturID != null)
                         {
-                            if(h.FlyBestilling.ReturID != null)
-                            {
-                                Strekninger strekning = db.Strekninger.Find(h.FlyBestilling.ReturID);
-                                KundeBestillinger ok1 = new KundeBestillinger();
-                                ok1.KundeID = h.KundeID;
-                                ok1.Fornavn = h.Kunder.fornavn;
-                                ok1.Etternavn = h.Kunder.etternavn;
-                                ok1.StrekningsID = h.FlyBestilling.ReturID.Value;
-                                ok1.FraFlyplass = strekning.fraFlyplass;
-                                ok1.TilFlyplass = strekning.tilFlyplass;
-                                ok1.Dato = strekning.dato;
-                                ok1.Tid = strekning.tid;
-                                ok1.Pris = strekning.pris;
-                                ok1.AntallPersoner = h.FlyBestilling.antallPersoner;
-                                List<BetalingsInfo> betalingsinfo1 = db.BetalingsInfo.Where(bi => bi.FlyBestillingsID == h.FlyBestillingsID).ToList();
-                                foreach (var b in betalingsinfo)
-                                {
-                                    string kontonrString = b.Kortnummer.ToString();
-                                    string skjultKontonr = "";
-                                    for (var bokstavI = 0; bokstavI < kontonrString.Length; bokstavI++)
-                                    {
-                                        if (bokstavI % 4 == 0)
-                                        {
-                                            skjultKontonr += " ";
-                                        }
-                                        if (bokstavI < kontonrString.Length - 4)
-                                        {
-                                            skjultKontonr += "x";
-                                        }
-                                        else
-                                        {
-                                            skjultKontonr += kontonrString[bokstavI];
-                                        }
-                                    }
-                                    ok1.Kortnummer = skjultKontonr;
-                                    ok1.Korttype = b.Korttype;
-                                }
-                                listeKundesFlyBestillinger.Add(ok1);
-                            }
+                            KundeBestillinger retur = new KundeBestillinger();
+                            Strekninger strekning = db.Strekninger.Find(i.FlyBestilling.ReturID);
+                            retur.AntallPersoner = i.FlyBestilling.antallPersoner;
+                            retur.Fornavn = i.Kunder.fornavn;
+                            retur.Etternavn = i.Kunder.etternavn;
+                            retur.KundeID = i.KundeID;
+                            retur.StrekningsID = strekning.StrekningsID;
+                            retur.TilFlyplass = strekning.tilFlyplass;
+                            retur.FraFlyplass = strekning.fraFlyplass;
+                            retur.Tid = strekning.tid;
+                            retur.Dato = strekning.dato;
+                            retur.Pris = strekning.pris;
+                            retur.Korttype = ok.Korttype;
+                            retur.Kortnummer = ok.Kortnummer;
+                            listeKundesFlyBestillinger.Add(retur);
+
                         }
                     }
                     return listeKundesFlyBestillinger;
@@ -178,7 +154,7 @@ namespace Tusimaka.DAL
             {
                 try
                 {
-                    FlyBestilling flyBestilling = db.FlyBestilling.Find(id);
+                    FlyBestilling flyBestilling = db.FlyBestilling.OrderByDescending(fb => fb.FlyBestillingsID).FirstOrDefault();
 
                     var nyBetaling = new BetalingsInfo();
                     nyBetaling.FlyBestillingsID = flyBestilling.FlyBestillingsID;
