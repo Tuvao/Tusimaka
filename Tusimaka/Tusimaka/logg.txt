@@ -67,4 +67,12 @@ System.IO.DirectoryNotFoundException: Finner ikke en del av banen C:\Users\Bruke
 Parameternavn: entity
    ved System.Data.Entity.Utilities.Check.NotNull[T](T value, String parameterName)
    ved System.Data.Entity.DbSet`1.Remove(TEntity entity)
-   ved Tusimaka.DAL.AdminBestillingDAL.SlettKundeBestilling(Int32 id) i C:\Users\Bruker\source\repos\Tusimaka\Tusimaka\DAL\AdminBestillingDAL.cs:linje 116
+   ved Tusimaka.DAL.AdminBestillingDAL.SlettKundeBestilling(Int32 id) i C:\Users\Bruker\source\repos\Tusimaka\Tusimaka\DAL\AdminBestillingDAL.cs:linje 116System.ArgumentNullException: Verdien kan ikke være null.
+Parameternavn: entity
+   ved System.Data.Entity.Utilities.Check.NotNull[T](T value, String parameterName)
+   ved System.Data.Entity.DbSet`1.Remove(TEntity entity)
+   ved Tusimaka.DAL.AdminBestillingDAL.SlettKundeBestilling(Int32 id) i C:\Users\Bruker\source\repos\Tusimaka\Tusimaka\DAL\AdminBestillingDAL.cs:linje 158System.ArgumentNullException: Verdien kan ikke være null.
+Parameternavn: entity
+   ved System.Data.Entity.Utilities.Check.NotNull[T](T value, String parameterName)
+   ved System.Data.Entity.DbSet`1.Remove(TEntity entity)
+   ved Tusimaka.DAL.AdminBestillingDAL.SlettKundeBestilling(Int32 id) i C:\Users\Bruker\source\repos\Tusimaka\Tusimaka\DAL\AdminBestillingDAL.cs:linje 158
