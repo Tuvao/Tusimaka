@@ -99,4 +99,24 @@ Parameternavn: entity
    at System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[TResult](Expression expression)
    at System.Data.Entity.Internal.Linq.DbQueryProvider.Execute[TResult](Expression expression)
    at System.Linq.Queryable.Last[TSource](IQueryable`1 source)
-   at Tusimaka.DAL.AdminBestillingDAL.lagreBetalingsinformasjon(Int32 id, BetalingsInformasjon innBetaling) in C:\Users\Silje\source\repos\Tusimaka\Tusimaka\DAL\AdminBestillingDAL.cs:line 201
+   at Tusimaka.DAL.AdminBestillingDAL.lagreBetalingsinformasjon(Int32 id, BetalingsInformasjon innBetaling) in C:\Users\Silje\source\repos\Tusimaka\Tusimaka\DAL\AdminBestillingDAL.cs:line 201System.ArgumentNullException: Verdien kan ikke være null.
+Parameternavn: entity
+   ved System.Data.Entity.Utilities.Check.NotNull[T](T value, String parameterName)
+   ved System.Data.Entity.DbSet`1.Remove(TEntity entity)
+   ved Tusimaka.DAL.AdminBestillingDAL.SlettKundeBestilling(Int32 id) i C:\Users\Bruker\source\repos\Tusimaka\Tusimaka\DAL\AdminBestillingDAL.cs:linje 134System.ArgumentNullException: Verdien kan ikke være null.
+Parameternavn: entity
+   ved System.Data.Entity.Utilities.Check.NotNull[T](T value, String parameterName)
+   ved System.Data.Entity.DbSet`1.Remove(TEntity entity)
+   ved Tusimaka.DAL.AdminBestillingDAL.SlettKundeBestilling(Int32 id) i C:\Users\Bruker\source\repos\Tusimaka\Tusimaka\DAL\AdminBestillingDAL.cs:linje 134System.ArgumentNullException: Verdien kan ikke være null.
+Parameternavn: entity
+   ved System.Data.Entity.Utilities.Check.NotNull[T](T value, String parameterName)
+   ved System.Data.Entity.DbSet`1.Remove(TEntity entity)
+   ved Tusimaka.DAL.AdminBestillingDAL.SlettKundeBestilling(Int32 id) i C:\Users\Bruker\source\repos\Tusimaka\Tusimaka\DAL\AdminBestillingDAL.cs:linje 134System.ArgumentNullException: Verdien kan ikke være null.
+Parameternavn: entity
+   ved System.Data.Entity.Utilities.Check.NotNull[T](T value, String parameterName)
+   ved System.Data.Entity.DbSet`1.Remove(TEntity entity)
+   ved Tusimaka.DAL.AdminBestillingDAL.SlettKundeBestilling(Int32 id) i C:\Users\Bruker\source\repos\Tusimaka\Tusimaka\DAL\AdminBestillingDAL.cs:linje 134System.ArgumentNullException: Verdien kan ikke være null.
+Parameternavn: entity
+   ved System.Data.Entity.Utilities.Check.NotNull[T](T value, String parameterName)
+   ved System.Data.Entity.DbSet`1.Remove(TEntity entity)
+   ved Tusimaka.DAL.AdminBestillingDAL.SlettKundeBestilling(Int32 id) i C:\Users\Bruker\source\repos\Tusimaka\Tusimaka\DAL\AdminBestillingDAL.cs:linje 134
