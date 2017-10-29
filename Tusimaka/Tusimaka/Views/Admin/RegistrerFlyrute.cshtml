@@ -5,11 +5,15 @@
 }
 <link href="~/Content/StyleSheet.css" rel="stylesheet" />
 <script type="text/javascript">
-    //henter antall personer fra flyBestilling tabellen i DB
     $(document).ready(function () {
+        // Viser navbar-knappene kun når Admin er logget inn.
         $(".navbar-nav").removeAttr("hidden");
+
+        // Gjør om logginn-knapp til loggut-knapp.
         $(".loggInnUt").attr("href", "/Admin/LoggUt");
         $(".loggInnUt").text("LOGG UT");
+
+        // Gir den aktive siden en active-klasse med styling som markerer.
         $(".navbar").find(".active").removeClass("active");
         $(".flyruterAdministrer").addClass("active");
     });

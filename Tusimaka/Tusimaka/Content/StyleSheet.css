@@ -184,15 +184,6 @@ tr {
 .maxWidth58 {
     max-width: 58%;
 }
-
-.BekreftelseKundeInfoDiv {
-    color: #1B576B;
-    display: block;
-    font-size: 1.3em;
-}
-    .BekreftelseKundeInfoDiv td{
-        padding-left: 0em;
-    }
         
 .BekreftelsesDivBoks {
     display: inline-block;
@@ -225,14 +216,6 @@ input[type=radio] {
 input[type=date]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     display: none;
-}
-
-.adminStartKnapp a,
-.adminStartKnapp a:hover, .adminStartKnapp a:focus {
-    color: white;
-    text-decoration: none;
-    padding: 1.5em 0em;
-    width:100%;
 }
 
 p.fyll_inn_skjema{
@@ -354,6 +337,7 @@ p.fyll_inn_skjema{
 .clear{
     clear: both;
 }
+
 .loggInnFelt {
     display: inline-block;
     width: 300px;
@@ -369,7 +353,6 @@ p.fyll_inn_skjema{
 .bilde {
     float: right;
     margin-right: 15%;
-    margin-bottom: 1%;
     margin-bottom: 10%;
     display: inline-block;
     max-width: 500px;
@@ -382,6 +365,7 @@ p.fyll_inn_skjema{
     right: 0;
     height: auto;
 }
+
 left-spacing{
     margin-left: 15%;
 }
@@ -394,7 +378,6 @@ left-spacing{
     to {
         opacity: 1;
     }
-
 }
 
 .logoTusimaka {
@@ -459,6 +442,7 @@ left-spacing{
     display: inline-block;
     z-index:1;
 }
+
 footer {
     position: absolute;
     margin-top: -0.7em;
@@ -466,4 +450,3 @@ footer {
     clear: both;
     bottom:0;
 }
-
