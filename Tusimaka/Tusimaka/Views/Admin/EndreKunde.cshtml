@@ -14,24 +14,23 @@
     });
 </script>
 
+@using (Html.BeginForm())
+{
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
             <h2>Endre Kunde</h2>
         </div>
     </div>
-    @using (Html.BeginForm())
-    {
         @Html.AntiForgeryToken()
 
-        <div class="form-horizontal">
-             
+        <div class="form-horizontal header-spacing">
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.HiddenFor(model => model.KundeID)
 
             <div class="form-group">
                 <div class="col-md-1">
-                    <p>FORNAVN:</p>
+                    <p>FORNAVN</p>
                 </div>
                 <div class="col-md-4">
                     @Html.EditorFor(model => model.Fornavn, new { htmlAttributes = new { @class = "tekstFelt fullStrl" } })
@@ -41,7 +40,7 @@
 
             <div class="form-group">
                 <div class="col-md-1">
-                    <p>ETTERNAVN:</p>
+                    <p>ETTERNAVN</p>
                 </div>
                 <div class="col-md-4">
                     @Html.EditorFor(model => model.Etternavn, new { htmlAttributes = new { @class = "tekstFelt fullStrl" } })
@@ -51,7 +50,7 @@
 
             <div class="form-group">
                 <div class="col-md-1">
-                    <p>EPOST:</p>
+                    <p>EPOST</p>
                 </div>
                 <div class="col-md-4">
                     @Html.EditorFor(model => model.Epost, new { htmlAttributes = new { @class = "tekstFelt fullStrl" } })
@@ -61,10 +60,14 @@
 
             <div class="form-group">
                 <div class="col-md-1">
-                    <p>KJØNN:</p>
+                    <p>KJØNN</p>
                 </div>
-                <div class="col-md-4">
-                    @Html.EditorFor(model => model.Kjonn, new { htmlAttributes = new { @class = "tekstFelt fullStrl" } })
+                <div class="col-md-4" id="kjonn">
+                    <select id="velgKjonn" class="tekstFelt fullStrl" name="kjonn" placeholder="Kjønn" required>
+                        <option name="velg" disabled selected>Velg kjønn</option>
+                        <option name="mann" value="Mann">Mann</option>
+                        <option name="kvinne" value="Kvinne">Kvinne</option>
+                    </select>
                     @Html.ValidationMessageFor(model => model.Kjonn, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -76,8 +79,8 @@
                 </div>
             </div>
         </div>
-    }
     </div>
+    }
     <script src="~/Scripts/jquery-3.2.1.min.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

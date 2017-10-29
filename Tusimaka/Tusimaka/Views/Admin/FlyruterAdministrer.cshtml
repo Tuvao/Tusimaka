@@ -33,16 +33,7 @@
                 });
             });
         });
-
-            // lag en hendelse som utføres når en a-href med "data-SletteModal = true" trykkes.
-            $('a[data-visFlyruterModal=true]').click(function () {
-
-                var data_navn = $(this).data('navn');
-                var data_id = $(this).data('id');
-
-                $('#visFlyrute').html(data_navn);
-            });
-        });
+    });
 </script>
 <body>
     <div class="container">
@@ -51,7 +42,7 @@
                 <h2>Administrer Flyruter</h2>
             </div>
         </div>
-            <div class="row">
+            <div class="row header-spacing">
                 <div class="col-lg-12">
                     <span class="miniMenyKnapp">@Html.ActionLink("TILBAKE", "AdminStart")</span>
                     <span class="miniMenyKnapp">@Html.ActionLink("LEGG TIL", "RegistrerFlyrute")</span>
@@ -85,9 +76,6 @@
                         <th>
                             Ledige seter
                         </th>
-                        <th>
-                            Hva vil du gjøre?
-                        </th>
                     </tr>
 
                     @foreach (var item in Model)
@@ -118,19 +106,22 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.AntallLedigeSeter)
                             </td>
-                            <td>
-                                <span class="miniKnapp endre">@Html.ActionLink("Endre", "EndreFlyrute", new { id = item.StrekningsID }, new { @class = "tabKnapp" })</span>
-                                <span class="miniKnapp detaljer">
-                                    <a href="#VisFlyruterModal" class="tabKnapp" id="visFlyruterKnapp"
-                                       data-navn="<i>Id: @item.StrekningsID</i><br/>Fra: @item.FraFlyplass <br/>Til: @item.TilFlyplass <br/>Den: @item.Dato <br/>Klokken: @item.Tid <br/>Pris: @item.Pris<br/>Flytid (i minutter): @item.FlyTid<br/>Antall ledige seter: @item.AntallLedigeSeter "
-                                       data-id="@item.StrekningsID" data-toggle="modal" data-visFlyruterModal="true">Detaljer</a>
-                                </span>
-                                <span class="miniKnapp slett">
-                                    <a href="#sletteFlyruterModal" class="tabKnapp" id="sletteKnapp"
-                                       data-navn="<i>Id: @item.StrekningsID</i><br/>Fra: @item.FraFlyplass <br/>Til: @item.TilFlyplass <br/>Den: @item.Dato <br/>Klokken: @item.Tid" @*Fjernet at vi viste frem all data!*@
-                                       data-id="@item.StrekningsID" data-toggle="modal" data-sletteFlyruterModal="true">Slett</a>
-                                </span>
+                            <td class="rundknapp-spacing">
+                                <div class="rundKnapp">
+                                    <div class="miniKnapp endre" title="Endre flyruten">
+                                        @Html.ActionLink("Endre", "EndreFlyrute", new { id = item.StrekningsID }, new { @class = "tabKnapp" })
+                                    </div>
+                                </div>
                             </td>
+                            <td class="rundknapp-spacing">
+                                <div class="rundKnapp">
+                                    <div class="miniKnapp slett" title="Slett flyruten">
+                                        <a href="#sletteFlyruterModal" class="tabKnapp" id="sletteKnapp"
+                                           data-navn="<i>Id: @item.StrekningsID</i><br/>Fra: @item.FraFlyplass <br/>Til: @item.TilFlyplass <br/>Den: @item.Dato <br/>Klokken: @item.Tid" @*Fjernet at vi viste frem all data!*@
+                                           data-id="@item.StrekningsID" data-toggle="modal" data-sletteFlyruterModal="true">Slett</a>
+                                    </div>
+                                </div>
+</td>
                         </tr>
                     }
 
@@ -139,7 +130,6 @@
             </div>
             <div class="row">
                 @Html.Partial("SlettFlyruterModal")
-                @Html.Partial("VisFlyruterModal")
             </div>
         </div>
 </body>

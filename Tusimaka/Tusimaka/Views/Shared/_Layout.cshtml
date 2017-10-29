@@ -21,9 +21,9 @@
                     @Html.ActionLink("TUSIMAKA AIRLINES", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 </div>
                 <ul class="nav navbar-nav" hidden>
-                    <li class="hjem"><img class="ikonNav" src="~/husIkon.png" alt="husikon" />@Html.ActionLink("Hjem", "AdminStart", "Admin")</li>
-                    <li class="kundeAdministrer"><img class="ikonNav" src="~/kundeIkon.png" alt="kundeikon" /><a href="../Admin/KundeAdministrer">Administrer kunder</a></li>
-                    <li class="flyruterAdministrer"><img class="ikonNav" src="~/flyIkon.png" alt="flyikon" /><a href="../Admin/FlyruterAdministrer">Administrer flyruter</a></li>
+                    <li class="hjem"><span class="glyphicon glyphicon-home" /></span>@Html.ActionLink("Hjem", "AdminStart", "Admin")</li>
+                    <li class="kundeAdministrer"><span class="glyphicon glyphicon-user" /></span>@Html.ActionLink("Administrer kunder", "KundeAdministrer", "Admin")</li>
+                    <li class="flyruterAdministrer"><span class="glyphicon glyphicon-plane" /></span>@Html.ActionLink("Administrer flyruter", "FlyruterAdministrer", "Admin")</li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a class="loggInnUt" href="../Admin/loggInn">LOGG INN</a>@*@Html.ActionLink("LOGG INN", "LoggInn", "Admin", new { @class = "loggInnUt" })*@</li>
@@ -58,7 +58,7 @@
         <div class="container body-content">
             @RenderBody()
             <hr />
-            <footer>
+            <footer id="footer">
                 <p>&copy; @DateTime.Now.Year - Copyright Tusimaka Airlines</p>
             </footer>
 

@@ -31,59 +31,61 @@
         }
     });
 </script>
-<h2>Kunderegistrering</h2>
+<div class="container">
+    <h2>Kunderegistrering</h2>
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    <div class="form-horizontal">
-        <div id="VisAntallPers"></div>
-        <h4>Vennligst registrer informasjon til betalende kunde</h4>
-         
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.KundeID)
-        <div class="form-group">
-            <div class="col-md-10">
-                @*<p>FORNAVN</p>*@
-                @Html.EditorFor(model => model.Fornavn, new { htmlAttributes = new { placeholder = "Fornavn", @class = "tekstFelt fullStrl" } })
-                @Html.ValidationMessageFor(model => model.Fornavn, "", new { @class = "text-danger" })
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            <div id="VisAntallPers"></div>
+            <h4>Vennligst registrer informasjon til betalende kunde</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.KundeID)
+            <div class="form-group">
+                <div class="col-md-10">
+                    @*<p>FORNAVN</p>*@
+                    @Html.EditorFor(model => model.Fornavn, new { htmlAttributes = new { placeholder = "Fornavn", @class = "tekstFelt fullStrl" } })
+                    @Html.ValidationMessageFor(model => model.Fornavn, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    @*<p>ETTERNAVN</p>*@
+                    @Html.EditorFor(model => model.Etternavn, new { htmlAttributes = new { placeholder = "Etternavn", @class = "tekstFelt fullStrl" } })
+                    @Html.ValidationMessageFor(model => model.Etternavn, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    @*<p>E-POST</p>*@
+                    @Html.EditorFor(model => model.Epost, new { htmlAttributes = new { placeholder = "Epost", @class = "tekstFelt fullStrl" } })
+                    @Html.ValidationMessageFor(model => model.Epost, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10" id="kjonn">
+                    @*<p>KJØNN</p>*@
+                    <select id="velgKjonn" class="tekstFelt fullStrl" name="kjonn" required>
+                        <option name="velg" disabled selected>Velg kjønn</option>
+                        <option name="mann" value="Mann">Mann</option>
+                        <option name="kvinne" value="Kvinne">Kvinne</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    <input type="submit" value="Registrer" name="RegistrerKunde" id="registrer" class="knapp" />
+                </div>
             </div>
         </div>
-
-        <div class="form-group">
-            <div class="col-md-10">
-                @*<p>ETTERNAVN</p>*@
-                @Html.EditorFor(model => model.Etternavn, new { htmlAttributes = new { placeholder = "Etternavn", @class = "tekstFelt fullStrl" } })
-                @Html.ValidationMessageFor(model => model.Etternavn, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-10">
-                @*<p>E-POST</p>*@
-                @Html.EditorFor(model => model.Epost, new { htmlAttributes = new { placeholder = "Epost", @class = "tekstFelt fullStrl" } })
-                @Html.ValidationMessageFor(model => model.Epost, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-10" id="kjonn">
-                @*<p>KJØNN</p>*@
-                <select id="velgKjonn" class="tekstFelt fullStrl" name="kjonn" required>
-                    <option name="velg" disabled selected>Velg kjønn</option>
-                    <option name="mann" value="Mann">Mann</option>
-                    <option name="kvinne" value="Kvinne">Kvinne</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-10">
-                <input type="submit" value="Registrer" name="RegistrerKunde" id="registrer" class="knapp" />
-            </div>
-        </div>
-    </div>
-}
+    }
+</div>
 <script src="~/Scripts/jquery-3.2.1.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

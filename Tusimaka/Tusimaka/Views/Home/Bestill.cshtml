@@ -325,7 +325,7 @@
             <div class="row">
                 <div id="returDato" class="col col-lg-2 col-md-2 col-sm-3 col-xs-6" hidden="hidden">
                     <p>RETUR-DATO</p>
-                    <input id="fraDato" type="date" onkeydown="return false" class="knappUtseende selectUtseende" disabled">
+                    <input id="fraDato" type="date" onkeydown="return false" class="knappUtseende selectUtseende" disabled>
                 </div>
                 <div id="avbrytRetur" hidden class="col col-lg-2 col-md-2 col-sm-3 col-xs-6">
                     <p class="usynlig">.</p>
@@ -339,9 +339,11 @@
                 </div>
             </div>
             <div class="row">
-                <button type="button" id="retur" class="knapp" disabled="disabled" hidden="hidden">Bestill returbiletter</button>
-                <input type="submit" value="Bekreft" class="knapp" id="bekreft" disabled="disabled"  hidden="hidden" />
+                <div class="col-md-10">
+                    <div id="retur" class="knapp" disabled hidden>Bestill retur</div>
+                    <input type="submit" value="Bekreft" class="knapp" id="bekreft" disabled hidden/>
                 </div>
+            </div>
         </div>
     }
 </body>

@@ -23,8 +23,7 @@
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-        <div class="form-horizontal">
-             
+        <div class="form-horizontal header-spacing">
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.HiddenFor(model => model.KundeID)
             <div class="form-group">
@@ -59,10 +58,10 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                <div class="col-md-10 valg">
-                    <span class="knapp">@Html.ActionLink("Avbryt", "KundeAdministrer")</span>
-                    <input type="submit" value="Registrer" id="create" class="knapp" />
+            <div class="row header-spacing">
+                <div class="col-md-10">
+                    <input type="submit" value="Registrer" id="create" class="knapp"/>
+                    <div class="knapp">@Html.ActionLink("Avbryt", "KundeAdministrer")</div>
                 </div>
             </div>
         </div>

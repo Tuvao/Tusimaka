@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Tusimaka.Model.KundeBestillinger>
+﻿@model List<Tusimaka.Model.KundeBestillinger>
 
 @{
     ViewBag.Title = "KundeBestillinger";
@@ -35,12 +35,19 @@
                     });
                 })
             })
-        });
+    });
 </script>
 <div class="container">
     <div class="row">
-        <div class="col-lg-12">
+        <div class="overskrift">
             <h2>Kundebestillinger</h2>
+        </div>
+        <div class="utenforKnapp">
+            <div class="rundknapp-spacing">
+                <div class="rundKnapp">
+                    <div class="miniKnapp add" title="Legg til ny bestilling">@Html.ActionLink("Ny", "NyKundeBestilling", new { id = Session["KundeID"] })</div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -54,11 +61,9 @@
             @Html.DisplayFor(model => model.First().Fornavn)
             @Html.DisplayFor(model => model.First().Etternavn)
         </h3>
-
-    <p>
-        @Html.ActionLink("Tilbake", "KundeAdministrer")
-    </p>
-    <table class="table">
+        
+        <span class="miniMenyKnapp header-spacing">@Html.ActionLink("Tilbake", "KundeAdministrer")</span>
+    <table class="table header-spacing">
         <tr>
             <th>
                 Flight Nr
@@ -87,7 +92,6 @@
             <th>
                 Korttype
             </th>
-            <th></th>
         </tr>
 
         @foreach (var item in Model)
@@ -121,13 +125,14 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Korttype)
                 </td>
-                <td class="adminStartMiniKnapp">
-                    <span class="miniKnapp add">@Html.ActionLink("Ny bestilling", "NyKundeBestilling", new { id = item.KundeID }, new { @class = "tabKnapp" })</span>
-                    <span class="miniKnapp slett">
-                        <a href="#sletteKundeBestillingModal" class="tabKnapp" id="sletteKnapp"
-                           data-navn="Kunde: id - @item.KundeID  Fornavn - @item.Fornavn Etternavn - @item.Etternavn<br/>FlightNR: @item.StrekningsID <br/>Fra flyplass: @item.FraFlyplass<br/>Til flyplass @item.TilFlyplass <br/>Dato: @item.Dato  <br/> Tidspunkt: @item.Tid"
-                           data-id="@item.KundeID" data-toggle="modal" data-sletteKundeBestillingModal="true">Slett</a>
-                    </span>
+                <td class="rundknapp-spacing">
+                    <div class="rundKnapp">
+                        <div class="miniKnapp slett">
+                            <a href="#sletteKundeBestillingModal" class="tabKnapp" id="sletteKnapp"
+                               data-navn="@item.Fornavn @item.Etternavn<br/>FlightNR: @item.StrekningsID <br/>Fra flyplass: @item.FraFlyplass<br/>Til flyplass @item.TilFlyplass <br/>Dato: @item.Dato  <br/> Tidspunkt: @item.Tid"
+                               data-id="@item.KundeID" data-toggle="modal" data-sletteKundeBestillingModal="true">Slett</a>
+                        </div>
+                    </div>
                 </td>
             </tr>
         }

@@ -194,6 +194,7 @@ namespace Tusimaka.Controllers
                 if (loggetInn)
                 {
                     List<KundeBestillinger> hentKundesFlyruter = _adminBestillBLL.hentKundesFlyBestillinger(id);
+                    Session["KundeID"] = id;
                     return View(hentKundesFlyruter);
                 }
             }

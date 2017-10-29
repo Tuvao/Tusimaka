@@ -23,11 +23,10 @@
                     <h2>Velkommen, admin!</h2>
                 </div>
             </div>
-            <div class="row">
+            <div class="row header-spacing">
                 <div class="col-lg-12">
-                     
-                    <span class="MenyKnapp"><img class="ikon" src="~/kundeIkon.png" alt="kundeikon" />@Html.ActionLink("Administrer Kunder", "KundeAdministrer"@*, new { area = "" }, new { @class = "MenyKnapp" }*@)</span>
-                        <span class="MenyKnapp"><img class="ikon" src="~/flyIkon.png" alt="flyikon" />@Html.ActionLink("Administrer Flyruter", "FlyruterAdministrer"@*, new { area = "" }, new { @class = "MenyKnapp" }*@)</span>
+                    <div class="MenyKnapp">@Html.ActionLink("Administrer Kunder", "KundeAdministrer")</div>
+                    <div class="MenyKnapp">@Html.ActionLink("Administrer Flyruter", "FlyruterAdministrer"@*, new { area = "" }, new { @class = "MenyKnapp" }*@)</div>
                    
                 </div>
             </div>

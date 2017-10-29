@@ -180,7 +180,7 @@
                     for (var i in strekninger) {
                         utStreng += "<tr><td>" + strekninger[i].fraFlyplass + "</td><td>" + strekninger[i].tilFlyplass +
                             "</td><td>" + strekninger[i].dato + "</td><td>" + strekninger[i].tid + "</td><td>" + strekninger[i].pris +
-                            "</td><td>" + KonverterMinTilTimerOgMin(strekninger[i].flyTid) + " min</td><td><input type='radio' name='StrekningsId' onChange='VisBekreft()' value='" + strekninger[i].StrekningsID + "' class=''/></td><tr/>";
+                            "</td><td>" + KonverterMinTilTimerOgMin(strekninger[i].flyTid) + "</td><td><input type='radio' name='StrekningsId' onChange='VisBekreft()' value='" + strekninger[i].StrekningsID + "' class=''/></td><tr/>";
                     }
                 }
                 utStreng += "</table>"
@@ -199,7 +199,7 @@
                     for (var i in retur) {
                         utStreng += "<tr><td>" + retur[i].fraFlyplass + "</td><td>" + retur[i].tilFlyplass +
                             "</td><td>" + retur[i].dato + "</td><td>" + retur[i].tid + "</td><td>" + retur[i].pris +
-                            "</td><td>" + KonverterMinTilTimerOgMin(retur[i].flyTid) + " min</td><td><input type='radio' name='ReturId' onChange='VisBekreftRetur()' value='" + retur[i].StrekningsID + "' class=''/></td><tr/>";
+                            "</td><td>" + KonverterMinTilTimerOgMin(retur[i].flyTid) + "</td><td><input type='radio' name='ReturId' onChange='VisBekreftRetur()' value='" + retur[i].StrekningsID + "' class=''/></td><tr/>";
                     }
 
                     $("#bekreft").show();
@@ -255,21 +255,21 @@
             $("#bekreft").show();
             $("#bekreft").removeAttr("disabled");
         }
-        function SkjulBekreftRetur() {
-            $("#retur").hide();
-            $("#bekreft").hide();
-        }
-        function skjulEndre() {
-            $("#bekreftetTilFraSted").hide();
-            $("#retur").hide();
-            $("#returDato").hide();
-            $("#bekreftetRetur").hide();
-            $("#bekreft").hide();
-            $("#bekreft").attr("disabled");
-            $("#retur").attr("disabled");
-            $("#lukk").attr("disabled");
-            $("#lukk").hide();
-        }
+        //function SkjulBekreftRetur() {
+        //    $("#retur").hide();
+        //    $("#bekreft").hide();
+        //}
+        //function skjulEndre() {
+        //    $("#bekreftetTilFraSted").hide();
+        //    $("#retur").hide();
+        //    $("#returDato").hide();
+        //    $("#bekreftetRetur").hide();
+        //    $("#bekreft").hide();
+        //    $("#bekreft").attr("disabled");
+        //    $("#retur").attr("disabled");
+        //    $("#lukk").attr("disabled");
+        //    $("#lukk").hide();
+        //}
         function VisSisteBekreftKnappen() {
             $("#sisteBekreft").show();
             $("#bekreft").show();
@@ -277,9 +277,6 @@
     </script>
 </head>
 <body>
-
-    @* Her må vi fjerne returknappen? Eller få den til å funke.  *@
-    @* Og disable søk-knappen før man har fylt ut alt.. Kanskje *@
     @using (Html.BeginForm())
     {
         <div class="container">
@@ -287,6 +284,10 @@
                 <div class="col-lg-12">
                     <h1 class="header">Velg din flyreise</h1>
                 </div>
+                <div class="col-lg-12">
+                    <span class="miniMenyKnapp">@Html.ActionLink("TILBAKE", "KundeAdministrer")</span>
+                </div>
+                <div class="header-spacing">
                     <div class="col col-lg-2 col-md-3 col-sm-6 col-xs-12" id="dropDown1">
                         <p>FRA</p>
                         <select id="drop1" class="selectUtseende"></select>
@@ -318,6 +319,7 @@
                         <button type="button" id="sok" disabled="disabled">Søk</button>
                     </div>
                 </div>
+            </div>
             <div class="row">
                 <div hidden="hidden" id="bekreftetTilFraSted">
                     <h3>Når ønsker du å reise?</h3>
@@ -327,7 +329,7 @@
             <div class="row">
                 <div id="returDato" class="col col-lg-2 col-md-2 col-sm-3 col-xs-6" hidden="hidden">
                     <p>RETUR-DATO</p>
-                    <input id="fraDato" type="date" onkeydown="return false" class="knappUtseende selectUtseende" disabled">
+                    <input id="fraDato" type="date" onkeydown="return false" class="knappUtseende selectUtseende" disabled>
                 </div>
                 <div id="avbrytRetur" hidden class="col col-lg-2 col-md-2 col-sm-3 col-xs-6">
                     <p class="usynlig">.</p>
@@ -341,8 +343,8 @@
                 </div>
             </div>
             <div class="row">
-                <button type="button" id="retur" class="knapp" disabled="disabled" hidden="hidden">Bestill returbiletter</button>
-                <input type="submit" value="Bekreft" class="knapp" id="bekreft" disabled="disabled" hidden="hidden" />
+                <button type="button" id="retur" class="knapp" disabled hidden>Bestill retur</button>
+                <input type="submit" value="Bekreft" class="knapp" id="bekreft" disabled hidden/>
             </div>
         </div>
     }
