@@ -380,6 +380,7 @@ p.fyll_inn_skjema{
     height: auto;
     -webkit-animation-name: flytilbake;
     -webkit-animation-duration: 5s;
+    z-index: 1;
 }
 left-spacing{
     margin-left: 15%;
@@ -457,11 +458,16 @@ left-spacing{
     display: inline-block;
     z-index:1;
 }
-footer {
-    position: absolute;
-    margin-top: -0.7em;
+
+#footer {
+    position: relative;
     height: 0.7em;
     clear: both;
-    bottom:0;
+    bottom: 0;
+    margin-top: auto;
+}
+
+hr {
+    margin-top: 15%;
 }
 
