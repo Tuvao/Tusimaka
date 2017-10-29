@@ -370,6 +370,7 @@ p.fyll_inn_skjema{
     float: right;
     margin-right: 15%;
     margin-bottom: 1%;
+    margin-bottom: 10%;
     display: inline-block;
     max-width: 500px;
     -webkit-animation-name: fly;
@@ -459,9 +460,10 @@ left-spacing{
     z-index:1;
 }
 footer {
-    position: relative;
+    position: absolute;
     margin-top: -0.7em;
     height: 0.7em;
     clear: both;
     bottom:0;
 }
+
