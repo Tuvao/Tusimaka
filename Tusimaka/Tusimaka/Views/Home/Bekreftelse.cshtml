@@ -88,22 +88,22 @@
 </script>
 <div class="container">
     <div class="row">
-        <div class="BekreftelseKundeInfoDiv">
-            <div class="overskrift">
-                <h2>Bekreftelse</h2>
-                <p>Takk for din bestilling @Model.Fornavn  @Model.Etternavn</p>
-                <div id="VisBekreftelsesNR"></div>
-            </div>
-            <div class="left-spacing">
-                <div class="rundknapp-spacing">
-                    <div class="rundKnapp">
-                        <div class="miniKnapp add" title="Bestill ny flytur">@Html.ActionLink("Ny tur", "Bestill", "Home", new { @class = "" })</div>
-                    </div>
-                </div>
-            </div>
+        <div class="col-lg-12">
+            <h1>Bekreftelse</h1>
+            <h3>Takk for din bestilling @Model.Fornavn  @Model.Etternavn</h3>
+        </div>
     </div>
-    <div class="row clear">
-        <div id="VisTur" class="BekreftelsesDivBoks"></div>
-        <div id="VisRetur" class="BekreftelsesDivBoks"></div>
+    <div class="row">
+        <div class="col-lg-12">
+            <span class="miniMenyKnapp">@Html.ActionLink("TILBAKE", "Index")</span>
+            <span class="miniMenyKnapp">@Html.ActionLink("NY TUR", "Bestill", "Home")</span>
+        </div>
+    </div>
+    <div class="row">
+        <div id="VisBekreftelsesNR"></div>
+        <div class="col-lg-12">
+            <div id="VisTur" class="BekreftelsesDivBoks"></div>
+            <div id="VisRetur" class="BekreftelsesDivBoks"></div>
+        </div>
     </div>
 </div>
