@@ -358,32 +358,30 @@ p.fyll_inn_skjema{
 .bilde {
     float: right;
     margin-right: 15%;
-    margin-bottom: 1%;
     margin-bottom: 10%;
     display: inline-block;
-    max-width: 500px;
-    -webkit-animation-name: fly;
-    -webkit-animation-duration: 5s;
-    opacity: 1;
+    max-width: 400px;
+    opacity: 0.5;
     z-index: 0;
     position: fixed;
     bottom: 0;
     right: 0;
     height: auto;
+    -webkit-animation-name: flytilbake;
+    -webkit-animation-duration: 5s;
 }
 left-spacing{
     margin-left: 15%;
 }
 
-@-webkit-keyframes fly {
+@-webkit-keyframes flytilbake {
     from {
-        opacity: 0;
-    }
-
-    to {
         opacity: 1;
     }
 
+    to {
+        opacity: 0.5;
+    }
 }
 
 
